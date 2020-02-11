@@ -1,0 +1,21 @@
+.NewFrenmoForm__container {
+  background-color: grey;
+  height: 400px;
+  width: 400px;
+  margin: 100px auto 10px;
+}
+
+.NewFrenmoForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: justify;
+  height: 400px;
+  width: 300px;
+  margin: 100px auto 10px;
+}
+
+.NewFrenmo__date-container {
+  display: flex;
+  justify-content: space-between;
+}
