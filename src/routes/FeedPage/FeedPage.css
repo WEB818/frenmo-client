@@ -1,3 +1,10 @@
+.feed-menu {
+  text-align: center;
+}
+.activity-container {
+  margin-top: 10px;
+}
+
 .activity {
   display: flex;
   justify-content: space-between;
@@ -10,7 +17,9 @@
   border: solid 1px #eb6563;
 }
 
+
 nav {
+  margin-top: 15px;
   height: 30px;
   width: 400px;
   margin-left: auto;
