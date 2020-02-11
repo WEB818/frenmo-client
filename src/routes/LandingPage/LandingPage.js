@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import SearchUser from "../../components/SearchUser/SearchUser";
 import "./LandingPage.css";
 
 class LandingPage extends Component {
@@ -7,6 +8,7 @@ class LandingPage extends Component {
     return (
       <>
         <div>Landing Page</div>
+        <SearchUser />
         <div>
           <Link to="/login">Log in</Link>
         </div>
