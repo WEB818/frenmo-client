@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FrenmoTags from "../FrenmoTags/FrenmoTags";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -115,6 +116,7 @@ class NewFrenmoForm extends Component {
             <option value="">Volunteers Needed</option>
             <option value="">Wedding</option>
           </select>
+          <FrenmoTags />
           <div className="NewFrenmo__date-container">
             <Label htmlFor="NewFrenmo__expiration-date">Valid until:</Label>
             <DatePicker
