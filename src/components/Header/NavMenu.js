@@ -47,6 +47,7 @@ export default class NavMenu extends Component {
           <li> <Link to='/'> Home </Link> </li>
           <li> <Link to='/feed'> Feed </Link> </li>
           <li> <Link to='/send'> Send </Link> </li>
+          <li> <Link to='/friendsearch'> Find Friends </Link></li>
           <li> <Link to='/login'onClick={this.handleLogOutClick}> Logout </Link> </li>
         </ul>
       </div>

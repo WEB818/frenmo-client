@@ -4,13 +4,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "./FeedPage.css";
 import PublicFeed from "../../components/PublicFeed/PublicFeed";
 import FriendsList from "../../components/FriendsList/FriendsList";
+import WishfulCoupons from "../../components/WishfulCoupons/WishfulCoupons";
 
 export default class FeedPage extends Component {
   render() {
     return (
       <div className="main-feed-container">
-
-
       <Tabs>
           <TabList>
             <Tab> Public </Tab>
@@ -24,10 +23,9 @@ export default class FeedPage extends Component {
             <FriendsList />
           </TabPanel>
           <TabPanel> 
-            Sent Coupons
+            <WishfulCoupons />
           </TabPanel>
         </Tabs>
-
       </div>
     );
   }
