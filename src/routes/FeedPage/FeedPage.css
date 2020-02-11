@@ -1,0 +1,22 @@
+.activity {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.activity:nth-child(even) {
+  border: solid 1px #eb6563;
+}
+
+nav {
+  height: 30px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.activity:nth-child(odd) {
+  background-color: #eb6563;
+}
