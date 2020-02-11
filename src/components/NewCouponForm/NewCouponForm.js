@@ -7,13 +7,13 @@ class NewCouponForm extends Component {
     return (
       <form>
         <Label>Presented To:</Label>
-        <Input type="text" />
+          <Input type="text" />
         <Label>Redeemable For:</Label>
-        <Input type="text" />
+          <Input type="text" />
         <Label>Voucher Details:</Label>
-        <Textarea />
+          <Textarea />
         <Label>Expiration Date:</Label>
-        <Input type="date" />
+          <Input type="date" />
       </form>
     );
   }

@@ -1,50 +1,48 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "./FeedPage.css";
+import PublicFeed from "../../components/PublicFeed/PublicFeed";
+import FriendsList from "../../components/FriendsList/FriendsList";
 
-class FeedPage extends Component {
+export default class FeedPage extends Component {
   render() {
     return (
-      <>
-        <nav>
-          <button>Public</button>
-          <button>Friends</button>
-          <button>Mine</button>
-          <Link to="/dashboard">
-            <button>Dash</button>
-          </Link>
-          <Link to="/send">
-            <button>Send</button>
-          </Link>
-        </nav>
+      <div className="main-feed-container">
 
-        <div className="activity">
-          <p>"X" issued "Y" a coupon</p>
-          <p>2/10/2020</p>
-        </div>
-        <div className="activity">
-          <p>"Z" issued "A" a coupon</p>
-          <p>2/10/2020</p>
-        </div>
-        <div className="activity">
-          <p>"P" redeemed a coupon from "Y"</p>
-          <p>2/10/2020</p>
-        </div>
-        <div className="activity">
-          <p>"X" issued "Y" a coupon</p>
-          <p>2/10/2020</p>
-        </div>
-        <div className="activity">
-          <p>"W" redeemed a coupon from "R"</p>
-          <p>2/10/2020</p>
-        </div>
-        <div className="activity">
-          <p>"X" issued "Y" a coupon</p>
-          <p>2/10/2020</p>
-        </div>
-      </>
+
+      <Tabs>
+          <TabList>
+            <Tab> Public </Tab>
+            <Tab> Friends </Tab>
+            <Tab> Wishful Frenmos </Tab>
+          </TabList>
+          <TabPanel>
+            <PublicFeed />
+          </TabPanel>
+          <TabPanel>
+            <FriendsList />
+          </TabPanel>
+          <TabPanel> 
+            Sent Coupons
+          </TabPanel>
+        </Tabs>
+
+      </div>
     );
   }
 }
 
-export default FeedPage;
+
+
+{/* <nav className="feed-menu">
+          
+<button>Mine</button>
+<Link to="/dashboard">
+  <button>Dash</button>
+</Link>
+<Link to="/send">
+  <button>Send</button>
+</Link>
+</nav>
+<div className="activity-container"> */}
