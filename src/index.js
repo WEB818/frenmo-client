@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext";
+import { FrenmoProvider } from "./contexts/FrenmoContext";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -9,7 +10,9 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <FrenmoProvider>
+        <App />
+      </FrenmoProvider>
     </UserProvider>
   </BrowserRouter>,
   document.getElementById("root")

@@ -1,0 +1,23 @@
+.CategoryNavPage__list {
+  margin: 0;
+  padding: 0;
+  width: 160px;
+}
+
+.CategoryNavPage__category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  background-color: darkblue;
+  color: white;
+  border: 1px solid white;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
