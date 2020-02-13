@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <h1 className="title-header">
-        <Link to="/"> Frenmo </Link>
+        <Link to="/">Frenmo</Link>
       </h1>
     </header>
   );

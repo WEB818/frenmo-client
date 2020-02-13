@@ -1,27 +1,42 @@
 import React, { Component } from "react";
-import FrenmoTags from "../FrenmoTags/FrenmoTags";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Label, Input, Textarea } from "../Utils/Utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPencilAlt,
+  faAngleLeft,
+  faTimes
+} from "@fortawesome/free-solid-svg-icons";
+import "./EditFrenmoForm";
 
-import "./NewFrenmoForm.css";
+// ----------- EDIT FORM, NEED TO DO A GET FOR THIS SPECIFIC FRENMO TO FILL FIELDS BEFORE PATCH ==========//
 
-class NewFrenmoForm extends Component {
+class EditFrenmoForm extends Component {
   static defaultProps = {
-    onSendFrenmo: () => {}
+    history: {
+      push: () => {}
+    }
   };
 
   // static contextType = FrenmoContext;
+
   state = {
-    expDate: new Date()
+    edit: false
   };
 
-  handleChange = date => {
-    this.setState({
-      expDate: date
-    });
+  handleToggleEdit = () => {
+    this.setState(prevState => ({
+      edit: !prevState.edit
+    }));
   };
+
+  handleGoBack = () => {
+    const { history } = this.props;
+    history.push("/login");
+  };
+  /// ================ change this to a patch =======================///
 
   handleSubmit = event => {
     event.preventDefault();
@@ -54,9 +69,32 @@ class NewFrenmoForm extends Component {
   };
 
   render() {
+    const { edit } = this.state;
     return (
-      <div className="NewFrenmoForm__container">
+      <div className="EditFrenmoForm__container">
         <form className="NewFrenmoForm" onSubmit={this.handleSubmit}>
+          <div className="EditFrenmoForm__icons-container">
+            <FontAwesomeIcon
+              icon={faAngleLeft}
+              className="icons"
+              onClick={this.handleGoBack}
+            />
+            {!edit && (
+              <FontAwesomeIcon
+                icon={faPencilAlt}
+                className="edit-icons"
+                onClick={this.handleToggleEdit}
+              />
+            )}
+            {edit && (
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="edit-icons"
+                onClick={this.handleToggleEdit}
+              />
+            )}
+          </div>
+
           {/* <Label htmlFor="NewFrenmo__receiver">Present To:</Label> */}
           <Input
             type="text"
@@ -116,22 +154,20 @@ class NewFrenmoForm extends Component {
             <option value="22">Volunteers Needed</option>
             <option value="23">Wedding</option>
           </select>
-          <FrenmoTags />
+
           <div className="NewFrenmo__date-container">
             <Label htmlFor="NewFrenmo__expiration-date">Valid until:</Label>
             <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleChange}
               id="NewFrenmo__expiration-date"
               name="expiration"
               aria-label="Select expiration date for frenmo"
             />
           </div>
-          <Button type="submit">Send Frenmo</Button>
+          {edit && <Button>Edit Frenmo</Button>}
         </form>
       </div>
     );
   }
 }
 
-export default NewFrenmoForm;
+export default EditFrenmoForm;

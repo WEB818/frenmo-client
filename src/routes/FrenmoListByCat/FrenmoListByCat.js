@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Frenmo from "../../components/Frenmo/Frenmo";
-
 import { getFrenmosInCategory } from "../../services/helpers";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import "./FrenmoListByCat.css";
@@ -27,6 +26,7 @@ class FrenmoListByCat extends Component {
           {frenmosByCat.map(frenmo => (
             <Frenmo
               key={frenmo.id}
+              frenmoId={frenmo.id}
               title={frenmo.title}
               categoryId={frenmo.category}
             />
