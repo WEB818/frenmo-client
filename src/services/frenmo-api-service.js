@@ -3,7 +3,7 @@ import config from "../config";
 
 const FrenmoApiService = {
   getFrenmos() {
-    return fetch(`${config.API_ENDPOINT}/frenmos`, {
+    return fetch(`${config.API_ENDPOINT}/favor`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
@@ -11,7 +11,16 @@ const FrenmoApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  postFrenmo(receiver, title, details, category, expiration) {
+  postFrenmo(
+    title,
+    description,
+    tags,
+    category,
+    expiration_date,
+    publicity,
+    user_location,
+    limit
+  ) {
     return fetch(`${config.API_ENDPOINT}/form`, {
       method: "POST",
       headers: {
@@ -19,11 +28,14 @@ const FrenmoApiService = {
         authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        receiver,
         title,
-        details,
+        description,
+        tags,
         category,
-        expiration
+        expiration_date,
+        publicity,
+        user_location,
+        limit
       })
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()

@@ -32,20 +32,20 @@ class App extends Component {
               path={`/myfrenmos/:categoryId/detail/:frenmoId`}
               component={EditFrenmoPage}
             /> */}
-
-            <Route
-              exact
-              path={`/myfrenmos/:categoryId/detail/:frenmoId`}
-              render={props => <EditFrenmoPage {...props} />}
-            />
+            <PrivateRoute path={"/feed"} component={FeedPage} />
             <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
             <PublicOnlyRoute
               exact
               path={"/register"}
               component={RegistrationPage}
             />
-            <PublicOnlyRoute path={"/feed"} component={FeedPage} />
-            <PublicOnlyRoute exact path={"/send"} component={NewFrenmoPage} />
+
+            <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
+            <PrivateRoute
+              exact
+              path={`/myfrenmos/:categoryId/detail/:frenmoId`}
+              render={props => <EditFrenmoPage {...props} />}
+            />
           </Switch>
         </main>
       </div>
