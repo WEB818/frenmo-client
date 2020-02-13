@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import SearchUser from "../../components/SearchUser/SearchUser";
 import FrenmoCategoryNavPage from "../FrenmoCategoryNavPage/FrenmoCategoryNavPage";
 import FrenmoListByCat from "../FrenmoListByCat/FrenmoListByCat";
-import "./LandingPage.css";
+import "./HorizontalFrenmoTabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-export default class LandingPage extends Component {
+// ================== NOT WORKING? ===========//
+class HorizontalFrenmoTabs extends Component {
   render() {
     return (
       <>
@@ -19,30 +18,24 @@ export default class LandingPage extends Component {
               <Tab>Wishlist</Tab>
             </TabList>
             <TabPanel>
+              <div className=".App__Nav-flex">
+                <FrenmoCategoryNavPage />
+                <FrenmoListByCat />
+              </div>
+            </TabPanel>
+            <TabPanel>
               <FrenmoCategoryNavPage />
               <FrenmoListByCat />
             </TabPanel>
             <TabPanel>
               <FrenmoCategoryNavPage />
-            </TabPanel>
-            <TabPanel>
-              <FrenmoCategoryNavPage />
+              <FrenmoListByCat />
             </TabPanel>
           </Tabs>
         </div>
-        {/* <div className="coupons-feed">
-          <Tabs>
-            <TabList>
-              <Tab> My Feedback </Tab>
-              <Tab> Sent Feedback </Tab>
-            </TabList>
-            <TabPanel>
-              <h2> My Feedback</h2>
-            </TabPanel>
-            <TabPanel>Sent Feedback</TabPanel>
-          </Tabs>
-        </div> */}
       </>
     );
   }
 }
+
+export default HorizontalFrenmoTabs;

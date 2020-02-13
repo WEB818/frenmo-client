@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   width: 40vw;
+  height: 30vh;
+  overflow: scroll;
 }
 
 .CategoryNavPage__category {
@@ -25,4 +27,19 @@ a {
 .active {
   background-color: rgb(186, 229, 243);
   color: darkblue;
+}
+.btn-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.CatNavPage__tabs {
+  height: 40px;
+  width: 80px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background-color: gold;
+}
+.CatNavPage__tabs:active {
+  background-color: red;
 }

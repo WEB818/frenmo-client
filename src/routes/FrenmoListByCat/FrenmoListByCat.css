@@ -3,4 +3,6 @@
   margin: 0;
   padding: 0;
   width: 60vw;
+  height: 30vh;
+  overflow: scroll;
 }
