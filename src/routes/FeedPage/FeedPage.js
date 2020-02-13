@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./FeedPage.css";
 import PublicFeed from "../../components/PublicFeed/PublicFeed";
 import FriendsList from "../../components/FriendsList/FriendsList";
 import WishfulCoupons from "../../components/WishfulCoupons/WishfulCoupons";
+import Footer from "../../components/Footer/Footer";
 
 export default class FeedPage extends Component {
   render() {
     return (
-      <div className="main-feed-container">
-      <Tabs>
+      <div className="FeedPage__container">
+        <Tabs>
           <TabList>
             <Tab> Public </Tab>
             <Tab> Friends </Tab>
@@ -22,18 +23,18 @@ export default class FeedPage extends Component {
           <TabPanel>
             <FriendsList />
           </TabPanel>
-          <TabPanel> 
+          <TabPanel>
             <WishfulCoupons />
           </TabPanel>
         </Tabs>
+        <Footer />
       </div>
     );
   }
 }
 
-
-
-{/* <nav className="feed-menu">
+{
+  /* <nav className="feed-menu">
           
 <button>Mine</button>
 <Link to="/dashboard">
@@ -43,4 +44,5 @@ export default class FeedPage extends Component {
   <button>Send</button>
 </Link>
 </nav>
-<div className="activity-container"> */}
+<div className="activity-container"> */
+}

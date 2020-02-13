@@ -1,4 +1,4 @@
-.loggedout-nav {
+/* .loggedout-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -12,4 +12,14 @@
   justify-content: space-around;
   background-color: #3b84b8;
   height: 50px;
+} */
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App__Nav-flex {
+  display: flex;
+  flex-wrap: wrap;
 }

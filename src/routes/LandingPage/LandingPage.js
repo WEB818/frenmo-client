@@ -1,16 +1,11 @@
-import React, {
-  Component
-} from 'react';
-import { Link } from 'react-router-dom';
-import SearchUser from '../../components/SearchUser/SearchUser';
-import './LandingPage.css';
-import {
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel
-} from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import SearchUser from "../../components/SearchUser/SearchUser";
+import FrenmoCategoryNavPage from "../FrenmoCategoryNavPage/FrenmoCategoryNavPage";
+import FrenmoListByCat from "../FrenmoListByCat/FrenmoListByCat";
+import "./LandingPage.css";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 export default class LandingPage extends Component {
   render() {
@@ -19,26 +14,23 @@ export default class LandingPage extends Component {
         <div className="coupons-feed">
           <Tabs>
             <TabList>
-              <Tab> My Coupons </Tab>
-              <Tab> Sent Coupons </Tab>
-              <Tab>
-                {' '}
-                Wishful Frenmos{' '}
-              </Tab>
+              <Tab>Received</Tab>
+              <Tab>Issued</Tab>
+              <Tab>Wishlist</Tab>
             </TabList>
             <TabPanel>
-              <h2> My Coupons</h2>
+              <FrenmoCategoryNavPage />
+              <FrenmoListByCat />
             </TabPanel>
             <TabPanel>
-              Sent Coupons
+              <FrenmoCategoryNavPage />
             </TabPanel>
             <TabPanel>
-              {' '}
-              Wishful Frenmos{' '}
+              <FrenmoCategoryNavPage />
             </TabPanel>
           </Tabs>
         </div>
-        <div className="coupons-feed">
+        {/* <div className="coupons-feed">
           <Tabs>
             <TabList>
               <Tab> My Feedback </Tab>
@@ -47,18 +39,15 @@ export default class LandingPage extends Component {
             <TabPanel>
               <h2> My Feedback</h2>
             </TabPanel>
-            <TabPanel>
-              Sent Feedback
-            </TabPanel>
+            <TabPanel>Sent Feedback</TabPanel>
           </Tabs>
-        </div>
+        </div> */}
       </>
     );
   }
 }
 
-{
-  /* <div>Landing Page</div>
+/* <div>Landing Page</div>
         <div>
           <Link to="/login">Log in</Link>
         </div>
@@ -98,4 +87,3 @@ export default class LandingPage extends Component {
         </div>
       
       */
-}

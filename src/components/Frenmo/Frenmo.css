@@ -1,0 +1,10 @@
+.Frenmo__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 8px;
+  color: darkblue;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
