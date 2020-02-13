@@ -5,9 +5,25 @@ import "./FeedPage.css";
 import PublicFeed from "../../components/PublicFeed/PublicFeed";
 import FriendsList from "../../components/FriendsList/FriendsList";
 import WishfulCoupons from "../../components/WishfulCoupons/WishfulCoupons";
-import Footer from "../../components/Footer/Footer";
+import FrenmoApiService from "../../services/frenmo-api-service"
 
 export default class FeedPage extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       myFrenmos: [],
+    }
+  }
+
+  getPublicFrenmos = () => {
+    FrenmoApiService.getPublicFrenmos()
+      .then(myFrenmos => this.setState({myFrenmos}))
+      .catch((error) => {
+        this.setState({error});
+      })
+  }
+  
   render() {
     return (
       <div className="FeedPage__container">
@@ -27,7 +43,6 @@ export default class FeedPage extends Component {
             <WishfulCoupons />
           </TabPanel>
         </Tabs>
-        <Footer />
       </div>
     );
   }
