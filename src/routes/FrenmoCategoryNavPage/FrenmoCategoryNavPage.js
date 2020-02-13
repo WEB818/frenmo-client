@@ -22,11 +22,15 @@ class FrenmoCategoryNavPage extends Component {
     return (
       <ul className="CategoryNavPage__list">
         {frenmoCategories.map(category => (
-          <NavLink to={`/myfrenmos/${category.id}`}>
-            <li key={category.id} className="CategoryNavPage__category">
+          <li key={category.id}>
+            <NavLink
+              key={category.id}
+              to={`/myfrenmos/${category.id}`}
+              className="CategoryNavPage__category"
+            >
               {category.category}
-            </li>
-          </NavLink>
+            </NavLink>
+          </li>
         ))}
       </ul>
     );

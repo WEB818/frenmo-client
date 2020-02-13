@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import UserContext from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
-import "../../Styles/Header.css";
+import "./Header.css";
 
 export default class NavMenu extends Component {
   constructor(props) {

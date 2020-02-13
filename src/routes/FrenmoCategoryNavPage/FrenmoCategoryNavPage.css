@@ -1,23 +1,28 @@
 .CategoryNavPage__list {
   margin: 0;
   padding: 0;
-  width: 160px;
+  width: 40vw;
 }
 
 .CategoryNavPage__category {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
   list-style: none;
   margin: 0;
   padding: 10px;
   background-color: darkblue;
   color: white;
-  border: 1px solid white;
+  border-bottom: 1px solid rgb(186, 229, 243);
   font-size: 14px;
 }
 
 a {
   text-decoration: none;
+}
+
+.active {
+  background-color: rgb(186, 229, 243);
+  color: darkblue;
 }

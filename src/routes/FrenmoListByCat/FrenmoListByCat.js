@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import Frenmo from "../../components/Frenmo/Frenmo";
+
 import { getFrenmosInCategory } from "../../services/helpers";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import "./FrenmoListByCat.css";
@@ -15,17 +16,23 @@ class FrenmoListByCat extends Component {
 
   render() {
     const { categoryId } = this.props.match.params;
-    const { frenmoList = [] } = this.context;
+
+    const { frenmoList } = this.context;
+
     const frenmosByCat = getFrenmosInCategory(frenmoList, categoryId);
-    console.log(categoryId);
+
     return (
-      <>
-        <ul>
+      <div className="ListByCat">
+        <ul className="ListByCat__list">
           {frenmosByCat.map(frenmo => (
-            <li key={frenmo.id}>{frenmo.title}</li>
+            <Frenmo
+              key={frenmo.id}
+              title={frenmo.title}
+              categoryId={frenmo.category}
+            />
           ))}
         </ul>
-      </>
+      </div>
     );
   }
 }

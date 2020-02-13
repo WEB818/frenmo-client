@@ -107,7 +107,11 @@ export default FrenmoContext;
 
 export class FrenmoProvider extends Component {
   state = {
-    frenmoList: [{ id: 1, title: "TEST 1", category: 1 }],
+    frenmoList: [
+      { id: 1, title: "TEST 1", category: 1 },
+      { id: 2, title: "TEST 2", category: 2 },
+      { id: 3, title: "TEST 3", category: 1 }
+    ],
     frenmo: {},
     frenmoCategories: [
       {

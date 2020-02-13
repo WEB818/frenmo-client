@@ -10,13 +10,17 @@ import Header from "./components/Header/Header";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 
-import "./Styles/App.css";
+import "./App.css";
+import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
+import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 
 class App extends Component {
   renderNavRoutes() {
     return (
-      <div className="nav-flex">
-        <NavMenu />
+      <div className="App__Nav-flex">
+        <Route path={"/myfrenmos"} component={FrenmoCategoryNavPage} />
+
+        <Route path={"/myfrenmos/:categoryId"} component={FrenmoListByCat} />
       </div>
     );
   }
@@ -26,6 +30,10 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            {/* <Route
+              path={"/myfrenmos/:categoryId"}
+              component={FrenmoListByCat}
+            /> */}
             <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
             <PublicOnlyRoute
               exact
@@ -42,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <Header />
         {this.renderNavRoutes()}
         {this.renderMainRoutes()}
       </>
