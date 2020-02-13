@@ -17,9 +17,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  position: relative;
 }
 
 .App__Nav-flex {
   display: flex;
   flex-wrap: wrap;
+}
+.App__container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.App__content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }

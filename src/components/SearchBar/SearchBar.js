@@ -12,7 +12,6 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="SearchBar__container">
-        <FontAwesomeIcon icon={faSearch} className="SearchBar__icon" />
         <input
           type="text"
           name="search"
