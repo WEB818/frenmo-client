@@ -12,6 +12,7 @@ import "./App.css";
 import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
+import FriendsList from './components/FriendsList/FriendsList'
 
 class App extends Component {
   state = { hasError: false };
@@ -38,6 +39,8 @@ class App extends Component {
             path={"/register"}
             component={RegistrationPage}
           />
+
+         <PublicOnlyRoute exact path={"/Friends"} component={FriendsList} />
 
           <PrivateRoute path={"/feed"} component={FeedPage} />
 
