@@ -9,11 +9,11 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <BrowserRouter>
-    <UserProvider>
-      <FrenmoProvider>
+    <FrenmoProvider>
+      <UserProvider>
         <App />
-      </FrenmoProvider>
-    </UserProvider>
+      </UserProvider>
+    </FrenmoProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

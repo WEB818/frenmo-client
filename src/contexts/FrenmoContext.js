@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 const FrenmoContext = React.createContext({
-  frenmoList: [],
+  frenmoList: {},
   frenmo: {},
   frenmoCategories: [
     {
@@ -98,7 +98,7 @@ const FrenmoContext = React.createContext({
     }
   ],
   addFrenmo: () => {},
-  setFrenmos: () => {},
+  setPublicFrenmos: () => {},
   clearError: () => {},
   setError: () => {}
 });
@@ -107,11 +107,7 @@ export default FrenmoContext;
 
 export class FrenmoProvider extends Component {
   state = {
-    frenmoList: [
-      { id: 1, title: "TEST 1", category: 1 },
-      { id: 2, title: "TEST 2", category: 2 },
-      { id: 3, title: "TEST 3", category: 1 }
-    ],
+    frenmoList: {},
     frenmo: {},
     frenmoCategories: [
       {
@@ -213,7 +209,7 @@ export class FrenmoProvider extends Component {
     this.setState([...this.state.frenmoList, frenmo]);
   };
 
-  setFrenmos = frenmoList => {
+  setPublicFrenmos = frenmoList => {
     this.setState({ frenmoList });
   };
 
@@ -232,7 +228,7 @@ export class FrenmoProvider extends Component {
       frenmo: this.state.frenmo,
       frenmoCategories: this.state.frenmoCategories,
       addFrenmo: this.addFrenmo,
-      setFrenmos: this.setFrenmos,
+      setPublicFrenmos: this.setPublicFrenmos,
       clearError: this.clearError,
       setError: this.setError
     };

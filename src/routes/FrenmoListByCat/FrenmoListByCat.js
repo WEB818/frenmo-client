@@ -18,16 +18,23 @@ class FrenmoListByCat extends Component {
 
     const { frenmoList } = this.context;
 
-    const frenmosByCat = getFrenmosInCategory(frenmoList, categoryId);
+    const frenmosByCat = getFrenmosInCategory(frenmoList.favors, categoryId);
 
     return (
-      <div className="ListByCat">
+      <div className="ListByCat__section">
         <ul className="ListByCat__list">
           {frenmosByCat.map(frenmo => (
             <Frenmo
               key={frenmo.id}
               frenmoId={frenmo.id}
               title={frenmo.title}
+              description={frenmo.description}
+              expiration_date={frenmo.expiration_date}
+              publicity={frenmo.publicity}
+              tags={frenmo.tags}
+              createdBy={frenmo.creator_name}
+              issuedBy={frenmo.issuer_name}
+              receivedBy={frenmo.receiver_name}
               categoryId={frenmo.category}
             />
           ))}

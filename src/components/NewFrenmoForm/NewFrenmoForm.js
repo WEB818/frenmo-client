@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import FrenmoTags from "../FrenmoTags/FrenmoTags";
+// import FrenmoTags from "../FrenmoTags/FrenmoTags";
+import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,7 +13,7 @@ class NewFrenmoForm extends Component {
     onSendFrenmo: () => {}
   };
 
-  // static contextType = FrenmoContext;
+  static contextType = FrenmoContext;
   state = {
     expDate: new Date()
   };
@@ -25,48 +26,41 @@ class NewFrenmoForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const {
+      title,
+      description,
 
-    const { receiver, title, details, category, expiration } = event.target;
-    console.log(
-      receiver.value,
-      title.value,
-      details.value,
-      category.value,
-      expiration.value
-    );
+      category,
+      expiration_date,
+      publicity,
+      limit
+    } = event.target;
+
     FrenmoApiService.postFrenmo(
-      receiver.value,
       title.value,
-      details.value,
+      description.value,
       category.value,
-      expiration.value
+      expiration_date.value,
+      publicity.value,
+      limit.value
     )
-      //update for final context method
-      .then(this.context.sentFrenmo)
+      .then(this.context.addFrenmo)
       .then(() => {
-        receiver.value = "";
         title.value = "";
-        details.value = "";
-        category.value = "";
-        expiration.value = "";
+        description.value = "";
+        category.value = 0;
+        expiration_date.value = "";
+        publicity.value = 0;
+        limit.value = "";
         this.props.onSendFrenmo();
-      });
+      })
+      .catch(this.context.setError);
   };
 
   render() {
     return (
       <div className="NewFrenmoForm__container">
         <form className="NewFrenmoForm" onSubmit={this.handleSubmit}>
-          {/* <Label htmlFor="NewFrenmo__receiver">Present To:</Label> */}
-          <Input
-            type="text"
-            name="receiver"
-            id="NewFrenmo__receiver"
-            placeholder="Present to..."
-            aria-label="Type the username of the person to whom you'd like to send frenmo"
-            required
-          />
-
           {/* <Label htmlFor="NewFrenmo__title">Redeemable For:</Label> */}
           <Input
             type="text"
@@ -77,12 +71,13 @@ class NewFrenmoForm extends Component {
             required
           />
 
-          {/* <Label htmlFor="NewFrenmo__details">Voucher Details:</Label> */}
+          {/* <Label htmlFor="NewFrenmo__description">Frenmo Description:</Label> */}
           <Textarea
-            id="NewFrenmo__details"
-            name="details"
+            id="NewFrenmo__description"
+            name="description"
             placeholder="Add a message..."
             aria-label="Add description for frenmo"
+            required
           />
 
           {/* <Label htmlFor="NewFrenmo__category">Select a category:</Label> */}
@@ -90,6 +85,7 @@ class NewFrenmoForm extends Component {
             id="NewFrenmo__category"
             name="category"
             aria-label="Select category for frenmo"
+            required
           >
             <option value="0">--Please choose a category--</option>
             <option value="1">Advice</option>
@@ -116,15 +112,35 @@ class NewFrenmoForm extends Component {
             <option value="22">Volunteers Needed</option>
             <option value="23">Wedding</option>
           </select>
-          <FrenmoTags />
-          <div className="NewFrenmo__date-container">
+          <div className="NewFrenmo__input-container">
             <Label htmlFor="NewFrenmo__expiration-date">Valid until:</Label>
             <DatePicker
-              selected={this.state.startDate}
+              selected={this.state.expDate}
               onChange={this.handleChange}
               id="NewFrenmo__expiration-date"
-              name="expiration"
+              name="expiration_date"
               aria-label="Select expiration date for frenmo"
+            />
+          </div>
+          <select
+            id="NewFrenmo__publicity"
+            name="publicity"
+            aria-label="Select privacy setting for frenmo"
+            required
+          >
+            <option value="0">--Please set privacy--</option>
+            <option value="dm">Direct Message</option>
+            <option value="friend">Friends Only</option>
+            <option value="public">Public</option>
+          </select>
+          <div className="NewFrenmo__input-container">
+            <Label htmlFor="NewFrenmo__limit">Set Limit:</Label>
+            <Input
+              type="number"
+              name="limit"
+              id="NewFrenmo__limit"
+              min="1"
+              aria-label="Add limit for frenmo"
             />
           </div>
           <Button type="submit">Send Frenmo</Button>

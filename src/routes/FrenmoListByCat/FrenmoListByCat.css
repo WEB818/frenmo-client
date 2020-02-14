@@ -1,8 +1,15 @@
-.ListByCat {
+.ListByCat__section {
   background-color: rgb(186, 229, 243);
-  margin: 0;
+  margin-top: 50px;
   padding: 0;
   width: 60vw;
   height: 30vh;
   overflow: scroll;
+}
+
+@media (min-width: 1440px) {
+  .ListByCat__section {
+    width: 30vw;
+    height: 100vh;
+  }
 }

@@ -3,12 +3,7 @@ import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Label, Input, Textarea } from "../Utils/Utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPencilAlt,
-  faAngleLeft,
-  faTimes
-} from "@fortawesome/free-solid-svg-icons";
+
 import "./EditFrenmoForm";
 
 // ----------- EDIT FORM, NEED TO DO A GET FOR THIS SPECIFIC FRENMO TO FILL FIELDS BEFORE PATCH ==========//
@@ -22,20 +17,6 @@ class EditFrenmoForm extends Component {
 
   // static contextType = FrenmoContext;
 
-  state = {
-    edit: false
-  };
-
-  handleToggleEdit = () => {
-    this.setState(prevState => ({
-      edit: !prevState.edit
-    }));
-  };
-
-  handleGoBack = () => {
-    const { history } = this.props;
-    history.push("/login");
-  };
   /// ================ change this to a patch =======================///
 
   handleSubmit = event => {
@@ -69,31 +50,10 @@ class EditFrenmoForm extends Component {
   };
 
   render() {
-    const { edit } = this.state;
     return (
       <div className="EditFrenmoForm__container">
         <form className="NewFrenmoForm" onSubmit={this.handleSubmit}>
-          <div className="EditFrenmoForm__icons-container">
-            <FontAwesomeIcon
-              icon={faAngleLeft}
-              className="icons"
-              onClick={this.handleGoBack}
-            />
-            {!edit && (
-              <FontAwesomeIcon
-                icon={faPencilAlt}
-                className="edit-icons"
-                onClick={this.handleToggleEdit}
-              />
-            )}
-            {edit && (
-              <FontAwesomeIcon
-                icon={faTimes}
-                className="edit-icons"
-                onClick={this.handleToggleEdit}
-              />
-            )}
-          </div>
+          <div className="EditFrenmoForm__icons-container"></div>
 
           {/* <Label htmlFor="NewFrenmo__receiver">Present To:</Label> */}
           <Input
@@ -163,7 +123,7 @@ class EditFrenmoForm extends Component {
               aria-label="Select expiration date for frenmo"
             />
           </div>
-          {edit && <Button>Edit Frenmo</Button>}
+          <Button>Edit Frenmo</Button>
         </form>
       </div>
     );
