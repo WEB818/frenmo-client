@@ -16,7 +16,6 @@ componentDidMount(){
         return friendsList.map(fren => (
             <FriendsList 
             key={fren.id} 
-            
             />
         ))
     }
