@@ -1,15 +1,43 @@
 import React, { Component } from 'react'
+import TokenService from '../../services/token-service'
+import config from '../../config'
 import MyFriends from '../../services/friends-api-service'
-import FriendsList from '../../components/FriendsList'
+import FriendsList from '../../components/FriendsList/FriendsList'
 import MyFriendsContext from '../../contexts/MyFriendsContext'
 
 class Friends extends Component {
-    static contextType = MyFriendsContext
+    // static contextType = MyFriendsContext
+
+    state = {
+        friends: [],
+    }
+  
+    setFriendsList = friends => {
+        this.setState({
+            friends,
+
+        })
+    }
+    
 
 componentDidMount(){
-    MyFriends.getFriends()
-        .then(this.context.MyFriends)
+    fetch(`${config.API_ENDPOINT}/friend`,{
+        method: 'GET',
+        headers: {
+            authorization : `bearer ${TokenService.getAuthToken()}`
+        }
+    }).then(res => {
+        (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
+    })
+    .then(this.setFriendsList)
+
+
+    // MyFriends.getFriends()
+    //     .then(this.context.setFriendsList)
+    //     console.log(this.context.setFriendsList)
 }
+
+
 
     renderFriends(){
         const { friendsList = []} = this.context
@@ -21,9 +49,10 @@ componentDidMount(){
     }
 
     render() {
+        console.log(this.state)
         return (
             <div>
-                
+                <FriendsList frens={this.state} />
             </div>
         )
     }
