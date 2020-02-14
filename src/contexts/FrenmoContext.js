@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 const FrenmoContext = React.createContext({
-  frenmoList: {},
+  frenmoList: [],
   frenmo: {},
   frenmoCategories: [
     {
@@ -107,7 +107,7 @@ export default FrenmoContext;
 
 export class FrenmoProvider extends Component {
   state = {
-    frenmoList: {},
+    frenmoList: [],
     frenmo: {},
     frenmoCategories: [
       {
