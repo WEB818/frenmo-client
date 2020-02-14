@@ -14,59 +14,66 @@ import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 
 class App extends Component {
+  state = { hasError: false };
+
   renderNavRoutes() {
     return (
-      <div className="App__Nav-flex">
-        <Route path={"/myfrenmos"} component={FrenmoCategoryNavPage} />
-        <Route path={"/myfrenmos/:categoryId"} component={FrenmoListByCat} />
-      </div>
-    );
-  }
-  renderMainRoutes() {
-    return (
-      <div className="App">
-        <main>
-          <Switch>
-            {/* <Route
-              exact
-              path={`/myfrenmos/:categoryId/detail/:frenmoId`}
-              component={EditFrenmoPage}
-            /> */}
-
-            <Route
-              exact
-              path={`/myfrenmos/:categoryId/detail/:frenmoId`}
-              render={props => <EditFrenmoPage {...props} />}
-            />
-            <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
-            <PublicOnlyRoute
-              exact
-              path={"/register"}
-              component={RegistrationPage}
-            />
-            <PublicOnlyRoute path={"/feed"} component={FeedPage} />
-            <PublicOnlyRoute exact path={"/send"} component={NewFrenmoPage} />
-          </Switch>
-        </main>
-      </div>
-    );
-  }
-  render() {
-    return (
       <>
-        <div className="App">
-          <NavMenu />
-          <main className="App__container wrapper">
-            <div className="App__content-wrap">
-              {this.renderNavRoutes()}
-              {this.renderMainRoutes()}
-            </div>
-            <footer id="footer">
-              <FooterMenu />
-            </footer>
-          </main>
+        <div className="Nav-flex">
+          <Route path={"/myfrenmos"} component={FrenmoCategoryNavPage} />
+          <Route path={"/myfrenmos/:categoryId"} component={FrenmoListByCat} />
         </div>
       </>
+    );
+  }
+
+  renderMainRoutes() {
+    return (
+      <>
+        <Switch>
+          <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
+
+          <PublicOnlyRoute
+            exact
+            path={"/register"}
+            component={RegistrationPage}
+          />
+
+          <PrivateRoute path={"/feed"} component={FeedPage} />
+
+          <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
+
+          <PrivateRoute
+            exact
+            path={`/myfrenmos/:categoryId/detail/:frenmoId`}
+            component={EditFrenmoPage}
+          />
+        </Switch>
+      </>
+    );
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <NavMenu />
+        <main className="App__container wrapper">
+          {this.state.hasError && (
+            <p className="red">Something went wrong. Please try again later.</p>
+          )}
+
+          <div className="Nav-flex">
+            <nav className="App__nav">{this.renderNavRoutes()}</nav>
+          </div>
+          <section className="App__main wrapper">
+            {this.renderMainRoutes()}
+          </section>
+
+          <footer id="footer">
+            <FooterMenu />
+          </footer>
+        </main>
+      </div>
     );
   }
 }

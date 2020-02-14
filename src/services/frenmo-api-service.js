@@ -2,8 +2,8 @@ import TokenService from "./token-service";
 import config from "../config";
 
 const FrenmoApiService = {
-  getFrenmos() {
-    return fetch(`${config.API_ENDPOINT}/frenmos`, {
+  getMyPublicFrenmos() {
+    return fetch(`${config.API_ENDPOINT}/favor`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
@@ -40,15 +40,14 @@ const FrenmoApiService = {
         authorization: `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        receiver,
         title,
-        details,
+        description,
         category,
-        expiration
+        expiration_date,
+        publicity,
+        limit
       })
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
   }
 };
 

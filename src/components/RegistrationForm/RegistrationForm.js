@@ -16,15 +16,17 @@ class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const { name, username, password } = ev.target;
+    const { name, username, phone, password } = ev.target;
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
+      phone: phone.value,
       password: password.value
     })
       .then(user => {
         name.value = "";
         username.value = "";
+        phone.value = "";
         password.value = "";
         this.props.onRegistrationSuccess();
       })
@@ -39,12 +41,11 @@ class RegistrationForm extends Component {
 
   render() {
     const { error } = this.state;
+
     return (
       <form className="RegForm__container" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
-        <div className="form-container">
-          
-        </div>
+        <div className="form-container"></div>
         <div className="RegForm__label-input">
           <Label htmlFor="registration-name-input">
             Enter your name
@@ -53,7 +54,6 @@ class RegistrationForm extends Component {
           <Input
             // ref={this.firstInput}
             id="registration-name-input"
-            className="red-input"
             name="name"
             required
           />
@@ -64,10 +64,18 @@ class RegistrationForm extends Component {
             Choose a username
             <Required />
           </Label>
+          <Input id="registration-username-input" name="username" required />
+        </div>
+
+        <div className="RegForm__label-input">
+          <Label htmlFor="registration-phone-input">
+            Phone Number
+            <Required />
+          </Label>
           <Input
-            id="registration-username-input"
-            className="white-input"
-            name="username"
+            id="registration-phone-input"
+            name="phone"
+            type="tel"
             required
           />
         </div>
@@ -79,7 +87,6 @@ class RegistrationForm extends Component {
           </Label>
           <Input
             id="registration-password-input"
-            className="green-input"
             name="password"
             type="password"
             required

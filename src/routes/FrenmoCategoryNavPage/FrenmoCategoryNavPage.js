@@ -15,8 +15,8 @@ class FrenmoCategoryNavPage extends Component {
 
   componentDidMount() {
     this.context.clearError();
-    FrenmoApiService.getFrenmos()
-      .then(this.context.setFrenmos)
+    FrenmoApiService.getMyPublicFrenmos()
+      .then(this.context.setPublicFrenmos)
       .catch(this.context.setError);
   }
 
@@ -52,19 +52,21 @@ class FrenmoCategoryNavPage extends Component {
   }
 
   renderCategories() {
-    const { frenmoCategories } = this.context;
+    const { frenmoCategories, frenmoList } = this.context;
 
     return (
       <ul className="CategoryNavPage__list">
         {frenmoCategories.map(category => (
           <li key={category.id}>
-            <NavLink
-              key={category.id}
-              to={`/myfrenmos/${category.id}`}
-              className="CategoryNavPage__category"
-            >
-              {category.category}
-            </NavLink>
+            {frenmoList.favors && (
+              <NavLink
+                key={category.id}
+                to={`/myfrenmos/${category.id}`}
+                className="CategoryNavPage__category"
+              >
+                {category.category}
+              </NavLink>
+            )}
           </li>
         ))}
       </ul>
@@ -74,9 +76,13 @@ class FrenmoCategoryNavPage extends Component {
   render() {
     return (
       <>
-        <SearchBar />
-        {this.renderTypes()}
-        {this.renderCategories()}
+        <div>
+          <SearchBar />
+        </div>
+        <div>
+          {this.renderTypes()}
+          {this.renderCategories()}
+        </div>
       </>
     );
   }

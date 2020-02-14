@@ -31,6 +31,7 @@ a {
 .btn-container {
   display: flex;
   flex-direction: row;
+  width: 40vw;
 }
 
 .CatNavPage__tabs {
@@ -42,4 +43,14 @@ a {
 }
 .CatNavPage__tabs:active {
   background-color: red;
+}
+/*Need to fix scroll*/
+@media (min-width: 1440px) {
+  .CategoryNavPage__list {
+    width: 30vw;
+    height: 100vh;
+  }
+  .btn-container {
+    width: 30vw;
+  }
 }
