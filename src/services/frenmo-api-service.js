@@ -32,7 +32,7 @@ const FrenmoApiService = {
       console.error({error})
     })
   },
-  postFrenmo(receiver, title, details, category, expiration) {
+  postFrenmo(title, description, category, expiration_date, publicity, limit) {
     return fetch(`${config.API_ENDPOINT}/form`, {
       method: "POST",
       headers: {
@@ -47,7 +47,8 @@ const FrenmoApiService = {
         publicity,
         limit
       })
-    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
+    })
+    .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
   }
 };
 
