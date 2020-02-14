@@ -19,6 +19,9 @@ class SearchBar extends Component {
           className="SearchBar__input"
           onChange={e => this.handleSearch(e)}
         />
+        <button className="SearchBar__button">
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
       </div>
     );
   }

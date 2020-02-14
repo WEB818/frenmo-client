@@ -4,7 +4,7 @@ export const findCategory = (frenmoCategories = [], categoryId) =>
 export const findFrenmo = (frenmos = [], frenmoId) =>
   frenmos.find(frenmo => frenmo.id === frenmoId);
 
-export const getFrenmosInCategory = (frenmoList, categoryId) =>
+export const getFrenmosInCategory = (favors = [], categoryId) =>
   !categoryId
-    ? frenmoList
-    : frenmoList.filter(frenmo => frenmo.category === Number(categoryId));
+    ? favors
+    : favors.filter(favor => favor.category === Number(categoryId));
