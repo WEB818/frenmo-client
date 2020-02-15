@@ -7,7 +7,7 @@ export class FooterMenu extends Component {
     return (
       <div className="Footer__container">
         <div className="Footer__icon">
-          <Link to="/Send">
+          <Link to="/myfrenmos">
             <i id="icon" className="fa fa-envelope-open"></i>
           </Link>
           <div>Frenmos</div>
@@ -19,7 +19,7 @@ export class FooterMenu extends Component {
           <div>Friends</div>
         </div>
         <div className="Footer__icon">
-          <Link to="/Send">
+          <Link to="/send">
             <i id="icon" className="fas fa-hand-holding-heart"></i>
           </Link>
           <div>Wishlist</div>

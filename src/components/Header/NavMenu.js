@@ -22,21 +22,9 @@ export default class NavMenu extends Component {
     this.context.processLogout();
   };
 
-  // handleBurgerClick = () => {
-  //   let links = document.getElementById("links");
-  //   if (links.className === "links") {
-  //     links.className += " null";
-  //   } else {
-  //     links.className = "links";
-  //   }
-  // };
-
   renderLogoutLink() {
     return (
       <>
-        <Link to="/" className="Header__link">
-          Frenmo
-        </Link>
         <div className="Header__logged-in">
           <div className="navigation">
             <a href="/" className="log-button">
@@ -54,9 +42,6 @@ export default class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-        <Link to="/" className="Header__link">
-          Frenmo
-        </Link>
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a href="/login" className="log-button">
@@ -72,6 +57,9 @@ export default class NavMenu extends Component {
   render() {
     return (
       <nav className="Header">
+        <Link to="/" className="Header__link">
+          <h2 className="NavMenu__Header">Frenmo</h2>
+        </Link>
         {TokenService.hasAuthToken()
           ? this.renderLoginLink()
           : this.renderLogoutLink()}
