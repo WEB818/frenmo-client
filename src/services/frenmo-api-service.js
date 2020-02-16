@@ -12,25 +12,13 @@ const FrenmoApiService = {
     );
   },
   getPublicFrenmos() {
-    fetch(`${config.API_ENDPOINT}/favor/public`, {
-      method: 'GET',
+    return fetch(`${config.API_ENDPOINT}/favor/public`, {
       headers: {
-        'authorization':`bearer ${TokenService.getAuthToken()}`
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
-    })
-    .then (res =>
-      (!res.ok) 
-        ? res.json().then(e => Promise.reject(e)) 
-        : res.json()  
-    )
-    .then(res => {
-      this.setState({
-        favor: res.favor
-      });
-    })
-    .catch(error => {
-      console.error({error})
-    })
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
   },
   postFrenmo(title, description, category, expiration_date, publicity, limit) {
     return fetch(`${config.API_ENDPOINT}/form`, {
@@ -47,8 +35,7 @@ const FrenmoApiService = {
         publicity,
         limit
       })
-    })
-    .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
   }
 };
 

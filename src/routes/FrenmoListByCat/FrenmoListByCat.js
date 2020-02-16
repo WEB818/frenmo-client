@@ -13,6 +13,37 @@ class FrenmoListByCat extends Component {
 
   static contextType = FrenmoContext;
 
+  renderTypes() {
+    return (
+      <div className="btn-container">
+        <button
+          className="CatNavPage__tabs"
+          onClick={() => this.setState({ type: "received" })}
+        >
+          Received
+        </button>
+        <button
+          className="CatNavPage__tabs"
+          onClick={() => this.setState({ type: "issued" })}
+        >
+          Issued
+        </button>
+        <button
+          className="CatNavPage__tabs"
+          onClick={() => this.setState({ type: "redeemed" })}
+        >
+          Redeemed
+        </button>
+        <button
+          className="CatNavPage__tabs"
+          onClick={() => this.setState({ type: "expired" })}
+        >
+          Expired
+        </button>
+      </div>
+    );
+  }
+
   render() {
     const { categoryId } = this.props.match.params;
 

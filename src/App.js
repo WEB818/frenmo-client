@@ -12,7 +12,8 @@ import "./App.css";
 import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
-import FriendsList from './components/FriendsList/FriendsList'
+import FriendsList from "./components/FriendsList/FriendsList";
+import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 
 class App extends Component {
   state = { hasError: false };
@@ -21,8 +22,11 @@ class App extends Component {
     return (
       <>
         <div className="Nav-flex">
-          <Route path={"/myfrenmos"} component={FrenmoCategoryNavPage} />
-          <Route path={"/myfrenmos/:categoryId"} component={FrenmoListByCat} />
+          <Route path={"/frenmos/:categoryId"} component={FrenmoListByCat} />
+          {/* <Route
+            path={"/frenmos/:categoryId"}
+            component={FrenmoCategoryNavPage}
+          /> */}
         </div>
       </>
     );
@@ -40,11 +44,12 @@ class App extends Component {
             component={RegistrationPage}
           />
 
-         <PublicOnlyRoute exact path={"/Friends"} component={FriendsList} />
+          <PublicOnlyRoute exact path={"/Friends"} component={FriendsList} />
 
-          <PrivateRoute path={"/feed"} component={FeedPage} />
+          <Route path={"/feed"} component={FeedPage} />
 
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
+          <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
 
           <PrivateRoute
             exact

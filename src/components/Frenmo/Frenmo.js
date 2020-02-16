@@ -23,7 +23,7 @@ class Frenmo extends Component {
       categoryId,
       frenmoId
     } = this.props;
-    console.log("props in frenmo", this.props);
+
     return (
       <li className="Frenmo__title-container">
         <NavLink
