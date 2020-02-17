@@ -10,6 +10,8 @@ import "./NewFrenmoForm.css";
 
 class NewFrenmoForm extends Component {
   static defaultProps = {
+    match: { params: {} },
+    onRedirect: () => {},
     onSendFrenmo: () => {}
   };
 
@@ -26,10 +28,10 @@ class NewFrenmoForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.context);
     const {
       title,
       description,
-
       category,
       expiration_date,
       publicity,
@@ -53,6 +55,7 @@ class NewFrenmoForm extends Component {
         publicity.value = 0;
         limit.value = "";
         this.props.onSendFrenmo();
+        this.props.onRedirect(this.props.frenmoId);
       })
       .catch(this.context.setError);
   };

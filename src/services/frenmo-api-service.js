@@ -21,7 +21,7 @@ const FrenmoApiService = {
     );
   },
   postFrenmo(title, description, category, expiration_date, publicity, limit) {
-    return fetch(`${config.API_ENDPOINT}/form`, {
+    return fetch(`${config.API_ENDPOINT}/favor`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

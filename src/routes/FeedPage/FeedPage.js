@@ -12,14 +12,13 @@ export default class FeedPage extends Component {
 
   componentDidMount() {
     this.context.clearError();
-    FrenmoApiService.getPublicFrenmos()
+    FrenmoApiService.getMyPublicFrenmos()
       .then(this.context.setAllPublic)
       .catch(this.context.setError);
   }
 
   render() {
     const { publicFrenmos } = this.context;
-    console.log("pub frens in feed", publicFrenmos);
 
     return (
       <>
@@ -28,14 +27,15 @@ export default class FeedPage extends Component {
             {publicFrenmos.favors.map((pubFavor, idx) => (
               <PublicFeedItem
                 key={idx}
-                favorId={pubFavor.favor_id}
+                favorId={pubFavor.id}
                 title={pubFavor.title}
                 description={pubFavor.description}
-                category={pubFavor.category}
+                creatorId={pubFavor.creator_id}
                 expDate={pubFavor.expiration_date}
+                publicity={pubFavor.publicity}
+                category={pubFavor.category}
                 originalLimit={pubFavor.limit}
                 outstandingId={pubFavor.outstanding_id}
-                creatorId={pubFavor.creator_id}
                 createdByName={pubFavor.creator_name}
                 createdByUser={pubFavor.creator_username}
                 issuerId={pubFavor.issuer_id}

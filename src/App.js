@@ -44,7 +44,7 @@ class App extends Component {
             component={RegistrationPage}
           />
 
-          <PublicOnlyRoute exact path={"/Friends"} component={FriendsList} />
+          <PublicOnlyRoute exact path={"/friends"} component={FriendsList} />
 
           <Route path={"/feed"} component={FeedPage} />
 
