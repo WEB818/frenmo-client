@@ -3,6 +3,8 @@ import React, { Component } from "react";
 const FrenmoContext = React.createContext({
   frenmoList: [],
   publicFrenmos: [],
+  personalFrenmos: [],
+  friendFrenmos: [],
   frenmo: {},
   frenmoCategories: [
     {
@@ -106,6 +108,8 @@ const FrenmoContext = React.createContext({
   addFrenmo: () => {},
   setPublicFrenmos: () => {},
   setAllPublic: () => {},
+  setAllPersonal: () => {},
+  setAllFriend: () => {},
   clearError: () => {},
   setError: () => {}
 });
@@ -116,6 +120,8 @@ export class FrenmoProvider extends Component {
   state = {
     frenmoList: [],
     publicFrenmos: [],
+    personalFrenmos: [],
+    friendFrenmos: [],
     frenmo: {},
     frenmoCategories: [
       {
@@ -230,6 +236,13 @@ export class FrenmoProvider extends Component {
     this.setState({ publicFrenmos });
   };
 
+  setAllPersonal = personalFrenmos => {
+    this.setState({ personalFrenmos });
+  };
+  setAllFriend = friendFrenmos => {
+    this.setState({ friendFrenmos });
+  };
+
   clearError = () => {
     this.setState({ error: null });
   };
@@ -243,11 +256,15 @@ export class FrenmoProvider extends Component {
     const value = {
       frenmoList: this.state.frenmoList,
       publicFrenmos: this.state.publicFrenmos,
+      personalFrenmos: this.state.personalFrenmos,
+      friendFrenmos: this.state.friendFrenmos,
       frenmo: this.state.frenmo,
       frenmoCategories: this.state.frenmoCategories,
       publicityTypes: this.state.publicityTypes,
       addFrenmo: this.addFrenmo,
       setPublicFrenmos: this.setPublicFrenmos,
+      setAllPersonal: this.setAllPersonal,
+      setAllFriend: this.setAllFriend,
       setAllPublic: this.setAllPublic,
       clearError: this.clearError,
       setError: this.setError

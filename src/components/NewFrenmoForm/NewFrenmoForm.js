@@ -147,6 +147,7 @@ class NewFrenmoForm extends Component {
             />
           </div>
           <Button type="submit">Send Frenmo</Button>
+          <Button type="submit">Request Frenmo</Button>
         </form>
       </div>
     );
