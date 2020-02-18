@@ -11,7 +11,9 @@ export default class PublicFeedItem extends Component {
     let {
       recdById,
       favorId,
-      outstandingId
+      outstandingId,
+      receiverRedeemed,
+      issuerRedeemed
     } = this.props;
     const { user } = this.context;
 
@@ -21,7 +23,11 @@ export default class PublicFeedItem extends Component {
       'favId',
       favorId,
       'osId',
-      outstandingId
+      outstandingId,
+      'issuerRedeemed',
+      issuerRedeemed,
+      'receiverRedeemed',
+      receiverRedeemed
     );
   };
 
@@ -43,12 +49,38 @@ export default class PublicFeedItem extends Component {
       issuedByUser,
       recdById,
       recdByName,
-      recdByUser
+      recdByUser,
+      issuerRedeemed,
+      receiverRedeemed
     } = this.props;
+
+    console.log(
+      'recd',
+      recdById,
+      'favId',
+      favorId,
+      'osId',
+      outstandingId,
+      'issuerRedeemed',
+      issuerRedeemed,
+      'receiverRedeemed',
+      receiverRedeemed
+    );
+
+    let redemption = 'UNUSED';
+    if (receiverRedeemed) {
+      redemption = 'PENDING';
+      if (issuerRedeemed) {
+        redemption = 'REDEEMED';
+      }
+    }
+
     return (
       <div className="PublicFeedItem__container">
         {recdById && (
-          <h3>REDEEMED (add icon)</h3>
+          <h3>
+            {redemption} (add icon)
+          </h3>
         )}
         <div className="PublicFeedItem__favor">
           <h3>{title}</h3>

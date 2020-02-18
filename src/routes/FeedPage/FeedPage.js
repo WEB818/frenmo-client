@@ -58,8 +58,8 @@ export default class FeedPage extends Component {
                   receiverRedeemed={
                     pubFavor.receiver_redeemed
                   }
-                  giverRedeemed={
-                    pubFavor.giver_redeemed
+                  issuerRedeemed={
+                    pubFavor.issuer_redeemed
                   }
                   createdByName={
                     pubFavor.creator_name
