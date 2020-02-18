@@ -9,7 +9,7 @@ import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 
 import "./App.css";
-
+// import FrenmoCategoryNavPage from "./routes/FrenmoListByCat/FrenmoCategoryNavPage";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import FriendsList from "./components/FriendsList/FriendsList";
@@ -37,25 +37,25 @@ class App extends Component {
       <>
         <Switch>
           <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
-
           <PublicOnlyRoute
             exact
             path={"/register"}
             component={RegistrationPage}
           />
-
-          <PublicOnlyRoute exact path={"/friends"} component={FriendsList} />
-
-          <Route path={"/feed"} component={FeedPage} />
-
+          <PrivateRoute exact path={"/feed"} component={FeedPage} />
+          <PrivateRoute exact path={"/friends"} component={FriendsList} />
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
-
           <PrivateRoute
             exact
-            path={`/myfrenmos/:categoryId/detail/:frenmoId`}
+            path={`/frenmos/:frenmoId`}
             component={EditFrenmoPage}
           />
+          {/* <PrivateRoute
+            exact
+            path={`/frenmos/:categoryId/detail/:frenmoId`}
+            component={EditFrenmoPage}
+          /> */}
         </Switch>
       </>
     );

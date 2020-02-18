@@ -16,7 +16,6 @@ class NewFrenmoPage extends Component {
 
   redirectToTarget = favorId => {
     const { history } = this.props;
-
     history.push(`/frenmos/${favorId}`);
   };
 

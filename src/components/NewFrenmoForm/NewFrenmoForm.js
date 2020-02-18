@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+
 import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
@@ -28,11 +28,6 @@ class NewFrenmoForm extends Component {
       expDate: date
     });
   };
-
-  // handleRedirect = favor_id => {
-  //   console.log(favor_id);
-  //   this.props.history.push(`/frenmos/${favor_id}`);
-  // };
 
   handleSubmit = event => {
     event.preventDefault();
