@@ -17,6 +17,11 @@ export default class FeedPage extends Component {
       .catch(this.context.setError);
   }
 
+  redirectToTarget = favorId => {
+    const { history } = this.props;
+    history.push(`/frenmos/${favorId}`);
+  };
+
   render() {
     const { publicFrenmos } = this.context;
 
@@ -44,6 +49,7 @@ export default class FeedPage extends Component {
                 recdById={pubFavor.receiver_id}
                 recdByName={pubFavor.receiver_name}
                 recdByUser={pubFavor.receiver_username}
+                onRedirect={this.redirectToTarget}
               />
             ))}
           </div>

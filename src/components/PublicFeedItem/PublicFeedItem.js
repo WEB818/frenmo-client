@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
+import FrenmoApiService from "../../services/frenmo-api-service";
 import Check from "../../images/check.png";
 import "./PublicFeedItem.css";
 export default class PublicFeedItem extends Component {
+  static defaultProps = {
+    onRedirect: () => {}
+  };
+
   static contextType = UserContext;
 
-  handleRedemption = osId => {
-    let { recdById, favorId, outstandingId } = this.props;
-    console.log(osId);
-
-    console.log("recd", recdById, "favId", favorId, "osId", outstandingId);
+  handleRedemption = outstanding_id => {
+    let { favorId } = this.props;
+    FrenmoApiService.redeemFrenmo(favorId, outstanding_id);
+    this.props.onRedirect(favorId);
   };
 
   render() {
