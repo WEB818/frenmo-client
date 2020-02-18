@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+/// ============== NOT USED, DELETE =================//
 export default class PublicFeed extends Component {
   render() {
     return (
@@ -18,33 +18,32 @@ export default class PublicFeed extends Component {
           <p>Your friend "M" issued "N" a coupon</p>
           <p>2/10/2020</p>
         </div>
-        
+
         <div className="activity">
-            <p>"Z" issued "A" a coupon</p>
-            <p>2/10/2020</p>
-          </div>
+          <p>"Z" issued "A" a coupon</p>
+          <p>2/10/2020</p>
+        </div>
 
-          <div className="activity">
-            <p>"P" redeemed a coupon from "Y"</p>
-            <p>2/10/2020</p>
-          </div>
+        <div className="activity">
+          <p>"P" redeemed a coupon from "Y"</p>
+          <p>2/10/2020</p>
+        </div>
 
-          <div className="activity">
-            <p>"X" issued "Y" a coupon</p>
-            <p>2/10/2020</p>
-          </div>
+        <div className="activity">
+          <p>"X" issued "Y" a coupon</p>
+          <p>2/10/2020</p>
+        </div>
 
-          <div className="activity">
-            <p>"W" redeemed a coupon from "R"</p>
-            <p>2/10/2020</p>
-          </div>
+        <div className="activity">
+          <p>"W" redeemed a coupon from "R"</p>
+          <p>2/10/2020</p>
+        </div>
 
-          <div className="activity">
-            <p>"X" issued "Y" a coupon</p>
-            <p>2/10/2020</p>
-          </div>
-          
+        <div className="activity">
+          <p>"X" issued "Y" a coupon</p>
+          <p>2/10/2020</p>
+        </div>
       </div>
-    )
+    );
   }
 }

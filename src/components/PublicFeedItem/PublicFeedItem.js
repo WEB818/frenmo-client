@@ -1,13 +1,23 @@
+
+import FrenmoApiService from "../../services/frenmo-api-service";
+import Check from "../../images/check.png";
 import React, {
   Component
 } from 'react';
 import UserContext from '../../contexts/UserContext';
 import './PublicFeedItem.css';
 import { formatRelative } from 'date-fns';
+
 export default class PublicFeedItem extends Component {
+  static defaultProps = {
+    onRedirect: () => {}
+  };
+
+
   static contextType = UserContext;
 
-  handleRedemption = () => {
+  handleRedemption = outstanding_id => {
+
     let {
       recdById,
       favorId,
@@ -16,19 +26,9 @@ export default class PublicFeedItem extends Component {
       issuerRedeemed
     } = this.props;
     const { user } = this.context;
+    this.props.onRedirect(favorId);
 
-    console.log(
-      'recd',
-      recdById,
-      'favId',
-      favorId,
-      'osId',
-      outstandingId,
-      'issuerRedeemed',
-      issuerRedeemed,
-      'receiverRedeemed',
-      receiverRedeemed
-    );
+
   };
 
   render() {
@@ -54,18 +54,6 @@ export default class PublicFeedItem extends Component {
       receiverRedeemed
     } = this.props;
 
-    console.log(
-      'recd',
-      recdById,
-      'favId',
-      favorId,
-      'osId',
-      outstandingId,
-      'issuerRedeemed',
-      issuerRedeemed,
-      'receiverRedeemed',
-      receiverRedeemed
-    );
 
     let redemption = 'UNUSED';
     if (receiverRedeemed) {
@@ -77,24 +65,17 @@ export default class PublicFeedItem extends Component {
 
     return (
       <div className="PublicFeedItem__container">
-        {recdById && (
-          <h3>
-            {redemption} (add icon)
-          </h3>
-        )}
+
+        {recdById && <img src={Check} alt="check icon" />}
         <div className="PublicFeedItem__favor">
-          <h3>{title}</h3>
-          {recdByName && (
-            <p>To: {recdByName}</p>
-          )}
-          {issuedByName && (
-            <p>From: {issuedByName}</p>
-          )}
-          <p>
-            Created by: {createdByName}
-          </p>
-          {/* need to install moment to format date */}
-          <p>
+          <Link to={`/frenmos/${favorId}`}>
+<div>
+
+ <h3>{title}</h3>
+            {recdByName && <p>To: {recdByName}</p>}
+            {issuedByName && <p>From: {issuedByName}</p>}
+            <p>Created by: {createdByName}</p>
+            <p>
             Redeem by:{' '}
             {formatRelative(
               new Date(expDate),
@@ -102,16 +83,25 @@ export default class PublicFeedItem extends Component {
               0
             )}
           </p>
+
+<div/>
+          </Link>
         </div>
         {!recdById && (
-          <button
-            onClick={
-              this.handleRedemption
-            }
-          >
-            Redeem
-          </button>
+          <button onClick={() => this.handleRedemption(outstandingId)}>
+ Redeem
+          </button>)}
+
+        {recdById && (
+          <h3>
+            {redemption} (add icon)
+          </h3>
         )}
+      
+        
+
+           
+        
       </div>
     );
   }

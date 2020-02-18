@@ -14,10 +14,15 @@ export default class FeedPage extends Component {
 
   componentDidMount() {
     this.context.clearError();
-    FrenmoApiService.getMyPublicFrenmos()
+    FrenmoApiService.getAllPublicFrenmos()
       .then(this.context.setAllPublic)
       .catch(this.context.setError);
   }
+
+  redirectToTarget = favorId => {
+    const { history } = this.props;
+    history.push(`/frenmos/${favorId}`);
+  };
 
   render() {
     const {
@@ -28,6 +33,7 @@ export default class FeedPage extends Component {
       <>
         {publicFrenmos.favors && (
           <div>
+
             {publicFrenmos.favors.map(
               (pubFavor, idx) => (
                 <PublicFeedItem
@@ -85,9 +91,11 @@ export default class FeedPage extends Component {
                   recdByUser={
                     pubFavor.receiver_username
                   }
+onRedirect={this.redirectToTarget}
                 />
               )
             )}
+
           </div>
         )}
       </>
