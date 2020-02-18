@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SearchUser from '../../components/SearchUser/SearchUser'
 
 export default class FriendsList extends Component {
 
@@ -13,6 +14,7 @@ export default class FriendsList extends Component {
     // console.log(frens)
     return (
       <div>
+        <SearchUser />
         <ul className="friends-list">
           {this.props.frens.friends.map(fren => fren.username)}
           <li> Friend B </li>
