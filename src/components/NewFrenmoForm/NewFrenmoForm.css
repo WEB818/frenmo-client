@@ -1,6 +1,7 @@
 .NewFrenmoForm__container {
   height: 400px;
-  width: 400px;
+  min-width: 300px;
+  width: max-content;
   margin: 100px auto 10px;
 }
 
