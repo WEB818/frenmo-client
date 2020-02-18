@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Friends from '../../routes/Friends/Friends'
 
 export default class FriendsList extends Component {
 
@@ -15,7 +14,7 @@ export default class FriendsList extends Component {
     return (
       <div>
         <ul className="friends-list">
-          <li> {this.props.frens.friends.map(fren => fren.username)}</li>
+          {this.props.frens.friends.map(fren => fren.username)}
           <li> Friend B </li>
           <li> Friend C </li>
         </ul>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import TokenService from '../../services/token-service'
 import config from '../../config'
-import MyFriends from '../../services/friends-api-service'
+//import MyFriends from '../../services/friends-api-service'
 import FriendsList from '../../components/FriendsList/FriendsList'
-import MyFriendsContext from '../../contexts/MyFriendsContext'
+//import MyFriendsContext from '../../contexts/MyFriendsContext'
 
 class Friends extends Component {
     // static contextType = MyFriendsContext
