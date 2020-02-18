@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import config from '../../config'
+import FriendsList from '../../components/FriendsList/FriendsList'
 import "./SearchUser.css";
 
 class SearchUser extends Component {
+  renderFrensToAdd = addFren => {
+  return (<li>{addFren}</li>)
+  }
   handleSearch = e => {
     e.preventDefault();
     const {user_search} = e.target
@@ -20,14 +24,15 @@ class SearchUser extends Component {
       }
       return res.json()
   })
-  .then(data => console.log(data))
+  .then(fren => this.renderFrensToAdd(fren))
 
     
   };
 
   render() {
     return (
-     
+     <div>
+       {this.renderFrensToAdd}
       <form onSubmit={this.handleSearch}>
         <label htmlFor="user_search">Frenmo Search</label>
         <input
@@ -37,8 +42,8 @@ class SearchUser extends Component {
           placeholder="find friends"
         />
         <button type="submit">Add</button>
-      
       </form>
+      </div>
     );
   }
 }
