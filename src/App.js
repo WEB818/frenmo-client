@@ -22,11 +22,8 @@ class App extends Component {
     return (
       <>
         <div className="Nav-flex">
-          <Route path={"/frenmos/:categoryId"} component={FrenmoListByCat} />
-          {/* <Route
-            path={"/frenmos/:categoryId"}
-            component={FrenmoCategoryNavPage}
-          /> */}
+          {/* <Route path={"/frenmos/:categoryId"} component={FrenmoListByCat} /> */}
+          <Route path={"/frenmos/:favorId"} component={FrenmoCategoryNavPage} />
         </div>
       </>
     );

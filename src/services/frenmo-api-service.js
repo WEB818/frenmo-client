@@ -2,7 +2,7 @@ import TokenService from "./token-service";
 import config from "../config";
 
 const FrenmoApiService = {
-  getMyPublicFrenmos() {
+  getAllPublicFrenmos() {
     return fetch(`${config.API_ENDPOINT}/favor`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
@@ -29,7 +29,7 @@ const FrenmoApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  getPublicFrenmos() {
+  getMyPublicFrenmos() {
     return fetch(`${config.API_ENDPOINT}/favor/public`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`

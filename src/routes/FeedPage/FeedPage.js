@@ -12,7 +12,7 @@ export default class FeedPage extends Component {
 
   componentDidMount() {
     this.context.clearError();
-    FrenmoApiService.getMyPublicFrenmos()
+    FrenmoApiService.getAllPublicFrenmos()
       .then(this.context.setAllPublic)
       .catch(this.context.setError);
   }
