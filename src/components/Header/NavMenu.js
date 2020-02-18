@@ -47,10 +47,17 @@ class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
+
         <Link to="/" className="Header__link" />
         {/* <Link to="/" className="Header__link">
+
+        <Link
+          to="/"
+          className="Header__link"
+        >
+
           Frenmo
-        </Link> */}
+        </Link>*/}
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a href="/login" className="log-button">
