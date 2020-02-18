@@ -13,8 +13,9 @@ class Friends extends Component {
     }
   
     setFriendsList = friends => {
+
         this.setState({
-            friends,
+            friends: friends,
 
         })
     }
@@ -28,8 +29,10 @@ componentDidMount(){
         }
     })
     .then(res => {
-        console.log("res",res.json())
-       //(!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
+        if(!res.ok){
+            throw new Error(res.status)
+        }
+        return res.json()
     })
     .then(this.setFriendsList)
 
