@@ -75,10 +75,9 @@ class NavMenu extends Component {
         <Link
           to="/"
           className="Header__link"
-        />
-        {/* <Link to="/" className="Header__link">
+        >
           Frenmo
-        </Link> */}
+        </Link>
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a
