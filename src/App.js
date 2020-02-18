@@ -42,11 +42,9 @@ class App extends Component {
             component={RegistrationPage}
           />
 
-<<<<<<< HEAD
+
          <PrivateRoute exact path={"/Friends"} component={Friends} />
-=======
-          <PublicOnlyRoute exact path={"/friends"} component={FriendsList} />
->>>>>>> master
+
 
           <Route path={"/feed"} component={FeedPage} />
 
