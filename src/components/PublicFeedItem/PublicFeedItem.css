@@ -1,0 +1,8 @@
+.PublicFeedItem__container {
+  display: flex;
+  border: 1px solid black;
+  margin: 10px;
+}
+.PublicFeedItem__favor {
+  margin: 10px;
+}

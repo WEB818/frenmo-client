@@ -1,12 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
 
-export default function Header() {
-  return (
-    <header>
-      <h1 className="title-header">
-        <Link to="/">Frenmo</Link>
-      </h1>
-    </header>
-  );
+
+import React, { Component } from 'react'
+
+export class Header extends Component {
+ constructor(props) {
+   super(props);
+ }
+ 
+  render() {
+     const path = this.props.location.pathname.slice(1)
+    return (
+      <div>
+        <h1> {path} </h1>
+      </div>
+    )
+  }
 }
+
+
+

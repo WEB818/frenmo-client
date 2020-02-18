@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
 const FrenmoContext = React.createContext({
-  frenmoList: {},
+  frenmoList: [],
+  publicFrenmos: [],
+  personalFrenmos: [],
+  friendFrenmos: [],
   frenmo: {},
+  outRes: {},
   frenmoCategories: [
     {
       id: 1,
@@ -97,8 +101,17 @@ const FrenmoContext = React.createContext({
       category: "Wedding"
     }
   ],
+  publicityTypes: [
+    { public: "dm", type: "Private" },
+    { public: "friend", type: "Friends" },
+    { public: "public", type: "Public" }
+  ],
   addFrenmo: () => {},
+  setFrenmoRes: () => {},
   setPublicFrenmos: () => {},
+  setAllPublic: () => {},
+  setAllPersonal: () => {},
+  setAllFriend: () => {},
   clearError: () => {},
   setError: () => {}
 });
@@ -107,8 +120,12 @@ export default FrenmoContext;
 
 export class FrenmoProvider extends Component {
   state = {
-    frenmoList: {},
+    frenmoList: [],
+    publicFrenmos: [],
+    personalFrenmos: [],
+    friendFrenmos: [],
     frenmo: {},
+    outRes: {},
     frenmoCategories: [
       {
         id: 1,
@@ -202,6 +219,11 @@ export class FrenmoProvider extends Component {
         id: 23,
         category: "Wedding"
       }
+    ],
+    publicityTypes: [
+      { public: "dm", type: "Private" },
+      { public: "friend", type: "Friends" },
+      { public: "public", type: "Public" }
     ]
   };
 
@@ -209,8 +231,24 @@ export class FrenmoProvider extends Component {
     this.setState([...this.state.frenmoList, frenmo]);
   };
 
+  setFrenmoRes = outRes => {
+    this.setState({ outRes });
+  };
+
   setPublicFrenmos = frenmoList => {
     this.setState({ frenmoList });
+  };
+
+  setAllPublic = publicFrenmos => {
+    this.setState({ publicFrenmos });
+  };
+
+  setAllPersonal = personalFrenmos => {
+    this.setState({ personalFrenmos });
+  };
+
+  setAllFriend = friendFrenmos => {
+    this.setState({ friendFrenmos });
   };
 
   clearError = () => {
@@ -225,10 +263,19 @@ export class FrenmoProvider extends Component {
   render() {
     const value = {
       frenmoList: this.state.frenmoList,
+      publicFrenmos: this.state.publicFrenmos,
+      personalFrenmos: this.state.personalFrenmos,
+      friendFrenmos: this.state.friendFrenmos,
       frenmo: this.state.frenmo,
+      outRes: this.state.outRes,
       frenmoCategories: this.state.frenmoCategories,
+      publicityTypes: this.state.publicityTypes,
       addFrenmo: this.addFrenmo,
+      setFrenmoRes: this.setFrenmoRes,
       setPublicFrenmos: this.setPublicFrenmos,
+      setAllPersonal: this.setAllPersonal,
+      setAllFriend: this.setAllFriend,
+      setAllPublic: this.setAllPublic,
       clearError: this.clearError,
       setError: this.setError
     };

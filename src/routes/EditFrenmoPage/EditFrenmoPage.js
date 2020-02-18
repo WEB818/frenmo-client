@@ -26,7 +26,8 @@ class EditFrenmoPage extends Component {
       createdBy,
       issuedBy,
       receivedBy
-    } = this.props.location.state;
+    } = this.props;
+
     const { edit } = this.state;
     console.log(
       "ineditpage",
