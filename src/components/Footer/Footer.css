@@ -1,9 +1,11 @@
-.Footer__container {
+/*TODO:delete?*/
+/* .Footer__container {
   display: flex;
   flex-direction: row;
   width: 100vw;
+  height: 2px;
   justify-content: space-around;
-}
+} */
 
 .Footer__icon {
   text-align: center;

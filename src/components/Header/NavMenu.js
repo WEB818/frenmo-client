@@ -5,9 +5,10 @@ import TokenService from "../../services/token-service";
 // import Icon from "../../images/profile.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+
 import "./NavMenu.css";
 
-export default class NavMenu extends Component {
+class NavMenu extends Component {
   constructor(props) {
     super(props);
 
@@ -22,20 +23,12 @@ export default class NavMenu extends Component {
     this.context.processLogout();
   };
 
-  // handleBurgerClick = () => {
-  //   let links = document.getElementById("links");
-  //   if (links.className === "links") {
-  //     links.className += " null";
-  //   } else {
-  //     links.className = "links";
-  //   }
-  // };
-
   renderLogoutLink() {
+    // const path = this.props.location.pathname.slice(1);
     return (
       <>
         <Link to="/" className="Header__link">
-          Frenmo
+          {/* <h1> {path} </h1> */}
         </Link>
         <div className="Header__logged-in">
           <div className="navigation">
@@ -54,9 +47,17 @@ export default class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-        <Link to="/" className="Header__link">
+
+        <Link to="/" className="Header__link" />
+        {/* <Link to="/" className="Header__link">
+
+        <Link
+          to="/"
+          className="Header__link"
+        >
+
           Frenmo
-        </Link>
+        </Link>*/}
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a href="/login" className="log-button">
@@ -72,10 +73,30 @@ export default class NavMenu extends Component {
   render() {
     return (
       <nav className="Header">
+        <Link to="/feed" className="Header__link">
+          <h2 className="NavMenu__Header">Frenmo</h2>
+        </Link>
+        <div>
+          <Link to="/frenmos" className="NavMenu__links">
+            My Frenmos
+          </Link>
+        </div>
+        <div>
+          <Link to="/friends" className="NavMenu__links">
+            Friends
+          </Link>
+        </div>
+        <div>
+          <Link to="/profile" className="NavMenu__links">
+            Profile
+          </Link>
+        </div>
         {TokenService.hasAuthToken()
-          ? this.renderLoginLink()
-          : this.renderLogoutLink()}
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
       </nav>
     );
   }
 }
+
+export default NavMenu;

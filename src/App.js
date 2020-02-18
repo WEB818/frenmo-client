@@ -13,6 +13,8 @@ import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategory
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import Friends from './routes/Friends/Friends'
+import FriendsList from "./components/FriendsList/FriendsList";
+import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 
 class App extends Component {
   state = { hasError: false };
@@ -21,8 +23,8 @@ class App extends Component {
     return (
       <>
         <div className="Nav-flex">
-          <Route path={"/myfrenmos"} component={FrenmoCategoryNavPage} />
-          <Route path={"/myfrenmos/:categoryId"} component={FrenmoListByCat} />
+          {/* <Route path={"/frenmos/:categoryId"} component={FrenmoListByCat} /> */}
+          <Route path={"/frenmos/:favorId"} component={FrenmoCategoryNavPage} />
         </div>
       </>
     );
@@ -40,17 +42,27 @@ class App extends Component {
             component={RegistrationPage}
           />
 
+<<<<<<< HEAD
          <PrivateRoute exact path={"/Friends"} component={Friends} />
+=======
+          <PublicOnlyRoute exact path={"/friends"} component={FriendsList} />
+>>>>>>> master
 
-          <PrivateRoute path={"/feed"} component={FeedPage} />
+          <Route path={"/feed"} component={FeedPage} />
 
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
+          <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
 
           <PrivateRoute
             exact
-            path={`/myfrenmos/:categoryId/detail/:frenmoId`}
+            path={`/frenmos/:frenmoId`}
             component={EditFrenmoPage}
           />
+          {/* <PrivateRoute
+            exact
+            path={`/frenmos/:categoryId/detail/:frenmoId`}
+            component={EditFrenmoPage}
+          /> */}
         </Switch>
       </>
     );
@@ -71,11 +83,10 @@ class App extends Component {
           <section className="App__main wrapper">
             {this.renderMainRoutes()}
           </section>
-
-          <footer id="footer">
-            <FooterMenu />
-          </footer>
         </main>
+        <footer id="footer">
+          <FooterMenu />
+        </footer>
       </div>
     );
   }

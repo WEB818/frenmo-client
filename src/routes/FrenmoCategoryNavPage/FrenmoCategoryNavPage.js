@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
-// import { Button } from "../../components/Utils/Utils";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import "./FrenmoCategoryNavPage.css";
@@ -51,22 +50,14 @@ class FrenmoCategoryNavPage extends Component {
     );
   }
 
-  renderCategories() {
-    const { frenmoCategories, frenmoList } = this.context;
+  renderPublicity() {
+    const { publicityTypes } = this.context;
 
     return (
       <ul className="CategoryNavPage__list">
-        {frenmoCategories.map(category => (
-          <li key={category.id}>
-            {frenmoList.favors && (
-              <NavLink
-                key={category.id}
-                to={`/myfrenmos/${category.id}`}
-                className="CategoryNavPage__category"
-              >
-                {category.category}
-              </NavLink>
-            )}
+        {publicityTypes.map(type => (
+          <li key={type.public} className="CategoryNavPage__category">
+            {type.type}
           </li>
         ))}
       </ul>
@@ -74,15 +65,33 @@ class FrenmoCategoryNavPage extends Component {
   }
 
   render() {
+    const {
+      favor_id,
+      title,
+      description,
+      category,
+      expiration_date,
+      publicity,
+      user_location,
+      tags,
+      limit,
+      outstanding_id,
+      receiver_redeemed,
+      issuer_redeemed,
+      creator_id,
+      creator_name,
+      creator_username,
+      issuer_id,
+      issuer_name,
+      issuer_username,
+      receiver_id,
+      receiver_name,
+      receiver_username
+    } = this.context;
+    console.log(title, "props in nav page");
     return (
       <>
-        <div>
-          <SearchBar />
-        </div>
-        <div>
-          {this.renderTypes()}
-          {this.renderCategories()}
-        </div>
+        <div>{this.context.title}</div>
       </>
     );
   }

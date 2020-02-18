@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import SearchUser from "../../components/SearchUser/SearchUser";
+
 import FrenmoCategoryNavPage from "../FrenmoCategoryNavPage/FrenmoCategoryNavPage";
 import FrenmoListByCat from "../FrenmoListByCat/FrenmoListByCat";
 import "./LandingPage.css";
