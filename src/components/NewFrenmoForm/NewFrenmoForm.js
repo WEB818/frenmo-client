@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import FrenmoTags from "../FrenmoTags/FrenmoTags";
+import { Redirect } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
@@ -11,13 +11,16 @@ import "./NewFrenmoForm.css";
 class NewFrenmoForm extends Component {
   static defaultProps = {
     match: { params: {} },
-    onRedirect: () => {},
-    onSendFrenmo: () => {}
+    history: {
+      push: () => {}
+    },
+    onRedirect: () => {}
   };
 
   static contextType = FrenmoContext;
   state = {
-    expDate: new Date()
+    expDate: new Date(),
+    postRes: {}
   };
 
   handleChange = date => {
@@ -26,9 +29,14 @@ class NewFrenmoForm extends Component {
     });
   };
 
+  // handleRedirect = favor_id => {
+  //   console.log(favor_id);
+  //   this.props.history.push(`/frenmos/${favor_id}`);
+  // };
+
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.context);
+
     const {
       title,
       description,
@@ -46,6 +54,7 @@ class NewFrenmoForm extends Component {
       publicity.value,
       limit.value
     )
+      .then(postRes => this.setState({ postRes }))
       .then(this.context.addFrenmo)
       .then(() => {
         title.value = "";
@@ -54,8 +63,7 @@ class NewFrenmoForm extends Component {
         expiration_date.value = "";
         publicity.value = 0;
         limit.value = "";
-        this.props.onSendFrenmo();
-        this.props.onRedirect(this.props.frenmoId);
+        this.props.onRedirect(this.state.postRes.favor_id);
       })
       .catch(this.context.setError);
   };

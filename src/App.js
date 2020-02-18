@@ -7,9 +7,9 @@ import NewFrenmoPage from "./routes/NewFrenmoPage/NewFrenmoPage";
 import NavMenu from "./components/Header/NavMenu";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
-import FooterMenu from "./components/FooterMenu/FooterMenu";
+
 import "./App.css";
-import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
+
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import FriendsList from "./components/FriendsList/FriendsList";
@@ -77,9 +77,7 @@ class App extends Component {
             {this.renderMainRoutes()}
           </section>
 
-          <footer id="footer">
-            <FooterMenu />
-          </footer>
+          <footer id="footer">{/* <FooterMenu /> */}</footer>
         </main>
       </div>
     );
