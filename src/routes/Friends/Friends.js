@@ -4,6 +4,8 @@ import config from '../../config'
 //import MyFriends from '../../services/friends-api-service'
 import FriendsList from '../../components/FriendsList/FriendsList'
 //import MyFriendsContext from '../../contexts/MyFriendsContext'
+import SearchUser from '../../components/SearchUser/SearchUser'
+
 
 class Friends extends Component {
     // static contextType = MyFriendsContext
@@ -57,7 +59,8 @@ componentDidMount(){
         console.log(this.state)
         return (
             <div>
-                <FriendsList frens={this.state} />
+                <SearchUser />
+                {this.state.friends.map(fren => <FriendsList frens={fren.username} />)}
             </div>
         )
     }

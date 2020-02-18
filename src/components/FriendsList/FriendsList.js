@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SearchUser from '../../components/SearchUser/SearchUser'
+import "../../components/FriendsList/FriendsList.css"
 
 export default class FriendsList extends Component {
 
@@ -10,15 +10,13 @@ export default class FriendsList extends Component {
 
   render() {
     // const { frens } = this.props
-    console.log(this.props.frens.friends.map(fren => fren.username))
+    console.log(this.props)
+    //console.log(this.props.frens.friends.map(fren => fren.username))
     // console.log(frens)
     return (
       <div>
-        <SearchUser />
         <ul className="friends-list">
-          {this.props.frens.friends.map(fren => fren.username)}
-          <li> Friend B </li>
-          <li> Friend C </li>
+           <li className="frens" key={this.props.frens.id}>{this.props.frens}</li>
         </ul>
       </div>
     )
