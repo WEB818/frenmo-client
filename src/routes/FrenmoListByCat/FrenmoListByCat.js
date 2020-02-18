@@ -48,7 +48,8 @@ class FrenmoListByCat extends Component {
   }
 
   render() {
-    const { categoryId } = this.props.match.params;
+    console.log("props in catlist", this.props);
+    const { categoryId, frenmoId } = this.props.match.params;
 
     const { frenmoList } = this.context;
 
@@ -62,7 +63,7 @@ class FrenmoListByCat extends Component {
             {frenmosByCat.map((frenmo, idx) => (
               <Frenmo
                 key={idx}
-                frenmoId={frenmo.id}
+                frenmoId={frenmo.favor_id}
                 title={frenmo.title}
                 description={frenmo.description}
                 expiration_date={frenmo.expiration_date}

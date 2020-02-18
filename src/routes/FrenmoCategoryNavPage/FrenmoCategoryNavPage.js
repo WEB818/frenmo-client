@@ -88,10 +88,10 @@ class FrenmoCategoryNavPage extends Component {
       receiver_name,
       receiver_username
     } = this.context;
-    console.log(title, "props in nav page");
+
     return (
       <>
-        <div>{this.context.title}</div>
+        <div>test in CategoryNavPage</div>
       </>
     );
   }

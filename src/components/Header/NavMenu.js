@@ -47,7 +47,6 @@ class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-
         <Link to="/" className="Header__link" />
         {/* <Link to="/" className="Header__link">
 
@@ -79,6 +78,11 @@ class NavMenu extends Component {
         <div>
           <Link to="/frenmos" className="NavMenu__links">
             My Frenmos
+          </Link>
+        </div>
+        <div>
+          <Link to="/send" className="NavMenu__links">
+            Create
           </Link>
         </div>
         <div>
