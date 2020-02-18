@@ -28,7 +28,7 @@ class Frenmo extends Component {
       <li className="Frenmo__title-container">
         <NavLink
           to={{
-            pathname: `/myfrenmos/${categoryId}/detail/${frenmoId}`,
+            pathname: `/frenmos/${categoryId}/detail/${frenmoId}`,
             state: {
               title,
               description,

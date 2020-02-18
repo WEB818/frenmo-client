@@ -6,6 +6,7 @@ const FrenmoContext = React.createContext({
   personalFrenmos: [],
   friendFrenmos: [],
   frenmo: {},
+  outRes: {},
   frenmoCategories: [
     {
       id: 1,
@@ -106,6 +107,7 @@ const FrenmoContext = React.createContext({
     { public: "public", type: "Public" }
   ],
   addFrenmo: () => {},
+  setFrenmoRes: () => {},
   setPublicFrenmos: () => {},
   setAllPublic: () => {},
   setAllPersonal: () => {},
@@ -123,6 +125,7 @@ export class FrenmoProvider extends Component {
     personalFrenmos: [],
     friendFrenmos: [],
     frenmo: {},
+    outRes: {},
     frenmoCategories: [
       {
         id: 1,
@@ -228,6 +231,10 @@ export class FrenmoProvider extends Component {
     this.setState([...this.state.frenmoList, frenmo]);
   };
 
+  setFrenmoRes = outRes => {
+    this.setState({ outRes });
+  };
+
   setPublicFrenmos = frenmoList => {
     this.setState({ frenmoList });
   };
@@ -239,6 +246,7 @@ export class FrenmoProvider extends Component {
   setAllPersonal = personalFrenmos => {
     this.setState({ personalFrenmos });
   };
+
   setAllFriend = friendFrenmos => {
     this.setState({ friendFrenmos });
   };
@@ -259,9 +267,11 @@ export class FrenmoProvider extends Component {
       personalFrenmos: this.state.personalFrenmos,
       friendFrenmos: this.state.friendFrenmos,
       frenmo: this.state.frenmo,
+      outRes: this.state.outRes,
       frenmoCategories: this.state.frenmoCategories,
       publicityTypes: this.state.publicityTypes,
       addFrenmo: this.addFrenmo,
+      setFrenmoRes: this.setFrenmoRes,
       setPublicFrenmos: this.setPublicFrenmos,
       setAllPersonal: this.setAllPersonal,
       setAllFriend: this.setAllFriend,

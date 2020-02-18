@@ -14,17 +14,17 @@ class NewFrenmoPage extends Component {
 
   static contextType = FrenmoContext;
 
-  redirectToTarget = frenmoId => {
+  redirectToTarget = favorId => {
     const { history } = this.props;
-    history.push(`/frenmos/${frenmoId}/issue`);
+    history.push(`/frenmos/${favorId}`);
   };
-  //figure out how to make frenmoId dynamic with new post added
+
   render() {
     return (
       <>
         <h2>New Frenmo</h2>
         <div>
-          <NewFrenmoForm frenmoId="1" onRedirect={this.redirectToTarget} />
+          <NewFrenmoForm onRedirect={this.redirectToTarget} />
         </div>
       </>
     );

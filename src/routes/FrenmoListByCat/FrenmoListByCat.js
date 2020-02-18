@@ -12,7 +12,10 @@ class FrenmoListByCat extends Component {
   };
 
   static contextType = FrenmoContext;
-
+  state = {
+    type: ""
+  };
+  // ====== currently non-functional ==========//
   renderTypes() {
     return (
       <div className="btn-container">
@@ -52,25 +55,28 @@ class FrenmoListByCat extends Component {
     const frenmosByCat = getFrenmosInCategory(frenmoList.favors, categoryId);
 
     return (
-      <div className="ListByCat__section">
-        <ul className="ListByCat__list">
-          {frenmosByCat.map(frenmo => (
-            <Frenmo
-              key={frenmo.id}
-              frenmoId={frenmo.id}
-              title={frenmo.title}
-              description={frenmo.description}
-              expiration_date={frenmo.expiration_date}
-              publicity={frenmo.publicity}
-              tags={frenmo.tags}
-              createdBy={frenmo.creator_name}
-              issuedBy={frenmo.issuer_name}
-              receivedBy={frenmo.receiver_name}
-              categoryId={frenmo.category}
-            />
-          ))}
-        </ul>
-      </div>
+      <>
+        {/* <div className="btn-container">{this.renderTypes()}</div> */}
+        <div className="ListByCat__section">
+          <ul className="ListByCat__list">
+            {frenmosByCat.map((frenmo, idx) => (
+              <Frenmo
+                key={idx}
+                frenmoId={frenmo.id}
+                title={frenmo.title}
+                description={frenmo.description}
+                expiration_date={frenmo.expiration_date}
+                publicity={frenmo.publicity}
+                tags={frenmo.tags}
+                createdBy={frenmo.creator_name}
+                issuedBy={frenmo.issuer_name}
+                receivedBy={frenmo.receiver_name}
+                categoryId={frenmo.category}
+              />
+            ))}
+          </ul>
+        </div>
+      </>
     );
   }
 }

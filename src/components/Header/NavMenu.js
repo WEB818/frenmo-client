@@ -10,7 +10,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from 'react-router-dom';
 import './NavMenu.css';
 
-export class NavMenu extends Component {
+class NavMenu extends Component {
   constructor(props) {
     super(props);
 
@@ -35,16 +35,14 @@ export class NavMenu extends Component {
   // };
 
   renderLogoutLink() {
-    const path = this.props.location.pathname.slice(
-      1
-    );
+    // const path = this.props.location.pathname.slice(1);
     return (
       <>
         <Link
           to="/"
           className="Header__link"
         >
-          <h1> {path} </h1>
+          {/* <h1> {path} </h1> */}
         </Link>
         <div className="Header__logged-in">
           <div className="navigation">
@@ -77,9 +75,10 @@ export class NavMenu extends Component {
         <Link
           to="/"
           className="Header__link"
-        >
+        />
+        {/* <Link to="/" className="Header__link">
           Frenmo
-        </Link>
+        </Link> */}
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a
@@ -111,4 +110,4 @@ export class NavMenu extends Component {
   }
 }
 
-export default withRouter(NavMenu);
+export default NavMenu;

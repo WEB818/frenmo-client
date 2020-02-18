@@ -53,7 +53,9 @@ const FrenmoApiService = {
         publicity,
         limit
       })
-    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
   }
 };
 
