@@ -1,23 +1,21 @@
-
-import FrenmoApiService from "../../services/frenmo-api-service";
-import Check from "../../images/check.png";
+import FrenmoApiService from '../../services/frenmo-api-service';
+import Check from '../../images/check.png';
 import React, {
   Component
 } from 'react';
 import UserContext from '../../contexts/UserContext';
 import './PublicFeedItem.css';
 import { formatRelative } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 export default class PublicFeedItem extends Component {
   static defaultProps = {
     onRedirect: () => {}
   };
 
-
   static contextType = UserContext;
 
   handleRedemption = outstanding_id => {
-
     let {
       recdById,
       favorId,
@@ -27,8 +25,6 @@ export default class PublicFeedItem extends Component {
     } = this.props;
     const { user } = this.context;
     this.props.onRedirect(favorId);
-
-
   };
 
   render() {
@@ -54,7 +50,6 @@ export default class PublicFeedItem extends Component {
       receiverRedeemed
     } = this.props;
 
-
     let redemption = 'UNUSED';
     if (receiverRedeemed) {
       redemption = 'PENDING';
@@ -65,43 +60,58 @@ export default class PublicFeedItem extends Component {
 
     return (
       <div className="PublicFeedItem__container">
-
-        {recdById && <img src={Check} alt="check icon" />}
+        {recdById && (
+          <img
+            src={Check}
+            alt="check icon"
+          />
+        )}
         <div className="PublicFeedItem__favor">
-          <Link to={`/frenmos/${favorId}`}>
-<div>
-
- <h3>{title}</h3>
-            {recdByName && <p>To: {recdByName}</p>}
-            {issuedByName && <p>From: {issuedByName}</p>}
-            <p>Created by: {createdByName}</p>
-            <p>
-            Redeem by:{' '}
-            {formatRelative(
-              new Date(expDate),
-              new Date(),
-              0
-            )}
-          </p>
-
-<div/>
+          <Link
+            to={`/frenmos/${favorId}`}
+          >
+            <div>
+              <h3>{title}</h3>
+              {recdByName && (
+                <p>To: {recdByName}</p>
+              )}
+              {issuedByName && (
+                <p>
+                  From: {issuedByName}
+                </p>
+              )}
+              <p>
+                Created by:{' '}
+                {createdByName}
+              </p>
+              <p>
+                Redeem by:{' '}
+                {formatRelative(
+                  new Date(expDate),
+                  new Date(),
+                  0
+                )}
+              </p>
+            </div>
           </Link>
         </div>
         {!recdById && (
-          <button onClick={() => this.handleRedemption(outstandingId)}>
- Redeem
-          </button>)}
+          <button
+            onClick={() =>
+              this.handleRedemption(
+                outstandingId
+              )
+            }
+          >
+            Redeem
+          </button>
+        )}
 
         {recdById && (
           <h3>
             {redemption} (add icon)
           </h3>
         )}
-      
-        
-
-           
-        
       </div>
     );
   }
