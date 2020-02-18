@@ -10,7 +10,8 @@ const FriendsService = {
                 authorization : `bearer ${TokenService.getAuthToken()}`
             }
         }).then(res => {
-            (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
+            console.log("client res", res)
+            //(!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
         })
         .then(this.setFriendsList)
     }

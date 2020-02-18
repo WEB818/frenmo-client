@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Friends from '../../routes/Friends/Friends'
 
 export default class FriendsList extends Component {
 
