@@ -1,16 +1,30 @@
 import React, { Component } from "react";
 import NewFrenmoForm from "../../components/NewFrenmoForm/NewFrenmoForm";
+import FrenmoContext from "../../contexts/FrenmoContext";
 
 class NewFrenmoPage extends Component {
-  //header nav as header? add header if not
+  static defaultProps = {
+    match: {
+      params: {}
+    },
+    history: {
+      push: () => {}
+    }
+  };
+
+  static contextType = FrenmoContext;
+
+  redirectToTarget = favorId => {
+    const { history } = this.props;
+    history.push(`/frenmos/${favorId}`);
+  };
+
   render() {
     return (
       <>
         <h2>New Frenmo</h2>
         <div>
-          <button>Send</button>
-          <button>Request</button>
-          <NewFrenmoForm />
+          <NewFrenmoForm onRedirect={this.redirectToTarget} />
         </div>
       </>
     );

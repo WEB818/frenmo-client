@@ -43,6 +43,7 @@ class LoginForm extends Component {
 
   render() {
     const { error } = this.state;
+
     return (
       <form className="RegForm__container" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>

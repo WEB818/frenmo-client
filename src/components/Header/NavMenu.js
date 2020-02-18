@@ -5,9 +5,10 @@ import TokenService from "../../services/token-service";
 // import Icon from "../../images/profile.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
 import "./NavMenu.css";
 
-export default class NavMenu extends Component {
+class NavMenu extends Component {
   constructor(props) {
     super(props);
 
@@ -23,8 +24,12 @@ export default class NavMenu extends Component {
   };
 
   renderLogoutLink() {
+    // const path = this.props.location.pathname.slice(1);
     return (
       <>
+        <Link to="/" className="Header__link">
+          {/* <h1> {path} </h1> */}
+        </Link>
         <div className="Header__logged-in">
           <div className="navigation">
             <a href="/" className="log-button">
@@ -42,6 +47,10 @@ export default class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
+        <Link to="/" className="Header__link" />
+        {/* <Link to="/" className="Header__link">
+          Frenmo
+        </Link> */}
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a href="/login" className="log-button">
@@ -61,9 +70,11 @@ export default class NavMenu extends Component {
           <h2 className="NavMenu__Header">Frenmo</h2>
         </Link>
         {TokenService.hasAuthToken()
-          ? this.renderLoginLink()
-          : this.renderLogoutLink()}
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
       </nav>
     );
   }
 }
+
+export default NavMenu;

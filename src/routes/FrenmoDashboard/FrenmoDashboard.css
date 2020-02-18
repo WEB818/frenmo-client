@@ -1,0 +1,18 @@
+.Dashboard__cat-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 800px;
+
+  margin: 100px;
+}
+
+.Dashboard__cat-link {
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  background: lightblue;
+  width: 100px;
+  height: 100px;
+}
