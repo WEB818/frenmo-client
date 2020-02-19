@@ -8,13 +8,14 @@ import NavMenu from "./components/Header/NavMenu";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import FooterMenu from "./components/FooterMenu/FooterMenu";
-import "./App.css";
 import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import Friends from './routes/Friends/Friends'
 import PendingFren from './components/PendingFren/PendingFren'
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
+import "./App.css";
+import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
 
 class App extends Component {
   state = { hasError: false };
@@ -23,8 +24,18 @@ class App extends Component {
     return (
       <>
         <div className="Nav-flex">
-          {/* <Route path={"/frenmos/:categoryId"} component={FrenmoListByCat} /> */}
-          <Route path={"/frenmos/:favorId"} component={FrenmoCategoryNavPage} />
+          <Route
+            path={"/frenmos/category/:categoryId"}
+            component={FrenmoListByCat}
+            name="frenmoByCat"
+          />
+
+          {/* ============ OBSOLETE NAV PAGE================= 
+          <Route
+            exact
+            path={"/frenmos/:favorId"}
+            component={FrenmoCategoryNavPage}
+          /> */}
         </div>
       </>
     );
@@ -46,22 +57,22 @@ class App extends Component {
 
          <PrivateRoute exact path={"/Friends"} component={Friends} />
 
-
-          <Route path={"/feed"} component={FeedPage} />
-
+          <PrivateRoute path={"/feed"} component={FeedPage} />
+         
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
 
           <PrivateRoute
             exact
-            path={`/frenmos/:frenmoId`}
+            path={`/frenmos/category/:categoryId/:outstandingId`}
+            component={FrenmoDetail}
+          />
+
+          <PrivateRoute
+            exact
+            path={`/frenmos/:outstandingId/edit`}
             component={EditFrenmoPage}
           />
-          {/* <PrivateRoute
-            exact
-            path={`/frenmos/:categoryId/detail/:frenmoId`}
-            component={EditFrenmoPage}
-          /> */}
         </Switch>
       </>
     );

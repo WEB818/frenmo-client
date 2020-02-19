@@ -1,0 +1,5 @@
+.FrenmoDetail__frenmo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

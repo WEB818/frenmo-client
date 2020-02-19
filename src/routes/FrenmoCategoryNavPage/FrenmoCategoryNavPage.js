@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import FrenmoApiService from "../../services/frenmo-api-service";
-import "./FrenmoCategoryNavPage.css";
 
 class FrenmoCategoryNavPage extends Component {
   static contextType = FrenmoContext;
@@ -88,10 +87,10 @@ class FrenmoCategoryNavPage extends Component {
       receiver_name,
       receiver_username
     } = this.context;
-    console.log(title, "props in nav page");
+
     return (
       <>
-        <div>{this.context.title}</div>
+        <div>test in CategoryNavPage</div>
       </>
     );
   }

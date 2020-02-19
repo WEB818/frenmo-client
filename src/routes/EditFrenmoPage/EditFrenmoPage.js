@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FrenmoContext from "../../contexts/FrenmoContext";
 import EditFrenmoForm from "../../components/EditFrenmoForm/EditFrenmoForm";
 import FrenmoDetail from "../../components/FrenmoDetail/FrenmoDetail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +7,13 @@ import { faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./EditFrenmoPage.css";
 
 class EditFrenmoPage extends Component {
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  };
+
+  static contextType = FrenmoContext;
   state = {
     edit: false
   };
@@ -42,13 +50,8 @@ class EditFrenmoPage extends Component {
     );
     return (
       <div className="FrenmoForm__view">
-        {!edit && (
-          <FontAwesomeIcon
-            icon={faPencilAlt}
-            className="edit-icons"
-            onClick={this.handleToggleEdit}
-          />
-        )}
+        {edit && <EditFrenmoForm />}
+
         {edit && (
           <FontAwesomeIcon
             icon={faTimes}
@@ -56,7 +59,6 @@ class EditFrenmoPage extends Component {
             onClick={this.handleToggleEdit}
           />
         )}
-        {edit && <EditFrenmoForm />}
 
         {!edit && (
           <FrenmoDetail
@@ -68,6 +70,13 @@ class EditFrenmoPage extends Component {
             createdBy={createdBy}
             issuedBy={issuedBy}
             receivedBy={receivedBy}
+          />
+        )}
+        {!edit && (
+          <FontAwesomeIcon
+            icon={faPencilAlt}
+            className="edit-icons"
+            onClick={this.handleToggleEdit}
           />
         )}
       </div>

@@ -8,3 +8,10 @@
   border-bottom: 1px solid white;
   cursor: pointer;
 }
+
+.Frenmo__Nav-link:active {
+  background-color: darkblue;
+}
+.selected {
+  background-color: darkblue;
+}

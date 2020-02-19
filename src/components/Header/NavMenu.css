@@ -2,14 +2,19 @@
   color: white;
   display: flex;
   flex-direction: row;
+  text-align: right;
+  width: 10vw;
 }
 
 .NavMenu__Header {
   justify-content: left;
+  font-size: 1.3rem;
 }
 
 .NavMenu__links {
   color: white;
+  font-size: 0.9rem;
+  width: 7vw;
 }
 
 .navigation {
@@ -25,7 +30,7 @@
 .logout,
 .login {
   font-size: 1.1em;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   position: relative;
   right: -36px;
   bottom: -20px;
@@ -51,7 +56,8 @@
 .log-button:hover,
 .log-button:active,
 .Header__logged-in {
-  width: 140px;
+  width: 10vw;
+
   color: white;
 }
 
