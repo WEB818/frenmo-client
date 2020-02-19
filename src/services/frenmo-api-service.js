@@ -160,8 +160,9 @@ const FrenmoApiService = {
     );
   },
   searchUser(terms) {
+    console.log(terms);
     return fetch(
-      `${config.API_ENDPOINT}/favor/issue/`,
+      `${config.API_ENDPOINT}/user/search/`,
       {
         method: 'POST',
         headers: {
@@ -180,7 +181,7 @@ const FrenmoApiService = {
             .then(e =>
               Promise.reject(e)
             )
-        : null
+        : res.json()
     );
   }
 };

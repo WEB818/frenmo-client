@@ -31,9 +31,10 @@ class NewFrenmoForm extends Component {
     give: true,
     ask: false,
     receiver_id: null,
-    user_id: null,
+    users_id: null,
     receiver: '',
-    user: ''
+    user: '',
+    people: []
   };
 
   handleChange = date => {
@@ -42,13 +43,58 @@ class NewFrenmoForm extends Component {
     });
   };
 
-  handleChangePerson = event => {
+  handleChangePerson = async event => {
     //change person id and handle
+    let { receiver, user } = this.state;
+    const terms = this.state.give
+      ? receiver
+      : user;
+    console.log(this.context);
+    const setid = this.state.give
+      ? 'receiver'
+      : 'users';
+    let possibleUsers = await FrenmoApiService.searchUser(
+      terms
+    );
+    await this.setState({
+      ...this.state,
+      [`${
+        setid === 'users'
+          ? 'user'
+          : setid
+      }_id`]:
+        possibleUsers === []
+          ? possibleUsers[0].id
+          : null,
+      people: possibleUsers
+    });
   };
 
-  getCategories = () => {
-    //TODO: maybe put this in the api
+  renderSelect = () => {};
+
+  handleSelectPerson = async (
+    id,
+    person
+  ) => {
+    console.log(id, person);
+    const setid = this.state.give
+      ? 'receiver'
+      : 'user';
+    await this.setState({
+      ...this.state,
+      [`${
+        setid === 'user'
+          ? setid + 's'
+          : setid
+      }_id`]: id,
+      [setid]: person
+    });
+    console.log(this.state[setid]);
   };
+
+  // getCategories = () => {
+  //   //TODO: maybe put this in the api
+  // };
 
   handleIssue = fields => {
     FrenmoApiService.issueFrenmo(fields)
@@ -106,6 +152,29 @@ class NewFrenmoForm extends Component {
   };
 
   renderForm = () => {
+    let personSelection = (
+      <div>
+        {this.state.people.map(
+          (person, i) => {
+            return (
+              <button
+                key={i}
+                type="button"
+                value={person.username}
+                onClick={event => {
+                  this.handleSelectPerson(
+                    person.id,
+                    person.username
+                  );
+                }}
+              >
+                {person.username}
+              </button>
+            );
+          }
+        )}
+      </div>
+    );
     let sendPortion = (
       <>
         <div className="NewFrenmo__input-container">
@@ -117,7 +186,21 @@ class NewFrenmoForm extends Component {
             name="receiver"
             id="NewFrenmo__receiver"
             aria-label="Add receiver for frenmo"
+            value={this.state.receiver}
+            onChange={async event => {
+              await this.handleSelectPerson(
+                this.state.receiver_id,
+                event.target.value
+              );
+              console.log(
+                this.state.receiver
+              );
+              await this.handleChangePerson(
+                event
+              );
+            }}
           />
+          {personSelection}
         </div>
         <Button type="submit">
           Send Frenmo
@@ -135,7 +218,22 @@ class NewFrenmoForm extends Component {
             name="user"
             id="NewFrenmo__user"
             aria-label="Add user for frenmo"
+            value={this.state.user}
+            onChange={async event => {
+              event.persist();
+              await this.handleSelectPerson(
+                this.state.users_id,
+                event.target.value
+              );
+              console.log(
+                event.target.value
+              );
+              await this.handleChangePerson(
+                event
+              );
+            }}
           />
+          {personSelection}
         </div>
         <Button type="submit">
           Request Frenmo
