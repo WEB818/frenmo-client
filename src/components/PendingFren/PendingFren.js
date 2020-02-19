@@ -32,7 +32,7 @@ export class PendingFren extends Component {
         console.log('state',this.state.pendingFrens)
         return (
             <div>
-                {this.state.pendingFrens.map(pen => <PendingFriends pending={pen.username} />)}
+                {this.state.pendingFrens.map(pen => <PendingFriends pending={pen} />)}
             </div>
         )
     }

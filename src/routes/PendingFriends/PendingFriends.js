@@ -6,7 +6,7 @@ export class PendingFriends extends Component {
         return (
             <div>
                 <ul>
-                <li>{this.props.pending}</li>
+                <li>{this.props.pending.username}<button>add fren</button></li>
                 </ul>
             </div>
         )
