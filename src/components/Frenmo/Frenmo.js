@@ -17,19 +17,19 @@ class Frenmo extends Component {
       description,
       expiration_date,
       publicity,
-      tags,
+      outstandingId,
       createdBy,
       issuedBy,
       receivedBy,
       categoryId,
       frenmoId
     } = this.props;
-    console.log(this.state, "state in fren detail");
+
     return (
       <li className="Frenmo__title-container">
         <NavLink
           to={{
-            pathname: `/frenmos/${frenmoId}`,
+            pathname: `/frenmos/${outstandingId}`,
             state: {
               title: title,
               description: description,

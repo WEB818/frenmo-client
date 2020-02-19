@@ -60,13 +60,14 @@ class App extends Component {
 
           <PrivateRoute
             exact
-            path={`/frenmos/:frenmoId`}
-            component={EditFrenmoPage}
+            path={`/frenmos/:outstandingId`}
+            component={FrenmoDetail}
           />
+
           <PrivateRoute
             exact
-            path={`/frenmos/:frenmoId`}
-            component={FrenmoDetail}
+            path={`/frenmos/:outstandingId/edit`}
+            component={EditFrenmoPage}
           />
         </Switch>
       </>

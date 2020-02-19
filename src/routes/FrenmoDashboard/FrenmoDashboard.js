@@ -26,8 +26,7 @@ class FrenmoDashboard extends Component {
   }
 
   render() {
-    console.log(this.context);
-    const { frenmoCategories, frenmoList } = this.context;
+    const { frenmoCategories } = this.context;
 
     return (
       <div className="Dashboard__cat-container">

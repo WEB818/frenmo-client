@@ -12,6 +12,7 @@ class FrenmoListByCat extends Component {
   };
 
   static contextType = FrenmoContext;
+
   state = {
     type: ""
   };
@@ -48,8 +49,7 @@ class FrenmoListByCat extends Component {
   }
 
   render() {
-    console.log("props in catlist", this.props);
-    const { categoryId, frenmoId } = this.props.match.params;
+    const { categoryId } = this.props.match.params;
 
     const { frenmoList } = this.context;
 
@@ -64,6 +64,7 @@ class FrenmoListByCat extends Component {
               <Frenmo
                 key={idx}
                 frenmoId={frenmo.favor_id}
+                outstandingId={frenmo.outstanding_id}
                 title={frenmo.title}
                 description={frenmo.description}
                 expiration_date={frenmo.expiration_date}
