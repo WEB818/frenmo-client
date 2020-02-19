@@ -16,6 +16,7 @@ import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import "./App.css";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
 
+
 class App extends Component {
   state = { hasError: false };
 
