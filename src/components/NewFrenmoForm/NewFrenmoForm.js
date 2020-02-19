@@ -38,7 +38,17 @@ class NewFrenmoForm extends Component {
     });
   };
 
-  handleIssue = event => {};
+  getCategories = () => {
+    //TODO: maybe put this in the api
+  };
+
+  handleIssue = fields => {
+    FrenmoApiService.issueFrenmo(fields)
+      .then(() => {
+        //do a set state
+      })
+      .catch();
+  };
 
   handleSubmit = event => {
     event.preventDefault();
@@ -49,6 +59,9 @@ class NewFrenmoForm extends Component {
       category,
       expiration_date,
       publicity,
+      favor_id,
+      receiver_id,
+      users_id,
       limit
     } = event.target;
 
@@ -63,6 +76,9 @@ class NewFrenmoForm extends Component {
       .then(postRes =>
         this.setState({ postRes })
       )
+      .then(() => {
+        this.handleIssue();
+      })
       .then(this.context.addFrenmo)
       .then(() => {
         title.value = '';
@@ -71,6 +87,9 @@ class NewFrenmoForm extends Component {
         expiration_date.value = '';
         publicity.value = 0;
         limit.value = '';
+        favor_id.value = '';
+        users_id.value = '';
+        receiver_id.value = '';
         this.props.onRedirect(
           this.state.postRes.favor_id
         );
@@ -231,6 +250,17 @@ class NewFrenmoForm extends Component {
               id="NewFrenmo__limit"
               min="1"
               aria-label="Add limit for frenmo"
+            />
+          </div>
+          <div className="NewFrenmo__input-container">
+            <Label htmlFor="NewFrenmo__receiver">
+              Give To:
+            </Label>
+            <Input
+              type="text"
+              name="receiver"
+              id="NewFrenmo__receiver"
+              aria-label="Add receiver for frenmo"
             />
           </div>
           {/**one for submitting and issuing to a person */}

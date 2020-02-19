@@ -136,6 +136,28 @@ const FrenmoApiService = {
             )
         : null
     );
+  },
+  issueFrenmo(fields) {
+    return fetch(
+      `${config.API_ENDPOINT}/favor/issue/`,
+      {
+        method: 'POST',
+        headers: {
+          'content-type':
+            'application/json',
+          authorization: `bearer ${TokenService.getAuthToken()}`
+        },
+        body: JSON.stringify(fields)
+      }
+    ).then(res =>
+      !res.ok
+        ? res
+            .json()
+            .then(e =>
+              Promise.reject(e)
+            )
+        : null
+    );
   }
 };
 
