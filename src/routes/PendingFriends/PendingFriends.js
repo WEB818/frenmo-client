@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 
 export class PendingFriends extends Component {
+
+    addById = id => {
+        console.log("add_id",id)
+    }
+
     render() {
    console.log("pending.props",this.props.pending)
         return (
             <div>
                 <ul>
-                <li>{this.props.pending.username}<button>add fren</button></li>
+                <li id={this.props.pending.id}>{this.props.pending.username}
+                <button type="click" onClick={() => this.addById(this.props.pending.id)}>add fren</button>
+                </li>
                 </ul>
             </div>
         )
