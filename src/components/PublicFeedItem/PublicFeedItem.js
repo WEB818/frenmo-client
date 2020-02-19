@@ -25,6 +25,8 @@ export default class PublicFeedItem extends Component {
     this.props.onRedirect(favorId);
   };
 
+  renderCollapsedTitles() {}
+
   render() {
     const {
       favorId,
