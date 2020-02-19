@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserContext from "../../contexts/UserContext";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
 // import Icon from "../../images/profile.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,12 +13,18 @@ class NavMenu extends Component {
     super(props);
 
     this.state = {
-      error: null
+      error: null,
+      showMenu: false
     };
   }
 
   static contextType = UserContext;
 
+  handleShowMenu = () => {
+    this.setState(prevState => ({
+      showMenu: !prevState.showMenu
+    }));
+  };
   handleLogoutClick = () => {
     this.context.processLogout();
   };
@@ -57,33 +63,44 @@ class NavMenu extends Component {
       </>
     );
   }
-
+  navSlide = nav => {
+    console.log("hello");
+    // nav.classList.toggle("NavMenu__list-active");
+  };
   render() {
     return (
       <nav className="Header">
-        <Link to="/feed" className="Header__link">
-          <h2 className="NavMenu__Header">Frenmo</h2>
-        </Link>
-        <div>
-          <Link to="/frenmos" className="NavMenu__links">
-            My Frenmos
-          </Link>
-        </div>
-        <div>
-          <Link to="/send" className="NavMenu__links">
-            Create
-          </Link>
-        </div>
-        <div>
-          <Link to="/friends" className="NavMenu__links">
-            Friends
-          </Link>
-        </div>
-        <div>
-          <Link to="/profile" className="NavMenu__links">
-            Profile
-          </Link>
-        </div>
+        <NavLink
+          to="/feed"
+          className="Header__link"
+          activeClassName="NavMenu__list-active"
+        >
+          <h2 className="NavMenu__Header" onClick={() => this.navSlide()}>
+            Frenmo
+          </h2>
+        </NavLink>
+        <ul className="NavMenu__list">
+          <li className="NavMenu__menu-item">
+            <Link to="/frenmos" className="NavMenu__links">
+              My Frenmos
+            </Link>
+          </li>
+          <li className="NavMenu__menu-item">
+            <Link to="/send" className="NavMenu__links">
+              Create
+            </Link>
+          </li>
+          <li className="NavMenu__menu-item">
+            <Link to="/friends" className="NavMenu__links">
+              Friends
+            </Link>
+          </li>
+          <li className="NavMenu__menu-item">
+            <Link to="/profile" className="NavMenu__links">
+              Profile
+            </Link>
+          </li>
+        </ul>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

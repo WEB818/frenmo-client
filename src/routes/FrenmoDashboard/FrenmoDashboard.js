@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
-import FrenmoDetail from "../../components/FrenmoDetail/FrenmoDetail";
+import { countFavorsInCategory } from "../../services/helpers";
 
 import "./FrenmoDashboard.css";
 
@@ -26,7 +26,7 @@ class FrenmoDashboard extends Component {
   }
 
   render() {
-    const { frenmoCategories } = this.context;
+    const { frenmoCategories, frenmoList } = this.context;
 
     return (
       <div className="Dashboard__cat-container">
@@ -38,6 +38,7 @@ class FrenmoDashboard extends Component {
             >
               {category.category}
             </NavLink>
+            <div>{countFavorsInCategory(frenmoList.favors, category.id)}</div>
           </div>
         ))}
       </div>
