@@ -13,7 +13,7 @@ import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategory
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import Friends from './routes/Friends/Friends'
-import PendingFriends from './routes/PendingFriends/PendingFriends'
+import PendingFren from './components/PendingFren/PendingFren'
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 
 class App extends Component {
@@ -42,7 +42,7 @@ class App extends Component {
             component={RegistrationPage}
           />
 
-         <PrivateRoute exact path={"/Pending"} component={PendingFriends} />
+         <PrivateRoute  path={"/pending"} component={PendingFren} />
 
          <PrivateRoute exact path={"/Friends"} component={Friends} />
 
