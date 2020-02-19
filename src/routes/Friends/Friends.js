@@ -5,7 +5,6 @@ import config from '../../config'
 import FriendsList from '../../components/FriendsList/FriendsList'
 //import MyFriendsContext from '../../contexts/MyFriendsContext'
 import SearchUser from '../../components/SearchUser/SearchUser'
-import PendingFren from '../../components/PendingFren/PendingFren'
 
 
 class Friends extends Component {
@@ -57,12 +56,10 @@ componentDidMount(){
     }
 
     render() {
-        console.log(this.state)
         return (
             <div>
                 <SearchUser />
-                {/* <PendingView /> */}
-                {this.state.friends.map(fren => <FriendsList frens={fren.username} />)}
+                {this.state.friends.map(fren => <FriendsList frens={fren} />)}
             </div>
         )
     }

@@ -55,7 +55,7 @@ class SearchUser extends Component {
           id="user_search"
           type="text"
           name="user_search"
-          placeholder="find friends"
+          placeholder="and friends"
         />
         <button type="submit">Add</button>
       </form>
