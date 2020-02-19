@@ -28,6 +28,7 @@ class App extends Component {
             component={FrenmoListByCat}
             name="frenmoByCat"
           />
+
           {/* ============ OBSOLETE NAV PAGE================= 
           <Route
             exact
@@ -51,16 +52,15 @@ class App extends Component {
             component={RegistrationPage}
           />
 
+          <PrivateRoute path={"/feed"} component={FeedPage} />
           <PublicOnlyRoute exact path={"/friends"} component={FriendsList} />
-
-          <Route path={"/feed"} component={FeedPage} />
 
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
 
           <PrivateRoute
             exact
-            path={`/frenmos/:outstandingId`}
+            path={`/frenmos/category/:categoryId/:outstandingId`}
             component={FrenmoDetail}
           />
 

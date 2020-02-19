@@ -4,7 +4,7 @@ import FrenmoApiService from "../../services/frenmo-api-service";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import PublicFeedItem from "../../components/PublicFeedItem/PublicFeedItem";
 export default class FeedPage extends Component {
-  static defaultProps = {
+  state = {
     favors: []
   };
 
@@ -15,6 +15,12 @@ export default class FeedPage extends Component {
     FrenmoApiService.getAllPublicFrenmos()
       .then(this.context.setAllPublic)
       .catch(this.context.setError);
+    FrenmoApiService.getPersonalFrenmos()
+      .then(this.context.setAllPersonal)
+      .catch(this.context.setError);
+    FrenmoApiService.getFriendFrenmos()
+      .then(this.context.setAllFriend)
+      .catch(this.context.setError);
   }
 
   redirectToTarget = favorId => {
@@ -22,14 +28,33 @@ export default class FeedPage extends Component {
     history.push(`/frenmos/${favorId}`);
   };
 
-  render() {
-    const { publicFrenmos } = this.context;
+  renderPublicity() {
+    const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
 
     return (
       <>
-        {publicFrenmos.favors && (
+        <button onClick={() => this.setState({ favors: publicFrenmos })}>
+          Public
+        </button>
+        <button onClick={() => this.setState({ favors: friendFrenmos })}>
+          Friends
+        </button>
+        <button onClick={() => this.setState({ favors: personalFrenmos })}>
+          Personal
+        </button>
+      </>
+    );
+  }
+
+  render() {
+    const { favors } = this.state;
+    console.log(favors);
+    return (
+      <>
+        {this.renderPublicity()}
+        {favors.favors && (
           <div>
-            {publicFrenmos.favors.map((pubFavor, idx) => (
+            {favors.favors.map((pubFavor, idx) => (
               <PublicFeedItem
                 key={idx}
                 favorId={pubFavor.id}

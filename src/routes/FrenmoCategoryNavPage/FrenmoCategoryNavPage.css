@@ -20,10 +20,6 @@
   font-size: 14px;
 }
 
-a {
-  text-decoration: none;
-}
-
 .active {
   background-color: rgb(186, 229, 243);
   color: darkblue;
