@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import TokenService from '../../services/token-service'
+import config from '../../config'
 
 export class PendingFriends extends Component {
 
     addById = id => {
         console.log("add_id",id)
+
+        fetch(`${config.API_ENDPOINT}/friend/${id}`,{
+            method: 'PATCH',
+            headers: {
+                authorization : `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+
     }
 
     render() {
