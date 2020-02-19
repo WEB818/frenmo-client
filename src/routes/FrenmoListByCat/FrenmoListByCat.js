@@ -33,6 +33,29 @@ class FrenmoListByCat extends Component {
     FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
+    
+    const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
+    const myFrenmos = publicFrenmos.map((frenmo, idx) =>  {
+      
+      return (
+          <Frenmo
+            key={idx}
+            frenmoId={frenmo.favor_id}
+            outstandingId={frenmo.outstanding_id}
+            title={frenmo.title}
+            description={frenmo.description}
+            expiration_date={frenmo.expiration_date}
+            publicity={frenmo.publicity}
+            tags={frenmo.tags}
+            createdBy={frenmo.creator_name}
+            issuedBy={frenmo.issuer_name}
+            receivedBy={frenmo.receiver_name}
+            categoryId={frenmo.category}
+          />
+      )})
+      this.setState({
+        myFrenmos
+      })
   }
   
 
@@ -81,47 +104,29 @@ class FrenmoListByCat extends Component {
     );
   }
 
+  
   render() {
     const { categoryId } = this.props.match.params;
     
-    const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
+    
 
-    console.log(personalFrenmos.favors, publicFrenmos.favors, friendFrenmos.favors)
+    
 
     // let frenmoList = publicFrenmos.favors.concat(personalFrenmos.favors.concat(friendFrenmos.favors));
 
     // console.log(frenmoList)
     // const frenmosByCat = getFrenmosInCategory(frenmoList.favors, categoryId);
-    const myFrenmos = this.state.myFrenmos.map((frenmo, idx) => (
-      <div key={idx}>
-        
-          
-            <Frenmo
-              key={idx}
-              frenmoId={frenmo.favor_id}
-              outstandingId={frenmo.outstanding_id}
-              title={frenmo.title}
-              description={frenmo.description}
-              expiration_date={frenmo.expiration_date}
-              publicity={frenmo.publicity}
-              tags={frenmo.tags}
-              createdBy={frenmo.creator_name}
-              issuedBy={frenmo.issuer_name}
-              receivedBy={frenmo.receiver_name}
-              categoryId={frenmo.category}
-            />
-          
-        
-        
-      </div>
-    ))
-
+    
+  {console.log(this.state.myFrenmos)}
     return (
       <>
         <div className="btn-container">{this.renderTypes()}</div>
         <div className="ListByCat__section">
-          {myFrenmos}
-          {console.log(myFrenmos)}
+          <ul>
+            {this.state.myFrenmos}
+          </ul>
+          
+          
         </div>
       </>
     );
