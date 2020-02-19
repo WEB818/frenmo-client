@@ -12,6 +12,7 @@ class FrenmoListByCat extends Component {
   };
 
   static contextType = FrenmoContext;
+
   state = {
     type: ""
   };
@@ -62,7 +63,8 @@ class FrenmoListByCat extends Component {
             {frenmosByCat.map((frenmo, idx) => (
               <Frenmo
                 key={idx}
-                frenmoId={frenmo.id}
+                frenmoId={frenmo.favor_id}
+                outstandingId={frenmo.outstanding_id}
                 title={frenmo.title}
                 description={frenmo.description}
                 expiration_date={frenmo.expiration_date}

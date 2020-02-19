@@ -85,7 +85,7 @@ export class UserProvider extends Component {
     TokenService.clearAuthToken();
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
-    this.setUser({ idle: true });
+    this.setUser({ idle: false });
   };
 
   fetchRefreshToken = () => {

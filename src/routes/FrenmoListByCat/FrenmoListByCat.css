@@ -1,7 +1,8 @@
 .ListByCat__section {
   background-color: rgb(186, 229, 243);
-  margin-top: 50px;
+  margin: 100px;
   padding: 0;
+  width: 200px;
 }
 
 @media (min-width: 1440px) {

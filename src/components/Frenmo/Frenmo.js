@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import FrenmoDetail from "../FrenmoDetail/FrenmoDetail";
 
 import "./Frenmo.css";
 
@@ -16,7 +17,7 @@ class Frenmo extends Component {
       description,
       expiration_date,
       publicity,
-      tags,
+      outstandingId,
       createdBy,
       issuedBy,
       receivedBy,
@@ -28,21 +29,29 @@ class Frenmo extends Component {
       <li className="Frenmo__title-container">
         <NavLink
           to={{
-            pathname: `/frenmos/${categoryId}/detail/${frenmoId}`,
+            pathname: `/frenmos/${outstandingId}`,
             state: {
-              title,
-              description,
-              expiration_date,
-              publicity,
-              tags,
-              createdBy,
-              issuedBy,
-              receivedBy
+              title: title,
+              description: description,
+              expiration_date: expiration_date,
+              publicity: publicity,
+              createdBy: createdBy,
+              issuedBy: issuedBy,
+              receivedBy: receivedBy
             }
           }}
         >
           <div className="Frenmo__item">
-            <p>{title}</p>
+            <h3>{title}</h3>
+            {/* <FrenmoDetail
+              description={description}
+              expiration_date={expiration_date}
+              publicity={publicity}
+              tags={tags}
+              createdBy={createdBy}
+              issuedBy={issuedBy}
+              receivedBy={receivedBy}
+            /> */}
           </div>
         </NavLink>
       </li>
