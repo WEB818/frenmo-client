@@ -27,12 +27,24 @@ export class PendingFren extends Component {
         .then(this.setPendingFrens)
     }
 
+    updateFriendsAfterAdd = frensId => {
+        fetch(`${config.API_ENDPOINT}/friend/${frensId}`, {
+            method: 'PATCH',
+            headers: {
+                authorization : `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+        .then(res => this.setState({
+            pendingFrens: [...this.state.pendingFrens.filter(fren => fren.id !== frensId)]
+        }))
+    }
+
 
     render() {
         console.log('state',this.state.pendingFrens)
         return (
             <div>
-                {this.state.pendingFrens.map(pen => <PendingFriends pending={pen} />)}
+                {this.state.pendingFrens.map(pen => <PendingFriends pending={pen} update={this.updateFriendsAfterAdd}/>)}
             </div>
         )
     }

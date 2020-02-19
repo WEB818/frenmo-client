@@ -6,14 +6,14 @@ export class PendingFriends extends Component {
 
     addById = id => {
         console.log("add_id",id)
+        this.props.update(id)
         
-
-        fetch(`${config.API_ENDPOINT}/friend/${id}`,{
-            method: 'PATCH',
-            headers: {
-                authorization : `bearer ${TokenService.getAuthToken()}`
-            }
-        })
+        // fetch(`${config.API_ENDPOINT}/friend/${id}`,{
+        //     method: 'PATCH',
+        //     headers: {
+        //         authorization : `bearer ${TokenService.getAuthToken()}`
+        //     }
+        // })
 
     }
 
