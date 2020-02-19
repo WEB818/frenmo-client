@@ -29,13 +29,21 @@ class NewFrenmoForm extends Component {
     expDate: new Date(),
     postRes: {},
     give: true,
-    ask: false
+    ask: false,
+    receiver_id: null,
+    user_id: null,
+    receiver: '',
+    user: ''
   };
 
   handleChange = date => {
     this.setState({
       expDate: date
     });
+  };
+
+  handleChangePerson = event => {
+    //change person id and handle
   };
 
   getCategories = () => {
@@ -60,8 +68,8 @@ class NewFrenmoForm extends Component {
       expiration_date,
       publicity,
       favor_id,
-      receiver_id,
-      users_id,
+      receiver,
+      user,
       limit
     } = event.target;
 
@@ -88,8 +96,8 @@ class NewFrenmoForm extends Component {
         publicity.value = 0;
         limit.value = '';
         favor_id.value = '';
-        users_id.value = '';
-        receiver_id.value = '';
+        user.value = '';
+        receiver.value = '';
         this.props.onRedirect(
           this.state.postRes.favor_id
         );

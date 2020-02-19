@@ -158,6 +158,30 @@ const FrenmoApiService = {
             )
         : null
     );
+  },
+  searchUser(terms) {
+    return fetch(
+      `${config.API_ENDPOINT}/favor/issue/`,
+      {
+        method: 'POST',
+        headers: {
+          'content-type':
+            'application/json',
+          authorization: `bearer ${TokenService.getAuthToken()}`
+        },
+        body: JSON.stringify({
+          username: terms
+        })
+      }
+    ).then(res =>
+      !res.ok
+        ? res
+            .json()
+            .then(e =>
+              Promise.reject(e)
+            )
+        : null
+    );
   }
 };
 
