@@ -4,23 +4,39 @@ import config from '../../config'
 import "../../components/FriendsList/FriendsList.css"
 
 export default class FriendsList extends Component {
+  state = {
+    sendFrenmo: false,
+  }
 
-  unfriendById = id => {
-    fetch(`${config.API_ENDPOINT}/friend/${id}`,{
-      method: 'DELETE',
-      headers: {
-        authorization : `bearer ${TokenService.getAuthToken()}`
-      }
+  
+    unfriendById = id => {
+      this.props.update(id)
+    }
+    
+  
+  
+  frenmo = id => {
+    console.log('click',id)
+    if(!this.state.sendFrenmo){
+      alert('your frenmo form')
+      this.setState({
+        sendFrenmo: true,
+      })
+    }
+
+    this.setState({
+      sendFrenmo: false
     })
   }
+
   render() {
-    
     return (
       <div>
         <ul className="friends-list">
-           <li className="frens" key={this.props.frens.id}>
+           <li onDoubleClick={() => this.frenmo(this.props.frens.id)} className="frens" key={this.props.frens.id}>
              {this.props.frens.username} 
-             <button onClick={() => this.unfriendById(this.props.frens.id)}>unfriend</button>
+             <button type="submit" onClick={() => this.frenmo(this.props.frens.id)}>Send Frenmo</button>
+             <button type="submit" onClick={() => this.unfriendById(this.props.frens.id)}>unfriend</button>
              </li>
         </ul>
       </div>

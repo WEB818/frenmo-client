@@ -6,6 +6,7 @@ export class PendingFriends extends Component {
 
     addById = id => {
         console.log("add_id",id)
+        
 
         fetch(`${config.API_ENDPOINT}/friend/${id}`,{
             method: 'PATCH',

@@ -37,29 +37,28 @@ componentDidMount(){
         return res.json()
     })
     .then(this.setFriendsList)
-
-
-    // MyFriends.getFriends()
-    //     .then(this.context.setFriendsList)
-    //     console.log(this.context.setFriendsList)
 }
 
 
+updateFrensAfterDelete = frensId => {
+    console.log('updating',frensId)
 
-    renderFriends(){
-        const { friendsList = []} = this.context
-        return friendsList.map(fren => (
-            <FriendsList 
-            key={fren.id} 
-            />
-        ))
-    }
+    fetch(`${config.API_ENDPOINT}/friend/${frensId}`,{
+            method: 'DELETE',
+            headers: {
+              authorization : `bearer ${TokenService.getAuthToken()}`
+            }
+          })
+          .then(res => this.setState({
+              friends: [...this.state.friends.filter(fren => fren.id !== frensId)]
+          }))
+}
 
     render() {
         return (
             <div>
                 <SearchUser />
-                {this.state.friends.map(fren => <FriendsList frens={fren} />)}
+                {this.state.friends.map(fren => <FriendsList frens={fren} update={this.updateFrensAfterDelete}/>)}
             </div>
         )
     }
