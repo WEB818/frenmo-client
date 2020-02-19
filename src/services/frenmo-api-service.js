@@ -74,14 +74,14 @@ const FrenmoApiService = {
         : res.json()
     );
   },
-  postFrenmo({
+  postFrenmo(
     title,
     description,
     category,
     expiration_date,
     publicity,
     limit
-  }) {
+  ) {
     return fetch(
       `${config.API_ENDPOINT}/favor`,
       {
