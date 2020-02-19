@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import TokenService from '../../services/token-service'
 import config from '../../config'
-//import MyFriends from '../../services/friends-api-service'
 import FriendsList from '../../components/FriendsList/FriendsList'
-//import MyFriendsContext from '../../contexts/MyFriendsContext'
 import SearchUser from '../../components/SearchUser/SearchUser'
 
 
@@ -58,6 +56,7 @@ updateFrensAfterDelete = frensId => {
         return (
             <div>
                 <SearchUser />
+                
                 {this.state.friends.map(fren => <FriendsList frens={fren} update={this.updateFrensAfterDelete}/>)}
             </div>
         )

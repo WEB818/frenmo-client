@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import TokenService from '../../services/token-service'
-import config from '../../config'
+import { Link } from 'react-router-dom'
 import "../../components/FriendsList/FriendsList.css"
 
 export default class FriendsList extends Component {

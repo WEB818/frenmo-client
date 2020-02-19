@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import config from '../../config'
+import { Link } from 'react-router-dom'
+
 import PendingFriends from '../../routes/PendingFriends/PendingFriends'
 import TokenService from '../../services/token-service'
 
@@ -44,6 +46,10 @@ export class PendingFren extends Component {
         console.log('state',this.state.pendingFrens)
         return (
             <div>
+                <div>
+                <h2>pending friends</h2>
+                <span><Link to='/Friends'>Friends List</Link></span>
+                </div>
                 {this.state.pendingFrens.map(pen => <PendingFriends pending={pen} update={this.updateFriendsAfterAdd}/>)}
             </div>
         )
