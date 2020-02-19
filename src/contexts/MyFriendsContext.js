@@ -13,6 +13,7 @@ export class MyFriendsProvider extends Component {
     }
 
     setFriendsList = friendsList => {
+        console.log("setlist",friendsList)
         this.setState({friendsList})
     }
 
