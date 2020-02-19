@@ -24,12 +24,9 @@ class NavMenu extends Component {
   };
 
   renderLogoutLink() {
-    // const path = this.props.location.pathname.slice(1);
     return (
       <>
-        <Link to="/" className="Header__link">
-          {/* <h1> {path} </h1> */}
-        </Link>
+        <Link to="/" className="Header__link"></Link>
         <div className="Header__logged-in">
           <div className="navigation">
             <a href="/" className="log-button">
@@ -48,15 +45,7 @@ class NavMenu extends Component {
     return (
       <>
         <Link to="/" className="Header__link" />
-        {/* <Link to="/" className="Header__link">
 
-        <Link
-          to="/"
-          className="Header__link"
-        >
-
-          Frenmo
-        </Link>*/}
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a href="/login" className="log-button">
