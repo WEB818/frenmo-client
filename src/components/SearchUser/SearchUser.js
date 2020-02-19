@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import config from '../../config'
+import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
 import "./SearchUser.css";
 
 class SearchUser extends Component {
-  renderFrensToAdd = addFren => {
+  addFren = addFren => {
     console.log("renderfrens",addFren)
     const friend_id = {
       friend_id: addFren.id,
@@ -36,12 +37,14 @@ class SearchUser extends Component {
   })
   .then(res => {
       if(!res.ok){
-          throw new Error(res.status)
+          alert('user doesnt exists')
       }
       return res.json()
   })
-  .then(fren => this.renderFrensToAdd(fren))
+  .then(fren => this.addFren(fren))
 
+  this.refs.fieldName.value=''
+  alert('fren request sent')
     
   };
 
@@ -52,12 +55,16 @@ class SearchUser extends Component {
       <form onSubmit={this.handleSearch}>
         <label htmlFor="user_search">Frenmo Search</label>
         <input
+        ref="fieldName"
           id="user_search"
           type="text"
           name="user_search"
           placeholder="add friends"
         />
         <button type="submit">Add</button>
+        <div>
+        <span><Link to='/pending'>Friend Requests</Link></span>
+        </div>
       </form>
       </div>
     );
