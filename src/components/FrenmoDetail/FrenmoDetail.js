@@ -1,50 +1,129 @@
-import React, { Component } from "react";
-import { Button } from "../Utils/Utils";
-import { getFrenmoById } from "../../services/helpers";
-import FrenmoContext from "../../contexts/FrenmoContext";
-import "./FrenmoDetail.css";
+
+import React, {
+  Component
+} from 'react';
+import { getFrenmoById } from '../../services/helpers';
+import FrenmoContext from '../../contexts/FrenmoContext';
+import './FrenmoDetail.css';
+
 class FrenmoDetail extends Component {
+  state = {
+    frenmo: {
+      title: '',
+      description: '',
+      expiration_date: '',
+      publicity: '',
+      creator_name: '',
+      issuer_name: '',
+      receiver_name: ''
+    },
+    relationship: null
+  };
+
   static defaultProps = {
     match: {
       params: {}
     }
   };
-
+  componentDidMount() {
+    const { frenmoList } = this.context;
+    const {
+      outstandingId
+    } = this.props.match.params;
+    const frenmo = getFrenmoById(
+      frenmoList.favors,
+      outstandingId
+    );
+    // this.setState({
+    //   ...this.state,
+    //   frenmo: this.props.frenmo,
+    //   relationship: this.props
+    //     .relationship //received | issued | expired | redeemed
+    // });
+    this.setState({
+      ...this.state,
+      frenmo,
+      relationship: this.props
+        .relationship //received | issued | expired | redeemed
+    });
+  }
   static contextType = FrenmoContext;
 
-  render() {
-    const { frenmoList } = this.context;
-    const { outstandingId } = this.props.match.params;
+  renderRedeem = () => {};
 
-    const frenmoById = getFrenmoById(frenmoList.favors, outstandingId);
-    console.log("in detail", frenmoById);
+  //issuer can issue more
+  renderIssue = () => {};
+
+  //issuer must confirm redemption
+  renderConfirmRedeem = () => {};
+
+  //issuer can update expired fields
+  renderEdit = () => {};
+
+  //Expiration flag -- renders for expired frenmos
+  renderExpirationFlag = () => {};
+
+  render() {
+    const {
+      title,
+      description,
+      expiration_date,
+      publicity,
+      creator_name,
+      issuer_name,
+      receiver_name
+    } = this.state.frenmo;
+
     return (
       <div className="FrenmoDetail__frenmo">
         <h2 className="FrenmoDetail__title">
-          {frenmoById && frenmoById.title}
+          {title}
         </h2>
-        <p>Description: {frenmoById && frenmoById.description}</p>
-
-        {frenmoById && frenmoById.expiration_date ? (
-          <p>This frenmo is valid until: {frenmoById.expiration_date}</p>
+        {expiration_date ? (
+          <h3>
+            This frenmo is valid until:{' '}
+            {expiration_date}
+          </h3>
         ) : (
-          "This frenmo has no expiration date."
+          'This frenmo has no expiration date.'
         )}
-        {frenmoById && frenmoById.publicity && (
-          <p>Privacy setting: {frenmoById.publicity}</p>
+        <p>
+          Description: {description}
+        </p>
+
+        {publicity && (
+          <p>
+            Privacy setting: {publicity}
+          </p>
         )}
-        {frenmoById && frenmoById.creator_name && (
-          <p>Frenmo created by: {frenmoById.creator_name}</p>
+        {creator_name && (
+          <p>
+            Frenmo created by:{' '}
+            {creator_name}
+          </p>
         )}
-        {frenmoById && frenmoById.issuer_name && (
-          <p>Frenmo issued by: {frenmoById.issuer_name}</p>
+        {issuer_name && (
+          <p>
+            Frenmo issued by:{' '}
+            {issuer_name}
+          </p>
         )}
-        {frenmoById && frenmoById.receiver_name ? (
-          <p>Frenmo issued to: {frenmoById.receiver_name}</p>
+        {receiver_name ? (
+          <p>
+            Frenmo issued to:{' '}
+            {receiver_name}
+          </p>
         ) : (
           <div>
-            <p>This frenmo has not been issued.</p>
-            <Button>Issue this frenmo</Button>
+
+            <p>
+              This frenmo has not been
+              issued.
+            </p>
+            <button>
+              Issue this frenmo
+            </button>
+
           </div>
         )}
       </div>
