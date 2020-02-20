@@ -11,6 +11,11 @@ const MenuSlide = ({ showMenu }) => (
   <div id="navSlide" className={showMenu ? "slideIn" : "slideOut"}>
     <ul className="NavMenu__list">
       <li className="NavMenu__menu-item">
+        <Link to="/feed" className="NavMenu__links">
+          Frenmo Feed
+        </Link>
+      </li>
+      <li className="NavMenu__menu-item">
         <Link to="/frenmos" className="NavMenu__links">
           My Frenmos
         </Link>

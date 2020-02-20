@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Frenmo from "../../components/Frenmo/Frenmo";
 import { getFrenmosInCategory } from "../../services/helpers";
 import FrenmoContext from "../../contexts/FrenmoContext";
+import UserContext from "../../contexts/UserContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
-// import UserContext from "./contexts/UserContext";
+import UserId from "../../components/UserId/UserId";
 import "./FrenmoListByCat.css";
 
 class FrenmoListByCat extends Component {
@@ -35,20 +36,23 @@ class FrenmoListByCat extends Component {
       .catch(this.context.setError);
 
     let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
+
     const drawFrenmos = (frenmo, idx) => {
       return (
         <Frenmo
           // key={idx}
-          frenmoId={frenmo.favor_id}
+          frenmoId={frenmo.id}
           outstandingId={frenmo.outstanding_id}
           title={frenmo.title}
           description={frenmo.description}
           expiration_date={frenmo.expiration_date}
           publicity={frenmo.publicity}
-          tags={frenmo.tags}
+          createdById={frenmo.creator_id}
           createdBy={frenmo.creator_name}
+          issuedById={frenmo.issuer_id}
           issuedBy={frenmo.issuer_name}
-          receivedBy={frenmo.receiver_id}
+          receivedById={frenmo.receiver_id}
+          receivedBy={frenmo.receiver_name}
           categoryId={frenmo.category}
         />
       );
@@ -62,9 +66,21 @@ class FrenmoListByCat extends Component {
     });
   }
 
+  setContext = () => {
+    return (
+      <FrenmoContext.Consumer>
+        {frenmo => (
+          <UserContext.Consumer>
+            {user => console.log(user)}
+          </UserContext.Consumer>
+        )}
+      </FrenmoContext.Consumer>
+    );
+  };
+
   handleToggleTabs = () => {
     console.log("state in list by cat", this.state.myFrenmos);
-    console.log("this button has been clicked");
+
     //   if (frenmo.receiver_id === user.id && !redeemed) {
     //     this.setState({})
     //   } else if (issued ? frenmo.issuer_id === user.id && !frenmo.issuer_id) {
@@ -79,7 +95,7 @@ class FrenmoListByCat extends Component {
         <button
           className="CatNavPage__tabs"
           onClick={
-            () => this.handleToggleTabs()
+            () => this.setContext()
             // this.setState({
             //   type: "received"
             // })
@@ -128,6 +144,7 @@ class FrenmoListByCat extends Component {
 
     return (
       <>
+        <UserId />
         <div className="btn-container">{this.renderTypes()}</div>
         <div className="ListByCat__section">
           <ul>{frenmosByCat}</ul>
