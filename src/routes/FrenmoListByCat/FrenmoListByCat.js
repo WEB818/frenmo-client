@@ -72,7 +72,7 @@ class FrenmoListByCat extends Component {
        if(frenmo.props.publicity !== "public"){
         console.log('my recieved frenmos', frenmo.props)
         //send frenmo.props to deal with information
-        //
+        //<received received={frenmo.props}
        }
       })
   };
