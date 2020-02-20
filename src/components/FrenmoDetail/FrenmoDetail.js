@@ -1,9 +1,11 @@
+
 import React, {
   Component
 } from 'react';
 import { getFrenmoById } from '../../services/helpers';
 import FrenmoContext from '../../contexts/FrenmoContext';
 import './FrenmoDetail.css';
+
 class FrenmoDetail extends Component {
   state = {
     frenmo: {
@@ -113,6 +115,7 @@ class FrenmoDetail extends Component {
           </p>
         ) : (
           <div>
+
             <p>
               This frenmo has not been
               issued.
@@ -120,6 +123,7 @@ class FrenmoDetail extends Component {
             <button>
               Issue this frenmo
             </button>
+
           </div>
         )}
       </div>
