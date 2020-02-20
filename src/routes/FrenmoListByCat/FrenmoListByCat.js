@@ -33,13 +33,12 @@ class FrenmoListByCat extends Component {
     await FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
-    console.log(this.context.publicFrenmos);
 
     let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
     const drawFrenmos = (frenmo, idx) => {
       return (
         <Frenmo
-          key={idx}
+          // key={idx}
           frenmoId={frenmo.favor_id}
           outstandingId={frenmo.outstanding_id}
           title={frenmo.title}
@@ -49,7 +48,7 @@ class FrenmoListByCat extends Component {
           tags={frenmo.tags}
           createdBy={frenmo.creator_name}
           issuedBy={frenmo.issuer_name}
-          receivedBy={frenmo.receiver_name}
+          receivedBy={frenmo.receiver_id}
           categoryId={frenmo.category}
         />
       );
@@ -64,6 +63,8 @@ class FrenmoListByCat extends Component {
   }
 
   handleToggleTabs = () => {
+    console.log("state in list by cat", this.state.myFrenmos);
+    console.log("this button has been clicked");
     //   if (frenmo.receiver_id === user.id && !redeemed) {
     //     this.setState({})
     //   } else if (issued ? frenmo.issuer_id === user.id && !frenmo.issuer_id) {
@@ -77,10 +78,11 @@ class FrenmoListByCat extends Component {
       <div className="btn-container">
         <button
           className="CatNavPage__tabs"
-          onClick={() =>
-            this.setState({
-              type: "received"
-            })
+          onClick={
+            () => this.handleToggleTabs()
+            // this.setState({
+            //   type: "received"
+            // })
           }
         >
           Received
@@ -121,7 +123,7 @@ class FrenmoListByCat extends Component {
 
   render() {
     const { categoryId } = this.props.match.params;
-
+    console.log(this.state.type);
     const frenmosByCat = getFrenmosInCategory(this.state.myFrenmos, categoryId);
 
     return (

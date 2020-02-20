@@ -45,15 +45,13 @@ class Frenmo extends Component {
         >
           <div className="Frenmo__item">
             <h3>{title} bye</h3>
-            {/* <FrenmoDetail
+            <FrenmoDetail
               description={description}
               expiration_date={expiration_date}
-              publicity={publicity}
-              tags={tags}
               createdBy={createdBy}
               issuedBy={issuedBy}
               receivedBy={receivedBy}
-            /> */}
+            />
           </div>
         </NavLink>
       </li>
