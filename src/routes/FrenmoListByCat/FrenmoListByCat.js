@@ -19,7 +19,7 @@ class FrenmoListByCat extends Component {
 
   state = {
     type: '',
-    activeTab: 'received',
+    activeTab: 'receivedreceived',
     myFrenmos: []
   };
   // ====== currently non-functional ==========//
