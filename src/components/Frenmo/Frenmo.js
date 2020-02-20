@@ -42,7 +42,7 @@ class Frenmo extends Component {
           }}
         >
           <div className="Frenmo__item">
-            <h3>{title} hi</h3>
+            <h3>{title}</h3>
             {/* <FrenmoDetail
               description={description}
               expiration_date={expiration_date}
