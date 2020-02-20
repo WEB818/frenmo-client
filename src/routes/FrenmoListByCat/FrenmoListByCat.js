@@ -19,7 +19,7 @@ class FrenmoListByCat extends Component {
 
   state = {
     type: '',
-    activeTab: '',
+    activeTab: 'received',
     myFrenmos: []
   };
   // ====== currently non-functional ==========//
@@ -95,12 +95,13 @@ class FrenmoListByCat extends Component {
   }
 
   handleToggleTabs = () => {
-    //   if (frenmo.receiver_id === user.id && !redeemed) {
-    //     this.setState({})
-    //   } else if (issued ? frenmo.issuer_id === user.id && !frenmo.issuer_id) {
-    //   } else if (redeemed ? frenmo.receiver_id === user.id && frenmo.receiver_redeemed === true || frenmo.issuer_id === user.id && frenmo.issuer_redeemed === true) {
-    //  } else if (expired ? currentdate > exp date && frenmo.receiver_redeemed === false || frenmo.issuer_redeemed === false) {
-    //  }
+    if (this.state.myPublicFrenmos.receiver_redeemed === false) {
+      this.setState({type:'recieved'})
+    } else if (this.state.myPublicFrenmos.issuer_id !== this.state.myPublicFrenmos.receiver_id) {
+      this.setStat({type:'issued'})
+    } else if (this.state.myPublicFrenmos.receiver_redeemed === true) {
+      this.setState({type:'redeemed'})
+    }   
   };
 
   renderTypes() {

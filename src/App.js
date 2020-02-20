@@ -16,7 +16,7 @@ import PendingFren from './components/PendingFren/PendingFren'
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import "./App.css";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
-
+import HorizontalFrenmoTabs from "./routes/HorizontalFrenmoTabs/HorizontalFrenmoTabs"
 
 class App extends Component {
   state = { hasError: false };
@@ -66,7 +66,7 @@ class App extends Component {
           <PrivateRoute
             exact
             path={`/frenmos/category/:categoryId/:outstandingId`}
-            component={FrenmoDetail}
+            component={HorizontalFrenmoTabs}
           />
 
           <PrivateRoute
