@@ -11,7 +11,8 @@ import FooterMenu from "./components/FooterMenu/FooterMenu";
 import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
-import FriendsList from "./components/FriendsList/FriendsList";
+import Friends from './routes/Friends/Friends'
+import PendingFren from './components/PendingFren/PendingFren'
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import "./App.css";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
@@ -28,6 +29,7 @@ class App extends Component {
             component={FrenmoListByCat}
             name="frenmoByCat"
           />
+
           {/* ============ OBSOLETE NAV PAGE================= 
           <Route
             exact
@@ -51,16 +53,18 @@ class App extends Component {
             component={RegistrationPage}
           />
 
-          <PublicOnlyRoute exact path={"/friends"} component={FriendsList} />
+         <PrivateRoute  path={"/pending"} component={PendingFren} />
 
-          <Route path={"/feed"} component={FeedPage} />
+         <PrivateRoute exact path={"/Friends"} component={Friends} />
 
+          <PrivateRoute path={"/feed"} component={FeedPage} />
+         
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
 
           <PrivateRoute
             exact
-            path={`/frenmos/:outstandingId`}
+            path={`/frenmos/category/:categoryId/:outstandingId`}
             component={FrenmoDetail}
           />
 

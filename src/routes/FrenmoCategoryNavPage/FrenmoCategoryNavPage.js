@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import FrenmoApiService from "../../services/frenmo-api-service";
-import "./FrenmoCategoryNavPage.css";
 
 class FrenmoCategoryNavPage extends Component {
   static contextType = FrenmoContext;

@@ -28,8 +28,10 @@ class Frenmo extends Component {
     return (
       <li className="Frenmo__title-container">
         <NavLink
+          className="Frenmo__Nav-link"
+          activeClassName="selected"
           to={{
-            pathname: `/frenmos/${outstandingId}`,
+            pathname: `/frenmos/category/${categoryId}/${outstandingId}`,
             state: {
               title: title,
               description: description,

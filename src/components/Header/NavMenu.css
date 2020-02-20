@@ -30,7 +30,7 @@
 .logout,
 .login {
   font-size: 1.1em;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   position: relative;
   right: -36px;
   bottom: -20px;
@@ -75,7 +75,7 @@
   opacity: 0.9;
 }
 
-a {
+.log-button {
   text-decoration: none;
   color: rgb(255, 245, 212);
 }
