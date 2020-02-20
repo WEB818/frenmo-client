@@ -61,7 +61,7 @@ class SearchUser extends Component {
           name="user_search"
           placeholder="add friends"
         />
-        <button type="submit">Add</button>
+        <button type="submit">Add</button> 
         <div>
         <span><Link to='/pending'>Friend Requests</Link></span>
         </div>
