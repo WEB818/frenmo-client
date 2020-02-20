@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "../Utils/Utils";
 import { getFrenmoById } from "../../services/helpers";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import "./FrenmoDetail.css";
@@ -43,7 +44,7 @@ class FrenmoDetail extends Component {
         ) : (
           <div>
             <p>This frenmo has not been issued.</p>
-            <button>Issue this frenmo</button>
+            <Button>Issue this frenmo</Button>
           </div>
         )}
       </div>

@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   text-align: right;
-  width: 10vw;
 }
 
 .NavMenu__Header {
@@ -12,40 +11,49 @@
   letter-spacing: 0.5rem;
   font-family: "Cantarell", sans-serif;
 }
+
 .NavMenu__list {
-  display: flex;
-  height: 8vh;
-  width: 30%;
-  justify-content: space-around;
-}
-.NavMenu__menu-item {
+  display: none;
 }
 
-.NavMenu__links {
-  color: black;
-  background-color: black;
-  font-size: 0.9rem;
-  letter-spacing: 3px;
+.logo {
+  letter-spacing: -10px;
 }
+
+.medblue {
+  color: #2334fc;
+}
+
+.lightblue {
+  color: #00d1ff;
+}
+
+.lighterblue {
+  color: rgb(123, 231, 255);
+}
+
+.lightestblue {
+  color: rgb(183, 242, 255);
+}
+
 .navigation {
   width: 100%;
 }
 
 .log-icon {
-  width: 40px;
+  width: 10px;
   height: 40px;
   float: left;
 }
 
 .logout,
 .login {
-  font-size: 1.1em;
-  font-family: "Oswald", sans-serif;
+  font-size: 1em;
+  font-family: "Cantarell", sans-serif;
   position: relative;
   right: -36px;
-  bottom: -20px;
+  bottom: -8px;
   overflow: hidden;
-  letter-spacing: 3px;
   opacity: 0;
   transition: opacity 0.55s;
   -webkit-transition: opacity 0.45s;
@@ -66,8 +74,7 @@
 .log-button:hover,
 .log-button:active,
 .Header__logged-in {
-  width: 10vw;
-
+  width: 140px;
   color: white;
 }
 
@@ -82,12 +89,12 @@
 .log-button:active,
 .logout,
 .login {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .log-button {
   text-decoration: none;
-  color: rgb(255, 245, 212);
+  color: white;
 }
 
 .Header {
@@ -99,7 +106,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: darkblue;
+  background-color: #0c0063;
 }
 
 @media (min-width: 768px) {
@@ -108,29 +115,46 @@
     left: 0px;
     height: 92vh;
     top: 8vh;
-    background-color: darkblue;
+    justify-content: space-around;
+    background-color: #0c0063;
+  }
+
+  .NavMenu__list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    transform: translateX(-100%);
-    transition: transform 0.5s ease-in;
-  }
-  .NavMenu__menu-item {
-    opacity: 0;
   }
 
   .NavMenu__links {
+    margin-left: 100px;
     color: white;
     font-size: 0.9rem;
     letter-spacing: 3px;
   }
 
-  .NavMenu__list-active {
+  #navSlide {
+    position: absolute;
+    transform: translateX(-100%);
+    transition: transform 400ms ease-in;
+    width: 35%;
+    left: 0px;
+    height: 92vh;
+    top: 8vh;
+    color: white;
+    background-color: #0c0063;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+
+  #navSlide.slideIn {
     transform: translateX(0%);
+  }
+
+  #navSlide.slideOut {
+    transform: translateX(-100%);
   }
 }
 
-@media (min-width: 2560px) {
+/* @media (min-width: 2560px) {
   .Header {
     height: 80px;
   }
@@ -140,4 +164,4 @@
     border-radius: 50px;
     float: left;
   }
-}
+} */

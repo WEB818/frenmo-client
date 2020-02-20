@@ -1,13 +1,38 @@
 import React, { Component } from "react";
-import UserContext from "../../contexts/UserContext";
 import { NavLink, Link } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 import TokenService from "../../services/token-service";
-// import Icon from "../../images/profile.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "./NavMenu.css";
 
+const MenuSlide = ({ showMenu }) => (
+  <div id="navSlide" className={showMenu ? "slideIn" : "slideOut"}>
+    <ul className="NavMenu__list">
+      <li className="NavMenu__menu-item">
+        <Link to="/frenmos" className="NavMenu__links">
+          My Frenmos
+        </Link>
+      </li>
+      <li className="NavMenu__menu-item">
+        <Link to="/send" className="NavMenu__links">
+          Send a Frenmo
+        </Link>
+      </li>
+      <li className="NavMenu__menu-item">
+        <Link to="/friends" className="NavMenu__links">
+          Friends
+        </Link>
+      </li>
+      <li className="NavMenu__menu-item">
+        <Link to="/profile" className="NavMenu__links">
+          Profile
+        </Link>
+      </li>
+    </ul>
+  </div>
+);
 class NavMenu extends Component {
   constructor(props) {
     super(props);
@@ -20,19 +45,30 @@ class NavMenu extends Component {
 
   static contextType = UserContext;
 
-  handleShowMenu = () => {
+  handleSlide = () => {
     this.setState(prevState => ({
       showMenu: !prevState.showMenu
     }));
   };
+
   handleLogoutClick = () => {
     this.context.processLogout();
   };
 
   renderLogoutLink() {
+    const { showMenu } = this.state;
     return (
       <>
-        <Link to="/" className="Header__link"></Link>
+        <div className="Header__link">
+          <h2 className="NavMenu__Header" onClick={this.handleSlide}>
+            <span className="logo medblue">f</span>
+            <span className="logo lightblue">f</span>
+            <span className="logo lighterblue">f</span>
+            <span className="logo lightestblue">f</span>
+            frenmo
+          </h2>
+          <MenuSlide showMenu={showMenu} />
+        </div>
         <div className="Header__logged-in">
           <div className="navigation">
             <a href="/" className="log-button">
@@ -50,7 +86,15 @@ class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-        <Link to="/" className="Header__link" />
+        <NavLink to="/feed" className="Header__link">
+          <h2 className="NavMenu__Header" onClick={this.handleSlide}>
+            <span className="logo medblue">f</span>
+            <span className="logo lightblue">f</span>
+            <span className="logo lighterblue">f</span>
+            <span className="logo lightestblue">f</span>
+            frenmo
+          </h2>
+        </NavLink>
 
         <div className="Header__not-logged-in">
           <div className="navigation">
@@ -63,44 +107,10 @@ class NavMenu extends Component {
       </>
     );
   }
-  navSlide = nav => {
-    console.log("hello");
-    // nav.classList.toggle("NavMenu__list-active");
-  };
+
   render() {
     return (
       <nav className="Header">
-        <NavLink
-          to="/feed"
-          className="Header__link"
-          activeClassName="NavMenu__list-active"
-        >
-          <h2 className="NavMenu__Header" onClick={() => this.navSlide()}>
-            frenmo
-          </h2>
-        </NavLink>
-        <ul className="NavMenu__list">
-          <li className="NavMenu__menu-item">
-            <Link to="/frenmos" className="NavMenu__links">
-              My Frenmos
-            </Link>
-          </li>
-          <li className="NavMenu__menu-item">
-            <Link to="/send" className="NavMenu__links">
-              Create
-            </Link>
-          </li>
-          <li className="NavMenu__menu-item">
-            <Link to="/friends" className="NavMenu__links">
-              Friends
-            </Link>
-          </li>
-          <li className="NavMenu__menu-item">
-            <Link to="/profile" className="NavMenu__links">
-              Profile
-            </Link>
-          </li>
-        </ul>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

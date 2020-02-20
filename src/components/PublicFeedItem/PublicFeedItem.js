@@ -1,6 +1,7 @@
 import FrenmoApiService from "../../services/frenmo-api-service";
 import Check from "../../images/check.png";
 import React, { Component } from "react";
+import { Button } from "../Utils/Utils";
 import UserContext from "../../contexts/UserContext";
 import "./PublicFeedItem.css";
 import { formatRelative } from "date-fns";
@@ -84,9 +85,9 @@ export default class PublicFeedItem extends Component {
                 Redeem by: {formatRelative(new Date(expDate), new Date(), 0)}
               </p>
               {!recdById && (
-                <button onClick={() => this.handleRedemption(outstandingId)}>
+                <Button onClick={() => this.handleRedemption(outstandingId)}>
                   Redeem
-                </button>
+                </Button>
               )}
             </div>
           )}
