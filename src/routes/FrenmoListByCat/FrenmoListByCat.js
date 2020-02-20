@@ -93,16 +93,21 @@ class FrenmoListByCat extends Component {
       ]
     });
   }
+  const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
+
 
   handleToggleTabs = () => {
-    if (this.state.myPublicFrenmos.receiver_redeemed === false) {
+    if (received) {
       this.setState({type:'recieved'})
     } else if (this.state.myPublicFrenmos.issuer_id !== this.state.myPublicFrenmos.receiver_id) {
       this.setStat({type:'issued'})
     } else if (this.state.myPublicFrenmos.receiver_redeemed === true) {
       this.setState({type:'redeemed'})
-    }   
+    }  
+     {console.log(this.context.publicFrenmos.receiver_redeemed)}
   };
+
+  
 
   renderTypes() {
     return (
@@ -161,9 +166,7 @@ class FrenmoListByCat extends Component {
     // console.log(frenmoList)
     // const frenmosByCat = getFrenmosInCategory(frenmoList.favors, categoryId);
 
-    {
-      console.log(this.state.myFrenmos);
-    }
+
     return (
       <>
         <div className="btn-container">
