@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./FeedPage.css";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import FrenmoContext from "../../contexts/FrenmoContext";
+import { Button } from "../../components/Utils/Utils";
 import PublicFeedItem from "../../components/PublicFeedItem/PublicFeedItem";
 export default class FeedPage extends Component {
   state = {
@@ -33,15 +34,15 @@ export default class FeedPage extends Component {
 
     return (
       <>
-        <button onClick={() => this.setState({ favors: publicFrenmos })}>
+        <Button onClick={() => this.setState({ favors: publicFrenmos })}>
           Public
-        </button>
-        <button onClick={() => this.setState({ favors: friendFrenmos })}>
+        </Button>
+        <Button onClick={() => this.setState({ favors: friendFrenmos })}>
           Friends
-        </button>
-        <button onClick={() => this.setState({ favors: personalFrenmos })}>
+        </Button>
+        <Button onClick={() => this.setState({ favors: personalFrenmos })}>
           Personal
-        </button>
+        </Button>
       </>
     );
   }

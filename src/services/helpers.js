@@ -11,3 +11,7 @@ export const getFrenmosInCategory = (favors = [], categoryId) =>
 
 export const getFrenmoById = (favors = [], frenmoId) =>
   favors.find(favor => favor.outstanding_id === Number(frenmoId));
+
+export const countFavorsInCategory = (favors = [], categoryId) =>
+  favors.filter(favor => favor.category === Number(categoryId)).length;
+
