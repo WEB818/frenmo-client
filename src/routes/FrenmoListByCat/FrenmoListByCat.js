@@ -33,7 +33,7 @@ class FrenmoListByCat extends Component {
     await FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
-    console.log(this.context.publicFrenmos);
+    //console.log(this.context.publicFrenmos);
 
     let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
     const drawFrenmos = (frenmo, idx) => {
@@ -65,16 +65,21 @@ class FrenmoListByCat extends Component {
   //const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
 
 
-  handleToggleTabs = () => {
-    if (received) {
-      this.setState({type:'recieved'})
-    } else if (this.state.myPublicFrenmos.issuer_id !== this.state.myPublicFrenmos.receiver_id) {
-      this.setStat({type:'issued'})
-    } else if (this.state.myPublicFrenmos.receiver_redeemed === true) {
-      this.setState({type:'redeemed'})
-    }  
-     {console.log(this.context.publicFrenmos.receiver_redeemed)}
+  handleRecievedTab = () => {
+      console.log("received")
+      this.state.myFrenmos.forEach(frenmo => console.log(frenmo))
+      this.state.myFrenmos.forEach(frenmo => {
+       if(frenmo.props.publicity !== "public"){
+        console.log('my recieved frenmos', frenmo.props)
+        //send frenmo.props to deal with information
+        //
+       }
+      })
   };
+
+  handleRedeemedTab = () => {
+   
+};
 
   
 
@@ -83,12 +88,13 @@ class FrenmoListByCat extends Component {
       <div className="btn-container">
         <button
           className="CatNavPage__tabs"
-          onClick={() => this.handleToggleTabs()}
+          onClick={() => this.handleRecievedTab()}
         >
           Received
         </button>
         <button
           className="CatNavPage__tabs"
+          //this.handleissue
           onClick={() =>
             this.setState({
               type: "issued"
@@ -99,6 +105,7 @@ class FrenmoListByCat extends Component {
         </button>
         <button
           className="CatNavPage__tabs"
+          //this.handleredeemed
           onClick={() =>
             this.setState({
               type: "redeemed"
