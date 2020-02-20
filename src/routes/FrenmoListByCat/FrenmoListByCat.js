@@ -35,9 +35,7 @@ class FrenmoListByCat extends Component {
     await FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
-    console.log(
-      this.context.publicFrenmos
-    );
+    console.log(this.context.publicFrenmos);
 
     let {
       publicFrenmos,
@@ -95,13 +93,16 @@ class FrenmoListByCat extends Component {
   }
 
   handleToggleTabs = () => {
-    if (this.state.myPublicFrenmos.receiver_redeemed === false) {
+    console.log("clicked")
+   // if (this.state.myPrivateFrenmos || this.state.myfriendFrenmos) {
+      console.log('this.state')
+      console.log(this.state.myFrenmos[1],this.state.myFrenmos[2])
       this.setState({type:'recieved'})
-    } else if (this.state.myPublicFrenmos.issuer_id !== this.state.myPublicFrenmos.receiver_id) {
-      this.setStat({type:'issued'})
-    } else if (this.state.myPublicFrenmos.receiver_redeemed === true) {
-      this.setState({type:'redeemed'})
-    }   
+    // } else if (this.state.myPublicFrenmos.issuer_id !== this.state.myPublicFrenmos.receiver_id) {
+    //   this.setStat({type:'issued'})
+    // } else if (this.state.myPublicFrenmos.receiver_redeemed === true) {
+    //   this.setState({type:'redeemed'})
+    //}   
   };
 
   renderTypes() {
@@ -109,11 +110,7 @@ class FrenmoListByCat extends Component {
       <div className="btn-container">
         <button
           className="CatNavPage__tabs"
-          onClick={() =>
-            this.setState({
-              type: 'received'
-            })
-          }
+          onClick={() => this.handleToggleTabs()}
         >
           Received
         </button>
@@ -161,9 +158,7 @@ class FrenmoListByCat extends Component {
     // console.log(frenmoList)
     // const frenmosByCat = getFrenmosInCategory(frenmoList.favors, categoryId);
 
-    {
-      console.log(this.state.myFrenmos);
-    }
+    
     return (
       <>
         <div className="btn-container">
@@ -180,7 +175,7 @@ class FrenmoListByCat extends Component {
 }
 
 export default FrenmoListByCat;
-{
+//{
   /* <div className="btn-container">{this.renderTypes()}</div>
         <div className="ListByCat__section">
             {frenmoList.map((frenmo, idx) => (
@@ -203,4 +198,4 @@ export default FrenmoListByCat;
                 
               </ul>
             ))} */
-}
+//}
