@@ -28,8 +28,8 @@ class SearchUser extends Component {
     e.preventDefault();
     const {user_search} = e.target
     console.log(user_search.value);
-
-    fetch(`${config.API_ENDPOINT}/user/${user_search.value}`,{
+                           //change here
+    fetch(`${config.API_ENDPOINT}/user/username/${user_search.value}`,{
       method: 'GET',
       headers: {
         'content-type': 'application/json'
