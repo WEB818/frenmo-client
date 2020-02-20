@@ -7,10 +7,7 @@ export const findFrenmo = (frenmos = [], frenmoId) =>
 export const getFrenmosInCategory = (favors = [], categoryId) =>
   !categoryId
     ? favors
-    : favors.filter(favor => favor.category === Number(categoryId));
+    : favors.filter(favor => favor.props.categoryId === Number(categoryId));
 
 export const getFrenmoById = (favors = [], frenmoId) =>
   favors.find(favor => favor.outstanding_id === Number(frenmoId));
-
-export const determineUserStatus = (favors = [], userId) =>
-  favors.find(favor => favor.outstanding_id === Number(userId));

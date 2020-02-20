@@ -8,18 +8,20 @@ import NavMenu from "./components/Header/NavMenu";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import FooterMenu from "./components/FooterMenu/FooterMenu";
-import FrenmoCategoryNavPage from "./routes/FrenmoCategoryNavPage/FrenmoCategoryNavPage";
+import FrenmoContext from "./contexts/FrenmoContext";
+import FrenmoApiService from "./services/frenmo-api-service";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
-import Friends from './routes/Friends/Friends'
-import PendingFren from './components/PendingFren/PendingFren'
+import Friends from "./routes/Friends/Friends";
+import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import "./App.css";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
 
-
 class App extends Component {
   state = { hasError: false };
+
+  static contextType = FrenmoContext;
 
   renderNavRoutes() {
     return (
@@ -30,13 +32,6 @@ class App extends Component {
             component={FrenmoListByCat}
             name="frenmoByCat"
           />
-
-          {/* ============ OBSOLETE NAV PAGE================= 
-          <Route
-            exact
-            path={"/frenmos/:favorId"}
-            component={FrenmoCategoryNavPage}
-          /> */}
         </div>
       </>
     );
@@ -54,12 +49,12 @@ class App extends Component {
             component={RegistrationPage}
           />
 
-         <PrivateRoute  path={"/pending"} component={PendingFren} />
+          <PrivateRoute path={"/pending"} component={PendingFren} />
 
-         <PrivateRoute exact path={"/Friends"} component={Friends} />
+          <PrivateRoute exact path={"/Friends"} component={Friends} />
 
           <PrivateRoute path={"/feed"} component={FeedPage} />
-         
+
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
 
