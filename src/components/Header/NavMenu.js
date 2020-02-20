@@ -76,7 +76,7 @@ class NavMenu extends Component {
           activeClassName="NavMenu__list-active"
         >
           <h2 className="NavMenu__Header" onClick={() => this.navSlide()}>
-            Frenmo
+            frenmo
           </h2>
         </NavLink>
         <ul className="NavMenu__list">

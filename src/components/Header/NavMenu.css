@@ -8,7 +8,9 @@
 
 .NavMenu__Header {
   justify-content: left;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.5rem;
+  font-family: "Cantarell", sans-serif;
 }
 .NavMenu__list {
   display: flex;
