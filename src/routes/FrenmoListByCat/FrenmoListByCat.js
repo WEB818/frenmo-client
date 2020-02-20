@@ -1,28 +1,26 @@
-import React, {
-  Component
-} from 'react';
-import Frenmo from '../../components/Frenmo/Frenmo';
-import { getFrenmosInCategory } from '../../services/helpers';
-import FrenmoContext from '../../contexts/FrenmoContext';
-import FrenmoApiService from '../../services/frenmo-api-service';
+import React, { Component } from "react";
+import Frenmo from "../../components/Frenmo/Frenmo";
+import { getFrenmosInCategory } from "../../services/helpers";
+import FrenmoContext from "../../contexts/FrenmoContext";
+import FrenmoApiService from "../../services/frenmo-api-service";
 // import UserContext from "./contexts/UserContext";
-import './FrenmoListByCat.css';
+import "./FrenmoListByCat.css";
 
 class FrenmoListByCat extends Component {
   static defaultProps = {
     match: {
       params: {}
-    }
+    },
+    myFrenmos: []
   };
 
   static contextType = FrenmoContext;
 
   state = {
-    type: '',
-    activeTab: 'receivedreceived',
+    type: "",
+    activeTab: "",
     myFrenmos: []
   };
-  // ====== currently non-functional ==========//
 
   async componentDidMount() {
     this.context.clearError();
@@ -37,58 +35,31 @@ class FrenmoListByCat extends Component {
       .catch(this.context.setError);
     console.log(this.context.publicFrenmos);
 
-    let {
-      publicFrenmos,
-      personalFrenmos,
-      friendFrenmos
-    } = this.context;
-    const drawFrenmos = (
-      frenmo,
-      idx
-    ) => {
+    let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
+    const drawFrenmos = (frenmo, idx) => {
       return (
         <Frenmo
           key={idx}
           frenmoId={frenmo.favor_id}
-          outstandingId={
-            frenmo.outstanding_id
-          }
+          outstandingId={frenmo.outstanding_id}
           title={frenmo.title}
-          description={
-            frenmo.description
-          }
-          expiration_date={
-            frenmo.expiration_date
-          }
+          description={frenmo.description}
+          expiration_date={frenmo.expiration_date}
           publicity={frenmo.publicity}
           tags={frenmo.tags}
-          createdBy={
-            frenmo.creator_name
-          }
+          createdBy={frenmo.creator_name}
           issuedBy={frenmo.issuer_name}
-          receivedBy={
-            frenmo.receiver_name
-          }
+          receivedBy={frenmo.receiver_name}
           categoryId={frenmo.category}
         />
       );
     };
 
-    let myPublicFrenmos = publicFrenmos.favors.map(
-      drawFrenmos
-    );
-    let myPrivateFrenmos = personalFrenmos.favors.map(
-      drawFrenmos
-    );
-    let myfriendFrenmos = friendFrenmos.favors.map(
-      drawFrenmos
-    );
+    let myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
+    let myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
+    let myfriendFrenmos = friendFrenmos.favors.map(drawFrenmos);
     this.setState({
-      myFrenmos: [
-        ...myPublicFrenmos,
-        ...myPrivateFrenmos,
-        ...myfriendFrenmos
-      ]
+      myFrenmos: [...myPublicFrenmos, ...myPrivateFrenmos, ...myfriendFrenmos]
     });
   }
   //const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
@@ -120,7 +91,7 @@ class FrenmoListByCat extends Component {
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
-              type: 'issued'
+              type: "issued"
             })
           }
         >
@@ -130,7 +101,7 @@ class FrenmoListByCat extends Component {
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
-              type: 'redeemed'
+              type: "redeemed"
             })
           }
         >
@@ -140,7 +111,7 @@ class FrenmoListByCat extends Component {
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
-              type: 'expired'
+              type: "expired"
             })
           }
         >
@@ -151,29 +122,16 @@ class FrenmoListByCat extends Component {
   }
 
   render() {
-    const {
-      categoryId
-    } = this.props.match.params;
+    const { categoryId } = this.props.match.params;
 
-    // let frenmoList = publicFrenmos.favors.concat(personalFrenmos.favors.concat(friendFrenmos.favors));
+    const frenmosByCat = getFrenmosInCategory(this.state.myFrenmos, categoryId);
 
-    // console.log(frenmoList)
-    // const frenmosByCat = getFrenmosInCategory(frenmoList.favors, categoryId);
 
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> fda75bbf8800e564621cbed24e11c5b427bd7d44
     return (
       <>
-        <div className="btn-container">
-          {this.renderTypes()}
-        </div>
+        <div className="btn-container">{this.renderTypes()}</div>
         <div className="ListByCat__section">
-          <ul>
-            {this.state.myFrenmos}
-          </ul>
+          <ul>{frenmosByCat}</ul>
         </div>
       </>
     );
