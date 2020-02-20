@@ -113,7 +113,6 @@ class NewFrenmoForm extends Component {
       category,
       expiration_date,
       publicity,
-      favor_id,
       receiver,
       user,
       limit
@@ -127,11 +126,34 @@ class NewFrenmoForm extends Component {
       publicity.value,
       limit.value
     )
-      .then(postRes =>
-        this.setState({ postRes })
-      )
-      .then(() => {
-        this.handleIssue();
+      // .then(postRes => {
+      //   this.setState({ postRes });
+
+      // })
+      .then(postRes => {
+        //get the favor_id from the post
+        //get the receiver_id and the users_id from the state
+        let {
+          receiver_id,
+          users_id,
+          favor_id
+        } = postRes;
+        if (this.state.give) {
+          this.handleIssue({
+            receiver_id: this.state
+              .receiver_id,
+            favor_id,
+            users_id
+          });
+        } else {
+          this.handleIssue({
+            receiver_id: users_id,
+            favor_id,
+            users_id: this.state
+              .users_id
+          });
+        }
+        this.setState({ postRes });
       })
       .then(this.context.addFrenmo)
       .then(() => {
@@ -141,9 +163,12 @@ class NewFrenmoForm extends Component {
         expiration_date.value = '';
         publicity.value = 0;
         limit.value = '';
-        favor_id.value = '';
-        user.value = '';
-        receiver.value = '';
+        if (user) {
+          user.value = '';
+        }
+        if (receiver) {
+          receiver.value = '';
+        }
         this.props.onRedirect(
           this.state.postRes.favor_id
         );
@@ -181,6 +206,7 @@ class NewFrenmoForm extends Component {
           <Label htmlFor="NewFrenmo__receiver">
             Give To:
           </Label>
+          <div>{personSelection}</div>
           <Input
             type="text"
             name="receiver"
@@ -200,7 +226,6 @@ class NewFrenmoForm extends Component {
               );
             }}
           />
-          {personSelection}
         </div>
         <Button type="submit">
           Send Frenmo
@@ -213,6 +238,7 @@ class NewFrenmoForm extends Component {
           <Label htmlFor="NewFrenmo__user">
             Request From:
           </Label>
+          <div>{personSelection}</div>
           <Input
             type="text"
             name="user"
@@ -233,7 +259,6 @@ class NewFrenmoForm extends Component {
               );
             }}
           />
-          {personSelection}
         </div>
         <Button type="submit">
           Request Frenmo
