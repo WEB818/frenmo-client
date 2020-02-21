@@ -33,26 +33,44 @@ class FrenmoListByCat extends Component {
     await FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
-    //console.log(this.context.publicFrenmos);
+    // console.log(this.context.publicFrenmos);
 
     let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
     const drawFrenmos = (frenmo, idx) => {
-      return (
-        <Frenmo
-          key={idx}
-          frenmoId={frenmo.favor_id}
-          outstandingId={frenmo.outstanding_id}
-          title={frenmo.title}
-          description={frenmo.description}
-          expiration_date={frenmo.expiration_date}
-          publicity={frenmo.publicity}
-          tags={frenmo.tags}
-          createdBy={frenmo.creator_name}
-          issuedBy={frenmo.issuer_name}
-          receivedBy={frenmo.receiver_name}
-          categoryId={frenmo.category}
-        />
-      );
+      //checks go here
+      return {
+        frenmo = (
+          <Frenmo
+            key={idx}
+            title={frenmo.title}
+            description={frenmo.description}
+            creator_id={frenmo.creator_id}
+            expiration_date={frenmo.expiration_date}
+            publicity={frenmo.publicity}
+            user_location={frenmo.user_location}
+            tags={frenmo.tags}
+            categoryId={frenmo.categoryId}
+            limit={frenmo.limit}
+            posted={frenmo.posted}
+            outstanding_id={frenmo.outstanding_id}
+            receiver_redeemed={frenmo.receiver_redeemed}
+            issuer_redeemed={frenmo.issuer_redeemed}
+            relationship={frenmo.relationship}
+            creator_name={frenmo.creator_name}
+            creator_username={frenmo.creator_username}
+            issuer_id={frenmo.issuer_id}
+            issuer_name={frenmo.issuer_name}
+            issuer_username={frenmo.issuer_username}
+            receiver_id={frenmo.receiver_id}
+            receiver_name={frenmo.receiver_name}
+            receiver_username={frenmo.receiver_username}
+            categoryId={frenmo.category}
+            issued={}
+            redeemed={}
+            expired={}
+            received={}
+          />
+        )}
     };
 
     let myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
@@ -79,13 +97,23 @@ class FrenmoListByCat extends Component {
 
   handleRedeemedTab = () => {
    
-};
+  };
 
-  
+  renderAll = () => {}
+  renderRecieved = () => {}
+  renderRedeemed = () => {}
+  renderIssued = () => {}
+  renderExpired = () => {}
 
   renderTypes() {
     return (
       <div className="btn-container">
+        <button 
+          className="CatNavPage__tabs"
+          onClick={() =>this.handleRecievedTab()}
+        >
+          All
+        </button>
         <button
           className="CatNavPage__tabs"
           onClick={() => this.handleRecievedTab()}
