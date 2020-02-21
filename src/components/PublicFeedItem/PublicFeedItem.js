@@ -1,11 +1,10 @@
-import FrenmoApiService from "../../services/frenmo-api-service";
-import Check from "../../images/check.png";
 import React, { Component } from "react";
-import { Button } from "../Utils/Utils";
+
 import UserContext from "../../contexts/UserContext";
-import "./PublicFeedItem.css";
+import Check from "../../images/check.png";
+import { Button } from "../Utils/Utils";
 import { formatRelative } from "date-fns";
-import { Link } from "react-router-dom";
+import "./PublicFeedItem.css";
 
 export default class PublicFeedItem extends Component {
   static defaultProps = {
@@ -15,7 +14,8 @@ export default class PublicFeedItem extends Component {
   static contextType = UserContext;
 
   state = {
-    expanded: false
+    expanded: false,
+    redemption: ""
   };
 
   handleRedemption = outstanding_id => {
@@ -60,21 +60,28 @@ export default class PublicFeedItem extends Component {
       issuerRedeemed,
       receiverRedeemed
     } = this.props;
+
     const { expanded } = this.state;
-    // let redemption = "UNUSED";
-    // if (receiverRedeemed) {
-    //   redemption = "PENDING";
-    //   if (issuerRedeemed) {
-    //     redemption = "REDEEMED";
-    //   }
-    // }
+
+    let redemption = "available";
+    if (receiverRedeemed) {
+      redemption = "pending";
+      if (issuerRedeemed) {
+        redemption = "redeemed";
+      }
+    }
 
     return (
       <div className="PublicFeedItem__container">
-        {recdById && <img src={Check} alt="check icon" />}
+        {/* {recdById && <img src={Check} alt="check icon" />} */}
         <div className="PublicFeedItem__favor">
           <div>
-            <h3 onClick={() => this.handleExpandedToggle()}>{title}</h3>
+            <h3
+              className="FeedItem__frenmo"
+              onClick={() => this.handleExpandedToggle()}
+            >
+              {title}
+            </h3>
           </div>
           {expanded && (
             <div>
@@ -84,10 +91,11 @@ export default class PublicFeedItem extends Component {
               <p>
                 Redeem by: {formatRelative(new Date(expDate), new Date(), 0)}
               </p>
-              {!recdById && (
-                <Button onClick={() => this.handleRedemption(outstandingId)}>
-                  Redeem
-                </Button>
+              {receiverRedeemed && (
+                <div className="FeedItem__notification">Pending</div>
+              )}
+              {issuerRedeemed && (
+                <div className="FeedItem__notification">Redeemable</div>
               )}
             </div>
           )}

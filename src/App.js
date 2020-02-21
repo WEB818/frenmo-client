@@ -29,7 +29,6 @@ class App extends Component {
         <div className="Nav-flex">
           <Route
             path={"/frenmos/category/:categoryId"}
-            // render={() => <FrenmoListByCat userId="1" />}
             component={FrenmoListByCat}
             name="frenmoByCat"
           />

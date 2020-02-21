@@ -33,10 +33,7 @@ class FrenmoDashboard extends Component {
         <p className="Dashboard__count">
           {countFavorsInCategory(frenmoList.favors, category.id)}
         </p>
-        <NavLink
-          to={`/frenmos/category/${category.id}`}
-          className="Dashboard__category"
-        >
+        <NavLink to={`/frenmos/category/${category.id}`}>
           {category.category}
         </NavLink>
       </div>

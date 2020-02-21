@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./FeedPage.css";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import { Button } from "../../components/Utils/Utils";
 import PublicFeedItem from "../../components/PublicFeedItem/PublicFeedItem";
+
+import "./FeedPage.css";
 export default class FeedPage extends Component {
   state = {
     favors: []
@@ -24,6 +25,7 @@ export default class FeedPage extends Component {
       .catch(this.context.setError);
   }
 
+  // currently not implemented, should route to frenmo detail that lets user redeem or do whatever depending on what is available
   redirectToTarget = favorId => {
     const { history } = this.props;
     history.push(`/frenmos/${favorId}`);
@@ -52,7 +54,7 @@ export default class FeedPage extends Component {
 
     return (
       <>
-        {this.renderPublicity()}
+        <div className="FeedPage__Buttons">{this.renderPublicity()}</div>
         {favors.favors && (
           <div>
             {favors.favors.map((pubFavor, idx) => (

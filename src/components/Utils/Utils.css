@@ -9,10 +9,15 @@
   background-color: #2334fc;
   color: white;
   margin-left: -5px;
+  margin-top: 10px;
 }
 
 .Button:active,
 .Button:hover {
   background-color: #00d1ff;
   color: #0c0063;
+}
+
+.Button:focus {
+  outline: thin dotted;
 }
