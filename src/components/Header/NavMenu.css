@@ -7,6 +7,7 @@
 
 .NavMenu__Header {
   justify-content: left;
+  margin-left: 20px;
   font-size: 1.8rem;
   letter-spacing: 0.5rem;
   font-family: "Cantarell", sans-serif;
@@ -100,7 +101,7 @@
 .Header {
   margin: 0;
   padding: 0;
-  height: 8vh;
+  height: 10vh;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -109,14 +110,22 @@
   background-color: #0c0063;
 }
 
+.menu-icon {
+  display: none;
+}
+
 @media (min-width: 768px) {
+  .menu-icon {
+    display: inline;
+    color: white;
+    align-self: center;
+  }
+
   .NavMenu__list {
     position: absolute;
-    left: 0px;
-    height: 92vh;
-    top: 8vh;
+    padding: 20px;
+    height: 90vh;
     justify-content: space-around;
-    background-color: #0c0063;
   }
 
   .NavMenu__list {
@@ -137,8 +146,8 @@
     transition: transform 400ms ease-in;
     width: 35%;
     left: 0px;
-    height: 92vh;
-    top: 8vh;
+    height: 90vh;
+    top: 10vh;
     color: white;
     background-color: #0c0063;
     padding: 20px;
@@ -151,6 +160,10 @@
 
   #navSlide.slideOut {
     transform: translateX(-100%);
+  }
+
+  .NavMenu__Footer {
+    display: none;
   }
 }
 

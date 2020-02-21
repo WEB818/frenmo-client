@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import Frenmo from "../../components/Frenmo/Frenmo";
-import { getFrenmosInCategory } from "../../services/helpers";
+import {
+  getFrenmosInCategory,
+  getRecdFrenmos,
+  getIssuedFrenmos
+} from "../../services/helpers";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
-// import UserContext from "./contexts/UserContext";
+import { Button } from "../../components/Utils/Utils";
+
 import "./FrenmoListByCat.css";
 
 class FrenmoListByCat extends Component {
@@ -17,7 +22,7 @@ class FrenmoListByCat extends Component {
   static contextType = FrenmoContext;
 
   state = {
-    type: "",
+    type: [],
     activeTab: "",
     myFrenmos: []
   };
@@ -33,14 +38,13 @@ class FrenmoListByCat extends Component {
     await FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
-    console.log(this.context.publicFrenmos);
 
     let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
     const drawFrenmos = (frenmo, idx) => {
       return (
         <Frenmo
           key={idx}
-          frenmoId={frenmo.favor_id}
+          frenmoId={frenmo.id}
           outstandingId={frenmo.outstanding_id}
           title={frenmo.title}
           description={frenmo.description}
@@ -48,54 +52,58 @@ class FrenmoListByCat extends Component {
           publicity={frenmo.publicity}
           tags={frenmo.tags}
           createdBy={frenmo.creator_name}
+          issuedById={frenmo.issuer_id}
           issuedBy={frenmo.issuer_name}
+          receivedById={frenmo.receiver_id}
           receivedBy={frenmo.receiver_name}
           categoryId={frenmo.category}
         />
       );
     };
-
-    let myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
-    let myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
-    let myfriendFrenmos = friendFrenmos.favors.map(drawFrenmos);
+    let myPublicFrenmos;
+    let myPrivateFrenmos;
+    let myfriendFrenmos;
+    //Dana - test this code on empty arrays//
+    if (publicFrenmos.favors) {
+      myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
+    }
+    if (personalFrenmos.favors) {
+      myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
+    }
+    if (friendFrenmos.favors) {
+      myfriendFrenmos = friendFrenmos.favors.map(drawFrenmos);
+    }
     this.setState({
       myFrenmos: [...myPublicFrenmos, ...myPrivateFrenmos, ...myfriendFrenmos]
     });
   }
 
-  handleToggleTabs = () => {
-    //   if (frenmo.receiver_id === user.id && !redeemed) {
-    //     this.setState({})
-    //   } else if (issued ? frenmo.issuer_id === user.id && !frenmo.issuer_id) {
-    //   } else if (redeemed ? frenmo.receiver_id === user.id && frenmo.receiver_redeemed === true || frenmo.issuer_id === user.id && frenmo.issuer_redeemed === true) {
-    //  } else if (expired ? currentdate > exp date && frenmo.receiver_redeemed === false || frenmo.issuer_redeemed === false) {
-    //  }
-  };
-
   renderTypes() {
+    const { myFrenmos } = this.state;
+    const { user } = this.context;
+    let myReceivedFrenmos = getRecdFrenmos(myFrenmos, user.id);
+    let myIssuedFrenmos = getIssuedFrenmos(myFrenmos, user.id);
+
+    console.log(this.state.type);
     return (
-      <div className="btn-container">
-        <button
+      <>
+        <Button
           className="CatNavPage__tabs"
-          onClick={() =>
-            this.setState({
-              type: "received"
-            })
-          }
+          onClick={() => this.setState({ type: myReceivedFrenmos })}
         >
           Received
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
-              type: "issued"
+              type: myIssuedFrenmos
             })
           }
         >
           Issued
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
@@ -104,8 +112,8 @@ class FrenmoListByCat extends Component {
           }
         >
           Redeemed
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
@@ -114,21 +122,22 @@ class FrenmoListByCat extends Component {
           }
         >
           Expired
-        </button>
-      </div>
+        </Button>
+      </>
     );
   }
 
   render() {
     const { categoryId } = this.props.match.params;
-
+    const { type } = this.state;
     const frenmosByCat = getFrenmosInCategory(this.state.myFrenmos, categoryId);
-
+    console.log("type", this.state.type);
     return (
       <>
         <div className="btn-container">{this.renderTypes()}</div>
         <div className="ListByCat__section">
-          <ul>{frenmosByCat}</ul>
+          <ul>{type}</ul>
+          {/* {type.received && } */}
         </div>
       </>
     );

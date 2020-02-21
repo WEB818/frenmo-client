@@ -1,11 +1,8 @@
 .ListByCat__section {
-  background-color: rgb(186, 229, 243);
-  margin: 100px;
+  background-color: #00d1ff;
   padding: 0;
-  width: 200px;
 }
-
-@media (min-width: 1440px) {
-  .ListByCat__section {
-  }
+.btn-container {
+  display: grid;
+  flex-direction: row;
 }

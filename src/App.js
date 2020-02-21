@@ -9,7 +9,7 @@ import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import FooterMenu from "./components/FooterMenu/FooterMenu";
 import FrenmoContext from "./contexts/FrenmoContext";
-import FrenmoApiService from "./services/frenmo-api-service";
+
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import Friends from "./routes/Friends/Friends";
@@ -29,6 +29,7 @@ class App extends Component {
         <div className="Nav-flex">
           <Route
             path={"/frenmos/category/:categoryId"}
+            // render={() => <FrenmoListByCat userId="1" />}
             component={FrenmoListByCat}
             name="frenmoByCat"
           />
