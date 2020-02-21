@@ -49,7 +49,7 @@ export default class FeedPage extends Component {
 
   render() {
     const { favors } = this.state;
-    //console.log(favors);
+
     return (
       <>
         {this.renderPublicity()}

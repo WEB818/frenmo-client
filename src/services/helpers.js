@@ -15,3 +15,12 @@ export const getFrenmoById = (favors = [], frenmoId) =>
 export const countFavorsInCategory = (favors = [], categoryId) =>
   favors.filter(favor => favor.category === Number(categoryId)).length;
 
+export const getRecdFrenmos = (favors = [], userId) =>
+  favors.filter(favor => {
+    return favor.props.receivedById === Number(userId);
+  });
+
+export const getIssuedFrenmos = (favors = [], userId) =>
+  favors.filter(favor => {
+    return favor.props.issuedById === Number(userId);
+  });

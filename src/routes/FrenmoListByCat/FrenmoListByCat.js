@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import Frenmo from "../../components/Frenmo/Frenmo";
-import { getFrenmosInCategory } from "../../services/helpers";
+import {
+  getFrenmosInCategory,
+  getRecdFrenmos,
+  getIssuedFrenmos
+} from "../../services/helpers";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
-// import UserContext from "./contexts/UserContext";
+import { Button } from "../../components/Utils/Utils";
+
 import "./FrenmoListByCat.css";
 
 class FrenmoListByCat extends Component {
@@ -17,7 +22,7 @@ class FrenmoListByCat extends Component {
   static contextType = FrenmoContext;
 
   state = {
-    type: "",
+    type: [],
     activeTab: "",
     myFrenmos: []
   };
@@ -33,6 +38,7 @@ class FrenmoListByCat extends Component {
     await FrenmoApiService.getFriendFrenmos()
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
+
     // console.log(this.context.publicFrenmos);
 
     let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
@@ -71,16 +77,27 @@ class FrenmoListByCat extends Component {
             received={}
           />
         )}
-    };
 
-    let myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
-    let myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
-    let myfriendFrenmos = friendFrenmos.favors.map(drawFrenmos);
+    };
+    let myPublicFrenmos;
+    let myPrivateFrenmos;
+    let myfriendFrenmos;
+    //Dana - test this code on empty arrays//
+    if (publicFrenmos.favors) {
+      myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
+    }
+    if (personalFrenmos.favors) {
+      myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
+    }
+    if (friendFrenmos.favors) {
+      myfriendFrenmos = friendFrenmos.favors.map(drawFrenmos);
+    }
     this.setState({
       myFrenmos: [...myPublicFrenmos, ...myPrivateFrenmos, ...myfriendFrenmos]
     });
   }
   //const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
+
 
 
   handleRecievedTab = () => {
@@ -105,33 +122,42 @@ class FrenmoListByCat extends Component {
   renderIssued = () => {}
   renderExpired = () => {}
 
+
   renderTypes() {
+    const { myFrenmos } = this.state;
+    const { user } = this.context;
+    let myReceivedFrenmos = getRecdFrenmos(myFrenmos, user.id);
+    let myIssuedFrenmos = getIssuedFrenmos(myFrenmos, user.id);
+
+    console.log(this.state.type);
     return (
+
       <div className="btn-container">
-        <button 
+        <Button 
           className="CatNavPage__tabs"
           onClick={() =>this.handleRecievedTab()}
         >
           All
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           onClick={() => this.handleRecievedTab()}
+
         >
           Received
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           //this.handleissue
           onClick={() =>
             this.setState({
-              type: "issued"
+              type: myIssuedFrenmos
             })
           }
         >
           Issued
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           //this.handleredeemed
           onClick={() =>
@@ -141,8 +167,8 @@ class FrenmoListByCat extends Component {
           }
         >
           Redeemed
-        </button>
-        <button
+        </Button>
+        <Button
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
@@ -151,22 +177,22 @@ class FrenmoListByCat extends Component {
           }
         >
           Expired
-        </button>
-      </div>
+        </Button>
+      </>
     );
   }
 
   render() {
     const { categoryId } = this.props.match.params;
-
+    const { type } = this.state;
     const frenmosByCat = getFrenmosInCategory(this.state.myFrenmos, categoryId);
-
 
     return (
       <>
         <div className="btn-container">{this.renderTypes()}</div>
         <div className="ListByCat__section">
-          <ul>{frenmosByCat}</ul>
+          <ul>{type}</ul>
+          {/* {type.received && } */}
         </div>
       </>
     );

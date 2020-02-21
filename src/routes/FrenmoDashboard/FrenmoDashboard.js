@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import { countFavorsInCategory } from "../../services/helpers";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import "./FrenmoDashboard.css";
 
 class FrenmoDashboard extends Component {
@@ -27,22 +28,20 @@ class FrenmoDashboard extends Component {
 
   render() {
     const { frenmoCategories, frenmoList } = this.context;
-
-    return (
-      <div className="Dashboard__cat-container">
-        {frenmoCategories.map(category => (
-          <div key={category.id} className="Dashboard__cat-link">
-            <NavLink
-              to={`/frenmos/category/${category.id}`}
-              className="Dashboard__category"
-            >
-              {category.category}
-            </NavLink>
-            <div>{countFavorsInCategory(frenmoList.favors, category.id)}</div>
-          </div>
-        ))}
+    let categories = frenmoCategories.map(category => (
+      <div key={category.id} className="Dashboard__cat-link">
+        <p className="Dashboard__count">
+          {countFavorsInCategory(frenmoList.favors, category.id)}
+        </p>
+        <NavLink
+          to={`/frenmos/category/${category.id}`}
+          className="Dashboard__category"
+        >
+          {category.category}
+        </NavLink>
       </div>
-    );
+    ));
+    return <div className="Dashboard__cat-container">{categories}</div>;
   }
 }
 
