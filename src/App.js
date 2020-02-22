@@ -17,7 +17,7 @@ import Friends from "./routes/Friends/Friends";
 import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import "./App.css";
-import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
+import Frenmo from "./components/Frenmo/Frenmo";
 
 class App extends Component {
   state = { hasError: false };
@@ -61,7 +61,7 @@ class App extends Component {
           <PrivateRoute
             exact
             path={`/frenmos/category/:categoryId/:outstandingId`}
-            component={FrenmoDetail}
+            component={Frenmo}
           />
 
           <PrivateRoute

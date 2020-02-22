@@ -23,6 +23,7 @@ class FrenmoListByCat extends Component {
   static contextType = FrenmoContext;
 
   state = {
+    label: "",
     type: [],
     myFrenmos: []
   };
@@ -60,28 +61,52 @@ class FrenmoListByCat extends Component {
       <div className="btn-container">
         <Button
           className="CatNavPage__tabs"
-          onClick={() => this.setState({ type: frenmosByCat })}
+          onClick={() =>
+            this.setState({
+              type: frenmosByCat
+            })
+          }
         >
           All
         </Button>
         <Button
           className="CatNavPage__tabs"
-          onClick={() => this.setState({ type: myReceivedFrenmos })}
+          onClick={() =>
+            this.setState({
+              label: "received",
+              type: myReceivedFrenmos
+            })
+          }
         >
           Received
         </Button>
         <Button
           className="CatNavPage__tabs"
-          onClick={() => this.setState({ type: myIssuedFrenmos })}
+          onClick={() =>
+            this.setState({
+              label: "issued",
+              type: myIssuedFrenmos
+            })
+          }
         >
           Issued
         </Button>
-        <Button className="CatNavPage__tabs">Redeemed</Button>
         <Button
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
-              type: "expired"
+              label: "redeemed",
+              type: myIssuedFrenmos
+            })
+          }
+        >
+          Redeemed
+        </Button>
+        <Button
+          className="CatNavPage__tabs"
+          onClick={() =>
+            this.setState({
+              label: "expired"
             })
           }
         >
@@ -92,13 +117,15 @@ class FrenmoListByCat extends Component {
   }
 
   renderFilteredFrenmos() {
-    const { type } = this.state;
-    return type.map((favor, idx) => <Frenmo key={idx} title={favor.title} />);
+    const { label, type } = this.state;
+    return type.map((favor, idx) => (
+      <Frenmo key={idx} title={favor.title} label={label} />
+    ));
   }
 
   render() {
-    const { type } = this.state;
-
+    const { label, type } = this.state;
+    console.log("label", label);
     return (
       <>
         <div className="btn-container">{this.renderTypes()}</div>
