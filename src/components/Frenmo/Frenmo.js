@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import FrenmoDetail from "../FrenmoDetail/FrenmoDetail";
+import React, {
+  Component
+} from 'react';
+import { NavLink } from 'react-router-dom';
+import FrenmoDetail from '../FrenmoDetail/FrenmoDetail';
 
-import "./Frenmo.css";
+import './Frenmo.css';
 
 class Frenmo extends Component {
   static defaultProps = {
@@ -24,7 +26,7 @@ class Frenmo extends Component {
       limit,
       posted,
       outstanding_id,
-      receiver_redeemed, 
+      receiver_redeemed,
       issuer_redeemed,
       relationship,
       creator_name,
@@ -72,24 +74,13 @@ class Frenmo extends Component {
               receiver_name: receiver_name,
               receiver_username: receiver_username,
               issued: issued,
-              redeemed:redeemed ,
+              redeemed: redeemed,
               expired: expired,
               received: received
             }
           }}
         >
-          <div className="Frenmo__item">
-            <h3>{title}</h3>
-            {/* <FrenmoDetail
-              description={description}
-              expiration_date={expiration_date}
-              publicity={publicity}
-              tags={tags}
-              createdBy={createdBy}
-              issuedBy={issuedBy}
-              receivedBy={receivedBy}
-            /> */}
-          </div>
+          <h3>{title}</h3>
         </NavLink>
       </li>
     );
