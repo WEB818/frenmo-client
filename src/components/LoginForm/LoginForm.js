@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Input, Label } from "../Utils/Utils";
 import AuthApiService from "../../services/auth-api-service";
 import UserContext from "../../contexts/UserContext";
-// import Button from "../Button/Button";
-
+import { Button } from "../Utils/Utils";
+import "./LoginForm.scss";
 class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {}
@@ -13,8 +13,6 @@ class LoginForm extends Component {
   static contextType = UserContext;
 
   state = { error: null };
-
-  // firstInput = React.createRef();
 
   handleSubmit = ev => {
     ev.preventDefault();
@@ -37,20 +35,17 @@ class LoginForm extends Component {
       });
   };
 
-  componentDidMount() {
-    // this.firstInput.current.focus();
-  }
-
   render() {
     const { error } = this.state;
 
     return (
-      <form className="RegForm__container" onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
+      <form className="RegForm" onSubmit={this.handleSubmit}>
+        <div role="alert" className="RegForm__alert">
+          {error && <p>{error}</p>}
+        </div>
         <div className="RegForm__label-input">
           <Label htmlFor="login-username-input">Username</Label>
           <Input
-            // ref={this.firstInput}
             id="login-username-input"
             className="red-input"
             name="username"
@@ -68,7 +63,7 @@ class LoginForm extends Component {
           />
         </div>
         <footer className="RegForm__footer">
-          <button type="submit">Login</button>Don't have an account?{" "}
+          <Button type="submit">Login</Button>Don't have an account?{" "}
           <Link to="/register" className="page-links">
             Sign up!
           </Link>

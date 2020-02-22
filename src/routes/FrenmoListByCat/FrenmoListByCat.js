@@ -73,7 +73,6 @@ class FrenmoListByCat extends Component {
           className="CatNavPage__tabs"
           onClick={() =>
             this.setState({
-              label: "received",
               type: myReceivedFrenmos
             })
           }

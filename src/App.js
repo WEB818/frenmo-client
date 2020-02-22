@@ -20,9 +20,33 @@ import "./App.css";
 import Frenmo from "./components/Frenmo/Frenmo";
 
 class App extends Component {
-  state = { hasError: false };
+  state = {
+    hasError: false,
+    myFrenmos: []
+  };
 
   static contextType = FrenmoContext;
+
+  componentDidMount() {
+    this.context.clearError();
+    FrenmoApiService.getAllPublicFrenmos()
+      .then(this.context.setAllPublic)
+      .catch(this.context.setError);
+    FrenmoApiService.getPersonalFrenmos()
+      .then(this.context.setAllPersonal)
+      .catch(this.context.setError);
+    FrenmoApiService.getFriendFrenmos()
+      .then(this.context.setAllFriend)
+      .catch(this.context.setError);
+    const { allPublicFrenmos, personalFrenmos, friendFrenmos } = this.context;
+    this.setState({
+      myFrenmos: [
+        ...allPublicFrenmos.favors,
+        ...personalFrenmos.favors,
+        ...friendFrenmos.favors
+      ]
+    });
+  }
 
   renderNavRoutes() {
     return (
@@ -41,13 +65,9 @@ class App extends Component {
     return (
       <>
         <Switch>
-          <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
+          <PublicOnlyRoute path={"/login"} component={LoginPage} />
 
-          <PublicOnlyRoute
-            exact
-            path={"/register"}
-            component={RegistrationPage}
-          />
+          <PublicOnlyRoute path={"/register"} component={RegistrationPage} />
 
           <PrivateRoute path={"/pending"} component={PendingFren} />
 
