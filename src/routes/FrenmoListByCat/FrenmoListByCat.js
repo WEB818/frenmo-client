@@ -28,10 +28,6 @@ class FrenmoListByCat extends Component {
   };
 
   componentDidMount() {
-    this.context.clearError();
-    FrenmoApiService.getMyPublicFrenmos()
-      .then(this.context.setPublicFrenmos)
-      .catch(this.context.setError);
     const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
     this.setState({
       myFrenmos: [
