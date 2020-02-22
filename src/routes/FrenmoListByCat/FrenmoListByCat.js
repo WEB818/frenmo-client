@@ -32,10 +32,10 @@ class FrenmoListByCat extends Component {
     FrenmoApiService.getMyPublicFrenmos()
       .then(this.context.setPublicFrenmos)
       .catch(this.context.setError);
-    const { frenmoList, personalFrenmos, friendFrenmos } = this.context;
+    const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
     this.setState({
       myFrenmos: [
-        ...frenmoList.favors,
+        ...publicFrenmos.favors,
         ...personalFrenmos.favors,
         ...friendFrenmos.favors
       ]
@@ -49,11 +49,11 @@ class FrenmoListByCat extends Component {
     console.log(categoryId);
     let frenmosByCat = getFrenmosInCategory(myFrenmos, categoryId);
     console.log("byCat", frenmosByCat);
-    let myReceivedFrenmos = getRecdFrenmos(myFrenmos, user.id);
+    let myReceivedFrenmos = getRecdFrenmos(frenmosByCat, user.id);
     console.log("rec", myReceivedFrenmos);
-    let myIssuedFrenmos = getIssuedFrenmos(myFrenmos, user.id);
+    let myIssuedFrenmos = getIssuedFrenmos(frenmosByCat, user.id);
     console.log("iss", myIssuedFrenmos);
-    let receiverRedeemed = getRedeemedByAsReceiver(myFrenmos, user.id);
+    let receiverRedeemed = getRedeemedByAsReceiver(frenmosByCat, user.id);
     console.log("recred", receiverRedeemed);
 
     return (

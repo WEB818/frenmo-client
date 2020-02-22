@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import AuthApiService from "../services/auth-api-service";
 import TokenService from "../services/token-service";
 import IdleService from "../services/idle-service";
-
+// is it going to be a problem if we post a new frenmo to
+// addFrenmo -- need to add a public frenmo list for the get and sep for the post
 const FrenmoContext = React.createContext({
   user: {},
   error: null,
-  frenmoList: [],
+  newFrenmo: {},
+  allPublicFrenmos: [],
   publicFrenmos: [],
   personalFrenmos: [],
   friendFrenmos: [],
@@ -14,9 +16,9 @@ const FrenmoContext = React.createContext({
   outRes: {},
   frenmoCategories: [],
   publicityTypes: [],
-  addFrenmo: () => {},
   setFrenmoRes: () => {},
   setPublicFrenmos: () => {},
+  addFrenmo: () => {},
   setAllPublic: () => {},
   setAllPersonal: () => {},
   setAllFriend: () => {},
@@ -32,7 +34,8 @@ export class FrenmoProvider extends Component {
     const state = {
       user: {},
       error: null,
-      frenmoList: [],
+      newFrenmo: {},
+      allPublicFrenmos: [],
       publicFrenmos: [],
       personalFrenmos: [],
       friendFrenmos: [],
@@ -152,18 +155,19 @@ export class FrenmoProvider extends Component {
     IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
-  addFrenmo = frenmo => {
-    this.setState([...this.state.frenmoList, frenmo]);
-  };
-
   setFrenmoRes = outRes => {
     this.setState({ outRes });
   };
 
-  setPublicFrenmos = frenmoList => {
-    this.setState({ frenmoList });
+  // sets all public frenmos with response from /api/favor
+  setPublicFrenmos = allPublicFrenmos => {
+    this.setState({ allPublicFrenmos });
   };
 
+  addFrenmo = newFrenmo => {
+    this.setState({ newFrenmo });
+  };
+  // sets my public frenmos with response from /api/favor/public
   setAllPublic = publicFrenmos => {
     this.setState({ publicFrenmos });
   };
@@ -241,7 +245,8 @@ export class FrenmoProvider extends Component {
 
   render() {
     const value = {
-      frenmoList: this.state.frenmoList,
+      newFrenmo: this.state.newFrenmo,
+      allPublicFrenmos: this.state.allPublicFrenmos,
       publicFrenmos: this.state.publicFrenmos,
       personalFrenmos: this.state.personalFrenmos,
       friendFrenmos: this.state.friendFrenmos,
@@ -259,8 +264,6 @@ export class FrenmoProvider extends Component {
       setError: this.setError,
       user: this.state.user,
       error: this.state.error,
-      setError: this.setError,
-      clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout

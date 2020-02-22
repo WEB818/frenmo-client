@@ -30,7 +30,6 @@ class App extends Component {
           <Route
             path={"/frenmos/category/:categoryId"}
             component={FrenmoListByCat}
-            name="frenmoByCat"
           />
         </div>
       </>
