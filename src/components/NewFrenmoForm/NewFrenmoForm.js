@@ -63,7 +63,7 @@ class NewFrenmoForm extends Component {
           ? 'user'
           : setid
       }_id`]:
-        possibleUsers === []
+        possibleUsers !== []
           ? possibleUsers[0].id
           : null,
       people: possibleUsers
