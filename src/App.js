@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import FrenmoApiService from "./services/frenmo-api-service";
 import LoginPage from "./routes/LoginPage/LoginPage";
 import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import FeedPage from "./routes/FeedPage/FeedPage";

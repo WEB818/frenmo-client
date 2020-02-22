@@ -42,13 +42,17 @@ class FrenmoListByCat extends Component {
     const { myFrenmos } = this.state;
     const { user } = this.context;
     const { categoryId } = this.props.match.params;
-    console.log(categoryId);
+
+    //component did mount sets state with joined array (public, private, friend frenmos). first, array in state gets filtered by categoryId (from the named parameter in this.props)
     let frenmosByCat = getFrenmosInCategory(myFrenmos, categoryId);
-    console.log("byCat", frenmosByCat);
+
+    //the array that is filtered by category then gets filtered through getRecdFrenmos function, state is set onClick of Received Button
     let myReceivedFrenmos = getRecdFrenmos(frenmosByCat, user.id);
-    console.log("rec", myReceivedFrenmos);
+
+    //the array that is filtered by category then gets filtered through getIssuedFrenmos function, state is set onClick of Issued Button
     let myIssuedFrenmos = getIssuedFrenmos(frenmosByCat, user.id);
-    console.log("iss", myIssuedFrenmos);
+
+    //this functions still in dev. need to filter by user id && boolean (receiver_redeemed and issuer_redeemed)
     let receiverRedeemed = getRedeemedByAsReceiver(frenmosByCat, user.id);
     console.log("recred", receiverRedeemed);
 
