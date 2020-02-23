@@ -6,22 +6,39 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 30vh;
+  height: 50vh;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
+  margin-top: 50%;
 }
 
 .RegForm__alert {
-  position: absolute;
-  border: 2px solid black;
-  background-color: white;
+  text-align: center;
   color: red;
-  z-index: 2;
-  height: 140px;
-  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-links {
+  font-weight: 800;
+  color: #2334fc;
+}
+
+.page-links:hover {
+  font-weight: 800;
+  color: #00d1ff;
+}
+
+@media (min-width: 768px) {
+  .RegForm {
+    height: 50vh;
+    margin-top: 30%;
+  }
 }
 /*# sourceMappingURL=LoginForm.css.map */

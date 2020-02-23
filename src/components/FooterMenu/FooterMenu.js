@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./FooterMenu.css";
+import TokenService from "../../services/token-service";
 
 export class FooterMenu extends Component {
-  render() {
+  renderLoggedInFooter() {
     return (
       <div className="Footer__container">
         <div className="Footer__icon">
@@ -31,6 +32,14 @@ export class FooterMenu extends Component {
           <div>Profile</div>
         </div>
       </div>
+    );
+  }
+
+  render() {
+    return (
+      <footer id="footer">
+        {TokenService.hasAuthToken() ? this.renderLoggedInFooter() : null}
+      </footer>
     );
   }
 }

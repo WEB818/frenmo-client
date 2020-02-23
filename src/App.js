@@ -20,17 +20,14 @@ import "./App.css";
 import Frenmo from "./components/Frenmo/Frenmo";
 
 class App extends Component {
-  state = {
-    hasError: false,
-    myFrenmos: []
-  };
+  state = { hasError: false };
 
   static contextType = FrenmoContext;
 
   componentDidMount() {
     this.context.clearError();
     FrenmoApiService.getAllPublicFrenmos()
-      .then(this.context.setAllPublic)
+      .then(this.context.setPublicFrenmos)
       .catch(this.context.setError);
     FrenmoApiService.getPersonalFrenmos()
       .then(this.context.setAllPersonal)
@@ -39,13 +36,6 @@ class App extends Component {
       .then(this.context.setAllFriend)
       .catch(this.context.setError);
     const { allPublicFrenmos, personalFrenmos, friendFrenmos } = this.context;
-    this.setState({
-      myFrenmos: [
-        ...allPublicFrenmos.favors,
-        ...personalFrenmos.favors,
-        ...friendFrenmos.favors
-      ]
-    });
   }
 
   renderNavRoutes() {
@@ -65,7 +55,7 @@ class App extends Component {
     return (
       <>
         <Switch>
-          <PublicOnlyRoute path={"/login"} component={LoginPage} />
+          <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
 
           <PublicOnlyRoute path={"/register"} component={RegistrationPage} />
 
@@ -95,6 +85,7 @@ class App extends Component {
   }
 
   render() {
+    const { myFrenmos } = this.state;
     return (
       <div className="App">
         <NavMenu />
@@ -107,12 +98,11 @@ class App extends Component {
             <nav className="App__nav">{this.renderNavRoutes()}</nav>
           </div>
           <section className="App__main wrapper">
-            {this.renderMainRoutes()}
+            <>{this.renderMainRoutes()}</>
           </section>
         </main>
-        <footer id="footer">
-          <FooterMenu />
-        </footer>
+
+        <FooterMenu />
       </div>
     );
   }
