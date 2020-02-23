@@ -1,0 +1,12 @@
+.FeedPage__Buttons {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .FeedPage__Buttons {
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+  }
+}

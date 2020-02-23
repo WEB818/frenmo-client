@@ -6,7 +6,7 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50%;
+  margin-top: 10%;
 
   &__alert {
     text-align: center;
@@ -24,11 +24,4 @@
 .page-links:hover {
   font-weight: 800;
   color: #00d1ff;
-}
-
-@media (min-width: 768px) {
-  .RegForm {
-    height: 50vh;
-    margin-top: 30%;
-  }
 }

@@ -8,7 +8,7 @@ import {
   faChevronDown,
   faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
-import "./NavMenu.css";
+import "./NavMenu.scss";
 
 const MenuSlide = ({ showMenu }) => (
   <div id="navSlide" className={showMenu ? "slideIn" : "slideOut"}>

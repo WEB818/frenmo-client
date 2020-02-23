@@ -1,18 +1,15 @@
 .Footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-size: 1rem;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  background-color: #00d1ff;
+  justify-content: space-around;
+  background-color: rgba(0, 209, 255, 0.5);
   text-align: center;
 }
 
 #icon {
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #2b2928;
+  color: #efecff;
   text-decoration: none;
   font-size: 1.5rem;
 }
@@ -23,15 +20,14 @@
 }
 
 .Footer-links {
-  color: black;
+  color: #0c0063;
+  font-weight: 600;
   text-decoration: none;
-  padding: 10px;
+  padding: 4px;
   text-align: center;
 }
-
 @media (min-width: 768px) {
-  .Footer__container {
+  .Footer {
     display: none;
   }
 }
-/*# sourceMappingURL=FooterMenu.css.map */

@@ -1,0 +1,147 @@
+@media (min-width: 768px) {
+  #bubbles {
+    position: absolute;
+    width: 35%;
+    left: 0px;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .bubble {
+    width: 100px;
+    height: 100px;
+    background: #ffb200;
+    border-radius: 25px 0px 25px;
+    -moz-border-radius: 25px 0px 25px;
+    -webkit-border-radius: 25px 0px 25px;
+    position: absolute;
+  }
+
+  .f1 {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.4;
+    background-color: #7e00f8;
+    animation: float 10s linear infinite,
+      swerve 6s ease-in-out infinite alternate;
+    -moz-animation: float 10s linear infinite,
+      swerve 6s ease-in-out infinite alternate;
+    -o-animation: float 10s linear infinite,
+      swerve 6s ease-in-out infinite alternate;
+  }
+
+  .f2 {
+    left: 100px;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.3;
+    background-color: #ffd42b;
+    animation: float 15s linear infinite,
+      swerve 8s ease-in-out infinite alternate;
+    -moz-animation: float 15s linear infinite,
+      swerve 8s ease-in-out infinite alternate;
+    -o-animation: float 15s linear infinite,
+      swerve 8s ease-in-out infinite alternate;
+  }
+  .f3 {
+    left: 50px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.5;
+    background-color: #df3e7b;
+    animation: float 12s linear infinite,
+      swerve 10s ease-in-out infinite alternate;
+    -moz-animation: float 12s linear infinite,
+      swerve 10s ease-in-out infinite alternate;
+    -o-animation: float 12s linear infinite,
+      swerve 10s ease-in-out infinite alternate;
+  }
+  .f4 {
+    left: 70px;
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    transform: scale(0.75);
+    opacity: 0.35;
+    background-color: #0479bf;
+    animation: float 18s linear infinite,
+      swerve 2s ease-in-out infinite alternate;
+    -moz-animation: float 18s linear infinite,
+      swerve 2s ease-in-out infinite alternate;
+    -o-animation: float 18s linear infinite,
+      swerve 2s ease-in-out infinite alternate;
+  }
+  .f5 {
+    left: 20px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.4;
+    background-color: #00d1ff;
+    animation: float 7s linear infinite,
+      swerve 3s ease-in-out infinite alternate;
+    -moz-animation: float 7s linear infinite,
+      swerve 3s ease-in-out infinite alternate;
+    -o-animation: float 7s linear infinite,
+      swerve 3s ease-in-out infinite alternate;
+  }
+  @keyframes float {
+    0% {
+      top: 100vh;
+    }
+    100% {
+      top: -300px;
+    }
+  }
+
+  @keyframes swerve {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 150px;
+    }
+  }
+
+  @-moz-keyframes float {
+    0% {
+      top: 100vh;
+    }
+    100% {
+      top: -300px;
+    }
+  }
+
+  @-moz-keyframes swerve {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 150px;
+    }
+  }
+  @-o-keyframes float {
+    0% {
+      top: 100vh;
+    }
+    100% {
+      top: -300px;
+    }
+  }
+
+  @-o-keyframes swerve {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 150px;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .f3 {
+    left: 300px;
+  }
+}

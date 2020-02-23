@@ -1,29 +1,16 @@
 import React, { Component } from "react";
-import FrenmoApiService from "../../services/frenmo-api-service";
+
 import FrenmoContext from "../../contexts/FrenmoContext";
 import { Button } from "../../components/Utils/Utils";
 import PublicFeedItem from "../../components/PublicFeedItem/PublicFeedItem";
-
-import "./FeedPage.css";
+import FriendBubbles from "../../components/FriendBubbles/FriendBubbles";
+import "./FeedPage.scss";
 export default class FeedPage extends Component {
   state = {
     favors: []
   };
 
   static contextType = FrenmoContext;
-
-  // componentDidMount() {
-  //   this.context.clearError();
-  //   FrenmoApiService.getAllPublicFrenmos()
-  //     .then(this.context.setAllPublic)
-  //     .catch(this.context.setError);
-  //   FrenmoApiService.getPersonalFrenmos()
-  //     .then(this.context.setAllPersonal)
-  //     .catch(this.context.setError);
-  //   FrenmoApiService.getFriendFrenmos()
-  //     .then(this.context.setAllFriend)
-  //     .catch(this.context.setError);
-  // }
 
   // currently not implemented, should route to frenmo detail that lets user redeem or do whatever depending on what is available
   redirectToTarget = favorId => {
@@ -36,13 +23,17 @@ export default class FeedPage extends Component {
 
     return (
       <>
-        <Button onClick={() => this.setState({ favors: allPublicFrenmos })}>
+        <Button
+          onClick={() => this.setState({ favors: allPublicFrenmos.favors })}
+        >
           Public
         </Button>
-        <Button onClick={() => this.setState({ favors: friendFrenmos })}>
+        <Button onClick={() => this.setState({ favors: friendFrenmos.favors })}>
           Friends
         </Button>
-        <Button onClick={() => this.setState({ favors: personalFrenmos })}>
+        <Button
+          onClick={() => this.setState({ favors: personalFrenmos.favors })}
+        >
           Personal
         </Button>
       </>
@@ -54,6 +45,7 @@ export default class FeedPage extends Component {
 
     return (
       <>
+        <FriendBubbles />
         <div className="FeedPage__Buttons">{this.renderPublicity()}</div>
         <div>
           {favors.map((pubFavor, idx) => (
@@ -82,7 +74,6 @@ export default class FeedPage extends Component {
             />
           ))}
         </div>
-        )}
       </>
     );
   }
