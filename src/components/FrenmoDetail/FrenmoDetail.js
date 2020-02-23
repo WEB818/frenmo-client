@@ -10,50 +10,14 @@ import { ConfirmRedeemFrenmo } from '../ConfirmRedeemFrenmo/ConfirmRedeemFrenmo'
 import { Input } from '../Utils/Utils';
 
 class FrenmoDetail extends Component {
-  state = {
-    frenmo: {
-      title: '',
-      description: '',
-      expiration_date: '',
-      publicity: '',
-      creator_name: '',
-      issuer_name: '',
-      receiver_name: '',
-      receiver_id: null,
-      issuer_id: null,
-      outstanding_id: null
-    },
-    relationship: null
-  };
+  state = {};
 
   static defaultProps = {
     match: {
       params: {}
     }
   };
-  componentDidMount() {
-    const { frenmoList } = this.context;
-    const {
-      outstandingId
-    } = this.props.match.params;
-    const frenmo = getFrenmoById(
-      frenmoList.favors,
-      outstandingId
-    );
-    //TODO: replace the rest of the code with this if we go with props
-    // this.setState({
-    //   ...this.state,
-    //   frenmo: this.props.frenmo,
-    //   relationship: this.props
-    //     .relationship //received | issued | expired | redeemed
-    // });
-    this.setState({
-      ...this.state,
-      frenmo,
-      relationship: this.props
-        .relationship //received | issued | expired | redeemed
-    });
-  }
+
   static contextType = FrenmoContext;
 
   renderRedeem = () => {
@@ -111,6 +75,14 @@ class FrenmoDetail extends Component {
   renderExpirationFlag = () => {};
 
   render() {
+    const { frenmoList } = this.context;
+    const {
+      outstandingId
+    } = this.props.match.params;
+    const frenmo = getFrenmoById(
+      frenmoList.favors,
+      outstandingId
+    );
     const {
       title,
       description,
@@ -118,8 +90,27 @@ class FrenmoDetail extends Component {
       publicity,
       creator_name,
       issuer_name,
-      receiver_name
-    } = this.state.frenmo;
+      receiver_name,
+      creator_id,
+      user_location,
+      tags,
+      categoryId,
+      limit,
+      posted,
+      outstanding_id,
+      receiver_redeemed,
+      issuer_redeemed,
+      relationship,
+      creator_username,
+      issuer_id,
+      issuer_username,
+      receiver_id,
+      receiver_username,
+      issued,
+      redeemed,
+      expired,
+      received
+    } = this.props.location.state;
 
     return (
       <div className="FrenmoDetail__frenmo">
