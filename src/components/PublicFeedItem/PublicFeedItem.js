@@ -1,11 +1,20 @@
-import FrenmoApiService from "../../services/frenmo-api-service";
-import Check from "../../images/check.png";
 import React, { Component } from "react";
-import { Button } from "../Utils/Utils";
+
 import UserContext from "../../contexts/UserContext";
-import "./PublicFeedItem.css";
+// import Check from "../../images/check.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faChevronUp,
+  faArrowRight,
+  faGift,
+  faTicketAlt,
+  faCalendar,
+  faUserPlus
+} from "@fortawesome/free-solid-svg-icons";
+import { Button } from "../Utils/Utils";
 import { formatRelative } from "date-fns";
-import { Link } from "react-router-dom";
+import "./PublicFeedItem.scss";
 
 export default class PublicFeedItem extends Component {
   static defaultProps = {
@@ -15,7 +24,8 @@ export default class PublicFeedItem extends Component {
   static contextType = UserContext;
 
   state = {
-    expanded: false
+    expanded: false,
+    redemption: ""
   };
 
   handleRedemption = outstanding_id => {
@@ -35,8 +45,6 @@ export default class PublicFeedItem extends Component {
       expanded: !prevState.expanded
     }));
   };
-
-  renderCollapsedTitles() {}
 
   render() {
     const {
@@ -60,40 +68,84 @@ export default class PublicFeedItem extends Component {
       issuerRedeemed,
       receiverRedeemed
     } = this.props;
-    const { expanded } = this.state;
-    // let redemption = "UNUSED";
-    // if (receiverRedeemed) {
-    //   redemption = "PENDING";
-    //   if (issuerRedeemed) {
-    //     redemption = "REDEEMED";
-    //   }
-    // }
 
+    const { expanded } = this.state;
+
+    let redemption = "available";
+    if (receiverRedeemed) {
+      redemption = "pending";
+      if (issuerRedeemed) {
+        redemption = "redeemed";
+      }
+    }
+    //add the frenmo logo for available frenmos?
     return (
-      <div className="PublicFeedItem__container">
-        {recdById && <img src={Check} alt="check icon" />}
-        <div className="PublicFeedItem__favor">
+      <div className="PublicFeedItem">
+        <div
+          className="PublicFeedItem__title"
+          onClick={() => this.handleExpandedToggle()}
+        >
           <div>
-            <h3 onClick={() => this.handleExpandedToggle()}>{title}</h3>
+            <h3 className="PublicFeedItem__frenmo">{title}</h3>
+            <div className="PublicFeedItem__flags">
+              {receiverRedeemed && !issuerRedeemed && (
+                <div className="PublicFeedItem__notification yellow">
+                  Pending
+                </div>
+              )}
+              {!expanded && issuerRedeemed && (
+                <div className="PublicFeedItem__notification pink">
+                  Redeem Me
+                </div>
+              )}
+            </div>
           </div>
+          {!expanded && (
+            <FontAwesomeIcon
+              className="PublicFeedItem__down"
+              icon={faChevronDown}
+            />
+          )}
           {expanded && (
-            <div>
-              {recdByName && <p>To: {recdByName}</p>}
-              {issuedByName && <p>From: {issuedByName}</p>}
-              <p>Created by: {createdByName}</p>
-              <p>
-                Redeem by: {formatRelative(new Date(expDate), new Date(), 0)}
-              </p>
-              {!recdById && (
-                <Button onClick={() => this.handleRedemption(outstandingId)}>
-                  Redeem
-                </Button>
+            <FontAwesomeIcon
+              className="PublicFeedItem__up"
+              icon={faChevronUp}
+            />
+          )}
+        </div>
+        <div className="PublicFeedItem__expanded">
+          {expanded && (
+            <div onClick={() => this.handleExpandedToggle()}>
+              {recdByName && (
+                <div className="PublicFeedItem__sub-titles">
+                  <FontAwesomeIcon icon={faArrowRight} />
+                  {recdByName}
+                </div>
+              )}
+              {issuedByName && (
+                <div className="PublicFeedItem__sub-titles">
+                  <FontAwesomeIcon icon={faGift} />
+                  {issuedByName}
+                  {/* <FontAwesomeIcon icon={faUserPlus} /> */}
+                </div>
+              )}
+              <div className="PublicFeedItem__sub-titles">
+                <FontAwesomeIcon icon={faTicketAlt} /> {createdByName}
+              </div>
+              {expDate && (
+                <div className="PublicFeedItem__sub-titles">
+                  <FontAwesomeIcon icon={faCalendar} />
+                  {formatRelative(new Date(expDate), new Date(), 0)}
+                </div>
+              )}
+              {issuerRedeemed && (
+                <div className="PublicFeedItem__button">
+                  <Button>Redeem Me</Button>
+                </div>
               )}
             </div>
           )}
         </div>
-
-        {/* {recdById && <h3>{redemption}</h3>} */}
       </div>
     );
   }

@@ -1,0 +1,39 @@
+.Dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+  &__category {
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    text-align: center;
+    border: 0.5px solid #0c0063;
+    border-radius: 15px 0;
+    background: #00d1ff;
+    color: #0c0063;
+    width: 60px;
+    height: 60px;
+  }
+
+  &__links:visited {
+    text-decoration: none;
+  }
+}
+.fas {
+  font-size: 30px;
+  color: #e9fbff;
+}
+
+@media (min-width: 768px) {
+  .Dashboard {
+    margin-left: 40%;
+  }
+}

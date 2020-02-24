@@ -3,8 +3,12 @@ import { NavLink, Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import "./NavMenu.css";
+import {
+  faSignOutAlt,
+  faChevronDown,
+  faChevronLeft
+} from "@fortawesome/free-solid-svg-icons";
+import "./NavMenu.scss";
 
 const MenuSlide = ({ showMenu }) => (
   <div id="navSlide" className={showMenu ? "slideIn" : "slideOut"}>
@@ -64,12 +68,20 @@ class NavMenu extends Component {
     return (
       <>
         <div className="Header__link">
-          <FontAwesomeIcon
-            icon={faChevronDown}
-            className="menu-icon"
-            onClick={this.handleSlide}
-          />
-
+          {!showMenu && (
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className="menu-icon"
+              onClick={this.handleSlide}
+            />
+          )}
+          {showMenu && (
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              className="menu-icon"
+              onClick={this.handleSlide}
+            />
+          )}
           <h2 className="NavMenu__Header">
             <span className="logo medblue">f</span>
             <span className="logo lightblue">f</span>

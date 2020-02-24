@@ -15,6 +15,7 @@ export const findFrenmo = (
     frenmo => frenmo.id === frenmoId
   );
 
+
 export const getFrenmosInCategory = (
   frenmos = {},
   categoryId
@@ -32,6 +33,7 @@ export const getFrenmosInCategory = (
       };
   return frenmos;
 };
+
 
 export const getFrenmoById = (
   favors = [],
@@ -58,10 +60,9 @@ export const getRecdFrenmos = (
   userId
 ) =>
   favors.filter(favor => {
-    return (
-      favor.props.receivedById ===
-      Number(userId)
-    );
+
+    return favor.receiver_id === Number(userId);
+
   });
 
 export const getIssuedFrenmos = (
@@ -69,8 +70,15 @@ export const getIssuedFrenmos = (
   userId
 ) =>
   favors.filter(favor => {
-    return (
-      favor.props.issuedById ===
-      Number(userId)
-    );
+
+    return favor.issuer_id === Number(userId);
+
   });
+
+// need to map over and find issued for each
+export const getRedeemedByAsReceiver = (favors = [], userId) => {
+  favors.filter(
+    favor =>
+      favor.receiver_id === Number(userId) && favor.receiver_redeemed === true
+  );
+};

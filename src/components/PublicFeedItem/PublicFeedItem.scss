@@ -1,0 +1,74 @@
+.PublicFeedItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid lightgrey;
+  padding: 10px;
+
+  &:hover {
+    background-color: #00d1ff;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px;
+  }
+
+  &__frenmo {
+    text-transform: uppercase;
+    color: #0c0063;
+    font-size: 14px;
+
+    &__notification {
+      color: white;
+    }
+
+    &:hover {
+      color: white;
+    }
+  }
+  &__expanded {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    text-transform: capitalize;
+  }
+
+  &__sub-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+  }
+  &__flags {
+    display: flex;
+  }
+  &__notification {
+    font-size: 12px;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 15px 0px;
+    font-weight: 700;
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
+  & .yellow {
+    background-color: #ffd42b;
+    color: #df3e7b;
+  }
+  & .pink {
+    background-color: #df3e7b;
+    color: #ffeda4;
+  }
+}
+
+@media (min-width: 768px) {
+  .PublicFeedItem {
+    margin-left: 40%;
+  }
+}

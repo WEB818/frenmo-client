@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
-import "./RegistrationPage.css";
+import "./RegistrationPage.scss";
 
 class RegistrationPage extends Component {
   static defaultProps = {
@@ -19,7 +19,7 @@ class RegistrationPage extends Component {
     return (
       <section>
         <p className="tagline"></p>
-        <h2>Sign up</h2>
+        <h2 className="Auth__header">Sign up</h2>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />

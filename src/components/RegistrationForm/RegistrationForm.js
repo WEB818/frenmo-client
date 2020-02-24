@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Input, Required, Label } from "../Utils/Utils";
+import { Input } from "../Utils/Utils";
 import AuthApiService from "../../services/auth-api-service";
-// import Button from "../Button/Button";
-import "./RegistrationForm.css";
+import { Button } from "../Utils/Utils";
+import "./RegistrationForm.scss";
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -35,66 +35,59 @@ class RegistrationForm extends Component {
       });
   };
 
-  componentDidMount() {
-    // this.firstInput.current.focus();
-  }
-
   render() {
     const { error } = this.state;
 
     return (
-      <form className="RegForm__container" onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
-        <div className="form-container"></div>
+      <form className="RegForm" onSubmit={this.handleSubmit}>
+        <div role="alert" className="RegForm__alert">
+          {error && <p>{error}</p>}
+        </div>
+
         <div className="RegForm__label-input">
-          <Label htmlFor="registration-name-input">
-            Enter your name
-            <Required />
-          </Label>
           <Input
-            // ref={this.firstInput}
             id="registration-name-input"
             name="name"
+            placeholder="Name"
+            aria-label="Enter your name"
             required
           />
         </div>
 
         <div className="RegForm__label-input">
-          <Label htmlFor="registration-username-input">
-            Choose a username
-            <Required />
-          </Label>
-          <Input id="registration-username-input" name="username" required />
+          <Input
+            id="registration-username-input"
+            name="username"
+            placeholder="Choose a username"
+            aria-label="Choose a username"
+            required
+          />
         </div>
 
         <div className="RegForm__label-input">
-          <Label htmlFor="registration-phone-input">
-            Phone Number
-            <Required />
-          </Label>
           <Input
             id="registration-phone-input"
             name="phone"
             type="tel"
+            placeholder="Phone number"
+            aria-label="input phone number"
             required
           />
         </div>
 
         <div className="RegForm__label-input">
-          <Label htmlFor="registration-password-input">
-            Choose a password
-            <Required />
-          </Label>
           <Input
             id="registration-password-input"
             name="password"
             type="password"
+            placeholder="Choose a password"
+            aria-label="Choose a password"
             required
           />
         </div>
 
         <footer className="RegForm__footer">
-          <button type="submit">Sign up</button> Already have an account?{" "}
+          <Button type="submit">Sign up</Button> Already have an account?{" "}
           <Link to="/login" className="page-links">
             Log in!
           </Link>
