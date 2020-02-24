@@ -8,60 +8,29 @@ import IssueFrenmo from '../IssueFrenmo/IssueFrenmo';
 import { RedeemFrenmo } from '../RedeemFrenmo/RedeemFrenmo';
 import { ConfirmRedeemFrenmo } from '../ConfirmRedeemFrenmo/ConfirmRedeemFrenmo';
 import { Input } from '../Utils/Utils';
+import { formatRelative } from 'date-fns';
 
 class FrenmoDetail extends Component {
-  state = {
-    frenmo: {
-      title: '',
-      description: '',
-      expiration_date: '',
-      publicity: '',
-      creator_name: '',
-      issuer_name: '',
-      receiver_name: '',
-      receiver_id: null,
-      issuer_id: null,
-      outstanding_id: null
-    },
-    relationship: null
-  };
+  state = {};
 
   static defaultProps = {
     match: {
       params: {}
     }
   };
-  componentDidMount() {
-    const { frenmoList } = this.context;
-    const {
-      outstandingId
-    } = this.props.match.params;
-    const frenmo = getFrenmoById(
-      frenmoList.favors,
-      outstandingId
-    );
-    //TODO: replace the rest of the code with this if we go with props
-    // this.setState({
-    //   ...this.state,
-    //   frenmo: this.props.frenmo,
-    //   relationship: this.props
-    //     .relationship //received | issued | expired | redeemed
-    // });
-    this.setState({
-      ...this.state,
-      frenmo,
-      relationship: this.props
-        .relationship //received | issued | expired | redeemed
-    });
-  }
+
   static contextType = FrenmoContext;
 
   renderRedeem = () => {
     return (
       <RedeemFrenmo
-        favor_id={this.state.favor_id}
+        favor_id={
+          this.props.location.state
+            .favor_id
+        }
         outstanding_id={
-          this.state.outstanding_id
+          this.props.location.state
+            .outstanding_id
         }
       ></RedeemFrenmo>
     );
@@ -74,10 +43,21 @@ class FrenmoDetail extends Component {
   }) => {
     //render form
     return (
-      <IssueFrenmo
-        receiver={receiver}
-        receiver_id={receiver_id}
-      ></IssueFrenmo>
+      <>
+        {/**TODO: add some sort of thing that allows you to count */}
+        <IssueFrenmo
+          receiver={receiver}
+          receiver_id={receiver_id}
+          favor_id={
+            this.props.location.state
+              .favor_id
+          }
+          outstanding_id={
+            this.props.location.state
+              .outstanding_id
+          }
+        ></IssueFrenmo>
+      </>
     );
   };
 
@@ -86,9 +66,13 @@ class FrenmoDetail extends Component {
   renderConfirmRedeem = () => {
     return (
       <ConfirmRedeemFrenmo
-        favor_id={this.state.favor_id}
+        favor_id={
+          this.props.location.state
+            .favor_id
+        }
         outstanding_id={
-          this.state.outstanding_id
+          this.props.location.state
+            .outstanding_id
         }
       ></ConfirmRedeemFrenmo>
     );
@@ -108,9 +92,19 @@ class FrenmoDetail extends Component {
   renderEditButton = () => {};
 
   //Expiration flag -- renders for expired frenmos
-  renderExpirationFlag = () => {};
+  renderExpirationFlag = () => {
+    return <h3>EXPIRED!!!</h3>;
+  };
 
   render() {
+    const { frenmoList } = this.context;
+    const {
+      outstandingId
+    } = this.props.match.params;
+    const frenmo = getFrenmoById(
+      frenmoList.favors,
+      outstandingId
+    );
     const {
       title,
       description,
@@ -118,8 +112,27 @@ class FrenmoDetail extends Component {
       publicity,
       creator_name,
       issuer_name,
-      receiver_name
-    } = this.state.frenmo;
+      receiver_name,
+      creator_id,
+      user_location,
+      tags,
+      categoryId,
+      limit,
+      posted,
+      outstanding_id,
+      receiver_redeemed,
+      issuer_redeemed,
+      relationship,
+      creator_username,
+      issuer_id,
+      issuer_username,
+      receiver_id,
+      receiver_username,
+      issued,
+      redeemed,
+      expired,
+      received
+    } = this.props.location.state;
 
     return (
       <div className="FrenmoDetail__frenmo">
@@ -128,7 +141,11 @@ class FrenmoDetail extends Component {
         </h2>
         <h3>
           This frenmo is valid until:{' '}
-          {expiration_date}
+          {formatRelative(
+            new Date(expiration_date),
+            Date.now(),
+            0
+          )}
         </h3>
         <p>
           Description: {description}
@@ -148,6 +165,18 @@ class FrenmoDetail extends Component {
           Frenmo issued to:{' '}
           {receiver_name}
         </p>
+        {issued && !expired
+          ? this.renderIssue(
+              receiver_username,
+              receiver_id
+            )
+          : null}
+        {received && !expired
+          ? this.renderRedeem()
+          : null}
+        {expired
+          ? this.renderExpirationFlag()
+          : null}
       </div>
     );
   }

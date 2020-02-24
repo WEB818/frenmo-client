@@ -1,3 +1,10 @@
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faSignOutAlt,
+  faChevronDown
+} from '@fortawesome/free-solid-svg-icons';
+
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
@@ -6,6 +13,7 @@ import FrenmoApiService from "../../services/frenmo-api-service";
 import { countFavorsInCategory } from "../../services/helpers";
 import "./FrenmoDashboard.scss";
 import FriendBubbles from "../../components/FriendBubbles/FriendBubbles";
+
 
 class FrenmoDashboard extends Component {
   static defaultProps = {
@@ -19,63 +27,101 @@ class FrenmoDashboard extends Component {
 
   static contextType = FrenmoContext;
 
-  state = {
-    myFrenmos: []
-  };
+
+  componentDidMount() {
+    //TODO: add to frenmo context
+    this.context.clearError();
+    FrenmoApiService.getMyPublicFrenmos()
+      .then(
+        this.context.setPublicFrenmos
+      )
+      .catch(this.context.setError);
+  }
+
 
   render() {
     const {
       frenmoCategories,
-      publicFrenmos,
-      personalFrenmos,
-      friendFrenmos
+
+      frenmoList
     } = this.context;
-
-    let myFrenmos;
-    let pubFavors;
-    let privFavors;
-    let frenFavors;
-
-    // join arrays if objects have favors property
-    if (publicFrenmos.hasOwnProperty("favors")) {
-      pubFavors = publicFrenmos.favors;
-      myFrenmos = [...pubFavors];
-    }
-    if (personalFrenmos.hasOwnProperty("favors")) {
-      privFavors = personalFrenmos.favors;
-      myFrenmos = [...myFrenmos, ...privFavors];
-    }
-    if (friendFrenmos.hasOwnProperty("favors")) {
-      frenFavors = friendFrenmos.favors;
-      myFrenmos = [...myFrenmos, ...privFavors, ...frenFavors];
-    }
-
-    let categories = frenmoCategories.map((category, idx) => (
-      <NavLink
-        key={idx}
-        className="Dashboard__link"
-        to={{
-          pathname: `/frenmos/category/${category.id}`,
-          state: {
-            publicFrenmos: pubFavors,
-            personalFrenmos: privFavors,
-            friendFrenmos: frenFavors,
-            catLabel: category.category
-          }
-        }}
-      >
-        <div className="Dashboard__category">
-          <div className={category.icon} />
-          <div className="Dashboard__label">{category.category}</div>
+    let categories = frenmoCategories.map(
+      category => (
+        <div
+          key={category.id}
+          className="Dashboard__cat-link"
+        >
+          <p className="Dashboard__count">
+            {countFavorsInCategory(
+              frenmoList.favors,
+              category.id
+            )}
+          </p>
+          <NavLink
+            className="Dashboard__category"
+            to={`/frenmos/category/${category.id}`}
+          >
+            {category.category}
+          </NavLink>
         </div>
-      </NavLink>
-    ));
-
+      )
+    );
     return (
-      <>
-        <FriendBubbles />
-        <div className="Dashboard">{categories}</div>
-      </>
+      <div className="Dashboard__cat-container">
+        {categories}
+      </div>
+/////////Wendy's changes
+//       publicFrenmos,
+//       personalFrenmos,
+//       friendFrenmos
+//     } = this.context;
+
+//     let myFrenmos;
+//     let pubFavors;
+//     let privFavors;
+//     let frenFavors;
+
+//     // join arrays if objects have favors property
+//     if (publicFrenmos.hasOwnProperty("favors")) {
+//       pubFavors = publicFrenmos.favors;
+//       myFrenmos = [...pubFavors];
+//     }
+//     if (personalFrenmos.hasOwnProperty("favors")) {
+//       privFavors = personalFrenmos.favors;
+//       myFrenmos = [...myFrenmos, ...privFavors];
+//     }
+//     if (friendFrenmos.hasOwnProperty("favors")) {
+//       frenFavors = friendFrenmos.favors;
+//       myFrenmos = [...myFrenmos, ...privFavors, ...frenFavors];
+//     }
+
+//     let categories = frenmoCategories.map((category, idx) => (
+//       <NavLink
+//         key={idx}
+//         className="Dashboard__link"
+//         to={{
+//           pathname: `/frenmos/category/${category.id}`,
+//           state: {
+//             publicFrenmos: pubFavors,
+//             personalFrenmos: privFavors,
+//             friendFrenmos: frenFavors,
+//             catLabel: category.category
+//           }
+//         }}
+//       >
+//         <div className="Dashboard__category">
+//           <div className={category.icon} />
+//           <div className="Dashboard__label">{category.category}</div>
+//         </div>
+//       </NavLink>
+//     ));
+
+//     return (
+//       <>
+//         <FriendBubbles />
+//         <div className="Dashboard">{categories}</div>
+//       </>
+
     );
   }
 }

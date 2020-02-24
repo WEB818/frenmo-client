@@ -20,7 +20,7 @@ export class RedeemFrenmo extends React.Component {
         >
           <div>
             <button type="submit">
-              Redeem Frienmo
+              Redeem Frenmo
             </button>
           </div>
         </form>

@@ -13,6 +13,8 @@ import FrenmoApiService from '../../services/frenmo-api-service';
 import { Button } from '../../components/Utils/Utils';
 
 import './FrenmoListByCat.css';
+import TokenService from '../../services/token-service';
+import { Redirect } from 'react-router-dom';
 
 
 class FrenmoListByCat extends Component {
@@ -34,46 +36,47 @@ class FrenmoListByCat extends Component {
     myFrenmos: []
   };
 
-  async componentDidMount() {
-    // this.context.clearError();
-    // await FrenmoApiService.getAllPublicFrenmos()
-    //   .then(this.context.setAllPublic)
-    //   .catch(this.context.setError);
-    // await FrenmoApiService.getPersonalFrenmos()
-    //   .then(this.context.setAllPersonal)
-    //   .catch(this.context.setError);
-    // await FrenmoApiService.getFriendFrenmos()
-    //   .then(this.context.setAllFriend)
-    //   .catch(this.context.setError);
-
-    // console.log(this.context.publicFrenmos);
+  handleMakeFrenmos(user_id) {
     let {
       publicFrenmos,
       personalFrenmos,
       friendFrenmos
     } = this.context;
+    const {
+      categoryId
+    } = this.props.match.params;
+    //TODO: category filter here
+    publicFrenmos = getFrenmosInCategory(
+      publicFrenmos,
+      categoryId
+    );
+    personalFrenmos = getFrenmosInCategory(
+      personalFrenmos,
+      categoryId
+    );
+    friendFrenmos = getFrenmosInCategory(
+      friendFrenmos,
+      categoryId
+    );
 
     //TODO:have to do a filter by category
     const drawFrenmos = (
       frenmo,
       idx
     ) => {
-      console.log(frenmo);
       //checks go here
       let issued =
-        frenmo.issuer_id ===
-        this.context.user.id;
+        frenmo.issuer_id === user_id;
 
       let received =
-        frenmo.receiver_id ===
-        this.context.user.id;
+        frenmo.receiver_id === user_id;
 
       let expired =
         new Date(
           new Date(
             frenmo.expiration_date
           ).toLocaleString()
-        ) > new Date();
+        ) < new Date();
 
       let redeemed =
         frenmo.issuer_redeemed ===
@@ -162,30 +165,29 @@ class FrenmoListByCat extends Component {
     };
     let myPublicFrenmos;
     let myPrivateFrenmos;
-    let myfriendFrenmos;
+    let myFriendFrenmos;
+    console.log(
+      publicFrenmos,
+      personalFrenmos,
+      friendFrenmos
+    );
     //Dana - test this code on empty arrays//
     myPublicFrenmos = publicFrenmos.favors.map(
       drawFrenmos
     );
-    if (personalFrenmos.favors) {
-      myPrivateFrenmos = personalFrenmos.favors.map(
-        drawFrenmos
-      );
-    }
-    if (friendFrenmos.favors) {
-      myfriendFrenmos = friendFrenmos.favors.map(
-        drawFrenmos
-      );
-    }
-    console.log(myPublicFrenmos);
-    this.setState({
-      myFrenmos: [
-        ...myPublicFrenmos,
-        ...myPrivateFrenmos,
-        ...myfriendFrenmos
-      ]
-    });
+    myPrivateFrenmos = personalFrenmos.favors.map(
+      drawFrenmos
+    );
+    myFriendFrenmos = friendFrenmos.favors.map(
+      drawFrenmos
+    );
+    return [
+      ...myPublicFrenmos,
+      ...myPrivateFrenmos,
+      ...myFriendFrenmos
+    ];
   }
+  async componentDidMount() {}
   //const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
 
   handleRecievedTab = () => {
@@ -210,42 +212,42 @@ class FrenmoListByCat extends Component {
     );
   };
 
-  renderAll = () => {
-    return this.state.myFrenmos.map(
+  renderAll = myFrenmos => {
+    return myFrenmos.map(
       item => item.frenmo
     );
   };
-  renderReceived = () => {
-    return this.state.myFrenmos
+  renderReceived = myFrenmos => {
+    return myFrenmos
       .filter(
         item => item.received === true
       )
       .map(item => item.frenmo);
   };
-  renderRedeemed = () => {
-    return this.state.myFrenmos
+  renderRedeemed = myFrenmos => {
+    return myFrenmos
       .filter(
         item => item.redeemed === true
       )
       .map(item => item.frenmo);
   };
-  renderIssued = () => {
-    return this.state.myFrenmos
+  renderIssued = myFrenmos => {
+    return myFrenmos
       .filter(
         item => item.issued === true
       )
       .map(item => item.frenmo);
   };
 
-  renderExpired = () => {
-    return this.state.myFrenmos
+  renderExpired = myFrenmos => {
+    return myFrenmos
       .filter(
         item => item.expired === true
       )
       .map(item => item.frenmo);
   };
-  renderPending = () => {
-    return this.state.myFrenmos
+  renderPending = myFrenmos => {
+    return myFrenmos
       .filter(
         item => item.pending === true
       )
@@ -347,29 +349,48 @@ class FrenmoListByCat extends Component {
 
   render() {
 
-    const {
-      categoryId
-    } = this.props.match.params;
+    let user_id;
+    let jwtPayload;
+   
+    jwtPayload = TokenService.parseAuthToken();
+    user_id = jwtPayload.user_id;
+    
+
     const { type } = this.state;
     let displayed;
+    let myFrenmos = this.handleMakeFrenmos(
+      user_id
+    );
     switch (this.state.type) {
       case 'redeemed':
-        displayed = this.renderRedeemed();
+        displayed = this.renderRedeemed(
+          myFrenmos
+        );
         break;
       case 'issued':
-        displayed = this.renderIssued();
+        displayed = this.renderIssued(
+          myFrenmos
+        );
         break;
       case 'received':
-        displayed = this.renderReceived();
+        displayed = this.renderReceived(
+          myFrenmos
+        );
         break;
       case 'expired':
-        displayed = this.renderExpired();
+        displayed = this.renderExpired(
+          myFrenmos
+        );
         break;
       case 'pending':
-        displayed = this.renderPending();
+        displayed = this.renderPending(
+          myFrenmos
+        );
         break;
       default:
-        displayed = this.renderAll();
+        displayed = this.renderAll(
+          myFrenmos
+        );
         break;
     }
     console.log(displayed);
