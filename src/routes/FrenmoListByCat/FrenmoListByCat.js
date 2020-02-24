@@ -28,34 +28,41 @@ class FrenmoListByCat extends Component {
     myFrenmos: []
   };
 
-  componentDidMount() {
-    const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
-    this.setState({
-      myFrenmos: [
-        ...publicFrenmos.favors,
-        ...personalFrenmos.favors,
-        ...friendFrenmos.favors
-      ]
-    });
-  }
+  // componentDidMount() {
+  //   const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
+  //   this.setState({
+  //     myFrenmos: [
+  //       publicFrenmos.favors,
+  //       personalFrenmos.favors,
+  //       friendFrenmos.favors
+  //     ]
+  //   });
+  // }
 
   renderTypes() {
-    const { myFrenmos } = this.state;
+    const {
+      personalFrenmos,
+      friendFrenmos,
+      publicFrenmos
+    } = this.props.location.state;
     const { user } = this.context;
     const { categoryId } = this.props.match.params;
 
+    let myFrenmos = [...personalFrenmos, ...friendFrenmos, ...publicFrenmos];
+
+    console.log("all my frens", myFrenmos);
+
     //component did mount sets state with joined array (public, private, friend frenmos). first, array in state gets filtered by categoryId (from the named parameter in this.props)
     let frenmosByCat = getFrenmosInCategory(myFrenmos, categoryId);
-
+    console.log("by cat", frenmosByCat);
     //the array that is filtered by category then gets filtered through getRecdFrenmos function, state is set onClick of Received Button
     let myReceivedFrenmos = getRecdFrenmos(frenmosByCat, user.id);
-
+    console.log("by received", myReceivedFrenmos);
     //the array that is filtered by category then gets filtered through getIssuedFrenmos function, state is set onClick of Issued Button
     let myIssuedFrenmos = getIssuedFrenmos(frenmosByCat, user.id);
-
+    console.log("by issued", myIssuedFrenmos);
     //this functions still in dev. need to filter by user id && boolean (receiver_redeemed and issuer_redeemed)
     let receiverRedeemed = getRedeemedByAsReceiver(frenmosByCat, user.id);
-    console.log("recred", receiverRedeemed);
 
     return (
       <div className="btn-container">

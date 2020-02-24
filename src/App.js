@@ -24,20 +24,6 @@ class App extends Component {
 
   static contextType = FrenmoContext;
 
-  componentDidMount() {
-    this.context.clearError();
-    FrenmoApiService.getAllPublicFrenmos()
-      .then(this.context.setPublicFrenmos)
-      .catch(this.context.setError);
-    FrenmoApiService.getPersonalFrenmos()
-      .then(this.context.setAllPersonal)
-      .catch(this.context.setError);
-    FrenmoApiService.getFriendFrenmos()
-      .then(this.context.setAllFriend)
-      .catch(this.context.setError);
-    const { allPublicFrenmos, personalFrenmos, friendFrenmos } = this.context;
-  }
-
   renderNavRoutes() {
     return (
       <>

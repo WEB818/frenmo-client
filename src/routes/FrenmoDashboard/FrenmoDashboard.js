@@ -26,27 +26,25 @@ class FrenmoDashboard extends Component {
   componentDidMount() {
     this.context.clearError();
     FrenmoApiService.getMyPublicFrenmos()
-      .then(this.context.setPublicFrenmos)
+      .then(this.context.setAllPublic)
       .catch(this.context.setError);
-    const { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
-
-    this.setState({
-      myFrenmos: [
-        ...publicFrenmos.favors,
-        ...personalFrenmos.favors,
-        ...friendFrenmos.favors
-      ]
-    });
   }
 
   render() {
-    const { frenmoCategories, myFrenmos } = this.context;
+    const {
+      frenmoCategories,
+      publicFrenmos,
+      personalFrenmos,
+      friendFrenmos
+    } = this.context;
     let categories = frenmoCategories.map(category => (
       <NavLink
         to={{
           pathname: `/frenmos/category/${category.id}`,
           state: {
-            title: "hi"
+            publicFrenmos: publicFrenmos.favors,
+            personalFrenmos: personalFrenmos.favors,
+            friendFrenmos: friendFrenmos.favors
           }
         }}
       >

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import AuthApiService from "../services/auth-api-service";
 import TokenService from "../services/token-service";
 import IdleService from "../services/idle-service";
-// is it going to be a problem if we post a new frenmo to
-// addFrenmo -- need to add a public frenmo list for the get and sep for the post
+
 const FrenmoContext = React.createContext({
   user: {},
   error: null,
   newFrenmo: {},
   allPublicFrenmos: [],
+  setPublicFrenmos: () => {},
   publicFrenmos: [],
   personalFrenmos: [],
   friendFrenmos: [],
@@ -17,7 +17,6 @@ const FrenmoContext = React.createContext({
   frenmoCategories: [],
   publicityTypes: [],
   setFrenmoRes: () => {},
-  setPublicFrenmos: () => {},
   addFrenmo: () => {},
   setAllPublic: () => {},
   setAllPersonal: () => {},
