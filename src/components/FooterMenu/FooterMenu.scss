@@ -2,14 +2,14 @@
   display: flex;
   font-size: 1rem;
   justify-content: space-around;
-  background-color: rgba(0, 209, 255, 0.8);
+  background-color: #0c0063;
   text-align: center;
 }
 
 #icon {
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #efecff;
+  color: rgb(239, 236, 255);
   text-decoration: none;
   font-size: 1.5rem;
 }
@@ -20,7 +20,7 @@
 }
 
 .Footer-links {
-  color: #0c0063;
+  color: rgb(239, 236, 255);
   font-weight: 600;
   text-decoration: none;
   padding: 4px;
