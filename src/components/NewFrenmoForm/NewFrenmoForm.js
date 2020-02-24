@@ -306,7 +306,7 @@ class NewFrenmoForm extends Component {
           required
         >
           {/** TODO:can generate this on the fly from categories */}
-          <option value="0">
+          <option value="13">
             --Please choose a category--
           </option>
           <option value="1">
