@@ -8,6 +8,7 @@ import IssueFrenmo from '../IssueFrenmo/IssueFrenmo';
 import { RedeemFrenmo } from '../RedeemFrenmo/RedeemFrenmo';
 import { ConfirmRedeemFrenmo } from '../ConfirmRedeemFrenmo/ConfirmRedeemFrenmo';
 import { Input } from '../Utils/Utils';
+import { formatRelative } from 'date-fns';
 
 class FrenmoDetail extends Component {
   state = {};
@@ -23,9 +24,13 @@ class FrenmoDetail extends Component {
   renderRedeem = () => {
     return (
       <RedeemFrenmo
-        favor_id={this.state.favor_id}
+        favor_id={
+          this.props.location.state
+            .favor_id
+        }
         outstanding_id={
-          this.state.outstanding_id
+          this.props.location.state
+            .outstanding_id
         }
       ></RedeemFrenmo>
     );
@@ -41,6 +46,14 @@ class FrenmoDetail extends Component {
       <IssueFrenmo
         receiver={receiver}
         receiver_id={receiver_id}
+        favor_id={
+          this.props.location.state
+            .favor_id
+        }
+        outstanding_id={
+          this.props.location.state
+            .outstanding_id
+        }
       ></IssueFrenmo>
     );
   };
@@ -50,9 +63,13 @@ class FrenmoDetail extends Component {
   renderConfirmRedeem = () => {
     return (
       <ConfirmRedeemFrenmo
-        favor_id={this.state.favor_id}
+        favor_id={
+          this.props.location.state
+            .favor_id
+        }
         outstanding_id={
-          this.state.outstanding_id
+          this.props.location.state
+            .outstanding_id
         }
       ></ConfirmRedeemFrenmo>
     );
@@ -72,7 +89,9 @@ class FrenmoDetail extends Component {
   renderEditButton = () => {};
 
   //Expiration flag -- renders for expired frenmos
-  renderExpirationFlag = () => {};
+  renderExpirationFlag = () => {
+    return <h3>EXPIRED!!!</h3>;
+  };
 
   render() {
     const { frenmoList } = this.context;
@@ -119,7 +138,11 @@ class FrenmoDetail extends Component {
         </h2>
         <h3>
           This frenmo is valid until:{' '}
-          {expiration_date}
+          {formatRelative(
+            new Date(expiration_date),
+            Date.now(),
+            0
+          )}
         </h3>
         <p>
           Description: {description}
@@ -139,6 +162,18 @@ class FrenmoDetail extends Component {
           Frenmo issued to:{' '}
           {receiver_name}
         </p>
+        {issued && !expired
+          ? this.renderIssue(
+              receiver_username,
+              receiver_id
+            )
+          : null}
+        {received && !expired
+          ? this.renderRedeem()
+          : null}
+        {expired
+          ? this.renderExpirationFlag()
+          : null}
       </div>
     );
   }

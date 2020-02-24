@@ -4,15 +4,16 @@ import React, {
 import AuthApiService from '../services/auth-api-service';
 import TokenService from '../services/token-service';
 import IdleService from '../services/idle-service';
+import FrenmoApiService from '../services/frenmo-api-service';
 
 const FrenmoContext = React.createContext(
   {
     user: {},
     error: null,
     frenmoList: [],
-    publicFrenmos: [],
-    personalFrenmos: [],
-    friendFrenmos: [],
+    publicFrenmos: {},
+    personalFrenmos: {},
+    friendFrenmos: {},
     frenmo: {},
     outRes: {},
     frenmoCategories: [],
@@ -37,9 +38,21 @@ export class FrenmoProvider extends Component {
       user: {},
       error: null,
       frenmoList: [],
-      publicFrenmos: [],
-      personalFrenmos: [],
-      friendFrenmos: [],
+      publicFrenmos: {
+        favors: [],
+        page: 1,
+        limit: 30
+      },
+      personalFrenmos: {
+        favors: [],
+        page: 1,
+        limit: 30
+      },
+      friendFrenmos: {
+        favors: [],
+        page: 1,
+        limit: 30
+      },
       frenmo: {},
       outRes: {},
       frenmoCategories: [
@@ -152,7 +165,6 @@ export class FrenmoProvider extends Component {
         }
       ]
     };
-
     const jwtPayload = TokenService.parseAuthToken();
 
     if (jwtPayload)
@@ -166,6 +178,23 @@ export class FrenmoProvider extends Component {
     IdleService.setIdleCallback(
       this.logoutBecauseIdle
     );
+  }
+  async componentDidMount() {
+    await FrenmoApiService.getMyPublicFrenmos()
+      .then(this.setAllPublic)
+      .catch(this.setError);
+    await FrenmoApiService.getFriendFrenmos()
+      .then(this.setAllFriend)
+      .catch(this.setError);
+    await FrenmoApiService.getPersonalFrenmos()
+      .then(this.setAllPersonal)
+      .catch(this.setError);
+    // const jwtPayload = await TokenService.parseAuthToken();
+    // this.setUser({
+    //   id: jwtPayload.user_id,
+    //   name: jwtPayload.name,
+    //   username: jwtPayload.sub
+    // });
   }
 
   addFrenmo = frenmo => {
@@ -214,7 +243,9 @@ export class FrenmoProvider extends Component {
   };
 
   setUser = user => {
-    this.setState({ user });
+    this.setState({
+      user: user || { id: null }
+    });
   };
 
   processLogin = authToken => {

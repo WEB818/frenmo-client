@@ -3,7 +3,8 @@ import React, {
 } from 'react';
 import {
   Label,
-  Input
+  Input,
+  Button
 } from '../Utils/Utils';
 import FrenmoApiService from '../../services/frenmo-api-service';
 import UserContext from '../../contexts/UserContext';
@@ -58,7 +59,21 @@ class IssueFrenmo extends Component {
   render() {
     return (
       <>
-        <form>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            FrenmoApiService.issueFrenmo(
+              {
+                receiver_id: this.state
+                  .receiver_id,
+                favor_id: this.props
+                  .favor_id,
+                outstanding_id: this
+                  .props.outstanding_id
+              }
+            );
+          }}
+        >
           <div className="NewFrenmo__input-container">
             <Label htmlFor="NewFrenmo__receiver">
               Give To:
@@ -112,6 +127,9 @@ class IssueFrenmo extends Component {
                 );
               }}
             />
+            <Button type="submit">
+              Issue Another!
+            </Button>
           </div>
         </form>
       </>
