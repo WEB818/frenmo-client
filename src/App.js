@@ -1,4 +1,3 @@
-
 import React, {
   Component
 } from 'react';
@@ -25,7 +24,7 @@ import FrenmoDashboard from './routes/FrenmoDashboard/FrenmoDashboard';
 import './App.css';
 import FrenmoDetail from './components/FrenmoDetail/FrenmoDetail';
 import FrenmoApiService from './services/frenmo-api-service';
-
+import Frenmo from './components/Frenmo/Frenmo';
 
 class App extends Component {
   state = {
@@ -34,34 +33,28 @@ class App extends Component {
 
   static contextType = FrenmoContext;
 
-
   componentDidMount() {
     this.context.clearError();
     FrenmoApiService.getAllPublicFrenmos()
-      .then(this.context.setPublicFrenmos)
+      .then(
+        this.context.setPublicFrenmos
+      )
       .catch(this.context.setError);
-
   }
-
-
 
   renderMainRoutes() {
     return (
       <>
         <Switch>
           <PublicOnlyRoute
-            exact
             path={'/login'}
             component={LoginPage}
           />
 
-
           <PublicOnlyRoute
-            exact
             path={'/register'}
             component={RegistrationPage}
           />
-
 
           <PrivateRoute
             path={'/pending'}
@@ -79,11 +72,20 @@ class App extends Component {
             component={FeedPage}
           />
 
-
-          <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
-          <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
           <PrivateRoute
-            path={"/frenmos/category/:categoryId"}
+            exact
+            path={'/send'}
+            component={NewFrenmoPage}
+          />
+          <PrivateRoute
+            exact
+            path={`/frenmos`}
+            component={FrenmoDashboard}
+          />
+          <PrivateRoute
+            path={
+              '/frenmos/category/:categoryId'
+            }
             component={FrenmoListByCat}
           />
 
@@ -104,28 +106,26 @@ class App extends Component {
   }
 
   render() {
-
     return (
-
-        <div className="App">
-          <NavMenu />
-          <main className="App__container wrapper">
-            {this.state.hasError && (
-              <p className="red">
-                Something went wrong.
-                Please try again later.
-              </p>
-            )}
-
+      <div className="App">
+        <NavMenu />
+        <main className="App__container wrapper">
+          {this.state.hasError && (
+            <p className="red">
+              Something went wrong.
+              Please try again later.
+            </p>
+          )}
 
           <section className="App__main wrapper">
-            <>{this.renderMainRoutes()}</>
+            <>
+              {this.renderMainRoutes()}
+            </>
           </section>
         </main>
 
         <FooterMenu />
       </div>
-
     );
   }
 }

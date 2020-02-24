@@ -5,17 +5,16 @@ import Frenmo from '../../components/Frenmo/Frenmo';
 import {
   getFrenmosInCategory,
   getRecdFrenmos,
-
   getIssuedFrenmos
 } from '../../services/helpers';
 import FrenmoContext from '../../contexts/FrenmoContext';
 import FrenmoApiService from '../../services/frenmo-api-service';
 import { Button } from '../../components/Utils/Utils';
 
-import './FrenmoListByCat.css';
+import './FrenmoListByCat.scss';
 import TokenService from '../../services/token-service';
 import { Redirect } from 'react-router-dom';
-
+import FriendBubbles from '../../components/FriendBubbles/FriendBubbles';
 
 class FrenmoListByCat extends Component {
   static defaultProps = {
@@ -30,7 +29,6 @@ class FrenmoListByCat extends Component {
   static contextType = FrenmoContext;
 
   state = {
-
     type: '',
     activeTab: '',
     myFrenmos: []
@@ -257,9 +255,7 @@ class FrenmoListByCat extends Component {
   renderTypes() {
     const { user } = this.context;
 
-
     return (
-
       <div className="FrenmoListByCat__Buttons">
         <Button
           className="CatNavPage__tabs"
@@ -268,44 +264,37 @@ class FrenmoListByCat extends Component {
               type: 'all'
             })
           }
-
         >
           All
         </Button>
         <Button
           className="CatNavPage__tabs"
-
           onClick={() => {
             this.setState({
               type: 'received'
             });
           }}
-
         >
           Received
         </Button>
         <Button
           className="CatNavPage__tabs"
-
           onClick={() => {
             this.setState({
               type: 'issued'
             });
           }}
-
         >
           Issued
         </Button>
         <Button
           className="CatNavPage__tabs"
-
           //this.handleredeemed
           onClick={() => {
             this.setState({
               type: 'redeemed'
             });
           }}
-
         >
           Redeemed
         </Button>
@@ -313,7 +302,6 @@ class FrenmoListByCat extends Component {
           className="CatNavPage__tabs"
           onClick={() => {
             this.setState({
-
               type: 'expired'
             });
           }}
@@ -330,7 +318,6 @@ class FrenmoListByCat extends Component {
         >
           Pending
         </Button>
-
       </div>
     );
   }
@@ -343,18 +330,20 @@ class FrenmoListByCat extends Component {
   renderFilteredFrenmos() {
     const { label, type } = this.state;
     return type.map((favor, idx) => (
-      <Frenmo key={idx} title={favor.title} label={label} />
+      <Frenmo
+        key={idx}
+        title={favor.title}
+        label={label}
+      />
     ));
   }
 
   render() {
-
     let user_id;
     let jwtPayload;
-   
+
     jwtPayload = TokenService.parseAuthToken();
     user_id = jwtPayload.user_id;
-    
 
     const { type } = this.state;
     let displayed;
@@ -396,14 +385,13 @@ class FrenmoListByCat extends Component {
     console.log(displayed);
     return (
       <>
-      <FriendBubbles />
+        <FriendBubbles />
         <div className="btn-container">
           {this.renderTypes()}
         </div>
         <div className="ListByCat__section">
           {type}
           <ul>{displayed}</ul>
-
         </div>
       </>
     );
@@ -411,4 +399,3 @@ class FrenmoListByCat extends Component {
 }
 
 export default FrenmoListByCat;
-

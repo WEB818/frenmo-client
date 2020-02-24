@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./FooterMenu.scss";
-import TokenService from "../../services/token-service";
+import React, {
+  Component
+} from 'react';
+import { Link } from 'react-router-dom';
+import './FooterMenu.scss';
+import TokenService from '../../services/token-service';
 
 export class FooterMenu extends Component {
   renderLoggedInFooter() {
@@ -9,30 +11,50 @@ export class FooterMenu extends Component {
       <div className="Footer">
         <div className="Footer__icon">
           <Link to="/feed">
-            <i id="icon" className="fa fa-envelope-open"></i>
+            <i
+              id="icon"
+              className="fa fa-envelope-open"
+            ></i>
           </Link>
-          <div className="Footer-links">Feed</div>
+          <div className="Footer-links">
+            Feed
+          </div>
         </div>
 
         <div className="Footer__icon">
           <Link to="/frenmos">
-            <i id="icon" className="fas fa-hand-holding-heart"></i>
+            <i
+              id="icon"
+              className="fas fa-hand-holding-heart"
+            ></i>
           </Link>
-          <div className="Footer-links">My Frenmos</div>
+          <div className="Footer-links">
+            My Frenmos
+          </div>
         </div>
 
         <div className="Footer__icon">
           <Link to="/friends">
-            <i id="icon" className="fa fa-users"></i>
+            <i
+              id="icon"
+              className="fa fa-users"
+            ></i>
           </Link>
-          <div className="Footer-links">Friends</div>
+          <div className="Footer-links">
+            Friends
+          </div>
         </div>
 
         <div className="Footer__icon">
           <Link to="/profile">
-            <i id="icon" className="fa fa-user"></i>
+            <i
+              id="icon"
+              className="fa fa-user"
+            ></i>
           </Link>
-          <div className="Footer-links">Profile</div>
+          <div className="Footer-links">
+            Profile
+          </div>
         </div>
       </div>
     );
@@ -41,7 +63,9 @@ export class FooterMenu extends Component {
   render() {
     return (
       <footer id="footer">
-        {TokenService.hasAuthToken() ? this.renderLoggedInFooter() : null}
+        {TokenService.hasAuthToken()
+          ? this.renderLoggedInFooter()
+          : null}
       </footer>
     );
   }
