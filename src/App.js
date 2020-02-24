@@ -33,14 +33,14 @@ class App extends Component {
 
   static contextType = FrenmoContext;
 
-  componentDidMount() {
-    this.context.clearError();
-    FrenmoApiService.getAllPublicFrenmos()
-      .then(
-        this.context.setPublicFrenmos
-      )
-      .catch(this.context.setError);
-  }
+  // componentDidMount() {
+  //   this.context.clearError();
+  //   FrenmoApiService.getAllPublicFrenmos()
+  //     .then(
+  //       this.context.setPublicFrenmos
+  //     )
+  //     .catch(this.context.setError);
+  // }
 
   renderOtherRoutes() {
     return (

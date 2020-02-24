@@ -11,7 +11,6 @@ import { NavLink } from 'react-router-dom';
 import FrenmoContext from '../../contexts/FrenmoContext';
 import FrenmoApiService from '../../services/frenmo-api-service';
 
-import { countFavorsInCategory } from '../../services/helpers';
 import './FrenmoDashboard.scss';
 import FriendBubbles from '../../components/FriendBubbles/FriendBubbles';
 
@@ -27,15 +26,15 @@ class FrenmoDashboard extends Component {
 
   static contextType = FrenmoContext;
 
-  componentDidMount() {
-    //TODO: add to frenmo context
-    this.context.clearError();
-    FrenmoApiService.getMyPublicFrenmos()
-      .then(
-        this.context.setPublicFrenmos
-      )
-      .catch(this.context.setError);
-  }
+  // componentDidMount() {
+  //   //TODO: add to frenmo context
+  //   this.context.clearError();
+  //   FrenmoApiService.getMyPublicFrenmos()
+  //     .then(
+  //       this.context.setPublicFrenmos
+  //     )
+  //     .catch(this.context.setError);
+  // }
 
   render() {
     const {
