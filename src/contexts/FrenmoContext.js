@@ -1,35 +1,29 @@
-import React, {
-  Component
-} from 'react';
-import AuthApiService from '../services/auth-api-service';
-import TokenService from '../services/token-service';
-import IdleService from '../services/idle-service';
-import FrenmoApiService from '../services/frenmo-api-service';
+import React, { Component } from "react";
+import AuthApiService from "../services/auth-api-service";
+import TokenService from "../services/token-service";
+import IdleService from "../services/idle-service";
+import FrenmoApiService from "../services/frenmo-api-service";
 
-
-const FrenmoContext = React.createContext(
-  {
-    user: {},
-    error: null,
-    frenmoList: [],
-    publicFrenmos: {},
-    personalFrenmos: {},
-    friendFrenmos: {},
-    frenmo: {},
-    outRes: {},
-    frenmoCategories: [],
-    publicityTypes: [],
-    addFrenmo: () => {},
-    setFrenmoRes: () => {},
-    setPublicFrenmos: () => {},
-    setAllPublic: () => {},
-    setAllPersonal: () => {},
-    setAllFriend: () => {},
-    clearError: () => {},
-    setError: () => {}
-  }
-);
-
+const FrenmoContext = React.createContext({
+  user: {},
+  error: null,
+  frenmoList: [],
+  publicFrenmos: {},
+  personalFrenmos: {},
+  friendFrenmos: {},
+  frenmo: {},
+  outRes: {},
+  frenmoCategories: [],
+  publicityTypes: [],
+  addFrenmo: () => {},
+  setFrenmoRes: () => {},
+  setPublicFrenmos: () => {},
+  setAllPublic: () => {},
+  setAllPersonal: () => {},
+  setAllFriend: () => {},
+  clearError: () => {},
+  setError: () => {}
+});
 
 export default FrenmoContext;
 
@@ -175,21 +169,20 @@ export class FrenmoProvider extends Component {
           id: 23,
           category: "Wedding",
           icon: "fas fa-ring"
-
         }
       ],
       publicityTypes: [
         {
-          public: 'dm',
-          type: 'Private'
+          public: "dm",
+          type: "Private"
         },
         {
-          public: 'friend',
-          type: 'Friends'
+          public: "friend",
+          type: "Friends"
         },
         {
-          public: 'public',
-          type: 'Public'
+          public: "public",
+          type: "Public"
         }
       ]
     };
@@ -203,9 +196,7 @@ export class FrenmoProvider extends Component {
       };
 
     this.state = state;
-    IdleService.setIdleCallback(
-      this.logoutBecauseIdle
-    );
+    IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
   async componentDidMount() {
     await FrenmoApiService.getMyPublicFrenmos()
@@ -217,6 +208,9 @@ export class FrenmoProvider extends Component {
     await FrenmoApiService.getPersonalFrenmos()
       .then(this.setAllPersonal)
       .catch(this.setError);
+    await FrenmoApiService.getAllPublicFrenmos()
+      .then(this.setPublicFrenmos)
+      .catch(this.setError);
     // const jwtPayload = await TokenService.parseAuthToken();
     // this.setUser({
     //   id: jwtPayload.user_id,
@@ -225,14 +219,12 @@ export class FrenmoProvider extends Component {
     // });
   }
 
-
-//   addFrenmo = frenmo => {
-//     this.setState([
-//       ...this.state.frenmoList,
-//       frenmo
-//     ]);
-//   };
-
+  //   addFrenmo = frenmo => {
+  //     this.setState([
+  //       ...this.state.frenmoList,
+  //       frenmo
+  //     ]);
+  //   };
 
   setFrenmoRes = outRes => {
     this.setState({ outRes });
@@ -284,9 +276,7 @@ export class FrenmoProvider extends Component {
   };
 
   processLogin = authToken => {
-    TokenService.saveAuthToken(
-      authToken
-    );
+    TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
       id: jwtPayload.user_id,
@@ -294,11 +284,9 @@ export class FrenmoProvider extends Component {
       username: jwtPayload.sub
     });
     IdleService.regiserIdleTimerResets();
-    TokenService.queueCallbackBeforeExpiry(
-      () => {
-        this.fetchRefreshToken();
-      }
-    );
+    TokenService.queueCallbackBeforeExpiry(() => {
+      this.fetchRefreshToken();
+    });
   };
 
   processLogout = () => {
@@ -318,14 +306,10 @@ export class FrenmoProvider extends Component {
   fetchRefreshToken = () => {
     AuthApiService.refreshToken()
       .then(res => {
-        TokenService.saveAuthToken(
-          res.authToken
-        );
-        TokenService.queueCallbackBeforeExpiry(
-          () => {
-            this.fetchRefreshToken();
-          }
-        );
+        TokenService.saveAuthToken(res.authToken);
+        TokenService.queueCallbackBeforeExpiry(() => {
+          this.fetchRefreshToken();
+        });
       })
       .catch(err => {
         this.setError(err);
@@ -334,7 +318,6 @@ export class FrenmoProvider extends Component {
 
   render() {
     const value = {
-
       newFrenmo: this.state.newFrenmo,
       allPublicFrenmos: this.state.allPublicFrenmos,
       publicFrenmos: this.state.publicFrenmos,
@@ -343,16 +326,12 @@ export class FrenmoProvider extends Component {
 
       frenmo: this.state.frenmo,
       outRes: this.state.outRes,
-      frenmoCategories: this.state
-        .frenmoCategories,
-      publicityTypes: this.state
-        .publicityTypes,
+      frenmoCategories: this.state.frenmoCategories,
+      publicityTypes: this.state.publicityTypes,
       addFrenmo: this.addFrenmo,
       setFrenmoRes: this.setFrenmoRes,
-      setPublicFrenmos: this
-        .setPublicFrenmos,
-      setAllPersonal: this
-        .setAllPersonal,
+      setPublicFrenmos: this.setPublicFrenmos,
+      setAllPersonal: this.setAllPersonal,
       setAllFriend: this.setAllFriend,
       setAllPublic: this.setAllPublic,
       clearError: this.clearError,
@@ -364,9 +343,7 @@ export class FrenmoProvider extends Component {
       processLogout: this.processLogout
     };
     return (
-      <FrenmoContext.Provider
-        value={value}
-      >
+      <FrenmoContext.Provider value={value}>
         {this.props.children}
       </FrenmoContext.Provider>
     );

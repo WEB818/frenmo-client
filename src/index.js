@@ -5,12 +5,15 @@ import { UserProvider } from './contexts/UserContext';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { FrenmoProvider } from './contexts/FrenmoContext';
 
 ReactDOM.render(
   <BrowserRouter>
-    <UserProvider>
-      <App />
-    </UserProvider>
+    <FrenmoProvider>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </FrenmoProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
