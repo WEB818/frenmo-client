@@ -43,18 +43,21 @@ class FrenmoDetail extends Component {
   }) => {
     //render form
     return (
-      <IssueFrenmo
-        receiver={receiver}
-        receiver_id={receiver_id}
-        favor_id={
-          this.props.location.state
-            .favor_id
-        }
-        outstanding_id={
-          this.props.location.state
-            .outstanding_id
-        }
-      ></IssueFrenmo>
+      <>
+        {/**TODO: add some sort of thing that allows you to count */}
+        <IssueFrenmo
+          receiver={receiver}
+          receiver_id={receiver_id}
+          favor_id={
+            this.props.location.state
+              .favor_id
+          }
+          outstanding_id={
+            this.props.location.state
+              .outstanding_id
+          }
+        ></IssueFrenmo>
+      </>
     );
   };
 
