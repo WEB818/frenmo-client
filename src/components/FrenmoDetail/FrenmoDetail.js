@@ -101,10 +101,6 @@ class FrenmoDetail extends Component {
     const {
       outstandingId
     } = this.props.match.params;
-    const frenmo = getFrenmoById(
-      frenmoList.favors,
-      outstandingId
-    );
     const {
       title,
       description,

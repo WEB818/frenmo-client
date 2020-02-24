@@ -40,7 +40,8 @@ class Frenmo extends Component {
       issued,
       redeemed,
       expired,
-      received
+      received,
+      favor_id
     } = this.props;
 
     return (
@@ -60,6 +61,7 @@ class Frenmo extends Component {
               tags: tags,
               categoryId: categoryId,
               limit: limit,
+              favor_id: favor_id,
               posted: posted,
               outstanding_id: outstanding_id,
               receiver_redeemed: receiver_redeemed,

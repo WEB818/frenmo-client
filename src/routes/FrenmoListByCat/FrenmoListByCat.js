@@ -124,6 +124,7 @@ class FrenmoListByCat extends Component {
             relationship={
               frenmo.relationship
             }
+            favor_id={frenmo.favor_id}
             creator_name={
               frenmo.creator_name
             }

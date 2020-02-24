@@ -42,6 +42,21 @@ class App extends Component {
       .catch(this.context.setError);
   }
 
+  renderOtherRoutes() {
+    return (
+      <>
+        <Switch>
+          <PrivateRoute
+            path={
+              '/frenmos/category/:categoryId/:outstandingId'
+            }
+            component={FrenmoDetail}
+          />
+        </Switch>
+      </>
+    );
+  }
+
   renderMainRoutes() {
     return (
       <>
@@ -91,13 +106,9 @@ class App extends Component {
 
           <PrivateRoute
             exact
-            path={`/frenmos/category/:categoryId/:outstandingId`}
-            component={Frenmo}
-          />
-
-          <PrivateRoute
-            exact
-            path={`/frenmos/:outstandingId/edit`}
+            path={
+              '/frenmos/:outstandingId/edit'
+            }
             component={EditFrenmoPage}
           />
         </Switch>
@@ -118,9 +129,10 @@ class App extends Component {
           )}
 
           <section className="App__main wrapper">
-            <>
-              {this.renderMainRoutes()}
-            </>
+            {this.renderMainRoutes()}
+          </section>
+          <section className="App__other wrapper">
+            {this.renderOtherRoutes()}
           </section>
         </main>
 
