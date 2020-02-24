@@ -45,8 +45,16 @@ class NewFrenmoForm extends Component {
     let possibleUsers = await FrenmoApiService.searchUser(terms);
     await this.setState({
       ...this.state,
-      [`${setid === "users" ? "user" : setid}_id`]:
-        possibleUsers === [] ? possibleUsers[0].id : null,
+
+      [`${
+        setid === 'users'
+          ? 'user'
+          : setid
+      }_id`]:
+        possibleUsers !== []
+          ? possibleUsers[0].id
+          : null,
+
       people: possibleUsers
     });
   };
