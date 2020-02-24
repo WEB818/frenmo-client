@@ -24,6 +24,21 @@ class App extends Component {
 
   static contextType = FrenmoContext;
 
+  componentDidMount() {
+    this.context.clearError();
+    FrenmoApiService.getAllPublicFrenmos()
+      .then(this.context.setPublicFrenmos)
+      .catch(this.context.setError);
+    FrenmoApiService.getMyPublicFrenmos()
+      .then(this.context.setAllPublic)
+      .catch(this.context.setError);
+    FrenmoApiService.getPersonalFrenmos()
+      .then(this.context.setAllPersonal)
+      .catch(this.context.setError);
+    FrenmoApiService.getFriendFrenmos()
+      .then(this.context.setAllFriend)
+      .catch(this.context.setError);
+  }
   renderNavRoutes() {
     return (
       <>
@@ -53,7 +68,10 @@ class App extends Component {
 
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
-
+          <PrivateRoute
+            path={"/frenmos/category/:categoryId"}
+            component={FrenmoListByCat}
+          />
           <PrivateRoute
             exact
             path={`/frenmos/category/:categoryId/:outstandingId`}
@@ -81,7 +99,7 @@ class App extends Component {
           )}
 
           <div className="Nav-flex">
-            <nav className="App__nav">{this.renderNavRoutes()}</nav>
+            {/* <nav className="App__nav">{this.renderNavRoutes()}</nav> */}
           </div>
           <section className="App__main wrapper">
             <>{this.renderMainRoutes()}</>

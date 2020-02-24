@@ -9,7 +9,8 @@ import {
   faArrowRight,
   faGift,
   faTicketAlt,
-  faCalendar
+  faCalendar,
+  faUserPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../Utils/Utils";
 import { formatRelative } from "date-fns";
@@ -44,8 +45,6 @@ export default class PublicFeedItem extends Component {
       expanded: !prevState.expanded
     }));
   };
-
-  renderCollapsedTitles() {}
 
   render() {
     const {
@@ -127,6 +126,7 @@ export default class PublicFeedItem extends Component {
                 <div className="PublicFeedItem__sub-titles">
                   <FontAwesomeIcon icon={faGift} />
                   {issuedByName}
+                  {/* <FontAwesomeIcon icon={faUserPlus} /> */}
                 </div>
               )}
               <div className="PublicFeedItem__sub-titles">

@@ -35,3 +35,7 @@
 .Textarea {
   height: 100px;
 }
+.Textarea:focus {
+  border: dotted 1px #00d1ff;
+  outline: thin dotted;
+}
