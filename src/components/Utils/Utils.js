@@ -1,5 +1,5 @@
 import React from "react";
-import "./Utils.css";
+import "./Utils.scss";
 
 export function Button({ className, ...props }) {
   return <button className={["Button", className].join(" ")} {...props} />;

@@ -1,0 +1,18 @@
+.FrenmoListByCat__Buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ListByCat__section {
+  background-color: #00d1ff;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .FrenmoListByCat {
+    margin-left: 41%;
+    font-family: "Cantarell", sans-serif;
+  }
+}

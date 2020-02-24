@@ -5,6 +5,7 @@ import Frenmo from '../../components/Frenmo/Frenmo';
 import {
   getFrenmosInCategory,
   getRecdFrenmos,
+
   getIssuedFrenmos
 } from '../../services/helpers';
 import FrenmoContext from '../../contexts/FrenmoContext';
@@ -13,17 +14,21 @@ import { Button } from '../../components/Utils/Utils';
 
 import './FrenmoListByCat.css';
 
+
 class FrenmoListByCat extends Component {
   static defaultProps = {
     match: {
       params: {}
     },
-    myFrenmos: []
+    history: {
+      goBack: () => {}
+    }
   };
 
   static contextType = FrenmoContext;
 
   state = {
+
     type: '',
     activeTab: '',
     myFrenmos: []
@@ -250,47 +255,55 @@ class FrenmoListByCat extends Component {
   renderTypes() {
     const { user } = this.context;
 
-    console.log(this.state.type);
+
     return (
-      <div className="btn-container">
+
+      <div className="FrenmoListByCat__Buttons">
         <Button
           className="CatNavPage__tabs"
-          onClick={() => {
+          onClick={() =>
             this.setState({
               type: 'all'
-            });
-          }}
+            })
+          }
+
         >
           All
         </Button>
         <Button
           className="CatNavPage__tabs"
+
           onClick={() => {
             this.setState({
               type: 'received'
             });
           }}
+
         >
           Received
         </Button>
         <Button
           className="CatNavPage__tabs"
+
           onClick={() => {
             this.setState({
               type: 'issued'
             });
           }}
+
         >
           Issued
         </Button>
         <Button
           className="CatNavPage__tabs"
+
           //this.handleredeemed
           onClick={() => {
             this.setState({
               type: 'redeemed'
             });
           }}
+
         >
           Redeemed
         </Button>
@@ -298,6 +311,7 @@ class FrenmoListByCat extends Component {
           className="CatNavPage__tabs"
           onClick={() => {
             this.setState({
+
               type: 'expired'
             });
           }}
@@ -314,11 +328,25 @@ class FrenmoListByCat extends Component {
         >
           Pending
         </Button>
+
       </div>
     );
   }
 
+  handleGoBack = () => {
+    const { history } = this.props;
+    history.goBack();
+  };
+
+  renderFilteredFrenmos() {
+    const { label, type } = this.state;
+    return type.map((favor, idx) => (
+      <Frenmo key={idx} title={favor.title} label={label} />
+    ));
+  }
+
   render() {
+
     const {
       categoryId
     } = this.props.match.params;
@@ -347,12 +375,14 @@ class FrenmoListByCat extends Component {
     console.log(displayed);
     return (
       <>
+      <FriendBubbles />
         <div className="btn-container">
           {this.renderTypes()}
         </div>
         <div className="ListByCat__section">
           {type}
           <ul>{displayed}</ul>
+
         </div>
       </>
     );
@@ -360,27 +390,4 @@ class FrenmoListByCat extends Component {
 }
 
 export default FrenmoListByCat;
-//{
-/* <div className="btn-container">{this.renderTypes()}</div>
-        <div className="ListByCat__section">
-            {frenmoList.map((frenmo, idx) => (
-              <ul className="ListByCat__list">
-                
-                  <Frenmo
-                    key={idx}
-                    frenmoId={frenmo.favor_id}
-                    outstandingId={frenmo.outstanding_id}
-                    title={frenmo.title}
-                    description={frenmo.description}
-                    expiration_date={frenmo.expiration_date}
-                    publicity={frenmo.publicity}
-                    tags={frenmo.tags}
-                    createdBy={frenmo.creator_name}
-                    issuedBy={frenmo.issuer_name}
-                    receivedBy={frenmo.receiver_name}
-                    categoryId={frenmo.category}
-                  />
-                
-              </ul>
-            ))} */
-//}
+

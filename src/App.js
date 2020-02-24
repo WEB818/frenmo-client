@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import FrenmoApiService from "./services/frenmo-api-service";
 import LoginPage from "./routes/LoginPage/LoginPage";
 import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import FeedPage from "./routes/FeedPage/FeedPage";
@@ -16,22 +17,35 @@ import Friends from "./routes/Friends/Friends";
 import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import "./App.css";
-import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
+import Frenmo from "./components/Frenmo/Frenmo";
 
 class App extends Component {
   state = { hasError: false };
 
   static contextType = FrenmoContext;
 
+  componentDidMount() {
+    this.context.clearError();
+    FrenmoApiService.getAllPublicFrenmos()
+      .then(this.context.setPublicFrenmos)
+      .catch(this.context.setError);
+    FrenmoApiService.getMyPublicFrenmos()
+      .then(this.context.setAllPublic)
+      .catch(this.context.setError);
+    FrenmoApiService.getPersonalFrenmos()
+      .then(this.context.setAllPersonal)
+      .catch(this.context.setError);
+    FrenmoApiService.getFriendFrenmos()
+      .then(this.context.setAllFriend)
+      .catch(this.context.setError);
+  }
   renderNavRoutes() {
     return (
       <>
         <div className="Nav-flex">
           <Route
             path={"/frenmos/category/:categoryId"}
-            // render={() => <FrenmoListByCat userId="1" />}
             component={FrenmoListByCat}
-            name="frenmoByCat"
           />
         </div>
       </>
@@ -44,11 +58,7 @@ class App extends Component {
         <Switch>
           <PublicOnlyRoute exact path={"/login"} component={LoginPage} />
 
-          <PublicOnlyRoute
-            exact
-            path={"/register"}
-            component={RegistrationPage}
-          />
+          <PublicOnlyRoute path={"/register"} component={RegistrationPage} />
 
           <PrivateRoute path={"/pending"} component={PendingFren} />
 
@@ -58,11 +68,14 @@ class App extends Component {
 
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute exact path={`/frenmos`} component={FrenmoDashboard} />
-
+          <PrivateRoute
+            path={"/frenmos/category/:categoryId"}
+            component={FrenmoListByCat}
+          />
           <PrivateRoute
             exact
             path={`/frenmos/category/:categoryId/:outstandingId`}
-            component={FrenmoDetail}
+            component={Frenmo}
           />
 
           <PrivateRoute
@@ -76,6 +89,7 @@ class App extends Component {
   }
 
   render() {
+    const { myFrenmos } = this.state;
     return (
       <div className="App">
         <NavMenu />
@@ -85,15 +99,14 @@ class App extends Component {
           )}
 
           <div className="Nav-flex">
-            <nav className="App__nav">{this.renderNavRoutes()}</nav>
+            {/* <nav className="App__nav">{this.renderNavRoutes()}</nav> */}
           </div>
           <section className="App__main wrapper">
-            {this.renderMainRoutes()}
+            <>{this.renderMainRoutes()}</>
           </section>
         </main>
-        <footer id="footer">
-          <FooterMenu />
-        </footer>
+
+        <FooterMenu />
       </div>
     );
   }

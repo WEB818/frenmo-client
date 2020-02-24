@@ -6,7 +6,9 @@ import IdleService from "../services/idle-service";
 const FrenmoContext = React.createContext({
   user: {},
   error: null,
-  frenmoList: [],
+  newFrenmo: {},
+  allPublicFrenmos: [],
+  setPublicFrenmos: () => {},
   publicFrenmos: [],
   personalFrenmos: [],
   friendFrenmos: [],
@@ -14,9 +16,8 @@ const FrenmoContext = React.createContext({
   outRes: {},
   frenmoCategories: [],
   publicityTypes: [],
-  addFrenmo: () => {},
   setFrenmoRes: () => {},
-  setPublicFrenmos: () => {},
+  addFrenmo: () => {},
   setAllPublic: () => {},
   setAllPersonal: () => {},
   setAllFriend: () => {},
@@ -32,7 +33,8 @@ export class FrenmoProvider extends Component {
     const state = {
       user: {},
       error: null,
-      frenmoList: [],
+      newFrenmo: {},
+      allPublicFrenmos: [],
       publicFrenmos: [],
       personalFrenmos: [],
       friendFrenmos: [],
@@ -41,95 +43,118 @@ export class FrenmoProvider extends Component {
       frenmoCategories: [
         {
           id: 1,
-          category: "Advice"
+          category: "Advice",
+          icon: "fas fa-comments"
         },
         {
           id: 2,
-          category: "Career"
+          category: "Career",
+          icon: "fas fa-business-time"
         },
         {
           id: 3,
-          category: "Community"
+          category: "Community",
+          icon: "fas fa-people-carry"
         },
         {
           id: 4,
-          category: "Creative"
+          category: "Creative",
+          icon: "fas fa-paint-brush"
         },
         {
           id: 5,
-          category: "Education"
+          category: "Education",
+          icon: "fas fa-graduation-cap"
         },
         {
           id: 6,
-          category: "Emergency"
+          category: "Emergency",
+          icon: "fas fa-ambulance"
         },
         {
           id: 7,
-          category: "Family"
+          category: "Family",
+          icon: "fas fa-home"
         },
         {
           id: 8,
-          category: "Food"
+          category: "Food",
+          icon: "fas fa-utensils"
         },
         {
           id: 9,
-          category: "Gaming"
+          category: "Gaming",
+          icon: "fas fa-gamepad"
         },
         {
           id: 10,
-          category: "Health"
+          category: "Health",
+          icon: "fas fa-heartbeat"
         },
         {
           id: 11,
-          category: "IT"
+          category: "IT",
+          icon: "fas fa-laptop-medical"
         },
         {
           id: 12,
-          category: "Kids"
+          category: "Kids",
+          icon: "fas fa-child"
         },
         {
           id: 13,
-          category: "Miscellaneous"
+          category: "Miscellaneous",
+          icon: "fas fa-inbox"
         },
         {
           id: 14,
-          category: "Needs fixing"
+          category: "Needs fixing",
+          icon: "fas fa-tools"
         },
         {
           id: 15,
-          category: "Pets"
+          category: "Pets",
+          icon: "fas fa-paw"
         },
         {
           id: 16,
-          category: "Plants"
+          category: "Plants",
+          icon: "fas fa-leaf"
         },
         {
           id: 17,
-          category: "Relationship"
+          category: "Relationship",
+          icon: "fas fa-heart"
         },
         {
           id: 18,
-          category: "Religion & Spirituality"
+          category: "Religion & Spirituality",
+          icon: "fas fa-church"
         },
         {
           id: 19,
-          category: "Ridesharing"
+          category: "Ridesharing",
+          icon: "fas fa-car"
         },
         {
           id: 20,
-          category: "Sports"
+          category: "Sports",
+          icon: "fas fa-skiing-nordic"
         },
         {
           id: 21,
-          category: "Travel"
+          category: "Travel",
+          icon: "fas fa-hiking"
         },
         {
           id: 22,
-          category: "Volunteers Needed"
+          category: "Volunteers Needed",
+          icon: "fas fa-hands-helping"
         },
         {
           id: 23,
-          category: "Wedding"
+          category: "Wedding",
+          icon: "fas fa-ring"
         }
       ],
       publicityTypes: [
@@ -152,18 +177,19 @@ export class FrenmoProvider extends Component {
     IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
-  addFrenmo = frenmo => {
-    this.setState([...this.state.frenmoList, frenmo]);
-  };
-
   setFrenmoRes = outRes => {
     this.setState({ outRes });
   };
 
-  setPublicFrenmos = frenmoList => {
-    this.setState({ frenmoList });
+  // sets all public frenmos with response from /api/favor
+  setPublicFrenmos = allPublicFrenmos => {
+    this.setState({ allPublicFrenmos });
   };
 
+  addFrenmo = newFrenmo => {
+    this.setState({ newFrenmo });
+  };
+  // sets my public frenmos with response from /api/favor/public
   setAllPublic = publicFrenmos => {
     this.setState({ publicFrenmos });
   };
@@ -241,7 +267,8 @@ export class FrenmoProvider extends Component {
 
   render() {
     const value = {
-      frenmoList: this.state.frenmoList,
+      newFrenmo: this.state.newFrenmo,
+      allPublicFrenmos: this.state.allPublicFrenmos,
       publicFrenmos: this.state.publicFrenmos,
       personalFrenmos: this.state.personalFrenmos,
       friendFrenmos: this.state.friendFrenmos,
@@ -259,8 +286,6 @@ export class FrenmoProvider extends Component {
       setError: this.setError,
       user: this.state.user,
       error: this.state.error,
-      setError: this.setError,
-      clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout
