@@ -206,18 +206,26 @@ export class FrenmoProvider extends Component {
     );
   }
   async componentDidMount() {
-    await FrenmoApiService.getMyPublicFrenmos()
-      .then(this.setAllPublic)
-      .catch(this.setError);
-    await FrenmoApiService.getFriendFrenmos()
-      .then(this.setAllFriend)
-      .catch(this.setError);
-    await FrenmoApiService.getPersonalFrenmos()
-      .then(this.setAllPersonal)
-      .catch(this.setError);
-    await FrenmoApiService.getAllPublicFrenmos()
-      .then(this.setPublicFrenmos)
-      .catch(this.setError);
+    try {
+      const [
+        publicFrenmos,
+        friend,
+        personal,
+        allPublic
+      ] = await Promise.all([
+        FrenmoApiService.getMyPublicFrenmos(),
+        FrenmoApiService.getFriendFrenmos(),
+        FrenmoApiService.getPersonalFrenmos(),
+        FrenmoApiService.getAllPublicFrenmos()
+      ]);
+      this.setAllPublic(publicFrenmos);
+      this.setAllFriend(friend);
+      this.setAllPersonal(personal);
+      this.setPublicFrenmos(allPublic);
+    } catch (error) {
+      this.setError(error);
+    }
+
     // const jwtPayload = await TokenService.parseAuthToken();
     // this.setUser({
     //   id: jwtPayload.user_id,
@@ -243,18 +251,44 @@ export class FrenmoProvider extends Component {
   };
 
   addFrenmo = async () => {
-    await FrenmoApiService.getMyPublicFrenmos()
-      .then(this.setAllPublic)
-      .catch(this.setError);
-    await FrenmoApiService.getFriendFrenmos()
-      .then(this.setAllFriend)
-      .catch(this.setError);
-    await FrenmoApiService.getPersonalFrenmos()
-      .then(this.setAllPersonal)
-      .catch(this.setError);
-    await FrenmoApiService.getAllPublicFrenmos()
-      .then(this.setPublicFrenmos)
-      .catch(this.setError);
+    try {
+      const [
+        publicFrenmos,
+        friend,
+        personal,
+        allPublic
+      ] = await Promise.all([
+        FrenmoApiService.getMyPublicFrenmos(),
+        FrenmoApiService.getFriendFrenmos(),
+        FrenmoApiService.getPersonalFrenmos(),
+        FrenmoApiService.getAllPublicFrenmos()
+      ]);
+      this.setAllPublic(publicFrenmos);
+      this.setAllFriend(friend);
+      this.setAllPersonal(personal);
+      this.setPublicFrenmos(allPublic);
+    } catch (error) {
+      this.setError(error);
+    }
+
+    // const jwtPayload = await TokenService.parseAuthToken();
+    // this.setUser({
+    //   id: jwtPayload.user_id,
+    //   name: jwtPayload.name,
+    //   username: jwtPayload.sub
+    // });
+    // await FrenmoApiService.getMyPublicFrenmos()
+    //   .then(this.setAllPublic)
+    //   .catch(this.setError);
+    // await FrenmoApiService.getFriendFrenmos()
+    //   .then(this.setAllFriend)
+    //   .catch(this.setError);
+    // await FrenmoApiService.getPersonalFrenmos()
+    //   .then(this.setAllPersonal)
+    //   .catch(this.setError);
+    // await FrenmoApiService.getAllPublicFrenmos()
+    //   .then(this.setPublicFrenmos)
+    //   .catch(this.setError);
   };
   // sets my public frenmos with response from /api/favor/public
   setAllPublic = publicFrenmos => {

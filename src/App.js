@@ -25,10 +25,13 @@ import './App.css';
 import FrenmoDetail from './components/FrenmoDetail/FrenmoDetail';
 import FrenmoApiService from './services/frenmo-api-service';
 import Frenmo from './components/Frenmo/Frenmo';
+import { PopupFeedback } from './components/PopupFeedback';
 
 class App extends Component {
   state = {
-    hasError: false
+    hasError: false,
+    hasFeedback: false,
+    feedbackMessage: null
   };
 
   static contextType = FrenmoContext;
@@ -90,7 +93,15 @@ class App extends Component {
           <PrivateRoute
             exact
             path={'/send'}
-            component={NewFrenmoPage}
+            render={props => (
+              <NewFrenmoPage
+                {...props}
+                popupMessage={
+                  this
+                    .handleRenderFeedback
+                }
+              />
+            )}
           />
           <PrivateRoute
             exact
@@ -116,9 +127,30 @@ class App extends Component {
     );
   }
 
+  handleRenderFeedback = feedbackMessage => {
+    this.setState({
+      hasFeedback: true,
+      feedbackMessage
+    });
+    setTimeout(
+      this.setState({
+        hasFeedback: false,
+        feedbackMessage: null
+      }),
+      10000
+    );
+  };
+
   render() {
     return (
       <div className="App">
+        {this.state.feedbackMessage ? (
+          <PopupFeedback
+            feedbackMessage={
+              this.state.feedbackMessage
+            }
+          />
+        ) : null}
         <NavMenu />
         <main className="App__container wrapper">
           {this.state.hasError && (
