@@ -229,49 +229,16 @@ export class FrenmoProvider extends Component {
         username: jwtPayload.sub
       };
 
-    this.state = state;
-    console.log(this.addFrenmo);
-    this.addFrenmo();
+    (async () => {
+      this.state = state;
+      await this.addFrenmo();
+    })();
+
+    console.log(this.state);
     IdleService.setIdleCallback(
       this.logoutBecauseIdle
     );
   }
-  async componentDidMount() {
-    // try {
-    //   const [
-    //     publicFrenmos,
-    //     friend,
-    //     personal,
-    //     allPublic
-    //   ] = await Promise.all([
-    //     FrenmoApiService.getMyPublicFrenmos(),
-    //     FrenmoApiService.getFriendFrenmos(),
-    //     FrenmoApiService.getPersonalFrenmos(),
-    //     FrenmoApiService.getAllPublicFrenmos()
-    //   ]);
-    //   await this.setAllPublic(
-    //     publicFrenmos
-    //   );
-    //   this.setAllFriend(friend);
-    //   this.setAllPersonal(personal);
-    //   this.setPublicFrenmos(allPublic);
-    // } catch (error) {
-    //   this.setError(error);
-    // }
-    // const jwtPayload = await TokenService.parseAuthToken();
-    // this.setUser({
-    //   id: jwtPayload.user_id,
-    //   name: jwtPayload.name,
-    //   username: jwtPayload.sub
-    // });
-  }
-
-  //   addFrenmo = frenmo => {
-  //     this.setState([
-  //       ...this.state.frenmoList,
-  //       frenmo
-  //     ]);
-  //   };
 
   setFrenmoRes = outRes => {
     this.setState({ outRes });
@@ -295,6 +262,7 @@ export class FrenmoProvider extends Component {
         FrenmoApiService.getPersonalFrenmos(),
         FrenmoApiService.getAllPublicFrenmos()
       ]);
+
       this.setAllPublic(publicFrenmos);
       this.setAllFriend(friend);
       this.setAllPersonal(personal);

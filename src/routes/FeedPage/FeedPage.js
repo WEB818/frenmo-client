@@ -18,15 +18,15 @@ export default class FeedPage extends Component {
     super(props);
     const state = {
       favors: [],
-      // this.context
-      //   .allPublicFrenmos.favors,
+      which: 2,
       friends: false
     };
     this.state = state;
   }
   static contextType = FrenmoContext;
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.context.addFrenmo();
     this.setState({
       favors: this.context
         .allPublicFrenmos.favors,
@@ -54,7 +54,8 @@ export default class FeedPage extends Component {
             this.setState({
               favors:
                 allPublicFrenmos.favors,
-              friends: false
+              friends: false,
+              which: 1
             })
           }
         >
@@ -65,7 +66,8 @@ export default class FeedPage extends Component {
             this.setState({
               favors:
                 friendFrenmos.favors,
-              friends: true
+              friends: true,
+              which: 2
             })
           }
         >
@@ -76,7 +78,8 @@ export default class FeedPage extends Component {
             this.setState({
               favors:
                 personalFrenmos.favors,
-              friends: false
+              friends: false,
+              which: 3
             })
           }
         >

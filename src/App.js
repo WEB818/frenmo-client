@@ -26,6 +26,7 @@ import FrenmoDetail from './components/FrenmoDetail/FrenmoDetail';
 import FrenmoApiService from './services/frenmo-api-service';
 import Frenmo from './components/Frenmo/Frenmo';
 import { PopupFeedback } from './components/PopupFeedback';
+import NewFrenmoForm from './components/NewFrenmoForm/NewFrenmoForm';
 
 class App extends Component {
   state = {
@@ -36,13 +37,13 @@ class App extends Component {
 
   static contextType = FrenmoContext;
 
-  // componentDidMount() {
-  //   this.context.clearError();
-  //   FrenmoApiService.getAllPublicFrenmos()
-  //     .then(
-  //       this.context.setPublicFrenmos
-  //     )
-  //     .catch(this.context.setError);
+  // async componentDidMount() {
+  //   // this.context.clearError();
+  //   // FrenmoApiService.getAllPublicFrenmos()
+  //   //   .then(
+  //   //     this.context.setPublicFrenmos
+  //   //   )
+  //   //   .catch(this.context.setError);
   // }
 
   renderOtherRoutes() {
@@ -93,15 +94,7 @@ class App extends Component {
           <PrivateRoute
             exact
             path={'/send'}
-            render={props => (
-              <NewFrenmoPage
-                {...props}
-                popupMessage={
-                  this
-                    .handleRenderFeedback
-                }
-              />
-            )}
+            component={NewFrenmoForm}
           />
           <PrivateRoute
             exact
