@@ -14,11 +14,16 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 export default class FeedPage extends Component {
-  state = {
-    favors: [],
-    friends: false
-  };
-
+  constructor(props) {
+    super(props);
+    const state = {
+      favors: [],
+      // this.context
+      //   .allPublicFrenmos.favors,
+      friends: false
+    };
+    this.state = state;
+  }
   static contextType = FrenmoContext;
 
   componentDidMount() {

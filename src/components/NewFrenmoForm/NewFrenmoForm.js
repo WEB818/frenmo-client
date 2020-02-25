@@ -397,7 +397,7 @@ class NewFrenmoForm extends Component {
           aria-label="Select privacy setting for frenmo"
           required
         >
-          <option value="0">
+          <option value="dm">
             --Please set privacy--
           </option>
           <option value="dm">
