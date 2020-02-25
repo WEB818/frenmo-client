@@ -95,7 +95,11 @@ class NavMenu extends Component {
         <div className="Header__logged-in">
           <div className="navigation">
             <a href="/" className="log-button">
-              <FontAwesomeIcon icon={faSignOutAlt} className="log-icon" />
+              <FontAwesomeIcon
+                icon={faSignOutAlt}
+                className="log-icon"
+                onClick={this.handleLogoutClick}
+              />
               <div className="logout" onClick={this.handleLogoutClick}>
                 Logout
               </div>

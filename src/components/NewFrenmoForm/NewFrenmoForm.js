@@ -46,14 +46,8 @@ class NewFrenmoForm extends Component {
     await this.setState({
       ...this.state,
 
-      [`${
-        setid === 'users'
-          ? 'user'
-          : setid
-      }_id`]:
-        possibleUsers !== []
-          ? possibleUsers[0].id
-          : null,
+      [`${setid === "users" ? "user" : setid}_id`]:
+        possibleUsers !== [] ? possibleUsers[0].id : null,
 
       people: possibleUsers
     });
@@ -230,7 +224,6 @@ class NewFrenmoForm extends Component {
         className={`NewFrenmoForm__${formtype}`}
         onSubmit={this.handleSubmit}
       >
-        {/* <Label htmlFor="NewFrenmo__title">Redeemable For:</Label> */}
         <Input
           type="text"
           name="title"
@@ -240,7 +233,6 @@ class NewFrenmoForm extends Component {
           required
         />
 
-        {/* <Label htmlFor="NewFrenmo__description">Frenmo Description:</Label> */}
         <Textarea
           id="NewFrenmo__description"
           name="description"
@@ -249,7 +241,6 @@ class NewFrenmoForm extends Component {
           required
         />
 
-        {/* <Label htmlFor="NewFrenmo__category">Select a category:</Label> */}
         <select
           id="NewFrenmo__category"
           name="category"

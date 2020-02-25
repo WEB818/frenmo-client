@@ -1,0 +1,43 @@
+.Frenmo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+  cursor: pointer;
+  margin-left: -10px;
+  // position: fixed;
+
+  &::before {
+    content: "f";
+    font-family: "Cantarell", sans-serif;
+    text-transform: lowercase;
+    height: 30px;
+    width: 30px;
+    background-color: #df3e7b;
+    color: #ffd42b;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  &:hover::before {
+    content: "f";
+    font-family: "Cantarell", sans-serif;
+    text-transform: lowercase;
+    height: 30px;
+    width: 30px;
+    background-color: #ffd42b;
+    color: #df3e7b;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+}
+
+// .Frenmo__Nav-link:active {
+//   background-color: darkblue;
+// }
+// .selected {
+//   background-color: darkblue;
+// }

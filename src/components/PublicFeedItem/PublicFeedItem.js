@@ -8,9 +8,10 @@ import {
   faChevronUp,
   faArrowRight,
   faGift,
-  faTicketAlt,
-  faCalendar,
-  faUserPlus
+  faComment,
+  faStopwatch,
+  faQuoteRight,
+  faQuoteLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../Utils/Utils";
 import { formatRelative } from "date-fns";
@@ -30,7 +31,6 @@ export default class PublicFeedItem extends Component {
 
   handleRedemption = outstanding_id => {
     let {
-      recdById,
       favorId,
       outstandingId,
       receiverRedeemed,
@@ -51,33 +51,20 @@ export default class PublicFeedItem extends Component {
       favorId,
       title,
       description,
-      category,
       expDate,
-      publicity,
-      originalLimit,
-      outstandingId,
-      creatorId,
+
       createdByName,
-      createdByUser,
-      issuerId,
+
       issuedByName,
-      issuedByUser,
-      recdById,
+
       recdByName,
-      recdByUser,
+
       issuerRedeemed,
       receiverRedeemed
     } = this.props;
 
     const { expanded } = this.state;
 
-    let redemption = "available";
-    if (receiverRedeemed) {
-      redemption = "pending";
-      if (issuerRedeemed) {
-        redemption = "redeemed";
-      }
-    }
     //add the frenmo logo for available frenmos?
     return (
       <div className="PublicFeedItem">
@@ -126,15 +113,15 @@ export default class PublicFeedItem extends Component {
                 <div className="PublicFeedItem__sub-titles">
                   <FontAwesomeIcon icon={faGift} />
                   {issuedByName}
-                  {/* <FontAwesomeIcon icon={faUserPlus} /> */}
                 </div>
               )}
               <div className="PublicFeedItem__sub-titles">
-                <FontAwesomeIcon icon={faTicketAlt} /> {createdByName}
+                <FontAwesomeIcon icon={faComment} />
+                {description}
               </div>
               {expDate && (
                 <div className="PublicFeedItem__sub-titles">
-                  <FontAwesomeIcon icon={faCalendar} />
+                  <FontAwesomeIcon icon={faStopwatch} />
                   {formatRelative(new Date(expDate), new Date(), 0)}
                 </div>
               )}

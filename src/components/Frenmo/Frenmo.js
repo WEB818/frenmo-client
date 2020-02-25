@@ -1,10 +1,8 @@
-import React, {
-  Component
-} from 'react';
-import { NavLink } from 'react-router-dom';
-import FrenmoDetail from '../FrenmoDetail/FrenmoDetail';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import FrenmoDetail from "../FrenmoDetail/FrenmoDetail";
 
-import './Frenmo.css';
+import "./Frenmo.scss";
 
 class Frenmo extends Component {
   static defaultProps = {
@@ -45,7 +43,7 @@ class Frenmo extends Component {
     } = this.props;
 
     return (
-      <li className="Frenmo__title-container">
+      <li className="Frenmo">
         <NavLink
           className="Frenmo__Nav-link"
           activeClassName="selected"

@@ -219,12 +219,10 @@ export class FrenmoProvider extends Component {
     // });
   }
 
-  //   addFrenmo = frenmo => {
-  //     this.setState([
-  //       ...this.state.frenmoList,
-  //       frenmo
-  //     ]);
-  //   };
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+  }
 
   setFrenmoRes = outRes => {
     this.setState({ outRes });

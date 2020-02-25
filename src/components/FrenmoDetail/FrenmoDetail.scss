@@ -1,0 +1,83 @@
+.FrenmoDetail {
+  position: fixed;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 55px 0;
+  background-color: #ffd42b;
+  box-shadow: 15px 15px 15px rgba(0, 209, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+
+  &:hover {
+    background-color: #df3e7b;
+    box-shadow: 15px 15px 15px rgba(126, 0, 248, 0.6);
+  }
+
+  &__title {
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-style: double;
+    margin: 10px;
+    letter-spacing: 4px;
+  }
+
+  &__desc {
+    text-align: center;
+    padding: 10px;
+
+    &::before,
+    &::after {
+      content: '"';
+      font-size: 22px;
+      font-family: "Cantarell", sans-serif;
+      align-items: center;
+    }
+  }
+  &__publicity {
+    text-transform: capitalize;
+
+    &:hover {
+      content: "Privacy setting";
+      margin: 10px;
+    }
+  }
+
+  &__createdby {
+    text-transform: capitalize;
+
+    &:hover {
+      content: "Frenmo created by";
+    }
+  }
+
+  &__issuedby {
+    text-transform: capitalize;
+    position: relative;
+
+    &:hover::after {
+      content: "Frenmo issued by";
+      font-size: 12px;
+      display: flex;
+      flex-direction: row;
+      width: 180px;
+      height: 20px;
+      border-radius: 5px;
+      border: solid #0479bf;
+      background: #0479bf;
+      position: absolute;
+      left: 80px;
+    }
+  }
+  &__issuedto {
+    text-transform: capitalize;
+
+    &:hover {
+      content: "Frenmo issued to";
+      margin: 10px;
+    }
+  }
+}
