@@ -17,7 +17,9 @@ import {
   faTicketAlt,
   faStopwatch,
   faKey,
-  faUser
+  faUser,
+  faGlobeAmericas,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 
 class FrenmoDetail extends Component {
@@ -35,7 +37,6 @@ class FrenmoDetail extends Component {
     history.push(`/frenmos/category/${categoryId}`);
   };
   renderRedeem = () => {
-    console.log(typeof this.props.location.state.favor_id);
     return (
       <RedeemFrenmo
         favor_id={this.props.location.state.favor_id}
@@ -87,7 +88,7 @@ class FrenmoDetail extends Component {
 
   //Expiration flag -- renders for expired frenmos
   renderExpirationFlag = () => {
-    return <h3>EXPIRED!!!</h3>;
+    return <h3 className="void">VOID</h3>;
   };
 
   handleGoBack = () => {
@@ -116,32 +117,47 @@ class FrenmoDetail extends Component {
     return (
       <div className="FrenmoDetail">
         <FontAwesomeIcon icon={faArrowLeft} onClick={this.handleGoBack} />
+
         <h2 className="FrenmoDetail__title">{title}</h2>
+
         {expiration_date && (
-          <h3 className="PublicFeedItem__sub-titles">
+          <h3 className="FrenmoDetail__date display">
             <FontAwesomeIcon icon={faStopwatch} />
             {formatRelative(new Date(expiration_date), Date.now(), 0)}
           </h3>
         )}
+
         <p className="FrenmoDetail__desc">{description}</p>
+
         {publicity && (
-          <p className="FrenmoDetail__publicity">
-            <FontAwesomeIcon icon={faKey} />
+          <p className="FrenmoDetail__publicity display">
+            {publicity === "public" ? (
+              <FontAwesomeIcon icon={faGlobeAmericas} />
+            ) : (
+              <FontAwesomeIcon icon={faKey} />
+            )}
             {publicity}
           </p>
         )}
-        <div className="FrenmoDetail__createdby">
-          <FontAwesomeIcon icon={faTicketAlt} />
-          <p>{creator_name}</p>
-        </div>
-        <p className="FrenmoDetail__issuedby">
-          <FontAwesomeIcon icon={faGift} />
-          {issuer_name}
-        </p>
-        <p className="FrenmoDetail__issuedto">
-          <FontAwesomeIcon icon={faGift} />
-          {receiver_name}
-        </p>
+        {/* {creator_name && (
+          <p className="FrenmoDetail__createdby display">
+            <FontAwesomeIcon icon={faTicketAlt} />
+            {creator_name}
+          </p>
+        )} */}
+        {issuer_name && (
+          <p className="FrenmoDetail__issuedby display">
+            <FontAwesomeIcon icon={faGift} />
+            {issuer_name}
+          </p>
+        )}
+
+        {receiver_name && (
+          <p className="FrenmoDetail__issuedto display">
+            <FontAwesomeIcon icon={faEnvelope} />
+            {receiver_name}
+          </p>
+        )}
         {issued && !expired
           ? this.renderIssue(receiver_username, receiver_id)
           : null}

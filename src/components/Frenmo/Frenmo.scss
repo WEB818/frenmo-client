@@ -6,9 +6,13 @@
   border-bottom: 1px solid lightgrey;
   padding: 20px;
   cursor: pointer;
-  margin-left: -10px;
-  // position: fixed;
 
+  a {
+    color: #0c0063;
+  }
+  a:visited {
+    color: #0c0063;
+  }
   &::before {
     content: "f";
     font-family: "Cantarell", sans-serif;
@@ -34,10 +38,3 @@
     margin-right: 20px;
   }
 }
-
-// .Frenmo__Nav-link:active {
-//   background-color: darkblue;
-// }
-// .selected {
-//   background-color: darkblue;
-// }

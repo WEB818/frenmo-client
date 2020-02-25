@@ -99,7 +99,6 @@ class FrenmoListByCat extends Component {
     let myPublicFrenmos;
     let myPrivateFrenmos;
     let myFriendFrenmos;
-    console.log(publicFrenmos, personalFrenmos, friendFrenmos);
 
     myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
     myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
@@ -155,7 +154,6 @@ class FrenmoListByCat extends Component {
     const { user } = this.context;
 
     return (
-      //if i click here, slide down animation of {displayed}
       <>
         <div className="FrenmoListByCat__Buttons">
           <button
