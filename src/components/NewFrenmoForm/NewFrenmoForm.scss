@@ -32,6 +32,26 @@
   display: flex;
 }
 
+.tip {
+  color: #df3e7b;
+
+  &:hover {
+    color: #7e00f8;
+  }
+}
+.tip:hover::after {
+  content: "Add number of allowable redemptions";
+  font-size: 12px;
+  text-align: center;
+  width: 120px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #7e00f8;
+  padding: 3px;
+  position: absolute;
+  left: 50px;
+  color: white;
+}
 @media (min-width: 768px) {
   .NewFrenmoForm {
     display: flex;

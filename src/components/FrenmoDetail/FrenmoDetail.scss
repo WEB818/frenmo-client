@@ -1,0 +1,137 @@
+.FrenmoDetail {
+  position: fixed;
+  padding: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 55px 0;
+  background-color: #ffd42b;
+  min-width: 280px;
+  box-shadow: 15px 15px 15px rgba(0, 209, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #df3e7b;
+    box-shadow: 15px 15px 15px rgba(126, 0, 248, 0.6);
+  }
+
+  &__title {
+    text-transform: lowercase;
+    background-color: #fdfbef;
+    border-radius: 25px 0;
+    padding: 10px;
+    letter-spacing: 4px;
+  }
+
+  &__date {
+    display: flex;
+    flex-direction: column;
+
+    &:hover::after {
+      content: "the clock is ticking";
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  &__desc {
+    text-align: center;
+    padding: 10px;
+    background-color: #fdfbef;
+    border-radius: 0 25px;
+
+    &::before,
+    &::after {
+      content: '"';
+      font-size: 16px;
+    }
+  }
+  &__publicity {
+    &:hover::after {
+      content: "Who sees me";
+      font-size: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      width: 90px;
+      height: 20px;
+      border-radius: 5px;
+      background: #ffd42b;
+      padding: 3px;
+      position: absolute;
+      left: 60px;
+    }
+  }
+
+  &__issuedby {
+    &:hover::after {
+      content: "From a good friend";
+      font-size: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      width: 90px;
+      height: 30px;
+      border-radius: 5px;
+      background: #ffd42b;
+      padding: 3px;
+      position: absolute;
+      left: 60px;
+    }
+  }
+  &__issuedto {
+    &:hover::after {
+      content: "To whom frenmo is issued";
+      font-size: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      width: 90px;
+      height: 30px;
+      border-radius: 5px;
+      background: #ffd42b;
+      padding: 3px;
+      position: absolute;
+      left: 60px;
+    }
+  }
+}
+
+.display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  padding: 8px;
+}
+
+.void {
+  font-family: "Cantarell", sans-serif;
+  color: #df3e7b;
+  font-size: 90px;
+  letter-spacing: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+
+  &:hover {
+    color: #ffd42b;
+  }
+}
+
+@media (min-width: 768px) {
+  .FrenmoDetail {
+    margin-left: 20%;
+    min-width: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .FrenmoDetail {
+    min-width: 420px;
+  }
+}

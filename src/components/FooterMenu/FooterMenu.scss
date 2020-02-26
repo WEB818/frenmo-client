@@ -2,8 +2,13 @@
   display: flex;
   font-size: 1rem;
   justify-content: space-around;
-  background-color: rgba(0, 209, 255, 0.8);
+  background-color: #0c0063;
   text-align: center;
+  // overflow: hidden;
+}
+.f {
+  color: white;
+  font-family: "Cantarell", sans-serif;
 }
 
 #icon {
@@ -14,18 +19,14 @@
   font-size: 1.5rem;
 }
 
-#icon-gift {
-  text-decoration: none;
-  font-size: 70px;
-}
-
 .Footer-links {
-  color: #0c0063;
+  color: #efecff;
   font-weight: 600;
   text-decoration: none;
   padding: 4px;
   text-align: center;
 }
+
 @media (min-width: 768px) {
   .Footer {
     display: none;

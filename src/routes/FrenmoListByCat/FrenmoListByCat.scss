@@ -1,18 +1,53 @@
+.FrenmoListByCat {
+  font-family: "Cantarell", sans-serif;
+}
+
 .FrenmoListByCat__Buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  background-color: #0c0063;
 }
 
-.ListByCat__section {
-  background-color: #00d1ff;
-  padding: 0;
+.FrenmoListByCat__tabs {
+  font-family: "Cantarell", sans-serif;
+  background-color: #0c0063;
+  color: white;
+  padding: 10px;
+  flex-grow: 2;
+  border: none;
+
+  &:focus {
+    outline: thin dotted;
+    background-color: #00d1ff;
+    color: #0c0063;
+    border-radius: 15px 0;
+    padding: 8px;
+  }
+}
+
+// affects the filtered category list, see frenmo styles for link styles
+.FrenmoListByCat__subtitles {
+  text-transform: capitalize;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  .FrenmoListByCat {
-    margin-left: 41%;
-    font-family: "Cantarell", sans-serif;
+  .FrenmoListByCat__Buttons {
+    margin-left: 40%;
+    width: 58%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .FrenmoListByCat__Buttons {
+    margin-top: 20px;
+    margin-left: 5%;
+    width: 50vw;
+  }
+  .FrenmoListByCat__subtitles {
+    margin-left: -10%;
+    // width: 50vw;
+    overflow-y: hidden;
   }
 }

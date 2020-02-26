@@ -1,0 +1,35 @@
+.NewFrenmo__receiver {
+  margin: 10px;
+}
+
+.NewFrenmo__issue-button {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.issue-search {
+  margin: 2px;
+  background-color: #fdfbef;
+  border-radius: 6px 0;
+  padding: 2px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.issue-button {
+  width: 100%;
+  border-radius: 0 25px;
+  border-bottom: 2px solid #00d1ff;
+  color: #d7f8ff;
+  box-shadow: none;
+  background-color: #df3e7b;
+  font-weight: bold;
+
+  &:hover {
+    border-bottom: 2px solid #7e00f8;
+  }
+}

@@ -31,8 +31,7 @@
   }
   &__expanded {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: row;
     padding: 10px;
     text-transform: capitalize;
   }
@@ -41,7 +40,82 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 200px;
+    width: 280px;
+  }
+  .receiver {
+    &:hover {
+      color: white;
+    }
+    &:hover::after {
+      content: "A favor for...";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
+  }
+  .description {
+    &:hover {
+      color: white;
+    }
+    &:hover::after {
+      content: "A message";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
+  }
+
+  .issuer {
+    &:hover {
+      color: white;
+    }
+
+    &:hover::after {
+      content: "From a good friend";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
+  }
+  .expdate {
+    &:hover {
+      color: white;
+    }
+
+    &:hover::after {
+      content: "Time is ticking";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
   }
   &__flags {
     display: flex;
@@ -70,5 +144,14 @@
 @media (min-width: 768px) {
   .PublicFeedItem {
     margin-left: 40%;
+    width: 58%;
+  }
+}
+
+// feed page should be middle 40% of screen
+@media (min-width: 1440px) {
+  .PublicFeedItem {
+    margin-left: 30%;
+    width: 40vw;
   }
 }

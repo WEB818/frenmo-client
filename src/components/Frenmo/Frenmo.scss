@@ -1,0 +1,55 @@
+.Frenmo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+  cursor: pointer;
+
+  a {
+    color: #0c0063;
+  }
+  a:visited {
+    color: #0c0063;
+  }
+  &::before {
+    content: "f";
+    font-family: "Cantarell", sans-serif;
+    text-transform: lowercase;
+    height: 30px;
+    width: 30px;
+    background-color: #df3e7b;
+    color: #ffd42b;
+    text-align: center;
+    border-radius: 8px 0;
+    margin-right: 20px;
+  }
+  &:hover::before {
+    content: "f";
+    font-family: "Cantarell", sans-serif;
+    text-transform: lowercase;
+    height: 30px;
+    width: 30px;
+    background-color: #ffd42b;
+    color: #df3e7b;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .Frenmo {
+    margin-left: 44%;
+    width: 54vw;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Frenmo {
+    margin-left: 20%;
+    width: 42vw;
+    overflow-x: hidden;
+  }
+}

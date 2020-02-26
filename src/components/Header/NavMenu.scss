@@ -113,10 +113,13 @@
 .menu-icon {
   display: none;
 }
+.Nav-container {
+  display: flex;
+}
 
 @media (min-width: 768px) {
   .NavMenu__menu-item {
-    padding: 50px;
+    padding: 40px;
 
     &:hover {
       background-color: #7e00f8;
@@ -152,7 +155,7 @@
     position: absolute;
     transform: translateX(-100%);
     transition: transform 400ms ease-in;
-    width: 35%;
+    width: 38%;
     left: 0px;
     height: 90vh;
     top: 10vh;
@@ -177,10 +180,11 @@
 
 @media (min-width: 1440px) {
   .NavMenu__menu-item {
-    padding: 50px;
+    padding: 60px;
+  }
 
-    &:hover {
-      background-color: #7e00f8;
-    }
+  #navSlide {
+    background-color: rgba(12, 0, 99, 1);
+    width: 28%;
   }
 }
