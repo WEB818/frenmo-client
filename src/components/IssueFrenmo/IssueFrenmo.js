@@ -9,6 +9,7 @@ import {
 import FrenmoApiService from '../../services/frenmo-api-service';
 import UserContext from '../../contexts/UserContext';
 import './IssueFrenmo.scss';
+import { Redirect } from 'react-router-dom';
 class IssueFrenmo extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,8 @@ class IssueFrenmo extends Component {
   state = {
     receiver: '',
     receiver_id: null,
-    people: []
+    people: [],
+    issued: false
   };
 
   componentDidMount() {
@@ -57,13 +59,18 @@ class IssueFrenmo extends Component {
   };
   static contextType = UserContext;
 
+  renderRedirect = () => {
+    if (this.state.issued) {
+      return <Redirect to="/frenmos" />;
+    }
+  };
   render() {
     return (
       <>
         <form
-          onSubmit={e => {
+          onSubmit={async e => {
             e.preventDefault();
-            FrenmoApiService.issueFrenmo(
+            let newFrenmo = await FrenmoApiService.issueFrenmo(
               {
                 users_id: this.context
                   .user.id,
@@ -75,8 +82,15 @@ class IssueFrenmo extends Component {
                   .props.outstanding_id
               }
             );
+            // this.props.history.push(
+            //   '/frenmos'
+            // );
+            this.setState({
+              issued: true
+            });
           }}
         >
+          {this.renderRedirect()}
           <div className="NewFrenmo__input-container">
             <Label htmlFor="NewFrenmo__receiver">
               Give To:
