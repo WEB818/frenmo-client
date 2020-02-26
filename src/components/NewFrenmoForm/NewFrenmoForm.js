@@ -14,6 +14,10 @@ import {
 } from '../Utils/Utils';
 
 import './NewFrenmoForm.scss';
+import {
+  useHistory,
+  Redirect
+} from 'react-router-dom';
 
 class NewFrenmoForm extends Component {
   static defaultProps = {
@@ -34,7 +38,8 @@ class NewFrenmoForm extends Component {
     users_id: null,
     receiver: '',
     user: '',
-    people: []
+    people: [],
+    submitted: false
   };
 
   handleChange = date => {
@@ -155,24 +160,13 @@ class NewFrenmoForm extends Component {
               .users_id
           });
         }
-        this.setState({ postRes });
+        this.setState({
+          postRes,
+          submitted: true
+        });
+        useHistory().push('/feed');
       })
       .then(this.context.addFrenmo)
-      .then(() => {
-        title.value = '';
-        description.value = '';
-        category.value = 0;
-        expiration_date.value = '';
-        publicity.value = 0;
-        limit.value = '';
-        if (user) {
-          user.value = '';
-        }
-        if (receiver) {
-          receiver.value = '';
-        }
-        this.props.onRedirect();
-      })
       .catch(this.context.setError);
   };
 
@@ -428,9 +422,15 @@ class NewFrenmoForm extends Component {
     return generalForm;
   };
 
+  renderRedirect = () => {
+    if (this.state.submitted) {
+      return <Redirect to="/feed" />;
+    }
+  };
   render() {
     return (
       <div className="NewFrenmoForm">
+        {this.renderRedirect()}
         <div className="NewFrenmoForm__Buttons">
           <Button
             type="button"
