@@ -5,6 +5,8 @@ import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, Label, Input, Textarea } from "../Utils/Utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 import "./NewFrenmoForm.scss";
 
@@ -289,13 +291,14 @@ class NewFrenmoForm extends Component {
           aria-label="Select privacy setting for frenmo"
           required
         >
-          <option value="0">--Please set privacy--</option>
           <option value="dm">Direct Message</option>
           <option value="friend">Friends Only</option>
           <option value="public">Public</option>
         </select>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__limit">Set Limit:</Label>
+          <Label htmlFor="NewFrenmo__limit" className="limit-label">
+            Set Limit: <FontAwesomeIcon icon={faInfoCircle} className="tip" />
+          </Label>
           <Input
             type="number"
             name="limit"

@@ -32,9 +32,6 @@
   &__expanded {
     display: flex;
     flex-direction: row;
-    // justify-content: space-between;
-    // margin-left: auto;
-    // margin-right: auto;
     padding: 10px;
     text-transform: capitalize;
   }
@@ -45,6 +42,42 @@
     justify-content: space-between;
     width: 280px;
   }
+  .receiver {
+    &:hover {
+      color: white;
+    }
+    &:hover::after {
+      content: "A favor for...";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
+  }
+  .description {
+    &:hover {
+      color: white;
+    }
+    &:hover::after {
+      content: "A message";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
+  }
 
   .issuer {
     &:hover {
@@ -52,22 +85,38 @@
     }
 
     &:hover::after {
-      content: "From your good friend";
+      content: "From a good friend";
       font-size: 12px;
       text-align: center;
-      // display: flex;
-      // flex-direction: row;
       width: 120px;
-      height: 30px;
+      height: 20px;
       border-radius: 5px;
-      background: #ffd42b;
+      background: #7e00f8;
       padding: 3px;
       position: absolute;
       left: 50px;
-      color: #0c0063;
+      color: white;
     }
   }
+  .expdate {
+    &:hover {
+      color: white;
+    }
 
+    &:hover::after {
+      content: "Time is ticking";
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      background: #7e00f8;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: white;
+    }
+  }
   &__flags {
     display: flex;
   }

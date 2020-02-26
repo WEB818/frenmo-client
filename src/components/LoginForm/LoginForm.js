@@ -39,8 +39,8 @@ class LoginForm extends Component {
     const { error } = this.state;
 
     return (
-      <form className="RegForm" onSubmit={this.handleSubmit}>
-        <div role="alert" className="RegForm__alert">
+      <form className="LogForm" onSubmit={this.handleSubmit}>
+        <div role="alert" className="LogForm__alert">
           {error && (
             <p aria-label="You have entered an incorrect username or password">
               {error}
