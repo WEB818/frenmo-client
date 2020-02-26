@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import NewFrenmoForm from "../../components/NewFrenmoForm/NewFrenmoForm";
-import FrenmoContext from "../../contexts/FrenmoContext";
-import FriendBubbles from "../../components/FriendBubbles/FriendBubbles";
-import UserContext from "../../contexts/UserContext";
+import React, {
+  Component
+} from 'react';
+import NewFrenmoForm from '../../components/NewFrenmoForm/NewFrenmoForm';
+import FrenmoContext from '../../contexts/FrenmoContext';
+import FriendBubbles from '../../components/FriendBubbles/FriendBubbles';
+import UserContext from '../../contexts/UserContext';
 
 class NewFrenmoPage extends Component {
   static defaultProps = {
@@ -24,11 +26,20 @@ class NewFrenmoPage extends Component {
   render() {
     return (
       <>
-        <h2 className="NewFrenmoPage__header">Create a frenmo</h2>
+        <h2 className="NewFrenmoPage__header">
+          Create a frenmo
+        </h2>
 
         <div>
           <FriendBubbles />
-          <NewFrenmoForm onRedirect={this.redirectToTarget} />
+          <NewFrenmoForm
+            popupMessage={
+              this.props.popupMessage
+            }
+            onRedirect={
+              this.redirectToTarget
+            }
+          />
         </div>
       </>
     );

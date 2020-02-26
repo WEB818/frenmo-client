@@ -117,7 +117,7 @@ const FrenmoApiService = {
     return fetch(
       `${config.API_ENDPOINT}/favor/redeem/${favorId}`,
       {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'content-type':
             'application/json',
