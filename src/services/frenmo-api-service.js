@@ -138,6 +138,8 @@ const FrenmoApiService = {
     );
   },
   issueFrenmo(fields) {
+    console.log(fields);
+
     return fetch(
       `${config.API_ENDPOINT}/favor/issue/`,
       {
