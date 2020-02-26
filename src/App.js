@@ -32,19 +32,6 @@ class App extends Component {
     return <PrivateRoute path={`/frenmos`} component={FrenmoDashboard} />;
   }
 
-  renderOtherRoutes() {
-    return (
-      <>
-        <Switch>
-          <PrivateRoute
-            path={"/frenmos/category/:categoryId/:outstandingId"}
-            component={FrenmoDetail}
-          />
-        </Switch>
-      </>
-    );
-  }
-
   renderMainRoutes() {
     return (
       <>
@@ -76,21 +63,34 @@ class App extends Component {
     );
   }
 
+  renderOtherRoutes() {
+    return (
+      <>
+        <Switch>
+          <PrivateRoute
+            path={"/frenmos/category/:categoryId/:outstandingId"}
+            component={FrenmoDetail}
+          />
+        </Switch>
+      </>
+    );
+  }
   render() {
     return (
       <div className="App">
         <NavMenu />
-        {this.renderNavRoutes()}
+
         <main className="App__container wrapper">
+          {this.renderNavRoutes()}
           {this.state.hasError && (
             <p className="red">Something went wrong. Please try again later.</p>
           )}
 
           <section className="App__main wrapper">
             {this.renderMainRoutes()}
-          </section>
 
-          {this.renderOtherRoutes()}
+            {this.renderOtherRoutes()}
+          </section>
         </main>
 
         <FooterMenu />

@@ -33,7 +33,21 @@
 }
 
 @media (min-width: 768px) {
-  .FrenmoListByCat {
-    margin-left: 41%;
+  .FrenmoListByCat__Buttons {
+    margin-left: 40%;
+    width: 58%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .FrenmoListByCat__Buttons {
+    margin-top: 20px;
+    margin-left: 5%;
+    width: 50vw;
+  }
+  .FrenmoListByCat__subtitles {
+    margin-left: -10%;
+    // width: 50vw;
+    overflow-y: hidden;
   }
 }

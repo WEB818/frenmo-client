@@ -110,7 +110,7 @@ export default class PublicFeedItem extends Component {
                 </div>
               )}
               {issuedByName && (
-                <div className="PublicFeedItem__sub-titles">
+                <div className="PublicFeedItem__sub-titles issuer">
                   <FontAwesomeIcon icon={faGift} />
                   {issuedByName}
                 </div>

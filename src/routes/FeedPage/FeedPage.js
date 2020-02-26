@@ -11,7 +11,7 @@ import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";
 export default class FeedPage extends Component {
   state = {
     favors: [],
-    friends: false
+    publicity: ""
   };
 
   static contextType = FrenmoContext;
@@ -45,21 +45,30 @@ export default class FeedPage extends Component {
       <>
         <Button
           onClick={() =>
-            this.setState({ favors: allPublicFrenmos.favors, friends: false })
+            this.setState({
+              favors: allPublicFrenmos.favors,
+              publicity: "public"
+            })
           }
         >
           Public
         </Button>
         <Button
           onClick={() =>
-            this.setState({ favors: friendFrenmos.favors, friends: true })
+            this.setState({
+              favors: friendFrenmos.favors,
+              publicity: "friends"
+            })
           }
         >
           Friends
         </Button>
         <Button
           onClick={() =>
-            this.setState({ favors: personalFrenmos.favors, friends: false })
+            this.setState({
+              favors: personalFrenmos.favors,
+              publicity: "personal"
+            })
           }
         >
           Personal
@@ -69,33 +78,45 @@ export default class FeedPage extends Component {
   }
 
   render() {
-    const { favors, friends } = this.state;
+    const { favors, publicity } = this.state;
+    const { friendFrenmos, personalFrenmos, allPublicFrenmos } = this.context;
 
     return (
       <>
         <FriendBubbles />
-        <div className="FeedPage__add">
-          <div className="FeedPage__Add-button">
-            <Link to="/send" className="FeedPage__Add-link">
-              <FontAwesomeIcon icon={faPlus} />
-              <span className="FeedPage__logo">f</span>
-            </Link>
-          </div>
-        </div>
 
         <div className="FeedPage__Buttons">{this.renderPublicity()}</div>
-        {friends && (
-          <div>
-            <div className="FeedPage__add">
-              <div className="FeedPage__Add-button">
-                <Link to="/friends" className="FeedPage__Add-link">
-                  <FontAwesomeIcon icon={faPlus} />
-                  <FontAwesomeIcon icon={faUser} />
-                </Link>
-              </div>
+        {publicity === "friends" && (
+          <div className="FeedPage__add">
+            <div className="FeedPage__Add-button">
+              <Link to="/friends" className="FeedPage__Add-link">
+                <FontAwesomeIcon icon={faPlus} />
+                <FontAwesomeIcon icon={faUser} />
+              </Link>
             </div>
           </div>
         )}
+
+        {publicity === "friends" && !friendFrenmos.favors.length && (
+          <p className="Message_no-frenmos">
+            No frenmos yet. Connect with your friends and start swapping favors!
+          </p>
+        )}
+
+        {publicity === "personal" && !personalFrenmos.favors.length && (
+          <p className="Message_no-frenmos">
+            Brand new to Frenmo? You can create frenmos for others to redeem or
+            send a frenmo to others!
+          </p>
+        )}
+
+        {publicity === "public" && !allPublicFrenmos.favors.length && (
+          <p className="Message_no-frenmos">
+            Welcome to Frenmo! Toggle feed buttons to view activity from the
+            public, from your friends, and for your private favors.
+          </p>
+        )}
+
         {favors && (
           <div>
             {favors.map((pubFavor, idx) => (

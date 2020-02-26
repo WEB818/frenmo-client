@@ -1,0 +1,13 @@
+.redeem-button {
+  width: 100%;
+  border-radius: 25px 0;
+  border-bottom: 2px solid #df3e7b;
+  color: #d7f8ff;
+  box-shadow: none;
+  background-color: #00d1ff;
+  font-weight: bold;
+
+  &:hover {
+    border-bottom: 2px solid #7e00f8;
+  }
+}

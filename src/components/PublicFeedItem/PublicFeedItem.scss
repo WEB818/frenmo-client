@@ -31,8 +31,10 @@
   }
   &__expanded {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: row;
+    // justify-content: space-between;
+    // margin-left: auto;
+    // margin-right: auto;
     padding: 10px;
     text-transform: capitalize;
   }
@@ -41,8 +43,31 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 200px;
+    width: 280px;
   }
+
+  .issuer {
+    &:hover {
+      color: white;
+    }
+
+    &:hover::after {
+      content: "From your good friend";
+      font-size: 12px;
+      text-align: center;
+      // display: flex;
+      // flex-direction: row;
+      width: 120px;
+      height: 30px;
+      border-radius: 5px;
+      background: #ffd42b;
+      padding: 3px;
+      position: absolute;
+      left: 50px;
+      color: #0c0063;
+    }
+  }
+
   &__flags {
     display: flex;
   }
@@ -70,5 +95,14 @@
 @media (min-width: 768px) {
   .PublicFeedItem {
     margin-left: 40%;
+    width: 58%;
+  }
+}
+
+// feed page should be middle 40% of screen
+@media (min-width: 1440px) {
+  .PublicFeedItem {
+    margin-left: 30%;
+    width: 40vw;
   }
 }

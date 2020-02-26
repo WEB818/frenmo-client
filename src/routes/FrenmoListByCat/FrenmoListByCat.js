@@ -260,8 +260,6 @@ class FrenmoListByCat extends Component {
 
     return (
       <>
-        <FriendBubbles />
-
         {this.renderTypes()}
         <div className="FrenmoListByCat__titles">
           <div className="FrenmoListByCat__subtitles">{displayed}</div>

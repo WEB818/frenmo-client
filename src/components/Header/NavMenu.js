@@ -15,7 +15,7 @@ const MenuSlide = ({ showMenu }) => (
     <ul className="NavMenu__list">
       <li className="NavMenu__menu-item">
         <Link to="/feed" className="NavMenu__links">
-          My Feed
+          Feed
         </Link>
       </li>
       <li className="NavMenu__menu-item">
@@ -24,18 +24,13 @@ const MenuSlide = ({ showMenu }) => (
         </Link>
       </li>
       <li className="NavMenu__menu-item">
-        <Link to="/send" className="NavMenu__links">
-          Send a Frenmo
-        </Link>
-      </li>
-      <li className="NavMenu__menu-item">
         <Link to="/friends" className="NavMenu__links">
           Friends
         </Link>
       </li>
       <li className="NavMenu__menu-item">
-        <Link to="/profile" className="NavMenu__links">
-          Profile
+        <Link to="/send" className="NavMenu__links">
+          Create
         </Link>
       </li>
     </ul>
@@ -47,7 +42,7 @@ class NavMenu extends Component {
 
     this.state = {
       error: null,
-      showMenu: false
+      showMenu: true
     };
   }
 
@@ -113,22 +108,24 @@ class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-        <NavLink to="/feed" className="Header__link">
-          <h2 className="NavMenu__Header" onClick={this.handleSlide}>
-            <span className="logo medblue">f</span>
-            <span className="logo lightblue">f</span>
-            <span className="logo lighterblue">f</span>
-            <span className="logo lightestblue">f</span>
-            frenmo
-          </h2>
-        </NavLink>
+        <div className="Nav-container">
+          <NavLink to="/feed" className="Header__link">
+            <h2 className="NavMenu__Header" onClick={this.handleSlide}>
+              <span className="logo medblue">f</span>
+              <span className="logo lightblue">f</span>
+              <span className="logo lighterblue">f</span>
+              <span className="logo lightestblue">f</span>
+              frenmo
+            </h2>
+          </NavLink>
 
-        <div className="Header__not-logged-in">
-          <div className="navigation">
-            <a href="/login" className="log-button">
-              <FontAwesomeIcon icon={faSignOutAlt} className="log-icon" />
-              <div className="login">Login</div>
-            </a>
+          <div className="Header__not-logged-in">
+            <div className="navigation">
+              <a href="/login" className="log-button">
+                <FontAwesomeIcon icon={faSignOutAlt} className="log-icon" />
+                <div className="login">Login</div>
+              </a>
+            </div>
           </div>
         </div>
       </>

@@ -102,14 +102,11 @@ class FrenmoDetail extends Component {
       description,
       expiration_date,
       publicity,
-      creator_name,
       issuer_name,
       receiver_name,
-
       receiver_id,
       receiver_username,
       issued,
-
       expired,
       received
     } = this.props.location.state;
@@ -139,12 +136,14 @@ class FrenmoDetail extends Component {
             {publicity}
           </p>
         )}
+
         {/* {creator_name && (
           <p className="FrenmoDetail__createdby display">
             <FontAwesomeIcon icon={faTicketAlt} />
             {creator_name}
           </p>
         )} */}
+
         {issuer_name && (
           <p className="FrenmoDetail__issuedby display">
             <FontAwesomeIcon icon={faGift} />
@@ -158,6 +157,7 @@ class FrenmoDetail extends Component {
             {receiver_name}
           </p>
         )}
+
         {issued && !expired
           ? this.renderIssue(receiver_username, receiver_id)
           : null}

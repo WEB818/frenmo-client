@@ -1,6 +1,7 @@
 import * as React from "react";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import { Button } from "../../components/Utils/Utils";
+import "./RedeemFrenmo.scss";
 export class RedeemFrenmo extends React.Component {
   static defaultProps = {
     onRedemption: () => {}
@@ -19,8 +20,10 @@ export class RedeemFrenmo extends React.Component {
     return (
       <>
         <form className="RedeemFrenmo" onSubmit={this.handleRedeemFrenmo}>
-          <div>
-            <Button type="submit">Redeem Frenmo</Button>
+          <div className="btn-container">
+            <Button type="submit" className="redeem-button">
+              Redeem Frenmo
+            </Button>
           </div>
         </form>
       </>

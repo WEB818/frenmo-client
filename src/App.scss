@@ -70,6 +70,7 @@ body {
   .App__main {
     margin: 0;
   }
+
   .wrapper {
     flex: 2;
     flex-wrap: wrap;
@@ -81,4 +82,10 @@ body {
     justify-content: center;
     align-items: center;
   }
+}
+
+@media (min-width: 1440px) {
+  // .wrapper {
+  //   overflow-y: hidden;
+  // }
 }
