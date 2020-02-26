@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import FrenmoDetail from "../FrenmoDetail/FrenmoDetail";
+import React, {
+  Component
+} from 'react';
+import { NavLink } from 'react-router-dom';
+import FrenmoDetail from '../FrenmoDetail/FrenmoDetail';
 
-import "./Frenmo.scss";
+import './Frenmo.scss';
 
 class Frenmo extends Component {
   static defaultProps = {
@@ -39,7 +41,8 @@ class Frenmo extends Component {
       redeemed,
       expired,
       received,
-      favor_id
+      favor_id,
+      pending
     } = this.props;
 
     return (
@@ -76,7 +79,8 @@ class Frenmo extends Component {
               issued: issued,
               redeemed: redeemed,
               expired: expired,
-              received: received
+              received: received,
+              pending: pending
             }
           }}
         >

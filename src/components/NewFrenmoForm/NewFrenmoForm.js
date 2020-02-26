@@ -36,6 +36,7 @@ class NewFrenmoForm extends Component {
     postRes: {},
     give: true,
     ask: false,
+    publicity: null,
     receiver_id: null,
     users_id: null,
     receiver: '',
@@ -390,6 +391,15 @@ class NewFrenmoForm extends Component {
           id="NewFrenmo__publicity"
           name="publicity"
           aria-label="Select privacy setting for frenmo"
+          onChange={event => {
+            console.log(
+              event.target.value
+            );
+            this.setState({
+              publicity:
+                event.target.value
+            });
+          }}
           required
         >
           <option value="dm">
