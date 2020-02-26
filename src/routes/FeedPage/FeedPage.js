@@ -11,21 +11,6 @@ import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";
 export default class FeedPage extends Component {
   static contextType = FrenmoContext;
 
-  // componentDidMount() {
-  //   this.context.clearError();
-  //   FrenmoApiService.getAllPublicFrenmos()
-  //     .then(this.context.setPublicFrenmos)
-  //     .catch(this.context.setError);
-  //   FrenmoApiService.getMyPublicFrenmos()
-  //     .then(this.context.setAllPublic)
-  //     .catch(this.context.setError);
-  //   FrenmoApiService.getPersonalFrenmos()
-  //     .then(this.context.setAllPersonal)
-  //     .catch(this.context.setError);
-  //   FrenmoApiService.getFriendFrenmos()
-  //     .then(this.context.setAllFriend)
-  //     .catch(this.context.setError);
-
   constructor(props) {
     super(props);
     const state = {
@@ -43,6 +28,19 @@ export default class FeedPage extends Component {
       favors: this.context.allPublicFrenmos.favors,
       friends: false
     });
+    this.context.clearError();
+    FrenmoApiService.getAllPublicFrenmos()
+      .then(this.context.setPublicFrenmos)
+      .catch(this.context.setError);
+    FrenmoApiService.getMyPublicFrenmos()
+      .then(this.context.setAllPublic)
+      .catch(this.context.setError);
+    FrenmoApiService.getPersonalFrenmos()
+      .then(this.context.setAllPersonal)
+      .catch(this.context.setError);
+    FrenmoApiService.getFriendFrenmos()
+      .then(this.context.setAllFriend)
+      .catch(this.context.setError);
   }
 
   // currently not implemented, should route to frenmo detail that lets user redeem or do whatever depending on what is available
@@ -116,20 +114,20 @@ export default class FeedPage extends Component {
         )}
 
         {publicity === "friends" && !friendFrenmos.favors.length && (
-          <p className="Message_no-frenmos">
+          <p className="welcome-message">
             No frenmos yet. Connect with your friends and start swapping favors!
           </p>
         )}
 
         {publicity === "personal" && !personalFrenmos.favors.length && (
-          <p className="Message_no-frenmos">
+          <p className="welcome-message">
             Brand new to Frenmo? You can create frenmos for others to redeem or
             send a frenmo to others!
           </p>
         )}
 
         {publicity === "public" && !allPublicFrenmos.favors.length && (
-          <p className="Message_no-frenmos">
+          <p className="welcome-message">
             Welcome to Frenmo! Toggle feed buttons to view activity from the
             public, from your friends, and for your private favors.
           </p>

@@ -230,13 +230,6 @@ export class FrenmoProvider extends Component {
     })();
   }
 
-  componentWillUnmount() {
-    IdleService.unRegisterIdleResets();
-    TokenService.clearCallbackBeforeExpiry();
-
-    IdleService.setIdleCallback(this.logoutBecauseIdle);
-  }
-
   setFrenmoRes = outRes => {
     this.setState({ outRes });
   };

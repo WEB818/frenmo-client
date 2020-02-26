@@ -188,3 +188,14 @@
     width: 28%;
   }
 }
+
+@media (min-width: 1800px) {
+  .NavMenu__menu-item {
+    padding: 60px;
+  }
+
+  #navSlide {
+    background-color: rgba(12, 0, 99, 1);
+    width: 20%;
+  }
+}

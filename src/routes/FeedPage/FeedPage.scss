@@ -1,7 +1,10 @@
 .FeedPage__add {
-  display: flex;
-  float: right;
-  bottom: 80%;
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 15px 0;
 }
 
 .FeedPage__Add-button {
