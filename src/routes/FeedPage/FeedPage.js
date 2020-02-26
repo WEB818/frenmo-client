@@ -9,27 +9,40 @@ import "./FeedPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";
 export default class FeedPage extends Component {
-  state = {
-    favors: [],
-    publicity: ""
-  };
-
   static contextType = FrenmoContext;
 
-  componentDidMount() {
-    this.context.clearError();
-    FrenmoApiService.getAllPublicFrenmos()
-      .then(this.context.setPublicFrenmos)
-      .catch(this.context.setError);
-    FrenmoApiService.getMyPublicFrenmos()
-      .then(this.context.setAllPublic)
-      .catch(this.context.setError);
-    FrenmoApiService.getPersonalFrenmos()
-      .then(this.context.setAllPersonal)
-      .catch(this.context.setError);
-    FrenmoApiService.getFriendFrenmos()
-      .then(this.context.setAllFriend)
-      .catch(this.context.setError);
+  // componentDidMount() {
+  //   this.context.clearError();
+  //   FrenmoApiService.getAllPublicFrenmos()
+  //     .then(this.context.setPublicFrenmos)
+  //     .catch(this.context.setError);
+  //   FrenmoApiService.getMyPublicFrenmos()
+  //     .then(this.context.setAllPublic)
+  //     .catch(this.context.setError);
+  //   FrenmoApiService.getPersonalFrenmos()
+  //     .then(this.context.setAllPersonal)
+  //     .catch(this.context.setError);
+  //   FrenmoApiService.getFriendFrenmos()
+  //     .then(this.context.setAllFriend)
+  //     .catch(this.context.setError);
+
+  constructor(props) {
+    super(props);
+    const state = {
+      favors: [],
+      which: 2,
+      publicity: ""
+    };
+    this.state = state;
+  }
+  static contextType = FrenmoContext;
+
+  async componentDidMount() {
+    await this.context.addFrenmo();
+    this.setState({
+      favors: this.context.allPublicFrenmos.favors,
+      friends: false
+    });
   }
 
   // currently not implemented, should route to frenmo detail that lets user redeem or do whatever depending on what is available
@@ -47,7 +60,9 @@ export default class FeedPage extends Component {
           onClick={() =>
             this.setState({
               favors: allPublicFrenmos.favors,
-              publicity: "public"
+              publicity: "public",
+
+              which: 1
             })
           }
         >
@@ -57,7 +72,8 @@ export default class FeedPage extends Component {
           onClick={() =>
             this.setState({
               favors: friendFrenmos.favors,
-              publicity: "friends"
+              publicity: "friends",
+              which: 2
             })
           }
         >
@@ -67,7 +83,9 @@ export default class FeedPage extends Component {
           onClick={() =>
             this.setState({
               favors: personalFrenmos.favors,
-              publicity: "personal"
+              publicity: "personal",
+
+              which: 3
             })
           }
         >

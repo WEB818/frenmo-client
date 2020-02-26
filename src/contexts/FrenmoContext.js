@@ -30,12 +30,41 @@ export default FrenmoContext;
 export class FrenmoProvider extends Component {
   constructor(props) {
     super(props);
+
+    // const [
+    //   publicFrenmos,
+    //   friend,
+    //   personal,
+    //   allPublic
+    // ] = Promise.all([
+    //   FrenmoApiService.getMyPublicFrenmos(),
+    //   FrenmoApiService.getFriendFrenmos(),
+    //   FrenmoApiService.getPersonalFrenmos(),
+    //   FrenmoApiService.getAllPublicFrenmos()
+    // ]).then(frenmos => frenmos);
+    // (async () => {
+    //   try {
+    //     return await Promise.all([
+    //       FrenmoApiService.getMyPublicFrenmos(),
+    //       FrenmoApiService.getFriendFrenmos(),
+    //       FrenmoApiService.getPersonalFrenmos(),
+    //       FrenmoApiService.getAllPublicFrenmos()
+    //     ]);
+    //   } catch (error) {
+    //     this.setError(error);
+    //   }
+    // })();
     const state = {
       user: {},
       error: null,
 
       frenmoList: [],
       publicFrenmos: {
+        favors: [],
+        page: 1,
+        limit: 30
+      },
+      allPublicFrenmos: {
         favors: [],
         page: 1,
         limit: 30
@@ -195,33 +224,17 @@ export class FrenmoProvider extends Component {
         username: jwtPayload.sub
       };
 
-    this.state = state;
-    IdleService.setIdleCallback(this.logoutBecauseIdle);
-  }
-  async componentDidMount() {
-    await FrenmoApiService.getMyPublicFrenmos()
-      .then(this.setAllPublic)
-      .catch(this.setError);
-    await FrenmoApiService.getFriendFrenmos()
-      .then(this.setAllFriend)
-      .catch(this.setError);
-    await FrenmoApiService.getPersonalFrenmos()
-      .then(this.setAllPersonal)
-      .catch(this.setError);
-    await FrenmoApiService.getAllPublicFrenmos()
-      .then(this.setPublicFrenmos)
-      .catch(this.setError);
-    // const jwtPayload = await TokenService.parseAuthToken();
-    // this.setUser({
-    //   id: jwtPayload.user_id,
-    //   name: jwtPayload.name,
-    //   username: jwtPayload.sub
-    // });
+    (async () => {
+      this.state = state;
+      await this.addFrenmo();
+    })();
   }
 
   componentWillUnmount() {
     IdleService.unRegisterIdleResets();
     TokenService.clearCallbackBeforeExpiry();
+
+    IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
   setFrenmoRes = outRes => {
@@ -233,8 +246,41 @@ export class FrenmoProvider extends Component {
     this.setState({ allPublicFrenmos });
   };
 
-  addFrenmo = newFrenmo => {
-    this.setState({ newFrenmo });
+  addFrenmo = async () => {
+    try {
+      const [publicFrenmos, friend, personal, allPublic] = await Promise.all([
+        FrenmoApiService.getMyPublicFrenmos(),
+        FrenmoApiService.getFriendFrenmos(),
+        FrenmoApiService.getPersonalFrenmos(),
+        FrenmoApiService.getAllPublicFrenmos()
+      ]);
+
+      this.setAllPublic(publicFrenmos);
+      this.setAllFriend(friend);
+      this.setAllPersonal(personal);
+      this.setPublicFrenmos(allPublic);
+    } catch (error) {
+      this.setError(error);
+    }
+
+    // const jwtPayload = await TokenService.parseAuthToken();
+    // this.setUser({
+    //   id: jwtPayload.user_id,
+    //   name: jwtPayload.name,
+    //   username: jwtPayload.sub
+    // });
+    // await FrenmoApiService.getMyPublicFrenmos()
+    //   .then(this.setAllPublic)
+    //   .catch(this.setError);
+    // await FrenmoApiService.getFriendFrenmos()
+    //   .then(this.setAllFriend)
+    //   .catch(this.setError);
+    // await FrenmoApiService.getPersonalFrenmos()
+    //   .then(this.setAllPersonal)
+    //   .catch(this.setError);
+    // await FrenmoApiService.getAllPublicFrenmos()
+    //   .then(this.setPublicFrenmos)
+    //   .catch(this.setError);
   };
   // sets my public frenmos with response from /api/favor/public
   setAllPublic = publicFrenmos => {
@@ -321,7 +367,6 @@ export class FrenmoProvider extends Component {
       publicFrenmos: this.state.publicFrenmos,
       personalFrenmos: this.state.personalFrenmos,
       friendFrenmos: this.state.friendFrenmos,
-
       frenmo: this.state.frenmo,
       outRes: this.state.outRes,
       frenmoCategories: this.state.frenmoCategories,

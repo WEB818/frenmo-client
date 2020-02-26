@@ -9,21 +9,23 @@ import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import FooterMenu from "./components/FooterMenu/FooterMenu";
 import FrenmoContext from "./contexts/FrenmoContext";
-import { FrenmoProvider } from "./contexts/FrenmoContext";
-
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
 import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import Friends from "./routes/Friends/Friends";
 import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
-import "./App.scss";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
-import FrenmoApiService from "./services/frenmo-api-service";
+
 import Frenmo from "./components/Frenmo/Frenmo";
+import { PopupFeedback } from "./components/PopupFeedback";
+import NewFrenmoForm from "./components/NewFrenmoForm/NewFrenmoForm";
+import "./App.scss";
 
 class App extends Component {
   state = {
-    hasError: false
+    hasError: false,
+    hasFeedback: false,
+    feedbackMessage: null
   };
 
   static contextType = FrenmoContext;
@@ -37,22 +39,15 @@ class App extends Component {
       <>
         <Switch>
           <PublicOnlyRoute path={"/login"} component={LoginPage} />
-
           <PublicOnlyRoute path={"/register"} component={RegistrationPage} />
-
           <PrivateRoute path={"/pending"} component={PendingFren} />
-
           <PrivateRoute exact path={"/Friends"} component={Friends} />
-
           <PrivateRoute path={"/feed"} component={FeedPage} />
-
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
-
           <PrivateRoute
             path={"/frenmos/category/:categoryId"}
             component={FrenmoListByCat}
           />
-
           <PrivateRoute
             exact
             path={"/frenmos/:outstandingId/edit"}
@@ -75,9 +70,27 @@ class App extends Component {
       </>
     );
   }
+
+  handleRenderFeedback = feedbackMessage => {
+    this.setState({
+      hasFeedback: true,
+      feedbackMessage
+    });
+    setTimeout(
+      this.setState({
+        hasFeedback: false,
+        feedbackMessage: null
+      }),
+      10000
+    );
+  };
+
   render() {
     return (
       <div className="App">
+        {this.state.feedbackMessage ? (
+          <PopupFeedback feedbackMessage={this.state.feedbackMessage} />
+        ) : null}
         <NavMenu />
 
         <main className="App__container wrapper">
