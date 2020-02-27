@@ -64,13 +64,6 @@ class NewFrenmoForm extends Component {
     let possibleUsers = await FrenmoApiService.searchUser(
       terms
     );
-    console.log(
-      'problem: ',
-      possibleUsers.length > 0
-        ? possibleUsers[0].id
-        : null,
-      possibleUsers
-    );
     await this.setState({
       ...this.state,
       [`${
@@ -92,7 +85,6 @@ class NewFrenmoForm extends Component {
     id,
     person
   ) => {
-    console.log(id, person);
     const setid = this.state.give
       ? 'receiver'
       : 'user';
@@ -105,7 +97,6 @@ class NewFrenmoForm extends Component {
       }_id`]: id,
       [setid]: person
     });
-    console.log(this.state[setid]);
   };
 
   // getCategories = () => {
@@ -158,7 +149,6 @@ class NewFrenmoForm extends Component {
             users_id
           });
         } else {
-          console.log(this.state);
           this.handleIssue({
             receiver_id: users_id,
             favor_id,
@@ -220,9 +210,6 @@ class NewFrenmoForm extends Component {
                 this.state.receiver_id,
                 event.target.value
               );
-              console.log(
-                this.state.receiver
-              );
               await this.handleChangePerson(
                 event
               );
@@ -253,10 +240,6 @@ class NewFrenmoForm extends Component {
                 this.state.users_id,
                 event.target.value
               );
-              console.log(
-                event.target.value
-              );
-              console.log(this.state);
               await this.handleChangePerson(
                 event
               );
@@ -396,9 +379,6 @@ class NewFrenmoForm extends Component {
           name="publicity"
           aria-label="Select privacy setting for frenmo"
           onChange={event => {
-            console.log(
-              event.target.value
-            );
             this.setState({
               publicity:
                 event.target.value
