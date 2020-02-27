@@ -4,13 +4,17 @@
   width: auto;
   background-color: #0c0063;
   color: white;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 14px;
   margin: 12px 2px;
   border: none;
-  box-shadow: 5px 5px 5px #607296;
+  box-shadow: 5px 5px 5px lightblue;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 .Button:active {
-  background-color: #00d1ff;
+  background-color: lightblue;
   color: #0c0063;
 }
 
@@ -19,17 +23,28 @@
 }
 .Label {
   letter-spacing: 2px;
+  font-family: "Helvetica Neue", sans-serif;
+  color: #0c0063;
+  text-align: center;
 }
 .Input {
   border: none;
   border-radius: 15px 0;
-  width: 100%;
+  width: 94%;
   border-bottom: solid 2px #0c0063;
   padding: 15px;
   letter-spacing: 3px;
-  background-color: #6072964b;
+  background-color: lightblue;
+  // margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 
-  margin-bottom: 10px;
+  &::placeholder {
+    color: #0c0063;
+    font-family: "Helvetica Neue", sans-serif;
+    letter-spacing: 8px;
+    text-align: center;
+  }
 }
 
 .Input:focus {
@@ -39,8 +54,28 @@
 
 .Textarea {
   height: 100px;
+  border: none;
+  border-radius: 15px 0;
+  width: 94%;
+  border-bottom: solid 2px #0c0063;
+  padding: 15px;
+  letter-spacing: 3px;
+  background-color: lightblue;
+  margin-bottom: 10px;
+
+  &::placeholder {
+    color: #0c0063;
+    font-family: "Helvetica Neue", sans-serif;
+    letter-spacing: 8px;
+    text-align: center;
+  }
 }
 .Textarea:focus {
+  border: dotted 1px #0c0063;
+  outline: thin dotted;
+}
+
+select:focus {
   border: dotted 1px #0c0063;
   outline: thin dotted;
 }

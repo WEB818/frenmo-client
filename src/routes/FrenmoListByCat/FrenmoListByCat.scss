@@ -20,7 +20,7 @@
 
   &:focus {
     outline: thin dotted;
-    background-color: #00d1ff;
+    background-color: lightblue;
     color: #0c0063;
     border-radius: 15px 0;
     padding: 8px;
@@ -44,10 +44,9 @@
   .FrenmoListByCat__Buttons {
     margin-top: 20px;
     margin-left: 5%;
-    width: 50vw;
+    width: 45vw;
   }
   .FrenmoListByCat__subtitles {
-    margin-left: -10%;
-    overflow-y: hidden;
+    margin-left: -15%;
   }
 }
