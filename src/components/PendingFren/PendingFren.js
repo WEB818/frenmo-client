@@ -65,8 +65,9 @@ export class PendingFren extends Component {
           </span>
         </div>
         {this.state.pendingFrens.map(
-          pen => (
+          (pen, index) => (
             <PendingFriends
+              key={index}
               pending={pen}
               update={
                 this
