@@ -111,6 +111,15 @@ class FrenmoDetail extends Component {
     history.goBack();
   };
 
+  dialog(dialogEl, overlayEl) {
+    this.dialogEl = dialogEl;
+
+    var focusableEls = this.dialogEl.querySelectorAll(
+      'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]'
+    );
+    this.focusableEls = Array.prototype.slice.call(focusableEls);
+  }
+
   render() {
     const {
       title,
@@ -128,26 +137,50 @@ class FrenmoDetail extends Component {
     } = this.props.location.state;
 
     return (
-      <div className="FrenmoDetail">
+      <div
+        className="FrenmoDetail dialog__window"
+        role="dialog"
+        aria-labelledby="dialog-title"
+        aria-describedby="dialog-description"
+      >
         <FontAwesomeIcon
           icon={faArrowLeft}
           onClick={this.handleGoBack}
           className="back-icon"
         />
 
-        <h2 className="FrenmoDetail__title">{title}</h2>
+        <h2
+          id="dialog-title"
+          className="FrenmoDetail__title"
+          aria-label={title}
+          tabIndex="0"
+        >
+          {title}
+        </h2>
 
         {expiration_date && (
-          <h3 className="FrenmoDetail__date display">
+          <h3
+            className="FrenmoDetail__date display"
+            aria-label={expiration_date}
+            tabIndex="0"
+          >
             <FontAwesomeIcon icon={faStopwatch} />
-            {formatRelative(new Date(expiration_date), Date.now(), 0)}
+            <div className="FrenmoDetail__date display">
+              {formatRelative(new Date(expiration_date), Date.now(), 0)}
+            </div>
           </h3>
         )}
 
-        <p className="FrenmoDetail__desc">{description}</p>
+        <p className="FrenmoDetail__desc" aria-label={description} tabIndex="0">
+          {description}
+        </p>
 
         {publicity && (
-          <p className="FrenmoDetail__publicity display">
+          <p
+            className="FrenmoDetail__publicity display"
+            aria-label={`This frenmo is ${publicity}`}
+            tabIndex="0"
+          >
             {publicity === "public" ? (
               <FontAwesomeIcon icon={faGlobeAmericas} />
             ) : (
@@ -157,22 +190,23 @@ class FrenmoDetail extends Component {
           </p>
         )}
 
-        {/* {creator_name && (
-          <p className="FrenmoDetail__createdby display">
-            <FontAwesomeIcon icon={faTicketAlt} />
-            {creator_name}
-          </p>
-        )} */}
-
         {issuer_name && (
-          <p className="FrenmoDetail__issuedby display">
+          <p
+            className="FrenmoDetail__issuedby display"
+            aria-label={`Frenmo sent by ${issuer_name}`}
+            tabIndex="0"
+          >
             <FontAwesomeIcon icon={faGift} />
             {issuer_name}
           </p>
         )}
 
         {receiver_name && (
-          <p className="FrenmoDetail__issuedto display">
+          <p
+            className="FrenmoDetail__issuedto display"
+            aria-label={`Frenmo sent to ${receiver_name}`}
+            tabIndex="0"
+          >
             <FontAwesomeIcon icon={faEnvelope} />
             {receiver_name}
           </p>

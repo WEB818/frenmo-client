@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "../../components/FriendsList/FriendsList.scss";
 import FriendsService from "../../services/friends-api-service";
 import MyFriendsContext from "../../contexts/MyFriendsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGift, faUserInjured } from "@fortawesome/free-solid-svg-icons";
+
 export default class FriendsList extends Component {
   static contextType = MyFriendsContext;
 
@@ -12,6 +15,7 @@ export default class FriendsList extends Component {
   };
 
   unfriendById = id => {
+    alert("Are you sure?");
     this.props.update(id);
   };
 
@@ -37,11 +41,19 @@ export default class FriendsList extends Component {
         <ul className="friends-list">
           <li onClick={() => this.frenmo(friends.id)} className="frens">
             {friends.username}
-            <button type="submit" onClick={() => this.frenmo(friends.id)}>
-              Send Frenmo
+            <button
+              type="submit"
+              aria-label={`Send ${friends.username} a frenmo`}
+              onClick={() => this.frenmo(friends.id)}
+            >
+              <FontAwesomeIcon icon={faGift} />
             </button>
-            <button type="submit" onClick={() => this.unfriendById(friends.id)}>
-              Unfriend
+            <button
+              type="submit"
+              aria-label="delete friend"
+              onClick={() => this.unfriendById(friends.id)}
+            >
+              <FontAwesomeIcon icon={faUserInjured} />
             </button>
           </li>
         </ul>

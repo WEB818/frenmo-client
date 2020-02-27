@@ -70,7 +70,7 @@ class NavMenu extends Component {
             />
           )}
           <h2 className="NavMenu__Header">
-            <span className="logo medblue">f</span>
+            <span className="logo">f</span>
             renmo
           </h2>
 

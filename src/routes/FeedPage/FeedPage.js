@@ -4,7 +4,6 @@ import FrenmoApiService from "../../services/frenmo-api-service";
 import FrenmoContext from "../../contexts/FrenmoContext";
 import { Button } from "../../components/Utils/Utils";
 import PublicFeedItem from "../../components/PublicFeedItem/PublicFeedItem";
-import FriendBubbles from "../../components/FriendBubbles/FriendBubbles";
 import "./FeedPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";

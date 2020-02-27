@@ -104,10 +104,10 @@
 @media (min-width: 768px) {
   .NavMenu__menu-item {
     padding: 40px;
-
-    &:hover {
-      background-color: #7e00f8;
-    }
+    width: 100%;
+    // &:hover {
+    //   background-color: #7e00f8;
+    // }
   }
 
   .menu-icon {
@@ -144,7 +144,7 @@
     height: 90vh;
     top: 10vh;
     color: white;
-    background-color: rgba(12, 0, 99, 0.8);
+    background-color: #0c0063;
     padding: 20px;
     font-family: sans-serif;
   }
@@ -168,7 +168,7 @@
   }
 
   #navSlide {
-    background-color: rgba(12, 0, 99, 1);
+    background-color: #0c0063;
     width: 28%;
   }
 }
@@ -179,7 +179,7 @@
   }
 
   #navSlide {
-    background-color: rgba(12, 0, 99, 1);
+    background-color: #0c0063;
     width: 20%;
   }
 }
