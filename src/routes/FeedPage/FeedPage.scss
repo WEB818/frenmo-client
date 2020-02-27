@@ -15,14 +15,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(126, 0, 248, 0.6);
+  background-color: #ffd42b;
 
   &:hover {
-    background-color: #ffd42b;
+    background-color: #0c0063;
   }
 }
 .FeedPage__Add-link {
-  color: rgb(247, 240, 255);
+  color: #0c0063;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .FeedPage__Buttons {

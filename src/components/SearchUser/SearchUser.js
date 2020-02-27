@@ -48,6 +48,9 @@ class SearchUser extends Component {
   render() {
     return (
       <div>
+        <div>
+          <Link to="/pending">Friend Requests</Link>
+        </div>
         <form onSubmit={this.handleSearch} className="SearchUser">
           <Input
             ref="fieldName"
@@ -58,11 +61,6 @@ class SearchUser extends Component {
             aria-label="type friend's username to send friend request"
           />
           <Button type="submit">Request Friendship</Button>
-          <div>
-            <span>
-              <Link to="/pending">Friend Requests</Link>
-            </span>
-          </div>
         </form>
       </div>
     );

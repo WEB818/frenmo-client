@@ -1,26 +1,34 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class PendingFriends extends Component {
+  addById = id => {
+    console.log("add_id", id);
+    this.props.update(id);
+  };
 
-    addById = id => {
-        console.log("add_id",id)
-        this.props.update(id) 
-    }
-
-    render() {
-   console.log("pending.props",this.props.pending)
-        return (
-            <div>
-                <ul>
-                <li id={this.props.pending.id}>{this.props.pending.username}
-                <button type="click" onClick={() => this.addById(this.props.pending.id)}>add fren</button>
-                </li>
-                </ul>
-            </div>
-        )
-    }
+  render() {
+    const { pending } = this.props;
+    console.log("pending.props", this.props.pending);
+    return (
+      <div>
+        {pending ? (
+          <p>You have friends waiting to send you Frenmos!</p>
+        ) : (
+          <p>You currently have no pending friend requests.</p>
+        )}
+        <div>
+          <p id={pending.id}>{pending.username} wants to be friends!</p>
+          <button type="click" onClick={() => this.addById(pending.id)}>
+            Confirm friendship
+          </button>
+          <button type="click" onClick={() => this.addById(pending.id)}>
+            Ignore
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default PendingFriends
+export default PendingFriends;

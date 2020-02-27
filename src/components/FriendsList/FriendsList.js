@@ -34,13 +34,18 @@ export default class FriendsList extends Component {
 
   render() {
     const { friendsList } = this.state;
-    const { friends, update } = this.props;
+    const { sortType } = this.props;
+    // const sorted = friends.sort((a, b) => {
+    //   const isReversed = sortType === "asc" ? 1 : -1;
+    //   return isReversed * a.name.localeCompare(b.name);
+    // });
+    const { friends, friend } = this.props;
     console.log(this.props, "in friendslist");
     return (
       <div>
         <ul className="friends-list">
-          <li onClick={() => this.frenmo(friends.id)} className="frens">
-            {friends.username}
+          <li className="frens">
+            {friend.username}
             <button
               type="submit"
               aria-label={`Send ${friends.username} a frenmo`}

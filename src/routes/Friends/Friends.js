@@ -9,7 +9,8 @@ class Friends extends Component {
   // static contextType = MyFriendsContext
 
   state = {
-    friends: []
+    friends: [],
+    sortType: "asc"
   };
 
   setFriendsList = friends => {
@@ -49,15 +50,26 @@ class Friends extends Component {
     );
   };
 
+  onSort = sortType => {
+    this.setState({ sortType });
+  };
+
   render() {
-    const { friends } = this.state;
+    const { friends, sortType } = this.state;
+    console.log("in friends", this.state);
     return (
       <div>
         <h2 className="NewFrenmoPage__header">Make Friends</h2>
         <SearchUser />
 
-        {friends.map(fren => (
-          <FriendsList friends={fren} update={this.updateFrensAfterDelete} />
+        {friends.map((fren, idx) => (
+          <FriendsList
+            key={idx}
+            friends={friends}
+            friend={fren}
+            sortedFriends={this.onSort}
+            update={this.updateFrensAfterDelete}
+          />
         ))}
       </div>
     );
