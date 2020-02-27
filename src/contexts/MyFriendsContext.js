@@ -1,13 +1,9 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from "react";
 
-const MyFriendsContext = React.createContext(
-  {
-    friendsList: [],
-    setFriendsList: () => {}
-  }
-);
+const MyFriendsContext = React.createContext({
+  friendsList: [],
+  setFriendsList: () => {}
+});
 export default MyFriendsContext;
 
 export class MyFriendsProvider extends Component {
@@ -21,15 +17,11 @@ export class MyFriendsProvider extends Component {
 
   render() {
     const value = {
-      friendsList: this.state
-        .friendsList,
-      setFriendsList: this
-        .setFriendsList
+      friendsList: this.state.friendsList,
+      setFriendsList: this.setFriendsList
     };
     return (
-      <MyFriendsContext.Provider
-        value={value}
-      >
+      <MyFriendsContext.Provider value={value}>
         {this.props.children}
       </MyFriendsContext.Provider>
     );

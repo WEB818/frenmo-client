@@ -24,7 +24,13 @@ class FrenmoDashboard extends Component {
   static contextType = FrenmoContext;
 
   render() {
-    const { frenmoCategories } = this.context;
+    const {
+      frenmoCategories,
+      friendFrenmos,
+      personalFrenmos,
+      publicFrenmos
+    } = this.context;
+
     let categories = frenmoCategories.map((category, idx) => (
       <NavLink
         key={idx}
@@ -42,6 +48,20 @@ class FrenmoDashboard extends Component {
     return (
       <>
         <div className="Dashboard">{categories}</div>
+        {!friendFrenmos.favors.length &&
+          !personalFrenmos.favors.length &&
+          !publicFrenmos.favors.length && (
+            <div className="welcome-message">
+              <h3 className="welcome-message__header">Welcome to Frenmo!</h3>
+              <h4 className="welcome-message__sub-header">
+                Here, you can access all your Frenmos by their category.
+              </h4>
+              <p className="welcome-message__sub-header">
+                To get started, create a Frenmo and start swapping favors with
+                your friends, your neighbors, your community.
+              </p>
+            </div>
+          )}
       </>
     );
   }

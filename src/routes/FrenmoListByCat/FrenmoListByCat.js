@@ -346,6 +346,7 @@ class FrenmoListByCat extends Component {
     return (
       <>
         {this.renderTypes()}
+
         <div className="FrenmoListByCat__titles">
           <div className="FrenmoListByCat__subtitles">
             {displayed}

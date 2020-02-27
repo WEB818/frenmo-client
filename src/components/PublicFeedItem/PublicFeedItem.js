@@ -106,7 +106,7 @@ export default class PublicFeedItem extends Component {
               {recdByName && (
                 <div className="PublicFeedItem__sub-titles receiver">
                   <FontAwesomeIcon icon={faArrowRight} />
-                  {recdByName}
+                  <p>{recdByName}</p>
                 </div>
               )}
 

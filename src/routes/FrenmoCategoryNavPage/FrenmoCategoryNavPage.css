@@ -37,9 +37,7 @@
   border-radius: 2px;
   background-color: gold;
 }
-.CatNavPage__tabs:active {
-  background-color: red;
-}
+
 /*Need to fix scroll*/
 @media (min-width: 1440px) {
   .CategoryNavPage__list {

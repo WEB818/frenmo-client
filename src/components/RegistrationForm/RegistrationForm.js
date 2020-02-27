@@ -86,6 +86,16 @@ class RegistrationForm extends Component {
           />
         </div>
 
+        <div className="RegForm__label-input">
+          <Input
+            id="registration-password-input"
+            name="confirm-password"
+            type="password"
+            placeholder="Confirm password"
+            aria-label="Confirm password"
+          />
+        </div>
+
         <footer className="RegForm__footer">
           <Button type="submit">Sign up</Button> Already have an account?{" "}
           <Link to="/login" className="page-links">

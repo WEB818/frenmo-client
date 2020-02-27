@@ -1,9 +1,0 @@
-.EditFrenmoForm__container {
-  position: absolute;
-}
-
-.EditFrenmoForm__icons-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}

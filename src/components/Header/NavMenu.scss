@@ -18,23 +18,7 @@
 }
 
 .logo {
-  letter-spacing: -10px;
-}
-
-.medblue {
-  color: #2334fc;
-}
-
-.lightblue {
-  color: #00d1ff;
-}
-
-.lighterblue {
-  color: rgb(123, 231, 255);
-}
-
-.lightestblue {
-  color: rgb(183, 242, 255);
+  font-size: 70px;
 }
 
 .navigation {
@@ -120,10 +104,10 @@
 @media (min-width: 768px) {
   .NavMenu__menu-item {
     padding: 40px;
-
-    &:hover {
-      background-color: #7e00f8;
-    }
+    width: 100%;
+    // &:hover {
+    //   background-color: #7e00f8;
+    // }
   }
 
   .menu-icon {
@@ -160,7 +144,7 @@
     height: 90vh;
     top: 10vh;
     color: white;
-    background-color: rgba(12, 0, 99, 0.8);
+    background-color: #0c0063;
     padding: 20px;
     font-family: sans-serif;
   }
@@ -184,7 +168,18 @@
   }
 
   #navSlide {
-    background-color: rgba(12, 0, 99, 1);
+    background-color: #0c0063;
     width: 28%;
+  }
+}
+
+@media (min-width: 1800px) {
+  .NavMenu__menu-item {
+    padding: 60px;
+  }
+
+  #navSlide {
+    background-color: #0c0063;
+    width: 20%;
   }
 }

@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid #0c0063;
   padding: 20px;
   cursor: pointer;
 
@@ -19,8 +19,8 @@
     text-transform: lowercase;
     height: 30px;
     width: 30px;
-    background-color: #df3e7b;
-    color: #ffd42b;
+    background-color: #0c0063;
+    color: white;
     text-align: center;
     border-radius: 8px 0;
     margin-right: 20px;
@@ -31,8 +31,8 @@
     text-transform: lowercase;
     height: 30px;
     width: 30px;
-    background-color: #ffd42b;
-    color: #df3e7b;
+    background-color: lightblue;
+    color: #0c0063;
     text-align: center;
     border-radius: 50%;
     margin-right: 20px;

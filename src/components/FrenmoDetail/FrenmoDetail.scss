@@ -5,21 +5,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 55px 0;
-  background-color: #ffd42b;
+  background-color: lightblue;
   min-width: 280px;
-  box-shadow: 15px 15px 15px rgba(0, 209, 255, 0.6);
+  box-shadow: 15px 15px 15px #0c0063;
   display: flex;
   flex-direction: column;
   font-size: 16px;
 
-  &:hover {
-    background-color: #df3e7b;
-    box-shadow: 15px 15px 15px rgba(126, 0, 248, 0.6);
-  }
-
   &__title {
     text-transform: lowercase;
-    background-color: #fdfbef;
+    background-color: white;
+    color: #0c0063;
     border-radius: 25px 0;
     padding: 10px;
     letter-spacing: 4px;
@@ -28,73 +24,30 @@
   &__date {
     display: flex;
     flex-direction: column;
-
-    &:hover::after {
-      content: "the clock is ticking";
-      font-size: 12px;
-      font-style: italic;
-    }
+    color: #0c0063;
   }
 
   &__desc {
     text-align: center;
     padding: 10px;
-    background-color: #fdfbef;
-    border-radius: 0 25px;
-
-    &::before,
-    &::after {
-      content: '"';
-      font-size: 16px;
-    }
+    background-color: white;
+    border-radius: 25px 0;
+    color: #0c0063;
   }
   &__publicity {
     &:hover::after {
       content: "Who sees me";
-      font-size: 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: row;
-      width: 90px;
-      height: 20px;
-      border-radius: 5px;
-      background: #ffd42b;
-      padding: 3px;
-      position: absolute;
-      left: 60px;
     }
   }
 
   &__issuedby {
     &:hover::after {
       content: "From a good friend";
-      font-size: 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: row;
-      width: 90px;
-      height: 30px;
-      border-radius: 5px;
-      background: #ffd42b;
-      padding: 3px;
-      position: absolute;
-      left: 60px;
     }
   }
   &__issuedto {
     &:hover::after {
       content: "To whom frenmo is issued";
-      font-size: 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: row;
-      width: 90px;
-      height: 30px;
-      border-radius: 5px;
-      background: #ffd42b;
-      padding: 3px;
-      position: absolute;
-      left: 60px;
     }
   }
 }
@@ -106,21 +59,34 @@
   align-items: center;
   text-transform: capitalize;
   padding: 8px;
-}
+  color: #0c0063;
 
+  &:hover::after {
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 90px;
+    height: 30px;
+    padding: 3px;
+    position: absolute;
+    left: 60px;
+  }
+}
+.back-icon {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 40px;
+}
 .void {
   font-family: "Cantarell", sans-serif;
-  color: #df3e7b;
+  color: #0c0063;
   font-size: 90px;
   letter-spacing: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-
-  &:hover {
-    color: #ffd42b;
-  }
 }
 
 @media (min-width: 768px) {
@@ -132,6 +98,13 @@
 
 @media (min-width: 1024px) {
   .FrenmoDetail {
+    min-width: 420px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .FrenmoDetail {
+    margin-left: 25%;
     min-width: 420px;
   }
 }

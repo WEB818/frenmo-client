@@ -1,11 +1,9 @@
-import React, {
-  Component
-} from 'react';
-import config from '../../config';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import config from "../../config";
+import { Link } from "react-router-dom";
 
-import PendingFriends from '../../routes/PendingFriends/PendingFriends';
-import TokenService from '../../services/token-service';
+import PendingFriends from "../../routes/PendingFriends/PendingFriends";
+import TokenService from "../../services/token-service";
 
 export class PendingFren extends Component {
   state = {
@@ -18,15 +16,12 @@ export class PendingFren extends Component {
     });
   };
   componentDidMount() {
-    fetch(
-      `${config.API_ENDPOINT}/friend/pending`,
-      {
-        method: 'GET',
-        headers: {
-          authorization: `bearer ${TokenService.getAuthToken()}`
-        }
+    fetch(`${config.API_ENDPOINT}/friend/pending`, {
+      method: "GET",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
-    )
+    })
       .then(res => {
         return res.json();
       })
@@ -34,20 +29,15 @@ export class PendingFren extends Component {
   }
 
   updateFriendsAfterAdd = frensId => {
-    fetch(
-      `${config.API_ENDPOINT}/friend/${frensId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          authorization: `bearer ${TokenService.getAuthToken()}`
-        }
+    fetch(`${config.API_ENDPOINT}/friend/${frensId}`, {
+      method: "PATCH",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
-    ).then(res =>
+    }).then(res =>
       this.setState({
         pendingFrens: [
-          ...this.state.pendingFrens.filter(
-            fren => fren.id !== frensId
-          )
+          ...this.state.pendingFrens.filter(fren => fren.id !== frensId)
         ]
       })
     );
@@ -59,23 +49,16 @@ export class PendingFren extends Component {
         <div>
           <h2>pending friends</h2>
           <span>
-            <Link to="/Friends">
-              Friends List
-            </Link>
+            <Link to="/Friends">Friends List</Link>
           </span>
         </div>
-        {this.state.pendingFrens.map(
-          (pen, index) => (
-            <PendingFriends
-              key={index}
-              pending={pen}
-              update={
-                this
-                  .updateFriendsAfterAdd
-              }
-            />
-          )
-        )}
+        {this.state.pendingFrens.map((pen, index) => (
+          <PendingFriends
+            key={index}
+            pending={pen}
+            update={this.updateFriendsAfterAdd}
+          />
+        ))}
       </div>
     );
   }

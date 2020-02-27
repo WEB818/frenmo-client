@@ -21,12 +21,12 @@
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgb(255, 212, 43);
+    box-shadow: inset 6px 6px 6px #0c0063;
     border-radius: 15px 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #df3e7b;
+    background-color: lightblue;
     border-radius: 6px;
   }
 
@@ -39,12 +39,13 @@
     align-items: center;
     font-size: 12px;
     text-align: center;
-    box-shadow: 5px 5px 5px rgba(0, 209, 255, 0.6);
+    box-shadow: 5px 5px 5px #0c0063;
     border-radius: 15px 0;
-    background: #00d1ff;
+    background: lightblue;
     color: #0c0063;
-    width: 60px;
-    height: 60px;
+    font-weight: bold;
+    width: 80px;
+    height: 80px;
   }
 
   &__link:visited {
@@ -53,74 +54,74 @@
 }
 .fas {
   font-size: 30px;
-  color: #e9fbff;
+  color: white;
 }
-
+.welcome-message {
+  position: fixed;
+  padding: 60px;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 55px 0;
+  background-color: #0c0063;
+  min-width: 280px;
+  box-shadow: 15px 15px 15px lightblue;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  text-align: center;
+}
 @media (min-width: 768px) {
   .Dashboard {
     margin-left: 40%;
     width: 58vw;
   }
+  .welcome-message {
+    margin-left: 20%;
+  }
 }
 @media (min-width: 1024px) {
+  .welcome-message {
+    padding: 60px;
+  }
   .Dashboard {
     &::-webkit-scrollbar {
-      height: 16px;
+      height: 12px;
     }
 
     &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 10px rgb(255, 212, 43);
+      background-color: #0c0063;
     }
   }
-
-  .Dashboard__category {
-    padding: 30px;
-    margin: 15px;
-    font-size: 18px;
-    box-shadow: 10px 5px 10px rgba(0, 209, 255, 0.6);
-    color: #0c0063;
-    width: 100px;
-    height: 100px;
-
-    &:hover {
-      width: 120px;
-      height: 120px;
-    }
-  }
-
-  &__link:visited {
-    text-decoration: none;
-  }
-}
-.fas {
-  font-size: 30px;
-  color: #e9fbff;
 }
 
 @media (min-width: 1440px) {
   .Dashboard {
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    // align-items: flex-end;
     height: 90vh;
-    width: 15%;
+    width: 25%;
     padding: 0;
     margin-top: 0;
-    margin-left: 28%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    margin-left: 25%;
 
     &::-webkit-scrollbar {
-      width: 16px;
+      width: 12px;
       height: 0px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 0px;
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 0px;
+      border: 1px solid #0c0063;
+      background-color: lightblue;
     }
     &__link {
       width: 100%;
-      text-align: center;
-      background: #00d1ff;
+      background: lightblue;
       color: #0c0063;
     }
     &__link-selected {
@@ -131,18 +132,19 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      align-items: flex-start;
-      font-size: 18px;
+      align-items: flex-end;
+      font-size: 14px;
       border-radius: 0;
-      // border-bottom: 1px solid rgba(12, 0, 99, 0.8);
-      background: #00d1ff;
+      background: lightblue;
       color: #0c0063;
       width: 100%;
       padding: 30px;
       margin: 0px;
+      font-family: "Cantarell", sans-serif;
+      letter-spacing: 2px;
 
       &:hover {
-        background-color: rgba(12, 0, 99, 1);
+        background-color: #0c0063;
         color: white;
         width: 100%;
         height: 100%;
@@ -153,11 +155,20 @@
   }
 
   .Dashboard__link-selected {
-    // background-color: #0c0063;
     border-radius: 0;
   }
 
-  .Dashboard .fas {
+  .fas {
     display: none;
+  }
+}
+
+@media (min-width: 1800px) {
+  .Dashboard {
+    margin-left: 20%;
+    width: 20%;
+  }
+  .welcome-message {
+    padding: 100px;
   }
 }
