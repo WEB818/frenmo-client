@@ -1,33 +1,42 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
 
 const MyFriendsContext = React.createContext({
-    friendsList: [],
-    setFriendsList: () => {},
-})
-export default MyFriendsContext
+  error: null,
+  friendsList: [],
+  setFriendsList: () => {},
+  clearError: () => {},
+  setError: () => {}
+});
+export default MyFriendsContext;
 
 export class MyFriendsProvider extends Component {
-    state = {
-        friendsList: [],
-    }
+  state = {
+    error: null,
+    friendsList: []
+  };
 
-    setFriendsList = friendsList => {
-        console.log("setlist",friendsList)
-        this.setState({friendsList})
-    }
-
-    render() {
-        const value = {
-            friendsList: this.state.friendsList,
-            setFriendsList: this.setFriendsList
-        }
-        return (
-           <MyFriendsContext.Provider value={value}>
-               {this.props.children}
-           </MyFriendsContext.Provider>
-        )
-    }
+  setFriendsList = friendsList => {
+    this.setState({ friendsList });
+  };
+  clearError = () => {
+    this.setState({ error: null });
+  };
+  setError = error => {
+    console.error(error);
+    this.setState({ error });
+  };
+  render() {
+    const value = {
+      error: this.state.error,
+      friendsList: this.state.friendsList,
+      setFriendsList: this.setFriendsList,
+      clearError: this.clearError,
+      setError: this.setError
+    };
+    return (
+      <MyFriendsContext.Provider value={value}>
+        {this.props.children}
+      </MyFriendsContext.Provider>
+    );
+  }
 }
-
-

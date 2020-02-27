@@ -13,13 +13,13 @@
   font-size: 16px;
 
   &:hover {
-    background-color: #df3e7b;
     box-shadow: 15px 15px 15px rgba(126, 0, 248, 0.6);
   }
 
   &__title {
     text-transform: lowercase;
     background-color: #fdfbef;
+    color: #0c0063;
     border-radius: 25px 0;
     padding: 10px;
     letter-spacing: 4px;
@@ -28,11 +28,16 @@
   &__date {
     display: flex;
     flex-direction: column;
+    color: #0c0063;
 
     &:hover::after {
       content: "the clock is ticking";
       font-size: 12px;
       font-style: italic;
+      border-radius: 5px;
+      background: #00d1ff;
+      text-align: center;
+      padding: 3px;
     }
   }
 
@@ -40,13 +45,14 @@
     text-align: center;
     padding: 10px;
     background-color: #fdfbef;
-    border-radius: 0 25px;
+    border-radius: 25px 0;
+    color: #0c0063;
 
-    &::before,
-    &::after {
-      content: '"';
-      font-size: 16px;
-    }
+    // &::before,
+    // &::after {
+    //   content: '"';
+    //   font-size: 16px;
+    // }
   }
   &__publicity {
     &:hover::after {
@@ -58,7 +64,7 @@
       width: 90px;
       height: 20px;
       border-radius: 5px;
-      background: #ffd42b;
+      background: #00d1ff;
       padding: 3px;
       position: absolute;
       left: 60px;
@@ -75,7 +81,7 @@
       width: 90px;
       height: 30px;
       border-radius: 5px;
-      background: #ffd42b;
+      background: #00d1ff;
       padding: 3px;
       position: absolute;
       left: 60px;
@@ -91,7 +97,7 @@
       width: 90px;
       height: 30px;
       border-radius: 5px;
-      background: #ffd42b;
+      background: #00d1ff;
       padding: 3px;
       position: absolute;
       left: 60px;
@@ -107,7 +113,9 @@
   text-transform: capitalize;
   padding: 8px;
 }
-
+.back-icon {
+  margin-bottom: 40px;
+}
 .void {
   font-family: "Cantarell", sans-serif;
   color: #df3e7b;
@@ -117,10 +125,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-
-  &:hover {
-    color: #ffd42b;
-  }
 }
 
 @media (min-width: 768px) {

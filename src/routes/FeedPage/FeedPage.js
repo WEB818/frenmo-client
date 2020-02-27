@@ -20,7 +20,6 @@ export default class FeedPage extends Component {
     };
     this.state = state;
   }
-  static contextType = FrenmoContext;
 
   async componentDidMount() {
     await this.context.addFrenmo();
@@ -103,14 +102,14 @@ export default class FeedPage extends Component {
 
         <div className="FeedPage__Buttons">{this.renderPublicity()}</div>
         {publicity === "friends" && (
-          <div className="FeedPage__add">
-            <div className="FeedPage__Add-button">
-              <Link to="/friends" className="FeedPage__Add-link">
+          <Link to="/friends" className="FeedPage__Add-link">
+            <div className="FeedPage__add">
+              <div className="FeedPage__Add-button">
                 <FontAwesomeIcon icon={faPlus} />
                 <FontAwesomeIcon icon={faUser} />
-              </Link>
+              </div>
             </div>
-          </div>
+          </Link>
         )}
 
         {publicity === "friends" && !friendFrenmos.favors.length && (

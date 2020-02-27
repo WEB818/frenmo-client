@@ -113,7 +113,11 @@ class FrenmoDetail extends Component {
 
     return (
       <div className="FrenmoDetail">
-        <FontAwesomeIcon icon={faArrowLeft} onClick={this.handleGoBack} />
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          onClick={this.handleGoBack}
+          className="back-icon"
+        />
 
         <h2 className="FrenmoDetail__title">{title}</h2>
 

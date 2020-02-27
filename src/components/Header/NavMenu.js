@@ -13,26 +13,18 @@ import "./NavMenu.scss";
 const MenuSlide = ({ showMenu }) => (
   <div id="navSlide" className={showMenu ? "slideIn" : "slideOut"}>
     <ul className="NavMenu__list">
-      <li className="NavMenu__menu-item">
-        <Link to="/feed" className="NavMenu__links">
-          Feed
-        </Link>
-      </li>
-      <li className="NavMenu__menu-item">
-        <Link to="/frenmos" className="NavMenu__links">
-          My Frenmos
-        </Link>
-      </li>
-      <li className="NavMenu__menu-item">
-        <Link to="/friends" className="NavMenu__links">
-          Friends
-        </Link>
-      </li>
-      <li className="NavMenu__menu-item">
-        <Link to="/send" className="NavMenu__links">
-          Create
-        </Link>
-      </li>
+      <Link to="/feed" className="NavMenu__links">
+        <li className="NavMenu__menu-item">Feed</li>
+      </Link>
+      <Link to="/frenmos/category/1" className="NavMenu__links">
+        <li className="NavMenu__menu-item">My Frenmos</li>
+      </Link>
+      <Link to="/friends" className="NavMenu__links">
+        <li className="NavMenu__menu-item">Friends</li>
+      </Link>
+      <Link to="/send" className="NavMenu__links">
+        <li className="NavMenu__menu-item">Create</li>
+      </Link>
     </ul>
   </div>
 );

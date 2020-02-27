@@ -26,9 +26,13 @@
 .Input {
   border: none;
   border-radius: 25px 0;
+  width: 100%;
   border-bottom: solid 2px #0c0063;
   padding: 15px;
   letter-spacing: 3px;
+  background-color: #d3f7ff;
+
+  margin-bottom: 10px;
 }
 
 .Input:focus {

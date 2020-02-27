@@ -41,7 +41,7 @@ class App extends Component {
           <PublicOnlyRoute path={"/login"} component={LoginPage} />
           <PublicOnlyRoute path={"/register"} component={RegistrationPage} />
           <PrivateRoute path={"/pending"} component={PendingFren} />
-          <PrivateRoute exact path={"/Friends"} component={Friends} />
+          <PrivateRoute exact path={"/friends"} component={Friends} />
           <PrivateRoute path={"/feed"} component={FeedPage} />
           <PrivateRoute exact path={"/send"} component={NewFrenmoPage} />
           <PrivateRoute

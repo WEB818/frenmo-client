@@ -50,12 +50,14 @@ class Friends extends Component {
   };
 
   render() {
+    const { friends } = this.state;
     return (
       <div>
+        <h2 className="NewFrenmoPage__header">Make Friends</h2>
         <SearchUser />
 
-        {this.state.friends.map(fren => (
-          <FriendsList frens={fren} update={this.updateFrensAfterDelete} />
+        {friends.map(fren => (
+          <FriendsList friends={fren} update={this.updateFrensAfterDelete} />
         ))}
       </div>
     );

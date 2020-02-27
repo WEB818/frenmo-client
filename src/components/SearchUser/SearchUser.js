@@ -25,7 +25,7 @@ class SearchUser extends Component {
   handleSearch = e => {
     e.preventDefault();
     const { user_search } = e.target;
-    console.log(user_search.value);
+    console.log("usersearchvalue", user_search.value);
     //change here
     fetch(`${config.API_ENDPOINT}/user/username/${user_search.value}`, {
       method: "GET",
@@ -35,21 +35,20 @@ class SearchUser extends Component {
     })
       .then(res => {
         if (!res.ok) {
-          alert("user doesnt exists");
+          alert("User doesn't exists");
         }
         return res.json();
       })
-      .then(fren => this.addFren(fren));
+      .then(fren => this.addFren(fren))
+      .then(() => (user_search.value = ""));
 
-    this.refs.fieldName.value = "";
-    alert("friend request sent");
+    alert("Your friend request is on its way!");
   };
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSearch} className="SearchUser">
-          <label htmlFor="user_search">Make a friend</label>
           <Input
             ref="fieldName"
             id="user_search"
