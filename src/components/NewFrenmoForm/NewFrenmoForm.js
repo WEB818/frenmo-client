@@ -36,6 +36,7 @@ class NewFrenmoForm extends Component {
     postRes: {},
     give: true,
     ask: false,
+    publicity: null,
     receiver_id: null,
     users_id: null,
     receiver: '',
@@ -56,16 +57,22 @@ class NewFrenmoForm extends Component {
     const terms = this.state.give
       ? receiver
       : user;
-    console.log(this.context);
+
     const setid = this.state.give
       ? 'receiver'
       : 'users';
     let possibleUsers = await FrenmoApiService.searchUser(
       terms
     );
+    console.log(
+      'problem: ',
+      possibleUsers.length > 0
+        ? possibleUsers[0].id
+        : null,
+      possibleUsers
+    );
     await this.setState({
       ...this.state,
-
       [`${
         setid === 'users'
           ? 'user'
@@ -135,10 +142,6 @@ class NewFrenmoForm extends Component {
       publicity.value,
       limit.value
     )
-      // .then(postRes => {
-      //   this.setState({ postRes });
-
-      // })
       .then(postRes => {
         //get the favor_id from the post
         //get the receiver_id and the users_id from the state
@@ -155,6 +158,7 @@ class NewFrenmoForm extends Component {
             users_id
           });
         } else {
+          console.log(this.state);
           this.handleIssue({
             receiver_id: users_id,
             favor_id,
@@ -252,6 +256,7 @@ class NewFrenmoForm extends Component {
               console.log(
                 event.target.value
               );
+              console.log(this.state);
               await this.handleChangePerson(
                 event
               );
@@ -390,6 +395,15 @@ class NewFrenmoForm extends Component {
           id="NewFrenmo__publicity"
           name="publicity"
           aria-label="Select privacy setting for frenmo"
+          onChange={event => {
+            console.log(
+              event.target.value
+            );
+            this.setState({
+              publicity:
+                event.target.value
+            });
+          }}
           required
         >
           <option value="dm">
