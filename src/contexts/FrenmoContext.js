@@ -224,10 +224,17 @@ export class FrenmoProvider extends Component {
         username: jwtPayload.sub
       };
 
-    (async () => {
-      this.state = state;
-      await this.addFrenmo();
-    })();
+    this.state = state;
+    //   (async () => {
+    //     await this.addFrenmo();
+    //   })();
+  }
+
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+
+    IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
   setFrenmoRes = outRes => {

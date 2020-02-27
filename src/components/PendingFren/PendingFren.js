@@ -11,7 +11,6 @@ export class PendingFren extends Component {
   };
 
   setPendingFrens = pending => {
-    console.log("pending", pending);
     this.setState({
       pendingFrens: pending
     });
@@ -45,17 +44,20 @@ export class PendingFren extends Component {
   };
 
   render() {
-    console.log("state", this.state.pendingFrens);
     return (
       <div>
         <div>
           <h2>pending friends</h2>
           <span>
-            <Link to="/friends">Friends List</Link>
+            <Link to="/Friends">Friends List</Link>
           </span>
         </div>
-        {this.state.pendingFrens.map(pen => (
-          <PendingFriends pending={pen} update={this.updateFriendsAfterAdd} />
+        {this.state.pendingFrens.map((pen, index) => (
+          <PendingFriends
+            key={index}
+            pending={pen}
+            update={this.updateFriendsAfterAdd}
+          />
         ))}
       </div>
     );

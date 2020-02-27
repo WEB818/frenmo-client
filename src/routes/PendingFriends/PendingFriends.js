@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 
 export class PendingFriends extends Component {
   addById = id => {
-    console.log("add_id", id);
     this.props.update(id);
   };
 
   render() {
     const { pending } = this.props;
-    console.log("pending.props", this.props.pending);
+
     return (
       <div>
         {pending ? (

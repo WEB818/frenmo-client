@@ -31,13 +31,11 @@ class IssueFrenmo extends Component {
   };
 
   handleSelectPerson = async (receiver_id, receiver) => {
-    console.log(receiver_id, receiver);
     await this.setState({
       ...this.state,
       receiver_id,
       receiver
     });
-    console.log(this.state.receiver);
   };
   static contextType = UserContext;
 
@@ -100,7 +98,6 @@ class IssueFrenmo extends Component {
                   this.state.receiver_id,
                   event.target.value
                 );
-                console.log(this.state.receiver);
                 await this.handleChangePerson(event);
               }}
             />

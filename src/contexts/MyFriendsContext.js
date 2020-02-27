@@ -1,37 +1,24 @@
 import React, { Component } from "react";
 
 const MyFriendsContext = React.createContext({
-  error: null,
   friendsList: [],
-  setFriendsList: () => {},
-  clearError: () => {},
-  setError: () => {}
+  setFriendsList: () => {}
 });
 export default MyFriendsContext;
 
 export class MyFriendsProvider extends Component {
   state = {
-    error: null,
     friendsList: []
   };
 
   setFriendsList = friendsList => {
     this.setState({ friendsList });
   };
-  clearError = () => {
-    this.setState({ error: null });
-  };
-  setError = error => {
-    console.error(error);
-    this.setState({ error });
-  };
+
   render() {
     const value = {
-      error: this.state.error,
       friendsList: this.state.friendsList,
-      setFriendsList: this.setFriendsList,
-      clearError: this.clearError,
-      setError: this.setError
+      setFriendsList: this.setFriendsList
     };
     return (
       <MyFriendsContext.Provider value={value}>

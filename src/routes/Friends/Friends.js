@@ -36,8 +36,6 @@ class Friends extends Component {
   }
 
   updateFrensAfterDelete = frensId => {
-    console.log("updating", frensId);
-
     fetch(`${config.API_ENDPOINT}/friend/${frensId}`, {
       method: "DELETE",
       headers: {

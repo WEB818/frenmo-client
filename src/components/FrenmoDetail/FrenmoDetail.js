@@ -87,7 +87,6 @@ class FrenmoDetail extends Component {
   renderEditButton = () => {};
 
   renderPending = () => {
-    console.log(this.props.location.state.pending);
     if (this.props.location.state.pending) {
       return <p>Pending Redeem</p>;
     }

@@ -20,7 +20,6 @@ export default class FriendsList extends Component {
   };
 
   frenmo = id => {
-    console.log("click", id);
     if (!this.state.sendFrenmo) {
       this.setState({
         sendFrenmo: true
@@ -44,7 +43,7 @@ export default class FriendsList extends Component {
     return (
       <div>
         <ul className="friends-list">
-          <li className="frens">
+          <li className="frens" key={this.props.frens.id}>
             {friend.username}
             <button
               type="submit"

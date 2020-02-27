@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import config from "../../config";
 import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
-import { Button, Input } from "../Utils/Utils";
 import "./SearchUser.scss";
 
 class SearchUser extends Component {
   addFren = addFren => {
-    console.log("renderfrens", addFren);
     const friend_id = {
       friend_id: addFren.id
     };
-    console.log("fren_id", friend_id);
     fetch(`${config.API_ENDPOINT}/friend`, {
       method: "POST",
       body: JSON.stringify(friend_id),
@@ -25,7 +22,6 @@ class SearchUser extends Component {
   handleSearch = e => {
     e.preventDefault();
     const { user_search } = e.target;
-    console.log("usersearchvalue", user_search.value);
     //change here
     fetch(`${config.API_ENDPOINT}/user/username/${user_search.value}`, {
       method: "GET",
@@ -35,32 +31,34 @@ class SearchUser extends Component {
     })
       .then(res => {
         if (!res.ok) {
-          alert("User doesn't exists");
+          alert("user doesnt exists");
         }
         return res.json();
       })
-      .then(fren => this.addFren(fren))
-      .then(() => (user_search.value = ""));
+      .then(fren => this.addFren(fren));
 
-    alert("Your friend request is on its way!");
+    this.refs.fieldName.value = "";
+    alert("fren request sent");
   };
 
   render() {
     return (
       <div>
-        <div>
-          <Link to="/pending">Friend Requests</Link>
-        </div>
-        <form onSubmit={this.handleSearch} className="SearchUser">
-          <Input
+        <form onSubmit={this.handleSearch}>
+          <label htmlFor="user_search">Frenmo Search</label>
+          <input
             ref="fieldName"
             id="user_search"
             type="text"
             name="user_search"
-            placeholder="friend's username"
-            aria-label="type friend's username to send friend request"
+            placeholder="add friends"
           />
-          <Button type="submit">Request Friendship</Button>
+          <button type="submit">Add</button>
+          <div>
+            <span>
+              <Link to="/pending">Friend Requests</Link>
+            </span>
+          </div>
         </form>
       </div>
     );
