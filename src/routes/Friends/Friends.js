@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import TokenService from "../../services/token-service";
-import config from "../../config";
-import FriendsList from "../../components/FriendsList/FriendsList";
-import SearchUser from "../../components/SearchUser/SearchUser";
-import "./Friend.scss";
+import React, {
+  Component
+} from 'react';
+import TokenService from '../../services/token-service';
+import config from '../../config';
+import FriendsList from '../../components/FriendsList/FriendsList';
+import SearchUser from '../../components/SearchUser/SearchUser';
+import './Friend.scss';
 
 class Friends extends Component {
   // static contextType = MyFriendsContext
@@ -19,12 +21,15 @@ class Friends extends Component {
   };
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/friend`, {
-      method: "GET",
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`
+    fetch(
+      `${config.API_ENDPOINT}/friend`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: `bearer ${TokenService.getAuthToken()}`
+        }
       }
-    })
+    )
       .then(res => {
         if (!res.ok) {
           throw new Error(res.status);
@@ -35,16 +40,21 @@ class Friends extends Component {
   }
 
   updateFrensAfterDelete = frensId => {
-    console.log("updating", frensId);
-
-    fetch(`${config.API_ENDPOINT}/friend/${frensId}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`
+    fetch(
+      `${config.API_ENDPOINT}/friend/${frensId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          authorization: `bearer ${TokenService.getAuthToken()}`
+        }
       }
-    }).then(res =>
+    ).then(res =>
       this.setState({
-        friends: [...this.state.friends.filter(fren => fren.id !== frensId)]
+        friends: [
+          ...this.state.friends.filter(
+            fren => fren.id !== frensId
+          )
+        ]
       })
     );
   };
@@ -54,9 +64,17 @@ class Friends extends Component {
       <div>
         <SearchUser />
 
-        {this.state.friends.map(fren => (
-          <FriendsList frens={fren} update={this.updateFrensAfterDelete} />
-        ))}
+        {this.state.friends.map(
+          fren => (
+            <FriendsList
+              frens={fren}
+              update={
+                this
+                  .updateFrensAfterDelete
+              }
+            />
+          )
+        )}
       </div>
     );
   }

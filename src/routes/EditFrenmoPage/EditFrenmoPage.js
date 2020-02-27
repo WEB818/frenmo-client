@@ -1,10 +1,15 @@
-import React, { Component } from "react";
-import FrenmoContext from "../../contexts/FrenmoContext";
-import EditFrenmoForm from "../../components/EditFrenmoForm/EditFrenmoForm";
-import FrenmoDetail from "../../components/FrenmoDetail/FrenmoDetail";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
-import "./EditFrenmoPage.css";
+import React, {
+  Component
+} from 'react';
+import FrenmoContext from '../../contexts/FrenmoContext';
+import EditFrenmoForm from '../../components/EditFrenmoForm/EditFrenmoForm';
+import FrenmoDetail from '../../components/FrenmoDetail/FrenmoDetail';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faPencilAlt,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
+import './EditFrenmoPage.css';
 
 class EditFrenmoPage extends Component {
   static defaultProps = {
@@ -37,17 +42,6 @@ class EditFrenmoPage extends Component {
     } = this.props;
 
     const { edit } = this.state;
-    console.log(
-      "ineditpage",
-      title,
-      description,
-      expiration_date,
-      publicity,
-      tags,
-      createdBy,
-      issuedBy,
-      receivedBy
-    );
     return (
       <div className="FrenmoForm__view">
         {edit && <EditFrenmoForm />}
@@ -56,7 +50,9 @@ class EditFrenmoPage extends Component {
           <FontAwesomeIcon
             icon={faTimes}
             className="edit-icons"
-            onClick={this.handleToggleEdit}
+            onClick={
+              this.handleToggleEdit
+            }
           />
         )}
 
@@ -64,7 +60,9 @@ class EditFrenmoPage extends Component {
           <FrenmoDetail
             title={title}
             description={description}
-            expiration_date={expiration_date}
+            expiration_date={
+              expiration_date
+            }
             publicity={publicity}
             tags={tags}
             createdBy={createdBy}
@@ -76,7 +74,9 @@ class EditFrenmoPage extends Component {
           <FontAwesomeIcon
             icon={faPencilAlt}
             className="edit-icons"
-            onClick={this.handleToggleEdit}
+            onClick={
+              this.handleToggleEdit
+            }
           />
         )}
       </div>
