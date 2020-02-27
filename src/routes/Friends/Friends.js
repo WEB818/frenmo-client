@@ -65,8 +65,9 @@ class Friends extends Component {
         <SearchUser />
 
         {this.state.friends.map(
-          fren => (
+          (fren, index) => (
             <FriendsList
+              key={index}
               frens={fren}
               update={
                 this
