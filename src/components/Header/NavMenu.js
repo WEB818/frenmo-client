@@ -71,10 +71,7 @@ class NavMenu extends Component {
           )}
           <h2 className="NavMenu__Header">
             <span className="logo medblue">f</span>
-            <span className="logo lightblue">f</span>
-            <span className="logo lighterblue">f</span>
-            <span className="logo lightestblue">f</span>
-            frenmo
+            renmo
           </h2>
 
           <MenuSlide showMenu={showMenu} />
@@ -100,26 +97,23 @@ class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-        <div className="Nav-container">
-          <NavLink to="/feed" className="Header__link">
-            <h2 className="NavMenu__Header" onClick={this.handleSlide}>
-              <span className="logo medblue">f</span>
-              <span className="logo lightblue">f</span>
-              <span className="logo lighterblue">f</span>
-              <span className="logo lightestblue">f</span>
-              frenmo
-            </h2>
-          </NavLink>
+        {/* <div className="Nav-container"> */}
+        <NavLink to="/feed" className="Header__link">
+          <h2 className="NavMenu__Header" onClick={this.handleSlide}>
+            <span className="logo">f</span>
+            renmo
+          </h2>
+        </NavLink>
 
-          <div className="Header__not-logged-in">
-            <div className="navigation">
-              <a href="/login" className="log-button">
-                <FontAwesomeIcon icon={faSignOutAlt} className="log-icon" />
-                <div className="login">Login</div>
-              </a>
-            </div>
+        <div className="Header__not-logged-in">
+          <div className="navigation">
+            <a href="/login" className="log-button">
+              <FontAwesomeIcon icon={faSignOutAlt} className="log-icon" />
+              <div className="login">Login</div>
+            </a>
           </div>
         </div>
+        {/* </div> */}
       </>
     );
   }

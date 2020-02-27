@@ -98,8 +98,6 @@ export default class FeedPage extends Component {
 
     return (
       <>
-        <FriendBubbles />
-
         <div className="FeedPage__Buttons">{this.renderPublicity()}</div>
         {publicity === "friends" && (
           <Link to="/friends" className="FeedPage__Add-link">

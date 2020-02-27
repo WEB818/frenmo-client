@@ -2,16 +2,15 @@
   border-radius: 15px 0px;
   padding: 15px;
   width: auto;
-  background-color: #2334fc;
+  background-color: #0c0063;
   color: white;
   // margin-left: -5px;
   margin: 12px 2px;
   border: none;
-  box-shadow: 5px 5px 5px rgba(0, 209, 255, 0.6);
+  box-shadow: 5px 5px 5px #607296;
 }
 
-.Button:active,
-.Button:hover {
+.Button:active {
   background-color: #00d1ff;
   color: #0c0063;
 }
@@ -21,7 +20,6 @@
 }
 .Label {
   letter-spacing: 2px;
-  // margin: 10px;
 }
 .Input {
   border: none;
@@ -30,13 +28,13 @@
   border-bottom: solid 2px #0c0063;
   padding: 15px;
   letter-spacing: 3px;
-  background-color: #d3f7ff;
+  background-color: #6072964b;
 
   margin-bottom: 10px;
 }
 
 .Input:focus {
-  border: dotted 1px #00d1ff;
+  border: dotted 1px #0c0063;
   outline: thin dotted;
 }
 
@@ -44,6 +42,6 @@
   height: 100px;
 }
 .Textarea:focus {
-  border: dotted 1px #00d1ff;
+  border: dotted 1px #0c0063;
   outline: thin dotted;
 }

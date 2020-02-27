@@ -86,6 +86,21 @@ class FrenmoDetail extends Component {
 
   renderEditButton = () => {};
 
+  renderPending = () => {
+    console.log(this.props.location.state.pending);
+    if (this.props.location.state.pending) {
+      return <p>Pending Redeem</p>;
+    }
+  };
+  renderRedeemed = () => {
+    if (
+      this.props.location.state.receiver_redeemed &&
+      this.props.location.state.issuer_redeemed
+    ) {
+      return <p>Already Redeemed</p>;
+    }
+  };
+
   //Expiration flag -- renders for expired frenmos
   renderExpirationFlag = () => {
     return <h3 className="void">VOID</h3>;
@@ -106,6 +121,7 @@ class FrenmoDetail extends Component {
       receiver_name,
       receiver_id,
       receiver_username,
+      receiver_redeemed,
       issued,
       expired,
       received
@@ -165,8 +181,12 @@ class FrenmoDetail extends Component {
         {issued && !expired
           ? this.renderIssue(receiver_username, receiver_id)
           : null}
-        {received && !expired ? this.renderRedeem() : null}
+        {received && !expired && !receiver_redeemed
+          ? this.renderRedeem()
+          : null}
         {expired ? this.renderExpirationFlag() : null}
+        {this.renderPending()}
+        {this.renderRedeemed()}
       </div>
     );
   }

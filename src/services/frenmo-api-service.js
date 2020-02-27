@@ -124,7 +124,7 @@ const FrenmoApiService = {
           authorization: `bearer ${TokenService.getAuthToken()}`
         },
         body: JSON.stringify({
-          outstanding_id
+          outstanding_id: outstanding_id
         })
       }
     ).then(res =>
@@ -138,6 +138,8 @@ const FrenmoApiService = {
     );
   },
   issueFrenmo(fields) {
+    console.log(fields);
+
     return fetch(
       `${config.API_ENDPOINT}/favor/issue/`,
       {
