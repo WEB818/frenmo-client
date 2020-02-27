@@ -4,7 +4,7 @@ export default {
   API_ENDPOINT:
     process.env
       .REACT_APP_API_ENDPOINT ||
-    'http://localhost:8000/api',
+    'https://calm-wave-63861.herokuapp.com/api',
   SKIP_PREFLIGHT_CHECK:
     process.env
       .REACT_APP_SKIP_PREFLIGHT_CHECK
