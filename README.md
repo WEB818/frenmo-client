@@ -46,3 +46,6 @@ client github repo: https://github.com/MrNanosh/frienmo-client
 
 api github repo: https://github.com/MrNanosh/frienmo-server
 
+live app: https://frenmo.now.sh/
+
+live server: https://calm-wave-63861.herokuapp.com/
