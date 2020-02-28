@@ -24,15 +24,6 @@ class FrenmoDashboard extends Component {
 
   static contextType = FrenmoContext;
 
-  async componentDidMount() {
-    await this.context.addFrenmo();
-    this.setState({
-      favors: this.context.allPublicFrenmos.favors,
-      friends: false
-    });
-    this.context.clearError();
-  }
-
   render() {
     const {
       frenmoCategories,
