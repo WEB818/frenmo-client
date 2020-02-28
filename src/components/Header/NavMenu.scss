@@ -128,12 +128,20 @@
   }
 
   .NavMenu__links {
-    margin-left: 100px;
     color: white;
     font-size: 0.9rem;
-    letter-spacing: 3px;
-  }
+    letter-spacing: 5px;
+    font-weight: 700;
+    width: 100%;
+    font-family: "Cantarell", sans-serif;
 
+    &:hover {
+      background-color: lightblue;
+      color: #0c0063;
+    }
+  }
+  .NavMenu__menu-item {
+  }
   #navSlide {
     position: absolute;
     transform: translateX(-100%);

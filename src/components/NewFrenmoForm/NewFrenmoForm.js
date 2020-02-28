@@ -215,6 +215,7 @@ class NewFrenmoForm extends Component {
           id="NewFrenmo__title"
           placeholder="Redeemable for..."
           aria-label="Add title for frenmo"
+          maxlength="40"
           required
         />
 
@@ -223,6 +224,7 @@ class NewFrenmoForm extends Component {
           name="description"
           placeholder="Add a message or description..."
           aria-label="Add description for frenmo"
+          maxlength="40"
           required
         />
 
