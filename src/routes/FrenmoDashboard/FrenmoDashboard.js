@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
+import FrenmoApiService from "../../services/frenmo-api-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignOutAlt,
@@ -22,6 +23,15 @@ class FrenmoDashboard extends Component {
   };
 
   static contextType = FrenmoContext;
+
+  async componentDidMount() {
+    await this.context.addFrenmo();
+    this.setState({
+      favors: this.context.allPublicFrenmos.favors,
+      friends: false
+    });
+    this.context.clearError();
+  }
 
   render() {
     const {

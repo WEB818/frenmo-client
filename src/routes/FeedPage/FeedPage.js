@@ -27,18 +27,6 @@ export default class FeedPage extends Component {
       friends: false
     });
     this.context.clearError();
-    FrenmoApiService.getAllPublicFrenmos()
-      .then(this.context.setPublicFrenmos)
-      .catch(this.context.setError);
-    FrenmoApiService.getMyPublicFrenmos()
-      .then(this.context.setAllPublic)
-      .catch(this.context.setError);
-    FrenmoApiService.getPersonalFrenmos()
-      .then(this.context.setAllPersonal)
-      .catch(this.context.setError);
-    FrenmoApiService.getFriendFrenmos()
-      .then(this.context.setAllFriend)
-      .catch(this.context.setError);
   }
 
   // currently not implemented, should route to frenmo detail that lets user redeem or do whatever depending on what is available
