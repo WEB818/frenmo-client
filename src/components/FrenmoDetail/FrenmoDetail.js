@@ -5,7 +5,7 @@ import { getFrenmoById } from '../../services/helpers';
 import FrenmoContext from '../../contexts/FrenmoContext';
 import './FrenmoDetail.scss';
 import IssueFrenmo from '../IssueFrenmo/IssueFrenmo';
-import { RedeemFrenmo } from '../RedeemFrenmo/RedeemFrenmo';
+import  RedeemFrenmo  from '../RedeemFrenmo/RedeemFrenmo';
 import ConfirmRedeemFrenmo from '../ConfirmRedeemFrenmo/ConfirmRedeemFrenmo';
 import { Input } from '../Utils/Utils';
 import { formatRelative } from 'date-fns';
