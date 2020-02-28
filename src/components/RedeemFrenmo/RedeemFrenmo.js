@@ -16,7 +16,9 @@ export class RedeemFrenmo extends React.Component {
     FrenmoApiService.redeemFrenmo(
       favor_id,
       outstanding_id
-    ).then(this.props.onRedemption());
+    )
+      .then(this.props.onRedemption())
+      .then(this.context.addFrenmo);
   };
 
   render() {

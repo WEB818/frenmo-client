@@ -1,14 +1,100 @@
 .Splash {
   height: 100%;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  font-family: 'Cantarell', sans-serif;
   &__hero {
     padding-top: 40px;
+    &::before {
+      text-transform: lowercase;
+      height: 30px;
+      width: 30px;
+      background-color: #0c0063;
+      color: white;
+      text-align: center;
+      border-radius: 8px 0;
+      margin-right: 20px;
+    }
   }
-  &__sub {
-    padding: 24px;
+
+  .one {
+    &::before {
+      content: '1';
+    }
   }
+  .two {
+    &::before {
+      content: '2';
+    }
+  }
+
+  .Splash__container {
+    color: #0c0063;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    display: flex;
+    border-radius: 75px 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+
+    &-sub-1 {
+      position: absolute;
+      width: 300px;
+      font-size: 24px;
+      line-height: 1.5;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: lighter;
+      text-align: center;
+      font-family: 'Helvetica Neue',
+        sans-serif;
+    }
+    &-sub {
+      position: absolute;
+      width: 300px;
+      font-size: 24px;
+      line-height: 1.5;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: lighter;
+      text-align: center;
+      font-family: 'Helvetica Neue',
+        sans-serif;
+      overflow: visible;
+      color: black;
+    }
+    &::before {
+      content: attr(data-done);
+      position: absolute;
+      overflow: visible;
+      z-index: -1;
+      color: #0c0063;
+    }
+  }
+  .Splash__container-sub {
+    position: absolute;
+    width: 300px;
+    font-size: 24px;
+    line-height: 1.5;
+    top: 50%;
+    margin-top: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: lighter;
+    text-align: center;
+    font-family: 'Helvetica Neue',
+      sans-serif;
+    z-index: -10;
+  }
+
   & > footer {
     position: absolute;
     bottom: 0;

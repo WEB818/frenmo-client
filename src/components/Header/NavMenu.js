@@ -90,6 +90,16 @@ class NavMenu extends Component {
             </a>
           </div>
         </div>
+
+        <div className="Header__logged-in-desktop">
+          <div>
+            <a href="/">
+              <div className="logout desktop" onClick={this.handleLogoutClick}>
+                Logout
+              </div>
+            </a>
+          </div>
+        </div>
       </>
     );
   }

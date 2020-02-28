@@ -134,7 +134,7 @@ const FrenmoApiService = {
             .then(e =>
               Promise.reject(e)
             )
-        : res.json()
+        : null
     );
   },
   issueFrenmo(fields) {

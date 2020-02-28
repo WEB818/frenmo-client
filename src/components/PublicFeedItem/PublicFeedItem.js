@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from 'react';
 
-import UserContext from "../../contexts/UserContext";
-// import Check from "../../images/check.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import UserContext from '../../contexts/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronDown,
   faChevronUp,
@@ -12,10 +13,10 @@ import {
   faStopwatch,
   faQuoteRight,
   faQuoteLeft
-} from "@fortawesome/free-solid-svg-icons";
-import { Button } from "../Utils/Utils";
-import { formatRelative } from "date-fns";
-import "./PublicFeedItem.scss";
+} from '@fortawesome/free-solid-svg-icons';
+import { Button } from '../Utils/Utils';
+import { formatRelative } from 'date-fns';
+import './PublicFeedItem.scss';
 
 export default class PublicFeedItem extends Component {
   static defaultProps = {
@@ -26,7 +27,7 @@ export default class PublicFeedItem extends Component {
 
   state = {
     expanded: false,
-    redemption: ""
+    redemption: ''
   };
 
   handleRedemption = outstanding_id => {
@@ -52,13 +53,9 @@ export default class PublicFeedItem extends Component {
       title,
       description,
       expDate,
-
       createdByName,
-
       issuedByName,
-
       recdByName,
-
       issuerRedeemed,
       receiverRedeemed
     } = this.props;
@@ -70,21 +67,27 @@ export default class PublicFeedItem extends Component {
       <div className="PublicFeedItem">
         <div
           className="PublicFeedItem__title"
-          onClick={() => this.handleExpandedToggle()}
+          onClick={() =>
+            this.handleExpandedToggle()
+          }
         >
           <div>
-            <h3 className="PublicFeedItem__frenmo">{title}</h3>
+            <h3 className="PublicFeedItem__frenmo">
+              {title}
+            </h3>
             <div className="PublicFeedItem__flags">
-              {receiverRedeemed && !issuerRedeemed && (
-                <div className="PublicFeedItem__notification yellow">
-                  Pending
-                </div>
-              )}
-              {!expanded && receiverRedeemed && (
-                <div className="PublicFeedItem__notification pink">
-                  Redeem Me
-                </div>
-              )}
+              {receiverRedeemed &&
+                !issuerRedeemed && (
+                  <div className="PublicFeedItem__notification yellow">
+                    Pending
+                  </div>
+                )}
+              {!expanded &&
+                receiverRedeemed && (
+                  <div className="PublicFeedItem__notification pink">
+                    Redeem Me
+                  </div>
+                )}
             </div>
           </div>
           {!expanded && (
@@ -102,35 +105,53 @@ export default class PublicFeedItem extends Component {
         </div>
         <div className="PublicFeedItem__expanded">
           {expanded && (
-            <div onClick={() => this.handleExpandedToggle()}>
+            <div
+              onClick={() =>
+                this.handleExpandedToggle()
+              }
+            >
               {recdByName && (
                 <div className="PublicFeedItem__sub-titles receiver">
-                  <FontAwesomeIcon icon={faArrowRight} />
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                  />
                   <p>{recdByName}</p>
                 </div>
               )}
 
               <div className="PublicFeedItem__sub-titles description">
-                <FontAwesomeIcon icon={faComment} />
+                <FontAwesomeIcon
+                  icon={faComment}
+                />
                 {description}
               </div>
 
               {issuedByName && (
                 <div className="PublicFeedItem__sub-titles issuer">
-                  <FontAwesomeIcon icon={faGift} />
+                  <FontAwesomeIcon
+                    icon={faGift}
+                  />
                   {issuedByName}
                 </div>
               )}
 
               {expDate && (
                 <div className="PublicFeedItem__sub-titles expdate">
-                  <FontAwesomeIcon icon={faStopwatch} />
-                  {formatRelative(new Date(expDate), new Date(), 0)}
+                  <FontAwesomeIcon
+                    icon={faStopwatch}
+                  />
+                  {formatRelative(
+                    new Date(expDate),
+                    new Date(),
+                    0
+                  )}
                 </div>
               )}
               {receiverRedeemed && (
                 <div className="PublicFeedItem__button">
-                  <Button>Redeem Me</Button>
+                  <Button>
+                    Redeem Me
+                  </Button>
                 </div>
               )}
             </div>

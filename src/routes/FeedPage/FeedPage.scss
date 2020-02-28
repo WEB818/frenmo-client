@@ -39,6 +39,11 @@
   justify-content: center;
   margin: 10px;
 }
+
+#feed-btn:focus {
+  background-color: lightblue;
+  color: #0c0063;
+}
 @media (min-width: 768px) {
   .FeedPage__Buttons {
     margin-left: 38%;

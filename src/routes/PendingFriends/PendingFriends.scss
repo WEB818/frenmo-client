@@ -1,11 +1,9 @@
-.frens {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom: 1px solid #0c0063;
-  text-transform: uppercase;
+.pending-friend-user {
   color: #0c0063;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+
   &::before {
     content: "f";
     font-family: "Cantarell", sans-serif;
@@ -30,12 +28,8 @@
     border-radius: 50%;
     margin-right: 20px;
   }
-}
-
-.friendship-buttons {
-  width: 50px;
-}
-
-.friendship-icons {
-  font-size: 20px;
+  .pending-btn {
+    display: flex;
+    justify-content: space-between;
+  }
 }
