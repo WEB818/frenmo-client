@@ -6,7 +6,7 @@
   transform: translate(-50%, -50%);
   border-radius: 55px 0;
   background-color: lightblue;
-
+  width: 280px;
   max-width: 280px;
   box-shadow: 15px 15px 15px #0c0063;
   display: flex;
@@ -14,6 +14,7 @@
   font-size: 16px;
 
   &__title {
+    display: block;
     text-transform: lowercase;
     background-color: white;
     color: #0c0063;
