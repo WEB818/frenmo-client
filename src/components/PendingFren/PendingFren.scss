@@ -19,3 +19,11 @@
   text-align: center;
   color: #0c0063;
 }
+
+@media (min-width: 768px) {
+  .back-to-friends,
+  .pending-message {
+    margin-left: 40%;
+    width: 58%;
+  }
+}

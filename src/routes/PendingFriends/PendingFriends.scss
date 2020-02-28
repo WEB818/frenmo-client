@@ -33,3 +33,11 @@
     justify-content: space-between;
   }
 }
+
+@media (min-width: 768px) {
+  .pending-friend-user,
+  .pending-btn {
+    margin-left: 40%;
+    width: 58%;
+  }
+}
