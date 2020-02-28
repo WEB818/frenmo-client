@@ -1,43 +1,18 @@
-// .f-logo-container {
-// height: 210px;
-// width: 210px;
-// position: relative;
-// display: flex;
-// border-radius: 75px 0;
-// margin-left: auto;
-// margin-right: auto;
-// margin-top: 100px;
-
-//   &:hover {
-//     background-color: #00d1ff;
-//     color: #2334fc;
-//   }
-// }
-
 .f-logo {
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   font-size: 100px;
   height: 90px;
   width: 90px;
-  // background-color: #2334fc;
   background-color: #0c0063;
   border-radius: 25px 0;
   margin-left: auto;
   margin-right: auto;
   margin-top: 80px;
   color: #eff0fd;
-  // box-shadow: 5px 5px 5px rgba(0, 209, 255, 0.6);
   overflow: hidden;
 
-  // &:hover {
-  //   background-color: #eff0fd;
-  //   color: #2334fc;
-  //   box-shadow: none;
-  //   overflow: visible;
-  // }
-
   &::before {
-    content: "f";
+    content: 'f';
     position: absolute;
     z-index: -1;
     color: #0c0063;
