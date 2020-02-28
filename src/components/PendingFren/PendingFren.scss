@@ -1,0 +1,21 @@
+.back-to-friends {
+  padding: 20px;
+}
+
+.back-link {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  color: #0c0063;
+
+  &:visited {
+    color: #0c0063;
+  }
+}
+
+.pending-message {
+  padding: 10px;
+  text-align: center;
+  color: #0c0063;
+}

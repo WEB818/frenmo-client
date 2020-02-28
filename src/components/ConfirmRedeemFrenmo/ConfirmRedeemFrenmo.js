@@ -1,6 +1,6 @@
 import * as React from 'react';
 import FrenmoApiService from '../../services/frenmo-api-service';
-export class ConfirmRedeemFrenmo extends React.Component {
+export default class ConfirmRedeemFrenmo extends React.Component {
   handleRedeemFrenmo = event => {
     event.preventDefault();
     FrenmoApiService.redeemFrenmo(

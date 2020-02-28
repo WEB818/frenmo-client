@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 import PendingFriends from "../../routes/PendingFriends/PendingFriends";
 import TokenService from "../../services/token-service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "./PendingFren.scss";
 
 export class PendingFren extends Component {
   state = {
@@ -44,19 +47,30 @@ export class PendingFren extends Component {
   };
 
   render() {
+    console.log(this.state, this.props, "in pending");
+    const { pendingFrens } = this.state;
     return (
       <div>
-        <div>
-          <h2>pending friends</h2>
-          <span>
-            <Link to="/Friends">Friends List</Link>
-          </span>
+        <div className="back-to-friends">
+          <Link to="/friends" className="back-link">
+            <FontAwesomeIcon icon={faArrowLeft} /> Back to Friends
+          </Link>
         </div>
-        {this.state.pendingFrens.map((pen, index) => (
+        {!pendingFrens.length ? (
+          <p className="pending-message">
+            You have no pending friend requests.
+          </p>
+        ) : (
+          <p className="pending-message">
+            You have pending friend requests. Confirm and start swapping favors!
+          </p>
+        )}
+        {pendingFrens.map((pen, index) => (
           <PendingFriends
             key={index}
             pending={pen}
             update={this.updateFriendsAfterAdd}
+            pendingCount={pendingFrens.length}
           />
         ))}
       </div>

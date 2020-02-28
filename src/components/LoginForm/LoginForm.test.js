@@ -1,17 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from 'react-router-dom';
-import LoginPage from"./LoginPage";
+import {BrowserRouter} from "react-router-dom";
+import LoginForm from "./LoginForm";
 
-describe(`LoginPage Component`, () => {
+describe(` LoginForm Component`, () => {
   it("renders without errors", () => {
     const div = document.createElement("div");
     ReactDOM.render(
-
       <BrowserRouter>
-      <LoginPage />
+        <LoginForm />
       </BrowserRouter>, div);
-
     ReactDOM.unmountComponentAtNode(div);
   });
 });

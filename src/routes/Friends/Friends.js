@@ -3,14 +3,15 @@ import TokenService from "../../services/token-service";
 import config from "../../config";
 import FriendsList from "../../components/FriendsList/FriendsList";
 import SearchUser from "../../components/SearchUser/SearchUser";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/Utils/Utils";
 import "./Friend.scss";
 
 class Friends extends Component {
-  // static contextType = MyFriendsContext
-
   state = {
     friends: [],
-    sortType: "asc"
+    sortType: "asc",
+    expanded: false
   };
 
   setFriendsList = friends => {
@@ -52,25 +53,56 @@ class Friends extends Component {
     this.setState({ sortType });
   };
 
+  handleExpandSearch = () => {
+    this.setState(prevState => ({
+      expanded: !prevState.expanded
+    }));
+  };
+
   render() {
-    const { friends, sortType } = this.state;
-    console.log("in friends", this.state);
+    const { friends, sortType, expanded } = this.state;
+
     return (
       <div>
-        <h2 className="NewFrenmoPage__header">Make Friends</h2>
-        <SearchUser />
+        <div className="btn-container friend">
+          <Link to="/pending">
+            <Button className="friends-buttons">View pending requests</Button>
+          </Link>
+          <Button
+            onClick={() => this.handleExpandSearch()}
+            className="friends-buttons"
+          >
+            Make a Friend
+          </Button>
+        </div>
+        {expanded && <SearchUser />}
+        {!friends.length ? null : (
+          <h3 className="NewFrenmoPage__header friend">
+            spend frenmos on friends
+          </h3>
+        )}
 
-        {friends.map((fren, idx) => (
-          <FriendsList
-            key={idx}
-            friends={friends}
-            friend={fren}
-            sortedFriends={this.onSort}
-            update={this.updateFrensAfterDelete}
-          />
-        ))}
+        {!friends.length ? (
+          <p className="welcome-message add-friend">
+            Your friend list is without friends. Add some and start swapping
+            favors!
+          </p>
+        ) : (
+          <div className="FriendsList">
+            {friends.map((fren, idx) => (
+              <FriendsList
+                key={idx}
+                friends={friends}
+                friend={fren}
+                sortedFriends={this.onSort}
+                update={this.updateFrensAfterDelete}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
 }
+
 export default Friends;
