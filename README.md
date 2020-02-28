@@ -1,5 +1,5 @@
 # Frenmo App (Client)
-![Frenmo Logo] (src/images/frenmoLogo.PNG)
+![circle-cropped (4)](https://user-images.githubusercontent.com/54965285/75578587-19723080-5a32-11ea-9ee4-f1b2a80e92e4.png)
 ---
 Team: Jack Pupel, Wendy Bartos, Angel Alicea, Javier Zapien, Dana Zinatbakhsh
 ---
