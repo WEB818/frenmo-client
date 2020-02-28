@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
 
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   &__hero {
     padding-top: 40px;
     &::before {
@@ -23,17 +23,16 @@
 
   .one {
     &::before {
-      content: "1";
+      content: '1';
     }
   }
   .two {
     &::before {
-      content: "2";
+      content: '2';
     }
   }
 
   .Splash__container {
-    // background-color: #0c0063;
     color: #0c0063;
     height: 200px;
     width: 200px;
@@ -43,7 +42,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
-    // overflow: hidden;
 
     &-sub-1 {
       position: absolute;
@@ -55,7 +53,8 @@
       transform: translate(-50%, -50%);
       font-weight: lighter;
       text-align: center;
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: 'Helvetica Neue',
+        sans-serif;
     }
     &-sub {
       position: absolute;
@@ -67,7 +66,8 @@
       transform: translate(-50%, -50%);
       font-weight: lighter;
       text-align: center;
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: 'Helvetica Neue',
+        sans-serif;
       overflow: visible;
       color: black;
     }
@@ -90,7 +90,8 @@
     transform: translate(-50%, -50%);
     font-weight: lighter;
     text-align: center;
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: 'Helvetica Neue',
+      sans-serif;
     z-index: -10;
   }
 
