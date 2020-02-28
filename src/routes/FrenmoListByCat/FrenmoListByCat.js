@@ -1,18 +1,20 @@
-import React, { Component } from "react";
-import Frenmo from "../../components/Frenmo/Frenmo";
+import React, {
+  Component
+} from 'react';
+import Frenmo from '../../components/Frenmo/Frenmo';
 import {
   getFrenmosInCategory,
   getRecdFrenmos,
   getIssuedFrenmos
-} from "../../services/helpers";
-import FrenmoContext from "../../contexts/FrenmoContext";
-import FrenmoApiService from "../../services/frenmo-api-service";
-import { Button } from "../../components/Utils/Utils";
+} from '../../services/helpers';
+import FrenmoContext from '../../contexts/FrenmoContext';
+import FrenmoApiService from '../../services/frenmo-api-service';
+import { Button } from '../../components/Utils/Utils';
 
-import "./FrenmoListByCat.scss";
-import TokenService from "../../services/token-service";
-import { Redirect } from "react-router-dom";
-import FriendBubbles from "../../components/FriendBubbles/FriendBubbles";
+import './FrenmoListByCat.scss';
+import TokenService from '../../services/token-service';
+import { Redirect } from 'react-router-dom';
+import FriendBubbles from '../../components/FriendBubbles/FriendBubbles';
 
 class FrenmoListByCat extends Component {
   static defaultProps = {
@@ -31,56 +33,115 @@ class FrenmoListByCat extends Component {
   };
 
   handleMakeFrenmos(user_id) {
-    let { publicFrenmos, personalFrenmos, friendFrenmos } = this.context;
-    const { categoryId } = this.props.match.params;
+    let {
+      publicFrenmos,
+      personalFrenmos,
+      friendFrenmos
+    } = this.context;
+    const {
+      categoryId
+    } = this.props.match.params;
     //TODO: category filter here
-    publicFrenmos = getFrenmosInCategory(publicFrenmos, categoryId);
-    personalFrenmos = getFrenmosInCategory(personalFrenmos, categoryId);
-    friendFrenmos = getFrenmosInCategory(friendFrenmos, categoryId);
+    publicFrenmos = getFrenmosInCategory(
+      publicFrenmos,
+      categoryId
+    );
+    personalFrenmos = getFrenmosInCategory(
+      personalFrenmos,
+      categoryId
+    );
+    friendFrenmos = getFrenmosInCategory(
+      friendFrenmos,
+      categoryId
+    );
 
     //TODO:have to do a filter by category
-    const drawFrenmos = (frenmo, idx) => {
+    const drawFrenmos = (
+      frenmo,
+      idx
+    ) => {
       //checks go here
-      let issued = frenmo.issuer_id === user_id;
+      let issued =
+        frenmo.issuer_id === user_id;
 
-      let received = frenmo.receiver_id === user_id;
+      let received =
+        frenmo.receiver_id === user_id;
 
       let expired =
-        new Date(new Date(frenmo.expiration_date).toLocaleString()) <
-        new Date();
+        new Date(
+          new Date(
+            frenmo.expiration_date
+          ).toLocaleString()
+        ) < new Date();
 
       let redeemed =
-        frenmo.issuer_redeemed === true && frenmo.receiver_redeemed === true;
+        frenmo.issuer_redeemed ===
+          true &&
+        frenmo.receiver_redeemed ===
+          true;
 
       let pending =
-        frenmo.receiver_redeemed === true && frenmo.issuer_redeemed === false;
+        frenmo.receiver_redeemed ===
+          true &&
+        frenmo.issuer_redeemed ===
+          false;
 
       return {
         frenmo: (
           <Frenmo
             key={frenmo.outstanding_id}
             title={frenmo.title}
-            description={frenmo.description}
-            creator_id={frenmo.creator_id}
-            expiration_date={frenmo.expiration_date}
+            description={
+              frenmo.description
+            }
+            creator_id={
+              frenmo.creator_id
+            }
+            expiration_date={
+              frenmo.expiration_date
+            }
             publicity={frenmo.publicity}
-            user_location={frenmo.user_location}
+            user_location={
+              frenmo.user_location
+            }
             tags={frenmo.tags}
             limit={frenmo.limit}
             posted={frenmo.posted}
-            outstanding_id={frenmo.outstanding_id}
-            receiver_redeemed={frenmo.receiver_redeemed}
-            issuer_redeemed={frenmo.issuer_redeemed}
-            relationship={frenmo.relationship}
+            outstanding_id={
+              frenmo.outstanding_id
+            }
+            receiver_redeemed={
+              frenmo.receiver_redeemed
+            }
+            issuer_redeemed={
+              frenmo.issuer_redeemed
+            }
+            relationship={
+              frenmo.relationship
+            }
             favor_id={frenmo.favor_id}
-            creator_name={frenmo.creator_name}
-            creator_username={frenmo.creator_username}
+            creator_name={
+              frenmo.creator_name
+            }
+            creator_username={
+              frenmo.creator_username
+            }
             issuer_id={frenmo.issuer_id}
-            issuer_name={frenmo.issuer_name}
-            issuer_username={frenmo.issuer_username}
-            receiver_id={frenmo.receiver_id}
-            receiver_name={frenmo.receiver_name}
-            receiver_username={frenmo.receiver_username}
+            issuer_name={
+              frenmo.issuer_name
+            }
+            issuer_username={
+              frenmo.issuer_username
+            }
+            receiver_id={
+              frenmo.receiver_id
+            }
+            receiver_name={
+              frenmo.receiver_name
+            }
+            receiver_username={
+              frenmo.receiver_username
+            }
             categoryId={frenmo.category}
             issued={issued}
             redeemed={redeemed}
@@ -100,53 +161,63 @@ class FrenmoListByCat extends Component {
     let myPrivateFrenmos;
     let myFriendFrenmos;
 
-    myPublicFrenmos = publicFrenmos.favors.map(drawFrenmos);
-    myPrivateFrenmos = personalFrenmos.favors.map(drawFrenmos);
-    myFriendFrenmos = friendFrenmos.favors.map(drawFrenmos);
-    return [...myPublicFrenmos, ...myPrivateFrenmos, ...myFriendFrenmos];
+    myPublicFrenmos = publicFrenmos.favors.map(
+      drawFrenmos
+    );
+    myPrivateFrenmos = personalFrenmos.favors.map(
+      drawFrenmos
+    );
+    myFriendFrenmos = friendFrenmos.favors.map(
+      drawFrenmos
+    );
+    return [
+      ...myPublicFrenmos,
+      ...myPrivateFrenmos,
+      ...myFriendFrenmos
+    ];
   }
   async componentDidMount() {}
   //const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
 
-  handleRecievedTab = () => {
-    console.log("received");
-    this.state.myFrenmos.forEach(frenmo => console.log(frenmo));
-    this.state.myFrenmos.forEach(frenmo => {
-      if (frenmo.props.publicity !== "public") {
-        console.log("my recieved frenmos", frenmo.props);
-        //send frenmo.props to deal with information
-        //<received received={frenmo.props}
-      }
-    });
-  };
-
   renderAll = myFrenmos => {
-    return myFrenmos.map(item => item.frenmo);
+    return myFrenmos.map(
+      item => item.frenmo
+    );
   };
   renderReceived = myFrenmos => {
     return myFrenmos
-      .filter(item => item.received === true)
+      .filter(
+        item => item.received === true
+      )
       .map(item => item.frenmo);
   };
   renderRedeemed = myFrenmos => {
     return myFrenmos
-      .filter(item => item.redeemed === true)
+      .filter(
+        item => item.redeemed === true
+      )
       .map(item => item.frenmo);
   };
   renderIssued = myFrenmos => {
     return myFrenmos
-      .filter(item => item.issued === true)
+      .filter(
+        item => item.issued === true
+      )
       .map(item => item.frenmo);
   };
 
   renderExpired = myFrenmos => {
     return myFrenmos
-      .filter(item => item.expired === true)
+      .filter(
+        item => item.expired === true
+      )
       .map(item => item.frenmo);
   };
   renderPending = myFrenmos => {
     return myFrenmos
-      .filter(item => item.pending === true)
+      .filter(
+        item => item.pending === true
+      )
       .map(item => item.frenmo);
   };
 
@@ -160,7 +231,7 @@ class FrenmoListByCat extends Component {
             className="FrenmoListByCat__tabs"
             onClick={() =>
               this.setState({
-                type: "all"
+                type: 'all'
               })
             }
           >
@@ -170,7 +241,7 @@ class FrenmoListByCat extends Component {
             className="FrenmoListByCat__tabs"
             onClick={() => {
               this.setState({
-                type: "received"
+                type: 'received'
               });
             }}
           >
@@ -180,7 +251,7 @@ class FrenmoListByCat extends Component {
             className="FrenmoListByCat__tabs"
             onClick={() => {
               this.setState({
-                type: "issued"
+                type: 'issued'
               });
             }}
           >
@@ -191,7 +262,7 @@ class FrenmoListByCat extends Component {
             //this.handleredeemed
             onClick={() => {
               this.setState({
-                type: "redeemed"
+                type: 'redeemed'
               });
             }}
           >
@@ -202,7 +273,7 @@ class FrenmoListByCat extends Component {
             className="FrenmoListByCat__tabs"
             onClick={() => {
               this.setState({
-                type: "pending"
+                type: 'pending'
               });
             }}
           >
@@ -212,7 +283,7 @@ class FrenmoListByCat extends Component {
             className="FrenmoListByCat__tabs"
             onClick={() => {
               this.setState({
-                type: "expired"
+                type: 'expired'
               });
             }}
           >
@@ -236,33 +307,50 @@ class FrenmoListByCat extends Component {
     user_id = jwtPayload.user_id;
 
     let displayed;
-    let myFrenmos = this.handleMakeFrenmos(user_id);
+    let myFrenmos = this.handleMakeFrenmos(
+      user_id
+    );
     switch (this.state.type) {
-      case "redeemed":
-        displayed = this.renderRedeemed(myFrenmos);
+      case 'redeemed':
+        displayed = this.renderRedeemed(
+          myFrenmos
+        );
         break;
-      case "issued":
-        displayed = this.renderIssued(myFrenmos);
+      case 'issued':
+        displayed = this.renderIssued(
+          myFrenmos
+        );
         break;
-      case "received":
-        displayed = this.renderReceived(myFrenmos);
+      case 'received':
+        displayed = this.renderReceived(
+          myFrenmos
+        );
         break;
-      case "expired":
-        displayed = this.renderExpired(myFrenmos);
+      case 'expired':
+        displayed = this.renderExpired(
+          myFrenmos
+        );
         break;
-      case "pending":
-        displayed = this.renderPending(myFrenmos);
+      case 'pending':
+        displayed = this.renderPending(
+          myFrenmos
+        );
         break;
       default:
-        displayed = this.renderAll(myFrenmos);
+        displayed = this.renderAll(
+          myFrenmos
+        );
         break;
     }
 
     return (
       <>
         {this.renderTypes()}
+
         <div className="FrenmoListByCat__titles">
-          <div className="FrenmoListByCat__subtitles">{displayed}</div>
+          <div className="FrenmoListByCat__subtitles">
+            {displayed}
+          </div>
         </div>
       </>
     );

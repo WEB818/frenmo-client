@@ -7,9 +7,11 @@ describe(`LoginPage Component`, () => {
   it("renders without errors", () => {
     const div = document.createElement("div");
     ReactDOM.render(
+
       <BrowserRouter>
       <LoginPage />
       </BrowserRouter>, div);
+
     ReactDOM.unmountComponentAtNode(div);
   });
 });

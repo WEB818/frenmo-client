@@ -1,27 +1,40 @@
-import * as React from "react";
-import FrenmoApiService from "../../services/frenmo-api-service";
-import { Button } from "../../components/Utils/Utils";
-import "./RedeemFrenmo.scss";
-export default class RedeemFrenmo extends React.Component {
+
+import * as React from 'react';
+import FrenmoApiService from '../../services/frenmo-api-service';
+import { Button } from '../../components/Utils/Utils';
+import './RedeemFrenmo.scss';
+export class RedeemFrenmo extends React.Component {
+
   static defaultProps = {
     onRedemption: () => {}
   };
 
   handleRedeemFrenmo = event => {
-    const { favor_id, outstanding_id } = this.props;
+    const {
+      favor_id,
+      outstanding_id
+    } = this.props;
     event.preventDefault();
-    console.log(favor_id, outstanding_id);
-    FrenmoApiService.redeemFrenmo(favor_id, outstanding_id).then(
-      this.props.onRedemption()
-    );
+    FrenmoApiService.redeemFrenmo(
+      favor_id,
+      outstanding_id
+    ).then(this.props.onRedemption());
   };
 
   render() {
     return (
       <>
-        <form className="RedeemFrenmo" onSubmit={this.handleRedeemFrenmo}>
+        <form
+          className="RedeemFrenmo"
+          onSubmit={
+            this.handleRedeemFrenmo
+          }
+        >
           <div className="btn-container">
-            <Button type="submit" className="redeem-button">
+            <Button
+              type="submit"
+              className="redeem-button"
+            >
               Redeem Frenmo
             </Button>
           </div>

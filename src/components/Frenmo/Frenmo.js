@@ -1,10 +1,8 @@
-import React, {
-  Component
-} from 'react';
-import { NavLink } from 'react-router-dom';
-import FrenmoDetail from '../FrenmoDetail/FrenmoDetail';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import FrenmoDetail from "../FrenmoDetail/FrenmoDetail";
 
-import './Frenmo.scss';
+import "./Frenmo.scss";
 
 class Frenmo extends Component {
   static defaultProps = {
@@ -46,47 +44,47 @@ class Frenmo extends Component {
     } = this.props;
 
     return (
-      <li className="Frenmo">
-        <NavLink
-          className="Frenmo__Nav-link"
-          activeClassName="selected"
-          to={{
-            pathname: `/frenmos/category/${categoryId}/${outstanding_id}`,
-            state: {
-              title: title,
-              description: description,
-              creator_id: creator_id,
-              expiration_date: expiration_date,
-              publicity: publicity,
-              user_location: user_location,
-              tags: tags,
-              categoryId: categoryId,
-              limit: limit,
-              favor_id: favor_id,
-              posted: posted,
-              outstanding_id: outstanding_id,
-              receiver_redeemed: receiver_redeemed,
-              issuer_redeemed: issuer_redeemed,
-              relationship: relationship,
-              creator_name: creator_name,
-              creator_username: creator_username,
-              issuer_id: issuer_id,
-              issuer_name: issuer_name,
-              issuer_username: issuer_username,
-              receiver_id: receiver_id,
-              receiver_name: receiver_name,
-              receiver_username: receiver_username,
-              issued: issued,
-              redeemed: redeemed,
-              expired: expired,
-              received: received,
-              pending: pending
-            }
-          }}
-        >
+      <NavLink
+        className="Frenmo__Nav-link"
+        activeClassName="selected"
+        to={{
+          pathname: `/frenmos/category/${categoryId}/${outstanding_id}`,
+          state: {
+            title: title,
+            description: description,
+            creator_id: creator_id,
+            expiration_date: expiration_date,
+            publicity: publicity,
+            user_location: user_location,
+            tags: tags,
+            categoryId: categoryId,
+            limit: limit,
+            favor_id: favor_id,
+            posted: posted,
+            outstanding_id: outstanding_id,
+            receiver_redeemed: receiver_redeemed,
+            issuer_redeemed: issuer_redeemed,
+            relationship: relationship,
+            creator_name: creator_name,
+            creator_username: creator_username,
+            issuer_id: issuer_id,
+            issuer_name: issuer_name,
+            issuer_username: issuer_username,
+            receiver_id: receiver_id,
+            receiver_name: receiver_name,
+            receiver_username: receiver_username,
+            issued: issued,
+            redeemed: redeemed,
+            expired: expired,
+            received: received,
+            pending: pending
+          }
+        }}
+      >
+        <li className="Frenmo">
           <h3>{title}</h3>
-        </NavLink>
-      </li>
+        </li>
+      </NavLink>
     );
   }
 }

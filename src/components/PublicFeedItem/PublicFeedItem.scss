@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 1px solid lightgrey;
+  border-top: 1px solid lightblue;
   padding: 10px;
 
   &:hover {
-    background-color: #00d1ff;
+    background-color: lightblue;
   }
 
   &__title {
@@ -24,10 +24,6 @@
     &__notification {
       color: white;
     }
-
-    &:hover {
-      color: white;
-    }
   }
   &__expanded {
     display: flex;
@@ -41,6 +37,17 @@
     flex-direction: row;
     justify-content: space-between;
     width: 280px;
+    &:hover::after {
+      font-size: 12px;
+      text-align: center;
+      width: 120px;
+      height: 20px;
+      border-radius: 5px;
+      padding: 3px;
+      position: absolute;
+      left: 20px;
+      color: #0c0063;
+    }
   }
   .receiver {
     &:hover {
@@ -48,16 +55,6 @@
     }
     &:hover::after {
       content: "A favor for...";
-      font-size: 12px;
-      text-align: center;
-      width: 120px;
-      height: 20px;
-      border-radius: 5px;
-      background: #7e00f8;
-      padding: 3px;
-      position: absolute;
-      left: 50px;
-      color: white;
     }
   }
   .description {
@@ -66,16 +63,6 @@
     }
     &:hover::after {
       content: "A message";
-      font-size: 12px;
-      text-align: center;
-      width: 120px;
-      height: 20px;
-      border-radius: 5px;
-      background: #7e00f8;
-      padding: 3px;
-      position: absolute;
-      left: 50px;
-      color: white;
     }
   }
 
@@ -86,16 +73,6 @@
 
     &:hover::after {
       content: "From a good friend";
-      font-size: 12px;
-      text-align: center;
-      width: 120px;
-      height: 20px;
-      border-radius: 5px;
-      background: #7e00f8;
-      padding: 3px;
-      position: absolute;
-      left: 50px;
-      color: white;
     }
   }
   .expdate {
@@ -105,16 +82,6 @@
 
     &:hover::after {
       content: "Time is ticking";
-      font-size: 12px;
-      text-align: center;
-      width: 120px;
-      height: 20px;
-      border-radius: 5px;
-      background: #7e00f8;
-      padding: 3px;
-      position: absolute;
-      left: 50px;
-      color: white;
     }
   }
   &__flags {
@@ -146,6 +113,15 @@
     margin-left: 40%;
     width: 58%;
   }
+  .PublicFeedItem__sub-titles {
+    width: 280px;
+    margin-left: 100px;
+    justify-content: space-between;
+
+    &:hover::after {
+      margin-left: 40%;
+    }
+  }
 }
 
 // feed page should be middle 40% of screen
@@ -153,5 +129,12 @@
   .PublicFeedItem {
     margin-left: 30%;
     width: 40vw;
+
+    &__sub-titles {
+      margin-left: 120px;
+      &:hover::after {
+        margin-left: 30%;
+      }
+    }
   }
 }

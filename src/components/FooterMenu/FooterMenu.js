@@ -15,7 +15,7 @@ export class FooterMenu extends Component {
         </div>
 
         <div className="Footer__icon">
-          <Link to="/frenmos">
+          <Link to="/frenmos/category/1">
             <i id="icon" className="fas fa-hand-holding-heart"></i>
           </Link>
           <div className="Footer-links">My Frenmos</div>
