@@ -6,29 +6,29 @@
   align-items: center;
   justify-content: center;
 
-  font-family: 'Cantarell', sans-serif;
+  font-family: "Cantarell", sans-serif;
   &__hero {
     padding-top: 40px;
     &::before {
       text-transform: lowercase;
-      height: 30px;
-      width: 30px;
+
+      padding: 10px;
       background-color: #0c0063;
       color: white;
       text-align: center;
-      border-radius: 8px 0;
+      border-radius: 12px 0;
       margin-right: 20px;
     }
   }
 
   .one {
     &::before {
-      content: '1';
+      content: "1";
     }
   }
   .two {
     &::before {
-      content: '2';
+      content: "2";
     }
   }
 
@@ -53,8 +53,7 @@
       transform: translate(-50%, -50%);
       font-weight: lighter;
       text-align: center;
-      font-family: 'Helvetica Neue',
-        sans-serif;
+      font-family: "Helvetica Neue", sans-serif;
     }
     &-sub {
       position: absolute;
@@ -66,8 +65,7 @@
       transform: translate(-50%, -50%);
       font-weight: lighter;
       text-align: center;
-      font-family: 'Helvetica Neue',
-        sans-serif;
+      font-family: "Helvetica Neue", sans-serif;
       overflow: visible;
       color: black;
     }
@@ -90,8 +88,7 @@
     transform: translate(-50%, -50%);
     font-weight: lighter;
     text-align: center;
-    font-family: 'Helvetica Neue',
-      sans-serif;
+    font-family: "Helvetica Neue", sans-serif;
     z-index: -10;
   }
 

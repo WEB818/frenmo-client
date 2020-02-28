@@ -6,6 +6,9 @@
   border-bottom: 1px solid #0c0063;
   padding: 20px;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90vw;
 
   a {
     color: #0c0063;
@@ -17,8 +20,9 @@
     content: "f";
     font-family: "Cantarell", sans-serif;
     text-transform: lowercase;
-    height: 30px;
-    width: 30px;
+    // height: 30px;
+    // width: 30px;
+    padding: 10px;
     background-color: #0c0063;
     color: white;
     text-align: center;

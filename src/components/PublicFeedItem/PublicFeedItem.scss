@@ -1,10 +1,13 @@
 .PublicFeedItem {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   border-top: 1px solid lightblue;
   padding: 10px;
-
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90vw;
   &:hover {
     background-color: lightblue;
   }
@@ -17,10 +20,14 @@
   }
 
   &__frenmo {
+    display: block;
     text-transform: uppercase;
+    flex-wrap: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #0c0063;
     font-size: 14px;
-
+    width: 80vw;
     &__notification {
       color: white;
     }
