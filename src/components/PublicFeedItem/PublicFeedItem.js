@@ -52,13 +52,9 @@ export default class PublicFeedItem extends Component {
       title,
       description,
       expDate,
-
       createdByName,
-
       issuedByName,
-
       recdByName,
-
       issuerRedeemed,
       receiverRedeemed
     } = this.props;

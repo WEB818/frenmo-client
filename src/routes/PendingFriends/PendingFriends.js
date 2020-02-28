@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import { Button } from "../../components/Utils/Utils";
+import "./PendingFriends.scss";
 export class PendingFriends extends Component {
+  static defaultProps;
+
   addById = id => {
     this.props.update(id);
   };
@@ -11,19 +14,16 @@ export class PendingFriends extends Component {
 
     return (
       <div>
-        {pending ? (
-          <p>You have friends waiting to send you Frenmos!</p>
-        ) : (
-          <p>You currently have no pending friend requests.</p>
-        )}
-        <div>
-          <p id={pending.id}>{pending.username} wants to be friends!</p>
-          <button type="click" onClick={() => this.addById(pending.id)}>
-            Confirm friendship
-          </button>
-          <button type="click" onClick={() => this.addById(pending.id)}>
-            Ignore
-          </button>
+        <div id={pending.id} className="pending-friend-user">
+          {pending.username} wants to be friends!
+        </div>
+        <div className="btn-container pending-btn">
+          <Button type="click" onClick={() => this.addById(pending.id)}>
+            Confirm
+          </Button>
+          <Link to="/friends">
+            <Button>Ignore</Button>
+          </Link>
         </div>
       </div>
     );
