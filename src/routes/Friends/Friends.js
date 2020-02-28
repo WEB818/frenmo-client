@@ -83,7 +83,7 @@ class Friends extends Component {
         )}
 
         {!friends.length ? (
-          <p className="welcome-message add-friend">
+          <p className="add-friend">
             Your friend list is without friends. Add some and start swapping
             favors!
           </p>

@@ -33,8 +33,8 @@
   }
 
   .Splash__container {
-    background-color: #0c0063;
-    color: lightblue;
+    // background-color: #0c0063;
+    color: #0c0063;
     height: 200px;
     width: 200px;
     position: relative;
@@ -43,7 +43,8 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
-    overflow: hidden;
+    // overflow: hidden;
+
     &-sub-1 {
       position: absolute;
       width: 300px;

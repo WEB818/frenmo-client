@@ -1,9 +1,10 @@
-import React, {
-  Component
-} from 'react';
-import { NavLink } from 'react-router-dom';
-import FrenmoContext from '../../contexts/FrenmoContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import FrenmoContext from "../../contexts/FrenmoContext";
+import FrenmoApiService from "../../services/frenmo-api-service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faSignOutAlt,
   faChevronLeft,

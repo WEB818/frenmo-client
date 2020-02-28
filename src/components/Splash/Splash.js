@@ -19,10 +19,6 @@ class Splash extends Component {
             Frenmo is a trade marketplace. Swap favors with your friends, your
             family, your neighbors, your community, your world.
           </div>
-          <div className="Splash__container-sub">
-            Frenmo is a trade marketplace. Swap favors with your friends, your
-            family, your neighbors, your community, your world.
-          </div>
         </div>
 
         <h5>Because the world could use more good deeds.</h5>
