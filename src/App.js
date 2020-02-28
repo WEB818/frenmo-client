@@ -5,6 +5,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import { FrenmoProvider } from './contexts/FrenmoContext';
 import LoginPage from './routes/LoginPage/LoginPage';
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import FeedPage from './routes/FeedPage/FeedPage';
@@ -129,34 +130,38 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.state.feedbackMessage ? (
-          <PopupFeedback
-            feedbackMessage={
-              this.state.feedbackMessage
-            }
-          />
-        ) : null}
-        <NavMenu />
+      <FrenmoContext.Provider value={}>
+        <div className="App">
+          {this.state
+            .feedbackMessage ? (
+            <PopupFeedback
+              feedbackMessage={
+                this.state
+                  .feedbackMessage
+              }
+            />
+          ) : null}
+          <NavMenu />
 
-        <main className="App__container wrapper">
-          {this.renderNavRoutes()}
-          {this.state.hasError && (
-            <p className="red">
-              Something went wrong.
-              Please try again later.
-            </p>
-          )}
+          <main className="App__container wrapper">
+            {this.renderNavRoutes()}
+            {this.state.hasError && (
+              <p className="red">
+                Something went wrong.
+                Please try again later.
+              </p>
+            )}
 
-          <section className="App__main wrapper">
-            {this.renderMainRoutes()}
+            <section className="App__main wrapper">
+              {this.renderMainRoutes()}
 
-            {this.renderOtherRoutes()}
-          </section>
-        </main>
+              {this.renderOtherRoutes()}
+            </section>
+          </main>
 
-        <FooterMenu />
-      </div>
+          <FooterMenu />
+        </div>
+      </FrenmoContext.Provider>
     );
   }
 }
