@@ -1,8 +1,10 @@
+
 import * as React from 'react';
 import FrenmoApiService from '../../services/frenmo-api-service';
 import { Button } from '../../components/Utils/Utils';
 import './RedeemFrenmo.scss';
 export class RedeemFrenmo extends React.Component {
+
   static defaultProps = {
     onRedemption: () => {}
   };
