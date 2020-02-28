@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from 'react';
 
-import { Button } from "../../components/Utils/Utils";
-import MyFriendsContext from "../../contexts/MyFriendsContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGift, faUserInjured } from "@fortawesome/free-solid-svg-icons";
-import "../../components/FriendsList/FriendsList.scss";
+import { Button } from '../../components/Utils/Utils';
+import MyFriendsContext from '../../contexts/MyFriendsContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faGift,
+  faUserInjured
+} from '@fortawesome/free-solid-svg-icons';
+import '../../components/FriendsList/FriendsList.scss';
 
 export default class FriendsList extends Component {
   static contextType = MyFriendsContext;
@@ -15,7 +20,7 @@ export default class FriendsList extends Component {
   };
 
   unfriendById = id => {
-    alert("Are you sure?");
+    alert('Are you sure?');
     this.props.update(id);
   };
 
@@ -34,30 +39,44 @@ export default class FriendsList extends Component {
   render() {
     const { friendsList } = this.state;
     const { sortType } = this.props;
-    // const sorted = friends.sort((a, b) => {
-    //   const isReversed = sortType === "asc" ? 1 : -1;
-    //   return isReversed * a.name.localeCompare(b.name);
-    // });
-    const { friends, friend } = this.props;
-    console.log(this.props, "in friendslist");
+    const {
+      friends,
+      friend
+    } = this.props;
+    console.log(
+      this.props,
+      'in friendslist'
+    );
     return (
       <>
         <div>
           <ul className="friends-list">
-            <li className="frens" key={friend.id}>
+            <li
+              className="frens"
+              key={friend.id}
+            >
               <p>{friend.username}</p>
               <Button
                 type="submit"
                 aria-label={`Send ${friend.username} a frenmo`}
-                onClick={() => this.frenmo(friend.id)}
+                onClick={() =>
+                  this.frenmo(friend.id)
+                }
                 className="friendship-buttons"
               >
-                <FontAwesomeIcon icon={faGift} className="friendship-icons" />
+                <FontAwesomeIcon
+                  icon={faGift}
+                  className="friendship-icons"
+                />
               </Button>
               <Button
                 type="submit"
                 aria-label="delete friend"
-                onClick={() => this.unfriendById(friend.id)}
+                onClick={() =>
+                  this.unfriendById(
+                    friend.id
+                  )
+                }
                 className="friendship-buttons"
               >
                 <FontAwesomeIcon
