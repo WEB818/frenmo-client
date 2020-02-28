@@ -5,8 +5,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   font-family: "Cantarell", sans-serif;
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
   &__hero {
     padding-top: 40px;
     &::before {
@@ -97,5 +102,13 @@
     bottom: 0;
     font-size: 0.7em;
     padding: 12px;
+  }
+}
+.splash-image {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .splash-image {
+    display: block;
   }
 }
