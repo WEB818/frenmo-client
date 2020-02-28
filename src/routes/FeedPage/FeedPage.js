@@ -53,6 +53,7 @@ export default class FeedPage extends Component {
     return (
       <>
         <Button
+          id="feed-btn"
           onClick={() =>
             this.setState({
               favors: allPublicFrenmos.favors,
@@ -65,6 +66,7 @@ export default class FeedPage extends Component {
           Public
         </Button>
         <Button
+          id="feed-btn"
           onClick={() =>
             this.setState({
               favors: friendFrenmos.favors,
@@ -76,6 +78,7 @@ export default class FeedPage extends Component {
           Friends
         </Button>
         <Button
+          id="feed-btn"
           onClick={() =>
             this.setState({
               favors: personalFrenmos.favors,
@@ -110,16 +113,22 @@ export default class FeedPage extends Component {
         )}
 
         {publicity === "friends" && !friendFrenmos.favors.length && (
-          <p className="welcome-message">
+          <div className="welcome-message">
             No frenmos yet. Connect with your friends and start swapping favors!
-          </p>
+          </div>
         )}
 
         {publicity === "personal" && !personalFrenmos.favors.length && (
-          <p className="welcome-message">
-            Brand new to Frenmo? You can create frenmos for others to redeem or
-            send a frenmo to others!
-          </p>
+          <div className="welcome-message">
+            Brand new to Frenmo?
+            <br />
+            Create favors and start swapping them with{" "}
+            <span className="text smaller">your friends, </span>
+            <span className="text small">your family, </span>
+            <span className="text medium">your neighbors, </span>
+            <span className="text big">your community, </span>
+            <span className="text bigger">the world.</span>
+          </div>
         )}
 
         {publicity === "public" && !allPublicFrenmos.favors.length && (
