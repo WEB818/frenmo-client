@@ -12,13 +12,15 @@ class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   };
 
-  state = { error: null };
+  state = {
+    error: null
+  };
 
   firstInput = React.createRef();
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const {
+    let {
       name,
       username,
       phone,
@@ -26,11 +28,21 @@ class RegistrationForm extends Component {
     } = ev.target;
     name = name.value.trim();
     username = username.value.trim();
+    if (
+      name.length === 0 ||
+      username.length === 0
+    ) {
+      this.setState({
+        error:
+          'Name or username must not be empty'
+      });
+      return;
+    }
 
     AuthApiService.postUser({
       name,
       username,
-      phone: phone.value,
+      phone,
       password: password.value
     })
       .then(user => {
@@ -47,20 +59,26 @@ class RegistrationForm extends Component {
       });
   };
 
-  render() {
-    const { error } = this.state;
+  renderError() {
+    if (this.state.error) {
+      return (
+        <div
+          role="alert"
+          className="RegForm__alert"
+        >
+          <p>{this.state.error}</p>
+        </div>
+      );
+    }
+  }
 
+  render() {
     return (
       <form
         className="RegForm"
         onSubmit={this.handleSubmit}
       >
-        <div
-          role="alert"
-          className="RegForm__alert"
-        >
-          {error && <p>{error}</p>}
-        </div>
+        {this.renderError()}
 
         <div className="RegForm__label-input">
           <Input
