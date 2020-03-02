@@ -1,12 +1,11 @@
 .RegForm {
   display: flex;
   flex-direction: column;
-  height: 40vh;
   justify-content: flex-end;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40%;
+  min-height: max-content;
 
   &__alert {
     text-align: center;
