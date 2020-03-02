@@ -39,6 +39,9 @@
   justify-content: center;
   margin: 10px;
 }
+#feed-btn {
+  margin-top: 15vh;
+}
 
 #feed-btn:focus {
   background-color: lightblue;
@@ -60,5 +63,16 @@
   .FeedPage__Buttons {
     margin-left: 30%;
     width: 40%;
+  }
+  .FeedPage__Add-button {
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+      
+    &:hover {
+      background-color: #0c0063;
+    }
   }
 }

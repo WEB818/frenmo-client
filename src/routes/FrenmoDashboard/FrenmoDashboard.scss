@@ -7,12 +7,12 @@
   align-items: center;
   margin: 10px;
   padding: 10px;
-  position: relative;
 
   &__link-selected {
     padding: 10px;
     background-color: #0c0063;
     border-radius: 15px 0;
+    margin-top: 10vh;
   }
 
   &::-webkit-scrollbar {
@@ -46,6 +46,8 @@
     font-weight: bold;
     width: 80px;
     height: 80px;
+    position: relative;
+    margin-top: 10vh;
   }
 
   &__link:visited {
@@ -58,12 +60,16 @@
 }
 .welcome-message {
   position: relative;
+  margin-top: 15vh;
   padding: 60px;
-  top: 50%;
-  left: 50%;
+  // margin-left: auto;
+  // margin-right: auto;
+  left: 10%;
+  top: 10%;
+  // left: 0%;
+  transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
-  transform: translate(-50%, -50%);
   border-radius: 55px 0;
   background-color: #0c0063;
   width: 300px;
@@ -103,13 +109,13 @@
     width: 58vw;
   }
   .welcome-message {
-    top: 50%;
-    left: 68%;
+    left: 10%;
+    transform: translate(0%, 0%);
   }
 }
 @media (min-width: 1024px) {
   .welcome-message {
-    padding: 60px;
+    left: 15%;
   }
   .Dashboard {
     &::-webkit-scrollbar {
@@ -187,9 +193,9 @@
     display: none;
   }
 }
+
 .welcome-message {
-  top: 50%;
-  left: 50%;
+  left: 40%;
 }
 @media (min-width: 1800px) {
   .Dashboard {

@@ -1,25 +1,15 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from "react";
 
-import FrenmoContext from '../../contexts/FrenmoContext';
-import FrenmoApiService from '../../services/frenmo-api-service';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import {
-  Button,
-  Label,
-  Input,
-  Textarea
-} from '../Utils/Utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import FrenmoContext from "../../contexts/FrenmoContext";
+import FrenmoApiService from "../../services/frenmo-api-service";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Button, Label, Input, Textarea } from "../Utils/Utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
-import './NewFrenmoForm.scss';
-import {
-  useHistory,
-  Redirect
-} from 'react-router-dom';
+import "./NewFrenmoForm.scss";
+import { useHistory, Redirect } from "react-router-dom";
 
 class NewFrenmoForm extends Component {
   static defaultProps = {
@@ -39,10 +29,11 @@ class NewFrenmoForm extends Component {
     publicity: null,
     receiver_id: null,
     users_id: null,
-    receiver: '',
-    user: '',
+    receiver: "",
+    user: "",
     people: [],
-    submitted: false
+    submitted: false,
+    getInfo: false
   };
 
   handleChange = date => {
@@ -50,30 +41,21 @@ class NewFrenmoForm extends Component {
       expDate: date
     });
   };
+  handleGetInfo = () => {
+    this.setState({ getInfo: true });
+  };
 
   handleChangePerson = async event => {
     //change person id and handle
     let { receiver, user } = this.state;
-    const terms = this.state.give
-      ? receiver
-      : user;
+    const terms = this.state.give ? receiver : user;
 
-    const setid = this.state.give
-      ? 'receiver'
-      : 'users';
-    let possibleUsers = await FrenmoApiService.searchUser(
-      terms
-    );
+    const setid = this.state.give ? "receiver" : "users";
+    let possibleUsers = await FrenmoApiService.searchUser(terms);
     await this.setState({
       ...this.state,
-      [`${
-        setid === 'users'
-          ? 'user'
-          : setid
-      }_id`]:
-        possibleUsers.length > 0
-          ? possibleUsers[0].id
-          : null,
+      [`${setid === "users" ? "user" : setid}_id`]:
+        possibleUsers.length > 0 ? possibleUsers[0].id : null,
 
       people: possibleUsers
     });
@@ -81,20 +63,11 @@ class NewFrenmoForm extends Component {
 
   renderSelect = () => {};
 
-  handleSelectPerson = async (
-    id,
-    person
-  ) => {
-    const setid = this.state.give
-      ? 'receiver'
-      : 'user';
+  handleSelectPerson = async (id, person) => {
+    const setid = this.state.give ? "receiver" : "user";
     await this.setState({
       ...this.state,
-      [`${
-        setid === 'user'
-          ? setid + 's'
-          : setid
-      }_id`]: id,
+      [`${setid === "user" ? setid + "s" : setid}_id`]: id,
       [setid]: person
     });
   };
@@ -132,15 +105,10 @@ class NewFrenmoForm extends Component {
       .then(postRes => {
         //get the favor_id from the post
         //get the receiver_id and the users_id from the state
-        let {
-          receiver_id,
-          users_id,
-          favor_id
-        } = postRes;
+        let { receiver_id, users_id, favor_id } = postRes;
         if (this.state.give) {
           this.handleIssue({
-            receiver_id: this.state
-              .receiver_id,
+            receiver_id: this.state.receiver_id,
             favor_id,
             users_id
           });
@@ -148,17 +116,14 @@ class NewFrenmoForm extends Component {
           this.handleIssue({
             receiver_id: users_id,
             favor_id,
-            users_id: this.state
-              .users_id
+            users_id: this.state.users_id
           });
         }
         this.setState({
           postRes,
           submitted: true
         });
-        this.props.history.push(
-          '/feed'
-        );
+        this.props.history.push("/feed");
       })
       .then(this.context.addFrenmo)
       .catch(this.context.setError);
@@ -167,33 +132,26 @@ class NewFrenmoForm extends Component {
   renderForm = () => {
     let personSelection = (
       <div>
-        {this.state.people.map(
-          (person, i) => {
-            return (
-              <Button
-                key={i}
-                type="button"
-                value={person.username}
-                onClick={event => {
-                  this.handleSelectPerson(
-                    person.id,
-                    person.username
-                  );
-                }}
-              >
-                {person.username}
-              </Button>
-            );
-          }
-        )}
+        {this.state.people.map((person, i) => {
+          return (
+            <Button
+              key={i}
+              type="button"
+              value={person.username}
+              onClick={event => {
+                this.handleSelectPerson(person.id, person.username);
+              }}
+            >
+              {person.username}
+            </Button>
+          );
+        })}
       </div>
     );
     let sendPortion = (
       <>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__receiver">
-            Give To:
-          </Label>
+          <Label htmlFor="NewFrenmo__receiver">Give To:</Label>
           <div>{personSelection}</div>
           <Input
             type="text"
@@ -206,23 +164,17 @@ class NewFrenmoForm extends Component {
                 this.state.receiver_id,
                 event.target.value
               );
-              await this.handleChangePerson(
-                event
-              );
+              await this.handleChangePerson(event);
             }}
           />
         </div>
-        <Button type="submit">
-          Send Frenmo
-        </Button>
+        <Button type="submit">Send Frenmo</Button>
       </>
     );
     let askPortion = (
       <>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__user">
-            Request From:
-          </Label>
+          <Label htmlFor="NewFrenmo__user">Request From:</Label>
           <div>{personSelection}</div>
           <Input
             type="text"
@@ -236,24 +188,20 @@ class NewFrenmoForm extends Component {
                 this.state.users_id,
                 event.target.value
               );
-              await this.handleChangePerson(
-                event
-              );
+              await this.handleChangePerson(event);
             }}
           />
         </div>
-        <Button type="submit">
-          Request Frenmo
-        </Button>
+        <Button type="submit">Request Frenmo</Button>
       </>
     );
     let formtype;
     let giverOrReceiver;
     if (this.state.give) {
-      formtype = 'send';
+      formtype = "send";
       giverOrReceiver = sendPortion;
     } else if (this.state.ask) {
-      formtype = 'ask';
+      formtype = "ask";
       giverOrReceiver = askPortion;
     }
     let generalForm = (
@@ -287,85 +235,35 @@ class NewFrenmoForm extends Component {
           required
         >
           {/** TODO:can generate this on the fly from categories */}
-          <option value="13">
-            --Please choose a category--
-          </option>
-          <option value="1">
-            Advice
-          </option>
-          <option value="2">
-            Career
-          </option>
-          <option value="3">
-            Community
-          </option>
-          <option value="4">
-            Creative
-          </option>
-          <option value="5">
-            Education
-          </option>
-          <option value="6">
-            Emergency
-          </option>
-          <option value="7">
-            Family
-          </option>
-          <option value="8">
-            Food
-          </option>
-          <option value="9">
-            Gaming
-          </option>
-          <option value="10">
-            Health
-          </option>
+          <option value="13">--Please choose a category--</option>
+          <option value="1">Advice</option>
+          <option value="2">Career</option>
+          <option value="3">Community</option>
+          <option value="4">Creative</option>
+          <option value="5">Education</option>
+          <option value="6">Emergency</option>
+          <option value="7">Family</option>
+          <option value="8">Food</option>
+          <option value="9">Gaming</option>
+          <option value="10">Health</option>
           <option value="11">IT</option>
-          <option value="12">
-            Kids
-          </option>
-          <option value="13">
-            Miscellaneous
-          </option>
-          <option value="14">
-            Needs fixing
-          </option>
-          <option value="15">
-            Pets
-          </option>
-          <option value="16">
-            Plants
-          </option>
-          <option value="17">
-            Relationship
-          </option>
-          <option value="18">
-            Religion & Spirituality
-          </option>
-          <option value="19">
-            Ridesharing
-          </option>
-          <option value="20">
-            Sports
-          </option>
-          <option value="21">
-            Travel
-          </option>
-          <option value="22">
-            Volunteers Needed
-          </option>
-          <option value="23">
-            Wedding
-          </option>
+          <option value="12">Kids</option>
+          <option value="13">Miscellaneous</option>
+          <option value="14">Needs fixing</option>
+          <option value="15">Pets</option>
+          <option value="16">Plants</option>
+          <option value="17">Relationship</option>
+          <option value="18">Religion & Spirituality</option>
+          <option value="19">Ridesharing</option>
+          <option value="20">Sports</option>
+          <option value="21">Travel</option>
+          <option value="22">Volunteers Needed</option>
+          <option value="23">Wedding</option>
         </select>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__expiration-date">
-            Valid until:
-          </Label>
+          <Label htmlFor="NewFrenmo__expiration-date">Valid until:</Label>
           <DatePicker
-            selected={
-              this.state.expDate
-            }
+            selected={this.state.expDate}
             onChange={this.handleChange}
             id="NewFrenmo__expiration-date"
             name="expiration_date"
@@ -378,31 +276,22 @@ class NewFrenmoForm extends Component {
           aria-label="Select privacy setting for frenmo"
           onChange={event => {
             this.setState({
-              publicity:
-                event.target.value
+              publicity: event.target.value
             });
           }}
           required
         >
-          <option value="dm">
-            Direct Message
-          </option>
-          <option value="friend">
-            Friends Only
-          </option>
-          <option value="public">
-            Public
-          </option>
+          <option value="dm">Direct Message</option>
+          <option value="friend">Friends Only</option>
+          <option value="public">Public</option>
         </select>
         <div className="NewFrenmo__input-container">
-          <Label
-            htmlFor="NewFrenmo__limit"
-            className="limit-label"
-          >
-            Set Limit:{' '}
+          <Label htmlFor="NewFrenmo__limit" className="limit-label">
+            Set Limit:{" "}
             <FontAwesomeIcon
               icon={faInfoCircle}
               className="tip"
+              onClick={this.getInfo}
             />
           </Label>
           <Input

@@ -69,11 +69,12 @@ class NavMenu extends Component {
               onClick={this.handleSlide}
             />
           )}
-          <h2 className="NavMenu__Header">
-            <span className="logo">f</span>
-            renmo
-          </h2>
-
+          <NavLink to="/feed" className="NavMenu__Header">
+            <h2 className="NavMenu__Header">
+              <span className="logo">f</span>
+              renmo
+            </h2>
+          </NavLink>
           <MenuSlide showMenu={showMenu} />
         </div>
         <div className="Header__logged-in">
@@ -93,7 +94,7 @@ class NavMenu extends Component {
 
         <div className="Header__logged-in-desktop">
           <div>
-            <a href="/">
+            <a href="/feed">
               <div className="logout desktop" onClick={this.handleLogoutClick}>
                 Logout
               </div>
@@ -107,13 +108,14 @@ class NavMenu extends Component {
   renderLoginLink() {
     return (
       <>
-        {/* <div className="Nav-container"> */}
-        <NavLink to="/feed" className="Header__link">
-          <h2 className="NavMenu__Header" onClick={this.handleSlide}>
-            <span className="logo">f</span>
-            renmo
-          </h2>
-        </NavLink>
+        <div className="Header__link">
+          <NavLink to="/" className="NavMenu__Header">
+            <h2 className="NavMenu__Header" onClick={this.handleSlide}>
+              <span className="logo">f</span>
+              renmo
+            </h2>
+          </NavLink>
+        </div>
 
         <div className="Header__not-logged-in">
           <div className="navigation">
@@ -123,7 +125,6 @@ class NavMenu extends Component {
             </a>
           </div>
         </div>
-        {/* </div> */}
       </>
     );
   }

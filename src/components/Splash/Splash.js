@@ -18,28 +18,24 @@ class Splash extends Component {
               Make Frenmos and send to friends.
             </h3>
             <div className="Splash__container">
-              <div
-                data-done="Frenmo is a trade marketplace. Swap favors with your friends, your
-            family, your neighbors, your community, your world."
-                className="Splash__container-sub-1"
-              >
+              <div className="Splash__container-sub">
                 Frenmo is a trade marketplace. Swap favors with your friends,
                 your family, your neighbors, your community, your world.
               </div>
             </div>
-
-            <h4>Because the world could use more good deeds.</h4>
+            <div className="btn-container splash-btn">
+              <Link to="/register">
+                <Button className="Splash__link">Register!</Button>
+              </Link>
+              <Link to="/login">
+                <Button className="Splash__link">Login</Button>
+              </Link>
+            </div>
+            <footer className="Splash__footer">
+              Because the world could use more good deeds.
+            </footer>
           </div>
         </div>
-        <div className="btn-container splash-btn">
-          <Link to="/register">
-            <Button className="Splash__link">Register!</Button>
-          </Link>
-          <Link to="/login">
-            <Button className="Splash__link">Login</Button>
-          </Link>
-        </div>
-        <footer>Frenmo. Making the world a better place since 2020.</footer>
       </div>
     );
   }

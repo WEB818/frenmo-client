@@ -6,14 +6,17 @@
   align-items: center;
   justify-content: center;
   font-family: "Cantarell", sans-serif;
+
   &__wrap {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-around;
   }
 
   &__hero {
     padding-top: 40px;
+    line-height: 2;
     &::before {
       text-transform: lowercase;
 
@@ -23,6 +26,12 @@
       text-align: center;
       border-radius: 12px 0;
       margin-right: 20px;
+    }
+
+    &__footer {
+      position: absolute;
+      bottom: 0;
+      font-size: 1em;
     }
   }
 
@@ -48,18 +57,6 @@
     margin-right: auto;
     margin-top: 60px;
 
-    &-sub-1 {
-      position: absolute;
-      width: 300px;
-      font-size: 24px;
-      line-height: 1.5;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: lighter;
-      text-align: center;
-      font-family: "Helvetica Neue", sans-serif;
-    }
     &-sub {
       position: absolute;
       width: 300px;
@@ -71,44 +68,24 @@
       font-weight: lighter;
       text-align: center;
       font-family: "Helvetica Neue", sans-serif;
-      overflow: visible;
-      color: black;
-    }
-    &::before {
-      content: attr(data-done);
-      position: absolute;
-      overflow: visible;
-      z-index: -1;
       color: #0c0063;
+      overflow: hidden;
     }
-  }
-  .Splash__container-sub {
-    position: absolute;
-    width: 300px;
-    font-size: 24px;
-    line-height: 1.5;
-    top: 50%;
-    margin-top: 60px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: lighter;
-    text-align: center;
-    font-family: "Helvetica Neue", sans-serif;
-    z-index: -10;
-  }
-
-  & > footer {
-    position: absolute;
-    bottom: 0;
-    font-size: 0.7em;
-    padding: 12px;
   }
 }
 .splash-image {
   display: none;
 }
+.splash-btn {
+  padding: 70px;
+}
 @media (min-width: 1024px) {
+  .Splash__wrap {
+    width: 1200px;
+  }
   .splash-image {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 }
