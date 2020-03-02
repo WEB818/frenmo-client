@@ -132,18 +132,15 @@
 
 @media (min-width: 1440px) {
   .Dashboard {
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     height: 100vh;
     width: 25%;
-    padding: 0;
     margin: 0;
+    padding: 0;
     margin-left: 28%;
-
-    &__link {
-      margin: 0;
-      padding: 0;
-    }
+    background: lightblue;
+    position: fixed;
 
     &::-webkit-scrollbar {
       width: 12px;
@@ -166,6 +163,7 @@
     &__link-selected {
       padding: 0px;
       border-radius: 0;
+      background-color: #0c0063;
     }
     &__category {
       display: flex;
@@ -175,6 +173,7 @@
       font-size: 14px;
       border-radius: 0;
       background: lightblue;
+      box-shadow: 0px 0px 0px lightblue;
       color: #0c0063;
       width: 100%;
       padding: 30px;
@@ -182,7 +181,8 @@
       font-family: "Cantarell", sans-serif;
       letter-spacing: 2px;
 
-      &:hover {
+      &:hover,
+      &:active {
         background-color: #0c0063;
         color: white;
         width: 100%;
