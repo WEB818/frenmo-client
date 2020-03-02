@@ -9,6 +9,10 @@
     flex-direction: row;
     justify-content: center;
   }
+
+  &__error {
+    color: red;
+  }
 }
 
 .NewFrenmoForm__send > *,
@@ -29,7 +33,7 @@
 }
 .NewFrenmoPage__header {
   padding: 20px;
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   color: #0c0063;
 }
 .NewFrenmoForm__input-container {
@@ -41,7 +45,8 @@
   border-radius: 15px 0;
   background-color: lightblue;
   color: #0c0063;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Helvetica Neue',
+    sans-serif;
   font-weight: bold;
 }
 
@@ -52,7 +57,8 @@
   &::placeholder {
     letter-spacing: 1px;
     font-size: 12px;
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: 'Helvetica Neue',
+      sans-serif;
     text-align: left;
   }
 }

@@ -42,7 +42,8 @@ class NewFrenmoForm extends Component {
     receiver: '',
     user: '',
     people: [],
-    submitted: false
+    submitted: false,
+    error: null
   };
 
   handleChange = date => {
@@ -110,7 +111,7 @@ class NewFrenmoForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const {
+    let {
       title,
       description,
       category,
@@ -121,9 +122,27 @@ class NewFrenmoForm extends Component {
       limit
     } = event.target;
 
+    title = title.value.trim();
+    description = description.value.trim();
+    if (
+      title.length === 0 ||
+      description.length === 0
+    ) {
+      console.log(
+        title,
+        description,
+        'hi'
+      );
+      this.setState({
+        error:
+          'title or description must not be empty'
+      });
+      return;
+    }
+
     FrenmoApiService.postFrenmo(
-      title.value,
-      description.value,
+      title,
+      description,
       category.value,
       expiration_date.value,
       publicity.value,
@@ -261,13 +280,14 @@ class NewFrenmoForm extends Component {
         className={`NewFrenmoForm__${formtype}`}
         onSubmit={this.handleSubmit}
       >
+        {this.renderError()}
         <Input
           type="text"
           name="title"
           id="NewFrenmo__title"
           placeholder="Redeemable for..."
           aria-label="Add title for frenmo"
-          maxlength="40"
+          maxLength="40"
           required
         />
 
@@ -276,7 +296,7 @@ class NewFrenmoForm extends Component {
           name="description"
           placeholder="Add a message or description..."
           aria-label="Add description for frenmo"
-          maxlength="40"
+          maxLength="40"
           required
         />
 
@@ -423,6 +443,16 @@ class NewFrenmoForm extends Component {
   renderRedirect = () => {
     if (this.state.submitted) {
       return <Redirect to="/feed" />;
+    }
+  };
+
+  renderError = () => {
+    if (this.state.error) {
+      return (
+        <div className="NewFrenmoForm__error">
+          <p>{this.state.error}</p>
+        </div>
+      );
     }
   };
   render() {

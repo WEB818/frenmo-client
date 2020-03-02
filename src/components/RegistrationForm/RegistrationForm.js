@@ -28,6 +28,7 @@ class RegistrationForm extends Component {
     } = ev.target;
     name = name.value.trim();
     username = username.value.trim();
+
     if (
       name.length === 0 ||
       username.length === 0
@@ -42,7 +43,7 @@ class RegistrationForm extends Component {
     AuthApiService.postUser({
       name,
       username,
-      phone,
+      phone: phone.value,
       password: password.value
     })
       .then(user => {
