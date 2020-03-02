@@ -128,11 +128,6 @@ class NewFrenmoForm extends Component {
       title.length === 0 ||
       description.length === 0
     ) {
-      console.log(
-        title,
-        description,
-        'hi'
-      );
       this.setState({
         error:
           'title or description must not be empty'
