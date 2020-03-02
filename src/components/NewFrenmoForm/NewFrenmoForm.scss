@@ -13,11 +13,35 @@
   &__error {
     color: red;
   }
-}
 
-.NewFrenmoForm__send > *,
-.NewFrenmoForm__ask > * {
-  margin: 12px;
+  &__limitToolTip {
+    color: white;
+    z-index: 2;
+    background-color: #0c0063;
+    position: relative;
+    bottom: 120px;
+    border-radius: 15px 0px;
+    margin-bottom: -100px;
+    box-shadow: 5px 5px 5px lightblue;
+    min-height: 80px;
+    font-size: 1rem;
+    padding: 12px;
+    width: 60vw;
+    height: max-content;
+    max-width: 300px;
+  }
+
+  &__send > *,
+  &__ask > * {
+    margin: 12px;
+  }
+  &__ask > div.NewFrenmo__tipBox,
+  &__send > div.NewFrenmo__tipBox {
+    margin: 0;
+  }
+  &__tipBox {
+    height: 0;
+  }
 }
 
 .NewFrenmoForm__send,
