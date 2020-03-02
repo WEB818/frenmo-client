@@ -16,22 +16,22 @@ friends, reviews, categories, and other things that can be implemented later.
 ## Image Guide
 
 ## Login Page
-![frenmoLogin](https://user-images.githubusercontent.com/54965285/75578308-98b33480-5a31-11ea-90c2-1fe1f7ede1bc.PNG)
+![frenmoLogin](https://i.gyazo.com/8260c4c000ccffcd1317c661c8b60f7a.png)
 
 ## Register Page
-![frenmoSignup](https://user-images.githubusercontent.com/54965285/75578310-98b33480-5a31-11ea-86d3-3ee73b4558fd.PNG)
+![frenmoSignup](https://i.gyazo.com/034fec250a7ab6bf43af6255b609a6a0.png)
 
 ## User Home (Desktop View)
-![frenmoDT](https://user-images.githubusercontent.com/54965285/75578346-a9fc4100-5a31-11ea-9ff9-f35f139464f3.gif)
+![frenmoDT](https://i.gyazo.com/f0469d2d29a81d4782b0cc29570001c1.png)
 
 ## User Home (Mobile View)
-![mblFrenmoView](https://user-images.githubusercontent.com/54965285/75578311-98b33480-5a31-11ea-8d4e-12776fa9c75c.PNG)
+![mblFrenmoView](https://i.gyazo.com/39023ec0f7e21f4e66eff67840ce173f.png)
 
 ## My Frenmos
-![frenmoMyFs](https://user-images.githubusercontent.com/54965285/75578312-98b33480-5a31-11ea-903e-4148afb486c7.PNG)
+![frenmoMyFs](https://i.gyazo.com/2147e05af7f93da0606299a7c3f1df85.png)
 
 ## Create Frenmo
-![createFrenmo](https://user-images.githubusercontent.com/54965285/75578313-98b33480-5a31-11ea-83f4-9fc8866f30d5.PNG)
+![createFrenmo](https://gyazo.com/e3d01843225553f286267108ec9e610a)
 
 ## Technologies used
 React

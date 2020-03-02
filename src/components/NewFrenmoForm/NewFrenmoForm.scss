@@ -9,11 +9,39 @@
     flex-direction: row;
     justify-content: center;
   }
-}
 
-.NewFrenmoForm__send > *,
-.NewFrenmoForm__ask > * {
-  margin: 12px;
+  &__error {
+    color: red;
+  }
+
+  &__limitToolTip {
+    color: white;
+    z-index: 2;
+    background-color: #0c0063;
+    position: relative;
+    bottom: 120px;
+    border-radius: 15px 0px;
+    margin-bottom: -100px;
+    box-shadow: 5px 5px 5px lightblue;
+    min-height: 80px;
+    font-size: 1rem;
+    padding: 12px;
+    width: 60vw;
+    height: max-content;
+    max-width: 300px;
+  }
+
+  &__send > *,
+  &__ask > * {
+    margin: 12px;
+  }
+  &__ask > div.NewFrenmo__tipBox,
+  &__send > div.NewFrenmo__tipBox {
+    margin: 0;
+  }
+  &__tipBox {
+    height: 0;
+  }
 }
 
 .NewFrenmoForm__send,
@@ -29,7 +57,7 @@
 }
 .NewFrenmoPage__header {
   padding: 20px;
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   color: #0c0063;
 }
 .NewFrenmoForm__input-container {
@@ -41,7 +69,8 @@
   border-radius: 15px 0;
   background-color: lightblue;
   color: #0c0063;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Helvetica Neue',
+    sans-serif;
   font-weight: bold;
 }
 
@@ -52,7 +81,8 @@
   &::placeholder {
     letter-spacing: 1px;
     font-size: 12px;
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: 'Helvetica Neue',
+      sans-serif;
     text-align: left;
   }
 }

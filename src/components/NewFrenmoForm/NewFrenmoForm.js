@@ -33,7 +33,9 @@ class NewFrenmoForm extends Component {
     user: "",
     people: [],
     submitted: false,
-    getInfo: false
+    error: null,
+    limitToolTip: false,
+    limitToolTipCounter: 0
   };
 
   handleChange = date => {
@@ -83,7 +85,7 @@ class NewFrenmoForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const {
+    let {
       title,
       description,
       category,
@@ -94,9 +96,22 @@ class NewFrenmoForm extends Component {
       limit
     } = event.target;
 
+    title = title.value.trim();
+    description = description.value.trim();
+    if (
+      title.length === 0 ||
+      description.length === 0
+    ) {
+      this.setState({
+        error:
+          'title or description must not be empty'
+      });
+      return;
+    }
+
     FrenmoApiService.postFrenmo(
-      title.value,
-      description.value,
+      title,
+      description,
       category.value,
       expiration_date.value,
       publicity.value,
@@ -209,13 +224,14 @@ class NewFrenmoForm extends Component {
         className={`NewFrenmoForm__${formtype}`}
         onSubmit={this.handleSubmit}
       >
+        {this.renderError()}
         <Input
           type="text"
           name="title"
           id="NewFrenmo__title"
           placeholder="Redeemable for..."
           aria-label="Add title for frenmo"
-          maxlength="40"
+          maxLength="40"
           required
         />
 
@@ -224,7 +240,7 @@ class NewFrenmoForm extends Component {
           name="description"
           placeholder="Add a message or description..."
           aria-label="Add description for frenmo"
-          maxlength="40"
+          maxLength="40"
           required
         />
 
@@ -285,13 +301,74 @@ class NewFrenmoForm extends Component {
           <option value="friend">Friends Only</option>
           <option value="public">Public</option>
         </select>
+        <div className="NewFrenmo__tipBox">
+          {this.renderLimitTip()}
+        </div>
         <div className="NewFrenmo__input-container">
           <Label htmlFor="NewFrenmo__limit" className="limit-label">
             Set Limit:{" "}
             <FontAwesomeIcon
               icon={faInfoCircle}
+<<<<<<< HEAD
               className="tip"
               onClick={this.getInfo}
+=======
+              className="NewFrenmo__toolTip"
+              onClick={async () => {
+                await this.setState({
+                  limitToolTip: !this
+                    .state.limitToolTip
+                });
+                if (
+                  this.state
+                    .limitToolTip
+                ) {
+                  if (
+                    this.state
+                      .limitToolTipCounter >
+                    1
+                  ) {
+                    this.setState({
+                      limitToolTipCounter: 7
+                    });
+                  } else {
+                    this.setState({
+                      limitToolTipCounter: 7
+                    });
+                    const limitTimer = setInterval(
+                      () => {
+                        if (
+                          this.state
+                            .limitToolTipCounter <
+                          1
+                        ) {
+                          this.setState(
+                            {
+                              limitToolTip: false
+                            }
+                          );
+                          clearInterval(
+                            limitTimer
+                          );
+                          return;
+                        }
+
+                        this.setState({
+                          limitToolTipCounter: --this
+                            .state
+                            .limitToolTipCounter
+                        });
+                      },
+                      1000
+                    );
+                  }
+                } else {
+                  this.setState({
+                    limitToolTipCounter: 0
+                  });
+                }
+              }}
+>>>>>>> master
             />
           </Label>
           <Input
@@ -314,6 +391,32 @@ class NewFrenmoForm extends Component {
       return <Redirect to="/feed" />;
     }
   };
+
+  renderError = () => {
+    if (this.state.error) {
+      return (
+        <div className="NewFrenmoForm__error">
+          <p>{this.state.error}</p>
+        </div>
+      );
+    }
+  };
+
+  renderLimitTip = () => {
+    if (this.state.limitToolTip) {
+      return (
+        <div className="NewFrenmoForm__limitToolTip">
+          <p>
+            2 Billion by default. Set
+            the amount you want to
+            issue/ask for. Keeps you
+            from going nuts.
+          </p>
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <div className="NewFrenmoForm">
