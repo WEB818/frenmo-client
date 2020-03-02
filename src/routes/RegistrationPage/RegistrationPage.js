@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from 'react';
 
-import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
-import "./RegistrationPage.scss";
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import './RegistrationPage.scss';
 
 class RegistrationPage extends Component {
   static defaultProps = {
@@ -12,18 +14,23 @@ class RegistrationPage extends Component {
 
   handleRegistrationSuccess = () => {
     const { history } = this.props;
-    history.push("/login");
+    history.push('/login');
   };
 
   render() {
     return (
-      <section>
+      <>
         <p className="tagline"></p>
-        <h2 className="Auth__header">Sign up</h2>
+        <h2 className="Auth__header">
+          Sign up
+        </h2>
         <RegistrationForm
-          onRegistrationSuccess={this.handleRegistrationSuccess}
+          onRegistrationSuccess={
+            this
+              .handleRegistrationSuccess
+          }
         />
-      </section>
+      </>
     );
   }
 }

@@ -43,7 +43,9 @@ class NewFrenmoForm extends Component {
     user: '',
     people: [],
     submitted: false,
-    error: null
+    error: null,
+    limitToolTip: false,
+    limitToolTipCounter: 0
   };
 
   handleChange = date => {
@@ -409,6 +411,9 @@ class NewFrenmoForm extends Component {
             Public
           </option>
         </select>
+        <div className="NewFrenmo__tipBox">
+          {this.renderLimitTip()}
+        </div>
         <div className="NewFrenmo__input-container">
           <Label
             htmlFor="NewFrenmo__limit"
@@ -417,7 +422,61 @@ class NewFrenmoForm extends Component {
             Set Limit:{' '}
             <FontAwesomeIcon
               icon={faInfoCircle}
-              className="tip"
+              className="NewFrenmo__toolTip"
+              onClick={async () => {
+                await this.setState({
+                  limitToolTip: !this
+                    .state.limitToolTip
+                });
+                if (
+                  this.state
+                    .limitToolTip
+                ) {
+                  if (
+                    this.state
+                      .limitToolTipCounter >
+                    1
+                  ) {
+                    this.setState({
+                      limitToolTipCounter: 7
+                    });
+                  } else {
+                    this.setState({
+                      limitToolTipCounter: 7
+                    });
+                    const limitTimer = setInterval(
+                      () => {
+                        if (
+                          this.state
+                            .limitToolTipCounter <
+                          1
+                        ) {
+                          this.setState(
+                            {
+                              limitToolTip: false
+                            }
+                          );
+                          clearInterval(
+                            limitTimer
+                          );
+                          return;
+                        }
+
+                        this.setState({
+                          limitToolTipCounter: --this
+                            .state
+                            .limitToolTipCounter
+                        });
+                      },
+                      1000
+                    );
+                  }
+                } else {
+                  this.setState({
+                    limitToolTipCounter: 0
+                  });
+                }
+              }}
             />
           </Label>
           <Input
@@ -450,6 +509,22 @@ class NewFrenmoForm extends Component {
       );
     }
   };
+
+  renderLimitTip = () => {
+    if (this.state.limitToolTip) {
+      return (
+        <div className="NewFrenmoForm__limitToolTip">
+          <p>
+            2 Billion by default. Set
+            the amount you want to
+            issue/ask for. Keeps you
+            from going nuts.
+          </p>
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <div className="NewFrenmoForm">
