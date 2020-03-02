@@ -98,13 +98,9 @@ class NewFrenmoForm extends Component {
 
     title = title.value.trim();
     description = description.value.trim();
-    if (
-      title.length === 0 ||
-      description.length === 0
-    ) {
+    if (title.length === 0 || description.length === 0) {
       this.setState({
-        error:
-          'title or description must not be empty'
+        error: "title or description must not be empty"
       });
       return;
     }
@@ -301,33 +297,19 @@ class NewFrenmoForm extends Component {
           <option value="friend">Friends Only</option>
           <option value="public">Public</option>
         </select>
-        <div className="NewFrenmo__tipBox">
-          {this.renderLimitTip()}
-        </div>
+        <div className="NewFrenmo__tipBox">{this.renderLimitTip()}</div>
         <div className="NewFrenmo__input-container">
           <Label htmlFor="NewFrenmo__limit" className="limit-label">
             Set Limit:{" "}
             <FontAwesomeIcon
               icon={faInfoCircle}
-<<<<<<< HEAD
-              className="tip"
-              onClick={this.getInfo}
-=======
               className="NewFrenmo__toolTip"
               onClick={async () => {
                 await this.setState({
-                  limitToolTip: !this
-                    .state.limitToolTip
+                  limitToolTip: !this.state.limitToolTip
                 });
-                if (
-                  this.state
-                    .limitToolTip
-                ) {
-                  if (
-                    this.state
-                      .limitToolTipCounter >
-                    1
-                  ) {
+                if (this.state.limitToolTip) {
+                  if (this.state.limitToolTipCounter > 1) {
                     this.setState({
                       limitToolTipCounter: 7
                     });
@@ -335,32 +317,19 @@ class NewFrenmoForm extends Component {
                     this.setState({
                       limitToolTipCounter: 7
                     });
-                    const limitTimer = setInterval(
-                      () => {
-                        if (
-                          this.state
-                            .limitToolTipCounter <
-                          1
-                        ) {
-                          this.setState(
-                            {
-                              limitToolTip: false
-                            }
-                          );
-                          clearInterval(
-                            limitTimer
-                          );
-                          return;
-                        }
-
+                    const limitTimer = setInterval(() => {
+                      if (this.state.limitToolTipCounter < 1) {
                         this.setState({
-                          limitToolTipCounter: --this
-                            .state
-                            .limitToolTipCounter
+                          limitToolTip: false
                         });
-                      },
-                      1000
-                    );
+                        clearInterval(limitTimer);
+                        return;
+                      }
+
+                      this.setState({
+                        limitToolTipCounter: --this.state.limitToolTipCounter
+                      });
+                    }, 1000);
                   }
                 } else {
                   this.setState({
@@ -368,7 +337,6 @@ class NewFrenmoForm extends Component {
                   });
                 }
               }}
->>>>>>> master
             />
           </Label>
           <Input
@@ -407,10 +375,8 @@ class NewFrenmoForm extends Component {
       return (
         <div className="NewFrenmoForm__limitToolTip">
           <p>
-            2 Billion by default. Set
-            the amount you want to
-            issue/ask for. Keeps you
-            from going nuts.
+            2 Billion by default. Set the amount you want to issue/ask for.
+            Keeps you from going nuts.
           </p>
         </div>
       );

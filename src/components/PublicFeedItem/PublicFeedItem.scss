@@ -120,7 +120,11 @@
 @media (min-width: 768px) {
   .PublicFeedItem {
     margin-left: 40%;
-    width: 58%;
+    width: 60vw;
+
+    &__frenmo {
+      width: 50vw;
+    }
   }
   .PublicFeedItem__sub-titles {
     width: 280px;
@@ -137,7 +141,6 @@
 @media (min-width: 1440px) {
   .PublicFeedItem {
     margin-left: 30%;
-    width: 40vw;
 
     &__sub-titles {
       margin-left: 120px;
