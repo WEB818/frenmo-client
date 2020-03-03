@@ -24,7 +24,8 @@
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 6px 6px 6px #0c0063;
+    box-shadow: inset 6px 6px 6px
+      #0c0063;
     border-radius: 15px 0;
   }
 
@@ -120,6 +121,11 @@
     left: 15%;
   }
   .Dashboard {
+    padding-top: 10vh;
+    &__link {
+      padding-top: 30px;
+      margin-top: 0;
+    }
     &::-webkit-scrollbar {
       height: 12px;
     }
@@ -137,7 +143,6 @@
     height: 100vh;
     width: 25%;
     margin: 0;
-    padding: 0;
     margin-left: 28%;
     background: lightblue;
     position: fixed;
@@ -158,7 +163,7 @@
       width: 100%;
       background: lightblue;
       color: #0c0063;
-      margin-top: 10vh;
+      // margin-top: 10vh;
     }
     &__link-selected {
       padding: 0px;
@@ -178,7 +183,8 @@
       width: 100%;
       padding: 30px;
       margin: 0;
-      font-family: "Cantarell", sans-serif;
+      font-family: 'Cantarell',
+        sans-serif;
       letter-spacing: 2px;
 
       &:hover,
