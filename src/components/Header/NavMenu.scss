@@ -11,6 +11,7 @@
   font-size: 1.8rem;
   letter-spacing: 0.5rem;
   font-family: "Cantarell", sans-serif;
+  color: white;
 }
 
 .NavMenu__list {
@@ -94,6 +95,8 @@
   justify-content: space-around;
   align-items: center;
   background-color: #0c0063;
+  position: fixed;
+  z-index: 10;
 }
 
 .menu-icon {
@@ -140,10 +143,9 @@
       color: #0c0063;
     }
   }
-  .NavMenu__menu-item {
-  }
+
   #navSlide {
-    position: absolute;
+    position: fixed;
     transform: translateX(-100%);
     transition: transform 400ms ease-in;
     width: 38%;

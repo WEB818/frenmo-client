@@ -1,12 +1,11 @@
 .LogForm {
   display: flex;
   flex-direction: column;
-  height: 50vh;
   justify-content: flex-end;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  margin-top: 20vh;
 
   &__alert {
     text-align: center;
@@ -24,10 +23,4 @@
 .page-links:hover {
   font-weight: 800;
   color: #607296;
-}
-
-@media (min-width: 768px) {
-  .LogForm {
-    height: 30vh;
-  }
 }
