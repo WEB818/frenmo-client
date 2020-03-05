@@ -10,7 +10,7 @@
   margin-left: 20px;
   font-size: 1.8rem;
   letter-spacing: 0.5rem;
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   color: white;
 }
 
@@ -35,7 +35,7 @@
 .logout,
 .login {
   font-size: 1em;
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   position: relative;
   right: -36px;
   bottom: -8px;
@@ -136,7 +136,7 @@
     letter-spacing: 5px;
     font-weight: 700;
     width: 100%;
-    font-family: "Cantarell", sans-serif;
+    font-family: 'Cantarell', sans-serif;
 
     &:hover {
       background-color: lightblue;
@@ -175,10 +175,14 @@
   .NavMenu__menu-item {
     padding: 60px;
   }
+  .NavMenu__links {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
   .desktop {
     display: flex;
     font-size: 1.4em;
-    font-family: "Cantarell", sans-serif;
+    font-family: 'Cantarell', sans-serif;
     color: white;
     text-decoration: none;
   }
