@@ -40,6 +40,18 @@ class RegistrationForm extends Component {
       return;
     }
 
+    const regex = RegExp('\\s');
+    if (
+      regex.test(name) ||
+      regex.test(password)
+    ) {
+      this.setState({
+        error:
+          'Name or username must not contain any spaces'
+      });
+      return;
+    }
+
     AuthApiService.postUser({
       name,
       username,
