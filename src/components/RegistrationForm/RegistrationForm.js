@@ -55,14 +55,25 @@ class RegistrationForm extends Component {
       });
       return;
     }
+    //TODO: validate for greater than 40characters
+    if (
+      password.length > 40 ||
+      username.length > 40 ||
+      name.length > 40
+    ) {
+      this.setState({
+        error:
+          'Passwords, usernames, and names must be no more than 40 characters long'
+      });
+      return;
+    }
 
-    // if ()
-
+    //TODO: validate for weird characters in usernames
     AuthApiService.postUser({
       name,
       username,
       phone: phone.value,
-      password: password.value
+      password
     })
       .then(user => {
         name.value = '';
@@ -70,6 +81,7 @@ class RegistrationForm extends Component {
         phone.value = '';
         password.value = '';
         this.props.onRegistrationSuccess();
+        //TODO: redirect to sign in page and let add a congradulatory message
       })
       .catch(res => {
         this.setState({
