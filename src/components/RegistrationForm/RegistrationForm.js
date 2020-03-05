@@ -18,7 +18,7 @@ class RegistrationForm extends Component {
 
   firstInput = React.createRef();
 
-  handleSubmit = ev => {
+  handleSubmit = async ev => {
     ev.preventDefault();
     let {
       name,
@@ -28,6 +28,10 @@ class RegistrationForm extends Component {
     } = ev.target;
     name = name.value.trim();
     username = username.value.trim();
+    password = password.value.trim();
+    await this.setState({
+      error: null
+    });
 
     if (
       name.length === 0 ||
@@ -42,15 +46,17 @@ class RegistrationForm extends Component {
 
     const regex = RegExp('\\s');
     if (
-      regex.test(name) ||
+      regex.test(username) ||
       regex.test(password)
     ) {
       this.setState({
         error:
-          'Name or username must not contain any spaces'
+          'Password or username must not contain any spaces'
       });
       return;
     }
+
+    // if ()
 
     AuthApiService.postUser({
       name,
@@ -137,7 +143,7 @@ class RegistrationForm extends Component {
 
         <div className="RegForm__label-input">
           <Input
-            id="registration-password-input"
+            id="registration-password-confirm"
             name="confirm-password"
             type="password"
             placeholder="Confirm password"
