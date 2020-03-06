@@ -24,8 +24,7 @@
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 6px 6px 6px
-      #0c0063;
+    box-shadow: inset 6px 6px 6px #0c0063;
     border-radius: 15px 0;
   }
 
@@ -65,11 +64,10 @@
   position: relative;
   margin-top: 15vh;
   padding: 60px;
-  // margin-left: auto;
-  // margin-right: auto;
+
   left: 10%;
   top: 10%;
-  // left: 0%;
+
   transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
@@ -183,8 +181,7 @@
       width: 100%;
       padding: 30px;
       margin: 0;
-      font-family: 'Cantarell',
-        sans-serif;
+      font-family: "Cantarell", sans-serif;
       letter-spacing: 2px;
 
       &:hover,
