@@ -76,12 +76,7 @@ class RegistrationForm extends Component {
       password
     })
       .then(user => {
-        name.value = '';
-        username.value = '';
-        phone.value = '';
-        password.value = '';
         this.props.onRegistrationSuccess();
-        //TODO: redirect to sign in page and let add a congradulatory message
       })
       .catch(res => {
         this.setState({

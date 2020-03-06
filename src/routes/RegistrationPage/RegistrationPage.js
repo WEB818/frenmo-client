@@ -4,6 +4,7 @@ import React, {
 
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import './RegistrationPage.scss';
+import { Redirect } from 'react-router-dom';
 
 class RegistrationPage extends Component {
   static defaultProps = {
@@ -14,7 +15,9 @@ class RegistrationPage extends Component {
 
   handleRegistrationSuccess = () => {
     const { history } = this.props;
-    history.push('/login');
+    history.push('/login', {
+      goodRegistration: true
+    });
   };
 
   render() {
@@ -25,9 +28,8 @@ class RegistrationPage extends Component {
           Sign up
         </h2>
         <RegistrationForm
-          onRegistrationSuccess={
-            this
-              .handleRegistrationSuccess
+          onRegistrationSuccess={() =>
+            this.handleRegistrationSuccess()
           }
         />
       </>
