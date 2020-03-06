@@ -7,7 +7,7 @@
   margin-left: auto;
   margin-right: auto;
   min-height: max-content;
-  margin-top: 20vh;
+  margin-top: 10vh;
 
   &__alert {
     text-align: center;
@@ -15,6 +15,20 @@
     margin-left: auto;
     margin-right: auto;
     display: relative;
+  }
+  &__warning {
+    font-size: 0.8rem;
+    color: red;
+    padding-left: 24px;
+  }
+
+  &__label-input {
+    width: 30vw;
+    min-width: 250px;
+    max-width: 400px;
+    &.confirm {
+      height: 60px;
+    }
   }
 }
 
