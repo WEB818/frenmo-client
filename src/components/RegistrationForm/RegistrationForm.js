@@ -13,7 +13,9 @@ class RegistrationForm extends Component {
   };
 
   state = {
-    error: null
+    error: null,
+    password: '',
+    confirmPass: ''
   };
 
   firstInput = React.createRef();
@@ -24,11 +26,14 @@ class RegistrationForm extends Component {
       name,
       username,
       phone,
-      password
+      password,
+      confirmPass
     } = ev.target;
     name = name.value.trim();
     username = username.value.trim();
-    password = password.value.trim();
+    password = password.value;
+    confirmPass = confirmPass.value;
+
     await this.setState({
       error: null
     });
@@ -55,7 +60,6 @@ class RegistrationForm extends Component {
       });
       return;
     }
-    //TODO: validate for greater than 40characters
     if (
       password.length > 40 ||
       username.length > 40 ||
@@ -64,6 +68,13 @@ class RegistrationForm extends Component {
       this.setState({
         error:
           'Passwords, usernames, and names must be no more than 40 characters long'
+      });
+      return;
+    }
+
+    if (password !== confirmPass) {
+      this.setState({
+        error: 'Passwords do not Match'
       });
       return;
     }
@@ -99,6 +110,10 @@ class RegistrationForm extends Component {
   }
 
   render() {
+    const {
+      password,
+      confirmPass
+    } = this.state;
     return (
       <form
         className="RegForm"
@@ -145,17 +160,34 @@ class RegistrationForm extends Component {
             placeholder="Choose a password"
             aria-label="Choose a password"
             required
+            onChange={event =>
+              this.setState({
+                password:
+                  event.target.value
+              })
+            }
           />
         </div>
 
-        <div className="RegForm__label-input">
+        <div className="RegForm__label-input confirm">
           <Input
             id="registration-password-confirm"
-            name="confirm-password"
+            name="confirmPass"
             type="password"
             placeholder="Confirm password"
             aria-label="Confirm password"
+            onChange={event =>
+              this.setState({
+                confirmPass:
+                  event.target.value
+              })
+            }
           />
+          <p className="RegForm__warning">
+            {password === confirmPass
+              ? null
+              : 'passwords must match.'}
+          </p>
         </div>
 
         <footer className="RegForm__footer">
