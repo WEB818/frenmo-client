@@ -13,7 +13,7 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    "Imprima", monospace;
+    "Imprima", "Cantarell", "Helvetica Neue", monospace;
 }
 
 li {
@@ -23,8 +23,3 @@ li {
 a {
   text-decoration: none;
 }
-/* 
-a:visited {
-  text-decoration: none;
-  color: white;
-} */
