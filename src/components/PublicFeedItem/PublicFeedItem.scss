@@ -51,12 +51,12 @@
 
   &__frenmo {
     display: block;
-    text-transform: uppercase;
     flex-wrap: wrap;
+    font-style: italic;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #0c0063;
-    font-size: 14px;
+    font-size: 1.4rem;
     width: 80vw;
     &__notification {
       color: white;

@@ -43,10 +43,6 @@ export default class FriendsList extends Component {
       friends,
       friend
     } = this.props;
-    console.log(
-      this.props,
-      'in friendslist'
-    );
     return (
       <>
         <div>

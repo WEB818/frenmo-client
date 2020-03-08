@@ -113,10 +113,12 @@
 
 @media (min-width: 768px) {
   .NavMenu__menu-item {
-    // padding: 40px;
     padding-left: 1rem;
     padding-right: 1rem;
     width: 100%;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    font-style: italic;
   }
 
   .menu-icon {
@@ -180,9 +182,6 @@
 
 @media (min-width: 1440px) {
   .NavMenu__menu-item {
-    // padding: 60px;
-    padding-right: 2rem;
-    padding-left: 2rem;
   }
   .NavMenu__links {
     font-size: 1.3rem;
@@ -200,7 +199,6 @@
   }
   #navSlide {
     background-color: #0c0063;
-    width: 28%;
   }
 }
 
@@ -211,6 +209,5 @@
 
   #navSlide {
     background-color: #0c0063;
-    width: 20%;
   }
 }
