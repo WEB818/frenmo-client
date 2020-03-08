@@ -52,12 +52,10 @@ export default class PublicFeedItem extends Component {
   handleHoverExpand = event => {
     event.target.style =
       ' overflow:auto;  white-space:normal; max-height:max-content';
-    // 'text-align:left; overflow:auto; min-width:40%; white-space:normal; margin-left:0; min-height:max-content';
   };
 
   handleClickShrink = event => {
     event.target.style = '';
-    // 'text-align:right; overflow:hidden; white-space:nowrap; margin-left:auto; ';
   };
 
   renderHoverExpand = {
@@ -180,8 +178,8 @@ export default class PublicFeedItem extends Component {
             />
           )}
         </div>
-        <div className="PublicFeedItem__expanded">
-          {expanded && (
+        {expanded && (
+          <div className="PublicFeedItem__expanded">
             <div>
               {recdByName && (
                 <div
@@ -271,8 +269,8 @@ export default class PublicFeedItem extends Component {
                 </div>
               )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
