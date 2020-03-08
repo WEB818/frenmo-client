@@ -1,3 +1,6 @@
+.Favors {
+  padding-right: 2vw;
+}
 .PublicFeedItem {
   display: flex;
   flex-wrap: wrap;
@@ -6,10 +9,35 @@
   border-top: 1px solid lightblue;
   padding: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
   width: 100vw;
   &:hover {
-    background-color: lightblue;
+    box-shadow: -3px 5px 30px
+      rgb(69, 95, 109);
+  }
+  &__deets {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 80%;
+    text-align: right;
+    margin-left: 2vw;
+    margin-right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    hyphens: auto;
+  }
+
+  &__hoverMessage {
+    font-size: 0.5rem;
+    width: 34%;
+    max-width: 200px;
+    border-radius: 5px;
+    padding-left: 4vw;
+    background-color: white;
+    color: #0c0063;
+    padding: 3px;
+    padding-left: 4vw;
+    box-shadow: -1px 1px 5px
+      rgb(69, 95, 109);
   }
 
   &__title {
@@ -21,12 +49,12 @@
 
   &__frenmo {
     display: block;
-    text-transform: uppercase;
     flex-wrap: wrap;
+    font-style: italic;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #0c0063;
-    font-size: 14px;
+    font-size: 1.4rem;
     width: 80vw;
     &__notification {
       color: white;
@@ -34,63 +62,74 @@
   }
   &__expanded {
     display: flex;
+    background-color: rgb(
+      238,
+      245,
+      252
+    );
     flex-direction: row;
     padding: 10px;
-    text-transform: capitalize;
+    padding-bottom: 2rem;
+    & > div {
+      width: 100%;
+    }
   }
 
   &__sub-titles {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 280px;
-    &:hover::after {
-      font-size: 12px;
-      text-align: center;
-      width: 120px;
-      height: 20px;
-      border-radius: 5px;
-      padding: 3px;
-      position: absolute;
-      left: 40px;
-      background-color: white;
-      color: #0c0063;
+    align-content: center;
+    align-items: center;
+    width: 85vw;
+    padding-top: 2rem;
+    & > svg {
+      font-size: 1.5rem;
     }
-  }
-  .receiver {
-    &:hover {
-      color: white;
-    }
-    &:hover::after {
-      content: "A favor for...";
-    }
-  }
-  .description {
-    &:hover {
-      color: white;
-    }
-    &:hover::after {
-      content: "A message";
+
+    &.description,
+    &.expdate,
+    &.issuer,
+    &.receiver {
+      min-height: 100px;
+      height: max-content;
+      display: grid;
+      grid-template-rows: repeat(
+        3rem,
+        1fr
+      );
+      grid-gap: 1vw;
+      grid-auto-rows: auto;
+      grid-auto-columns: minmax(
+        20px,
+        1fr
+      );
+      & > .PublicFeedItem {
+        &__hoverMessage {
+          grid-column: 2/4;
+          min-width: max-content;
+        }
+        &__deets {
+          margin-bottom: -1.9rem;
+          grid-column: 1/4;
+          text-align: left;
+          min-width: 100%;
+          min-height: 4rem;
+          padding-left: 3vw;
+          border-left: 3px double
+            rgb(64, 105, 133);
+          padding-bottom: 2vh;
+        }
+      }
     }
   }
 
-  .issuer {
-    &:hover {
-      color: white;
-    }
-
-    &:hover::after {
-      content: "From a good friend";
-    }
+  & > p {
+    margin: 0;
+    width: 50%;
   }
+
   .expdate {
-    &:hover {
-      color: white;
-    }
-
-    &:hover::after {
-      content: "Time is ticking";
-    }
   }
   &__flags {
     display: flex;
@@ -104,6 +143,7 @@
   }
   &__button {
     display: flex;
+    padding-top: 2rem;
     justify-content: center;
   }
   & .yellow {
@@ -120,8 +160,8 @@
 
 @media (min-width: 768px) {
   .PublicFeedItem {
-    margin-left: 40%;
-    width: 60vw;
+    margin-left: 25%;
+    width: 70vw;
 
     &__frenmo {
       width: 50vw;
@@ -130,22 +170,21 @@
   .PublicFeedItem__sub-titles {
     width: 50vw;
     justify-content: space-between;
-
-    &:hover::after {
-      margin-left: 40%;
-    }
   }
 }
 
 // feed page should be middle 40% of screen
 @media (min-width: 1440px) {
   .PublicFeedItem {
-    margin-left: 35%;
+    margin-left: 25%;
 
     &__sub-titles {
-      &:hover::after {
-        margin-left: 35%;
-      }
+      margin-bottom: 1vh;
+      border-bottom: 1px dotted
+        rgb(64, 105, 133);
+    }
+    &__deets {
+      min-height: max-content;
     }
   }
 }

@@ -129,26 +129,41 @@ export default class FeedPage extends Component {
           </Link>
         )}
 
+        {publicity === 'friends' &&
+          !friendFrenmos.favors
+            .length && (
+            <div className="welcome-message">
+              No frenmos yet. Connect
+              with your friends and
+              start swapping favors!
+            </div>
+          )}
 
-        {publicity === "friends" && !friendFrenmos.favors.length && (
-          <div className="welcome-message">
-            No frenmos yet. Connect with your friends and start swapping favors!
-          </div>
-        )}
-
-        {publicity === "personal" && !personalFrenmos.favors.length && (
-          <div className="welcome-message">
-            Brand new to Frenmo?
-            <br />
-            Create favors and start swapping them with{" "}
-            <span className="text smaller">your friends, </span>
-            <span className="text small">your family, </span>
-            <span className="text medium">your neighbors, </span>
-            <span className="text big">your community, </span>
-            <span className="text bigger">the world.</span>
-          </div>
-        )}
-
+        {publicity === 'personal' &&
+          !personalFrenmos.favors
+            .length && (
+            <div className="welcome-message">
+              Brand new to Frenmo?
+              <br />
+              Create favors and start
+              swapping them with{' '}
+              <span className="text smaller">
+                your friends,{' '}
+              </span>
+              <span className="text small">
+                your family,{' '}
+              </span>
+              <span className="text medium">
+                your neighbors,{' '}
+              </span>
+              <span className="text big">
+                your community,{' '}
+              </span>
+              <span className="text bigger">
+                the world.
+              </span>
+            </div>
+          )}
 
         {publicity === 'public' &&
           !allPublicFrenmos.favors
@@ -163,7 +178,7 @@ export default class FeedPage extends Component {
           )}
 
         {favors && (
-          <div>
+          <div className="Favors">
             {favors.map(
               (pubFavor, idx) => (
                 <PublicFeedItem
