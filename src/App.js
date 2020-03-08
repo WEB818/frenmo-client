@@ -26,6 +26,7 @@ import { PopupFeedback } from './components/PopupFeedback';
 import NewFrenmoForm from './components/NewFrenmoForm/NewFrenmoForm';
 import './App.scss';
 import Splash from './components/Splash/Splash';
+// import '@openfonts/cantarell_latin';
 
 class App extends Component {
   state = {

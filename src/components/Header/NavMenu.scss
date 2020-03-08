@@ -10,8 +10,10 @@
   margin-left: 20px;
   font-size: 1.8rem;
   letter-spacing: 0.5rem;
+  font-style: italic;
   font-family: 'Cantarell', sans-serif;
   color: white;
+  z-index: 2;
 }
 
 .NavMenu__list {
@@ -20,6 +22,9 @@
 
 .logo {
   font-size: 70px;
+  filter: drop-shadow(
+    -16px 16px 9px rgb(35, 48, 55)
+  );
 }
 
 .navigation {
@@ -148,7 +153,7 @@
     position: fixed;
     transform: translateX(-100%);
     transition: transform 400ms ease-in;
-    width: 38%;
+    width: 20%;
     left: 0px;
     height: 90vh;
     top: 10vh;
