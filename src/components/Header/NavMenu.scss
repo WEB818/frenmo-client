@@ -113,7 +113,9 @@
 
 @media (min-width: 768px) {
   .NavMenu__menu-item {
-    padding: 40px;
+    // padding: 40px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     width: 100%;
   }
 
@@ -125,7 +127,7 @@
 
   .NavMenu__list {
     position: absolute;
-    padding: 20px;
+    padding: 1rem;
     height: 90vh;
     justify-content: space-around;
   }
@@ -178,7 +180,9 @@
 
 @media (min-width: 1440px) {
   .NavMenu__menu-item {
-    padding: 60px;
+    // padding: 60px;
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
   .NavMenu__links {
     font-size: 1.3rem;
