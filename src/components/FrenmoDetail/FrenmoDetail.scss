@@ -1,6 +1,9 @@
 .FrenmoDetail {
   position: fixed;
   padding: 30px;
+  overflow-y: scroll;
+  height: 60vh;
+  // z-index: 6;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -38,18 +41,18 @@
   }
   &__publicity {
     &:hover::after {
-      content: "Who sees me";
+      content: 'Who sees me';
     }
   }
 
   &__issuedby {
     &:hover::after {
-      content: "From a good friend";
+      content: 'From a good friend';
     }
   }
   &__issuedto {
     &:hover::after {
-      content: "To whom frenmo is issued";
+      content: 'To whom frenmo is issued';
     }
   }
 }
@@ -81,14 +84,15 @@
   font-size: 40px;
 }
 .void {
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Cantarell', sans-serif;
   color: #0c0063;
   font-size: 90px;
   letter-spacing: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%)
+    rotate(-45deg);
 }
 
 @media (min-width: 768px) {
