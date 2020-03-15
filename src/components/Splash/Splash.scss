@@ -1,3 +1,7 @@
+.App__container.wrapper {
+  height: 100vh;
+  padding: 0;
+}
 .Splash {
   height: max-content;
 
@@ -10,18 +14,26 @@
   align-items: center;
   justify-content: center;
   font-family: 'Cantarell', sans-serif;
-
+  & > h2 {
+    @media (min-height: 600px) {
+      height: 10vh;
+      font-size: 5vh;
+    }
+  }
   &__wrap {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     width: 100vw;
+    height: 100vh;
     padding-top: 5vh;
   }
 
   &__hero {
-    padding-top: 40px;
+    padding-top: 2vh;
+    margin-top: 0;
+    font-size: 3vh;
     line-height: 2;
     &::before {
       text-transform: lowercase;
@@ -53,18 +65,32 @@
 
   .Splash__container {
     color: #0c0063;
-    height: 150px;
+    height: 10vh;
+    margin-top: 3vh;
     width: 300px;
     position: relative;
     display: flex;
     border-radius: 75px 0;
     margin-top: 60px;
+    @media (min-width: 712) {
+      width: 60vw;
+      // max-width: 512px;
+    }
 
     &-sub {
       position: absolute;
       width: 300px;
       height: max-content;
-      font-size: 24px;
+      font-size: 4.2vh;
+      @media (min-height: 600px) {
+        font-size: 24px;
+      }
+      @media (min-width: 712px) {
+        width: 60vw;
+        margin-left: 10vw;
+        max-width: 512px;
+        font-size: 2vw;
+      }
       line-height: 1.5;
       top: 50%;
       left: 50%;
@@ -78,8 +104,15 @@
     }
   }
 }
-.splash-btn {
+.splash-btn.btn-container {
+  & > a > button {
+    font-size: 2vh;
+    height: 4vh;
+    padding: 1vh;
+  }
   width: 100vw;
+  height: 5vh;
+  padding: 1vh;
 }
 .splash-image {
   display: none;
@@ -118,13 +151,13 @@
   }
 }
 
-@media (min-height: 1200px) {
-  .Splash {
-    &__hero {
-      padding-top: 7vh;
-    }
-    &__container {
-      padding-top: 30vh;
-    }
-  }
-}
+// @media (min-height: 1200px) {
+//   .Splash {
+//     &__hero {
+//       padding-top: 7vh;
+//     }
+//     &__container {
+//       padding-top: 30vh;
+//     }
+//   }
+// }
