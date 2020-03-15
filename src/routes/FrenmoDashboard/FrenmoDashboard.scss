@@ -24,7 +24,8 @@
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 6px 6px 6px #0c0063;
+    box-shadow: inset 6px 6px 6px
+      #0c0063;
     border-radius: 15px 0;
   }
 
@@ -161,7 +162,6 @@
       width: 100%;
       background: lightblue;
       color: #0c0063;
-      // margin-top: 10vh;
     }
     &__link-selected {
       padding: 0px;
@@ -181,7 +181,8 @@
       width: 100%;
       padding: 30px;
       margin: 0;
-      font-family: "Cantarell", sans-serif;
+      font-family: 'Cantarell',
+        sans-serif;
       letter-spacing: 2px;
 
       &:hover,

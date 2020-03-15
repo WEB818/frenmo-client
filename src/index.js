@@ -7,7 +7,6 @@ import { MyFriendsProvider } from './contexts/MyFriendsContext';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import '@openfonts/cantarell_latin';
 
 ReactDOM.render(
   <BrowserRouter>
