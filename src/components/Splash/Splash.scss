@@ -74,7 +74,6 @@
     margin-top: 60px;
     @media (min-width: 712) {
       width: 60vw;
-      // max-width: 512px;
     }
 
     &-sub {
@@ -86,9 +85,8 @@
         font-size: 24px;
       }
       @media (min-width: 712px) {
-        width: 60vw;
+        width: 50vw;
         margin-left: 10vw;
-        max-width: 512px;
         font-size: 2vw;
       }
       line-height: 1.5;
@@ -150,14 +148,3 @@
     margin-top: 10vh;
   }
 }
-
-// @media (min-height: 1200px) {
-//   .Splash {
-//     &__hero {
-//       padding-top: 7vh;
-//     }
-//     &__container {
-//       padding-top: 30vh;
-//     }
-//   }
-// }

@@ -22,8 +22,6 @@ class EditFrenmoForm extends Component {
     }
   };
 
-  // static contextType = FrenmoContext;
-
   /// ================ change this to a patch =======================///
 
   handleSubmit = event => {
