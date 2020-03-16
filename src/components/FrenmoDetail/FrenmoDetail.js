@@ -68,7 +68,6 @@ class FrenmoDetail extends Component {
     //render form
     return (
       <>
-        {/**TODO: add some sort of thing that allows you to count */}
         <IssueFrenmo
           receiver={receiver}
           receiver_id={receiver_id}
@@ -104,7 +103,6 @@ class FrenmoDetail extends Component {
 
   //issuer can update expired fields
   renderEdit = () => {
-    //TODO:switch out the data
     return (
       <>
         <Input aria-label="increase the expiration date"></Input>

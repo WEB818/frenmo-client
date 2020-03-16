@@ -41,7 +41,6 @@ class FrenmoListByCat extends Component {
     const {
       categoryId
     } = this.props.match.params;
-    //TODO: category filter here
     publicFrenmos = getFrenmosInCategory(
       publicFrenmos,
       categoryId
@@ -54,13 +53,10 @@ class FrenmoListByCat extends Component {
       friendFrenmos,
       categoryId
     );
-
-    //TODO:have to do a filter by category
     const drawFrenmos = (
       frenmo,
       idx
     ) => {
-      //checks go here
       let issued =
         frenmo.issuer_id === user_id;
 
@@ -177,8 +173,6 @@ class FrenmoListByCat extends Component {
     ];
   }
   async componentDidMount() {}
-  //const received = myPublicFrenmos.favors.filter(favor => favor.receiver_redeemed === false)
-
   renderAll = myFrenmos => {
     return myFrenmos.map(
       item => item.frenmo

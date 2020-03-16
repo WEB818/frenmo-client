@@ -108,7 +108,7 @@ class NewFrenmoForm extends Component {
   handleIssue = fields => {
     FrenmoApiService.issueFrenmo(fields)
       .then(() => {
-        //do a set state
+
       })
       .catch();
   };
@@ -149,8 +149,6 @@ class NewFrenmoForm extends Component {
       limit.value
     )
       .then(postRes => {
-        //get the favor_id from the post
-        //get the receiver_id and the users_id from the state
         let {
           receiver_id,
           users_id,
@@ -306,7 +304,6 @@ class NewFrenmoForm extends Component {
           aria-label="Select category for frenmo"
           required
         >
-          {/** TODO:can generate this on the fly from categories */}
           <option value="13">
             --Please choose a category--
           </option>

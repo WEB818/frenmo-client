@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-/// ============== NOT USED, DELETE =================//
 export default class PublicFeed extends Component {
   render() {
     return (
