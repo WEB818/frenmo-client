@@ -35,12 +35,26 @@ class RegistrationForm extends Component {
     name = name.value.trim();
     username = username.value.trim();
     password = password.value;
+    phone = phone.value.trim();
     confirmPass = confirmPass.value;
 
     await this.setState({
       error: null
     });
 
+    let phoneHasLetters = phone.match(
+      /[a-wy-z]/gi
+    );
+    if (phoneHasLetters) {
+      this.setState({
+        error: `Invalid Phone number: ${phoneHasLetters} not allowed`
+      });
+      return;
+    }
+    phone = phone.replace(
+      /[^x+0-9]/gi,
+      ''
+    );
     if (
       name.length === 0 ||
       username.length === 0
@@ -82,7 +96,6 @@ class RegistrationForm extends Component {
       return;
     }
 
-    //TODO: validate for weird characters in usernames
     AuthApiService.postUser({
       name,
       username,
@@ -125,7 +138,7 @@ class RegistrationForm extends Component {
         {this.renderError()}
 
         <div className="RegForm__label-input">
-          <Label for="name">
+          <Label htmlFor="name">
             What is your full name?
           </Label>
           <Input
@@ -138,7 +151,7 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
-          <Label for="username">
+          <Label htmlFor="username">
             Choose a unique User Name
           </Label>
           <Input
@@ -151,7 +164,7 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
-          <Label for="phone">
+          <Label htmlFor="phone">
             What is your phone number?
           </Label>
           <Input
@@ -165,7 +178,7 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
-          <Label for="password">
+          <Label htmlFor="password">
             Password:
           </Label>
           <Input
@@ -185,7 +198,7 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input confirm">
-          <Label for="confirmPass">
+          <Label htmlFor="confirmPass">
             Confirm Password:
           </Label>
           <Input
