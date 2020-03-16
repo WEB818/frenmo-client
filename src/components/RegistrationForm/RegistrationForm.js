@@ -2,7 +2,10 @@ import React, {
   Component
 } from 'react';
 import { Link } from 'react-router-dom';
-import { Input } from '../Utils/Utils';
+import {
+  Input,
+  Label
+} from '../Utils/Utils';
 import AuthApiService from '../../services/auth-api-service';
 import { Button } from '../Utils/Utils';
 import './RegistrationForm.scss';
@@ -122,6 +125,9 @@ class RegistrationForm extends Component {
         {this.renderError()}
 
         <div className="RegForm__label-input">
+          <Label for="name">
+            What is your full name?
+          </Label>
           <Input
             id="registration-name-input"
             name="name"
@@ -132,6 +138,9 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
+          <Label for="username">
+            Choose a unique User Name
+          </Label>
           <Input
             id="registration-username-input"
             name="username"
@@ -142,6 +151,9 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
+          <Label for="phone">
+            What is your phone number?
+          </Label>
           <Input
             id="registration-phone-input"
             name="phone"
@@ -153,6 +165,9 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
+          <Label for="password">
+            Password:
+          </Label>
           <Input
             id="registration-password-input"
             name="password"
@@ -170,6 +185,9 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input confirm">
+          <Label for="confirmPass">
+            Confirm Password:
+          </Label>
           <Input
             id="registration-password-confirm"
             name="confirmPass"
