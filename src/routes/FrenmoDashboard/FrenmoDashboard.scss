@@ -63,22 +63,22 @@
 }
 .welcome-message {
   position: relative;
-  margin-top: 15vh;
-  padding: 60px;
+  margin-top: 30vh;
 
-  left: 10%;
-  top: 10%;
+  margin-left: 10vw;
+  padding: 60px;
+  width: 90vw;
+  max-width: 500px;
 
   transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
   border-radius: 55px 0;
   background-color: #0c0063;
-  width: 300px;
   box-shadow: 15px 15px 15px lightblue;
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  font-size: 2vh;
   text-align: center;
   &__header {
     border-bottom: 1px solid lightblue;
@@ -89,35 +89,34 @@
   color: lightblue;
 }
 .smaller {
-  font-size: 16px;
+  font-size: 2vh;
 }
 .small {
-  font-size: 18px;
+  font-size: 2.2vh;
 }
 .medium {
-  font-size: 20px;
+  font-size: 3vh;
 }
 .big {
-  font-size: 22px;
+  font-size: 3.2vh;
 }
 .bigger {
-  font-size: 28px;
+  font-size: 3.8vh;
   text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
   .Dashboard {
-    margin-left: 40%;
     width: 58vw;
   }
   .welcome-message {
-    left: 10%;
-    transform: translate(0%, 0%);
+    margin-left: 20vw;
+    width: 60vw;
+    max-width: 1000px;
   }
 }
 @media (min-width: 1024px) {
   .welcome-message {
-    left: 15%;
   }
   .Dashboard {
     padding-top: 10vh;

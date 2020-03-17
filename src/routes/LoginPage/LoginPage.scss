@@ -12,6 +12,9 @@
   margin-top: 15vh;
   color: #eff0fd;
   overflow: hidden;
+  @media (max-height: 500px) {
+    display: none;
+  }
 
   &::before {
     content: 'f';
@@ -22,6 +25,12 @@
 }
 .LoginPage {
   margin-bottom: -20vh;
+
+  @media (max-height: 500px) {
+    margin-top: 12vh;
+    padding-top: 2vh;
+    margin-bottom: 0;
+  }
   &__regSuccess {
     width: max-content;
     text-align: center;
