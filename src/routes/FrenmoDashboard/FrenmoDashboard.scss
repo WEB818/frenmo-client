@@ -70,15 +70,11 @@
   width: 90vw;
   max-width: 500px;
 
-  // left: 20px;
-  // top: 10%;
-
   transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
   border-radius: 55px 0;
   background-color: #0c0063;
-  // width: 300px;
   box-shadow: 15px 15px 15px lightblue;
   display: flex;
   flex-direction: column;
@@ -111,20 +107,16 @@
 
 @media (min-width: 768px) {
   .Dashboard {
-    // margin-left: 40%;
     width: 58vw;
   }
   .welcome-message {
     margin-left: 20vw;
     width: 60vw;
     max-width: 1000px;
-    // left: 10%;
-    // transform: translate(0%, 0%);
   }
 }
 @media (min-width: 1024px) {
   .welcome-message {
-    // left: 15%;
   }
   .Dashboard {
     padding-top: 10vh;
