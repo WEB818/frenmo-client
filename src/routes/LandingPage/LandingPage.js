@@ -29,18 +29,6 @@ export default class LandingPage extends Component {
             </TabPanel>
           </Tabs>
         </div>
-        {/* <div className="coupons-feed">
-          <Tabs>
-            <TabList>
-              <Tab> My Feedback </Tab>
-              <Tab> Sent Feedback </Tab>
-            </TabList>
-            <TabPanel>
-              <h2> My Feedback</h2>
-            </TabPanel>
-            <TabPanel>Sent Feedback</TabPanel>
-          </Tabs>
-        </div> */}
       </>
     );
   }

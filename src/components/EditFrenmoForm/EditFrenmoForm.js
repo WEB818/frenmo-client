@@ -13,8 +13,6 @@ import {
 
 import './EditFrenmoForm';
 
-// ----------- EDIT FORM, NEED TO DO A GET FOR THIS SPECIFIC FRENMO TO FILL FIELDS BEFORE PATCH ==========//
-
 class EditFrenmoForm extends Component {
   static defaultProps = {
     history: {
@@ -22,7 +20,6 @@ class EditFrenmoForm extends Component {
     }
   };
 
-  /// ================ change this to a patch =======================///
 
   handleSubmit = event => {
     event.preventDefault();
@@ -63,7 +60,6 @@ class EditFrenmoForm extends Component {
         >
           <div className="EditFrenmoForm__icons-container"></div>
 
-          {/* <Label htmlFor="NewFrenmo__receiver">Present To:</Label> */}
           <Input
             type="text"
             name="receiver"
@@ -73,7 +69,6 @@ class EditFrenmoForm extends Component {
             required
           />
 
-          {/* <Label htmlFor="NewFrenmo__title">Redeemable For:</Label> */}
           <Input
             type="text"
             name="title"
@@ -83,7 +78,6 @@ class EditFrenmoForm extends Component {
             required
           />
 
-          {/* <Label htmlFor="NewFrenmo__details">Voucher Details:</Label> */}
           <Textarea
             id="NewFrenmo__details"
             name="details"
@@ -91,7 +85,6 @@ class EditFrenmoForm extends Component {
             aria-label="Add description for frenmo"
           />
 
-          {/* <Label htmlFor="NewFrenmo__category">Select a category:</Label> */}
           <select
             id="NewFrenmo__category"
             name="category"

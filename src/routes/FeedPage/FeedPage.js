@@ -35,7 +35,6 @@ export default class FeedPage extends Component {
     this.context.clearError();
   }
 
-  // currently not implemented, should route to frenmo detail that lets user redeem or do whatever depending on what is available
   redirectToTarget = favorId => {
     const { history } = this.props;
     history.push(`/frenmos/${favorId}`);
