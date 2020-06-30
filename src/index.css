@@ -4,9 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue',
-    'Imprima', sans-serif;
+  font-family: "Montserrat", sans-serif;
   /* -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu",  */
   -webkit-font-smoothing: antialiased;
@@ -14,10 +12,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo,
-    Monaco, Consolas, 'Courier New',
-    'Imprima', 'Cantarell',
-    'Helvetica Neue', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    "Imprima", "Cantarell", "Helvetica Neue", monospace;
 }
 
 li {

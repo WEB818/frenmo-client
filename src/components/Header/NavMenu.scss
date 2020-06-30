@@ -1,20 +1,10 @@
-.Header__link {
-  color: white;
-  display: flex;
-  flex-direction: row;
-  text-align: right;
-}
-
 .NavMenu__Header {
   justify-content: left;
-  margin-left: 20px;
-  font-size: 4vh;
-  height: 4.7vh;
+  margin: 20px;
+  font-size: 28px;
   letter-spacing: 0.5rem;
-  font-style: italic;
-  font-family: 'Cantarell', sans-serif;
-  color: white;
-  z-index: 2;
+  font-family: "Cantarell", sans-serif;
+  color: #cae0d1;
 }
 
 .NavMenu__list {
@@ -22,10 +12,7 @@
 }
 
 .logo {
-  font-size: 7vh;
-  filter: drop-shadow(
-    -16px 16px 9px rgb(35, 48, 55)
-  );
+  font-size: 38px;
 }
 
 .navigation {
@@ -41,7 +28,7 @@
 .logout,
 .login {
   font-size: 1em;
-  font-family: 'Cantarell', sans-serif;
+  font-family: "Cantarell", sans-serif;
   position: relative;
   right: -36px;
   bottom: -8px;
@@ -58,7 +45,7 @@
   float: right;
   padding: 12px;
   margin: 15px;
-  color: white;
+  color: #cae0d1;
   width: 35px;
   transition: width 0.35s;
   -webkit-transition: width 0.35s;
@@ -69,14 +56,14 @@
 .log-button:active,
 .Header__logged-in {
   width: 140px;
-  color: white;
+  color: #cae0d1;
 }
 
 .log-button:hover,
 .log-button:active,
 .Header__not-logged-in {
   width: 140px;
-  color: white;
+  color: #cae0d1;
 }
 
 .log-button:hover,
@@ -88,7 +75,7 @@
 
 .log-button {
   text-decoration: none;
-  color: white;
+  color: #cae0d1;
 }
 
 .Header {
@@ -100,7 +87,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: #0c0063;
+  background-color: #2d663e;
   position: fixed;
   z-index: 10;
 }
@@ -124,7 +111,7 @@
 
   .menu-icon {
     display: inline;
-    color: white;
+    color: #cae0d1;
     align-self: center;
   }
 
@@ -141,39 +128,16 @@
   }
 
   .NavMenu__links {
-    color: white;
+    color: #cae0d1;
     font-size: 0.9rem;
     letter-spacing: 5px;
     font-weight: 700;
     width: 100%;
-    font-family: 'Cantarell', sans-serif;
 
-    &:hover {
-      background-color: lightblue;
-      color: #0c0063;
-    }
-  }
-
-  #navSlide {
-    position: fixed;
-    transform: translateX(-100%);
-    transition: transform 400ms ease-in;
-    width: 20%;
-    left: 0px;
-    height: 90vh;
-    top: 10vh;
-    color: white;
-    background-color: #0c0063;
-    padding: 20px;
-    font-family: sans-serif;
-  }
-
-  #navSlide.slideIn {
-    transform: translateX(0%);
-  }
-
-  #navSlide.slideOut {
-    transform: translateX(-100%);
+    // &:hover {
+    //   background-color: lightblue;
+    //   color: #0c0063;
+    // }
   }
 
   .NavMenu__Footer {
@@ -182,8 +146,6 @@
 }
 
 @media (min-width: 1440px) {
-  .NavMenu__menu-item {
-  }
   .NavMenu__links {
     font-size: 1.3rem;
     letter-spacing: 2px;
@@ -191,24 +153,16 @@
   .desktop {
     display: flex;
     font-size: 1.4em;
-    font-family: 'Cantarell', sans-serif;
-    color: white;
+    color: #cae0d1;
     text-decoration: none;
   }
   .log-icon {
     display: none;
   }
-  #navSlide {
-    background-color: #0c0063;
-  }
 }
 
 @media (min-width: 1800px) {
   .NavMenu__menu-item {
-    padding: 60px;
-  }
-
-  #navSlide {
-    background-color: #0c0063;
+    // padding: 60px;
   }
 }

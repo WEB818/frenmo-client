@@ -1,10 +1,9 @@
-.App__container.wrapper {
+.App__container {
   height: 100vh;
   padding: 0;
 }
 .Splash {
   height: max-content;
-
   padding: 10vh 2vw 0 2vw;
   font-size: 1rem;
   width: 100vw;
@@ -13,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Cantarell', sans-serif;
+
   & > h2 {
     @media (min-height: 600px) {
       height: 10vh;
@@ -38,12 +37,12 @@
     &::before {
       text-transform: lowercase;
 
-      padding: 10px;
-      background-color: #0c0063;
-      color: white;
+      padding: 20px;
+      background-color: #246641;
+      color: #b8e0ca;
       text-align: center;
       border-radius: 12px 0;
-      margin-right: 20px;
+      margin: 20px;
     }
   }
 
@@ -54,12 +53,12 @@
 
   .one {
     &::before {
-      content: '1';
+      content: "1";
     }
   }
   .two {
     &::before {
-      content: '2';
+      content: "2";
     }
   }
 
@@ -95,8 +94,7 @@
       transform: translate(-50%, -50%);
       font-weight: lighter;
       text-align: center;
-      font-family: 'Helvetica Neue',
-        sans-serif;
+      font-family: "Helvetica Neue", sans-serif;
       color: #0c0063;
       overflow: hidden;
     }

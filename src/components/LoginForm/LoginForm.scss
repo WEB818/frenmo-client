@@ -3,9 +3,8 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin-left: auto;
+  margin: 20px auto;
   margin-right: auto;
-  margin-top: 20px;
 
   &__alert {
     text-align: center;
@@ -17,10 +16,10 @@
 
 .page-links {
   font-weight: 800;
-  color: #0c0063;
+  color: #2d663e;
 }
 
 .page-links:hover {
   font-weight: 800;
-  color: #607296;
+  color: #cae0d1;
 }

@@ -1,37 +1,26 @@
-import React, {
-  Component
-} from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Input,
-  Label
-} from '../Utils/Utils';
-import AuthApiService from '../../services/auth-api-service';
-import { Button } from '../Utils/Utils';
-import './RegistrationForm.scss';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Input, Label } from "../Utils/Utils";
+import AuthApiService from "../../services/auth-api-service";
+import { Button } from "../Utils/Utils";
+import "./RegistrationForm.scss";
 
 class RegistrationForm extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {}
+    onRegistrationSuccess: () => {},
   };
 
   state = {
     error: null,
-    password: '',
-    confirmPass: ''
+    password: "",
+    confirmPass: "",
   };
 
   firstInput = React.createRef();
 
-  handleSubmit = async ev => {
+  handleSubmit = async (ev) => {
     ev.preventDefault();
-    let {
-      name,
-      username,
-      phone,
-      password,
-      confirmPass
-    } = ev.target;
+    let { name, username, phone, password, confirmPass } = ev.target;
     name = name.value.trim();
     username = username.value.trim();
     password = password.value;
@@ -39,59 +28,42 @@ class RegistrationForm extends Component {
     confirmPass = confirmPass.value;
 
     await this.setState({
-      error: null
+      error: null,
     });
 
-    let phoneHasLetters = phone.match(
-      /[a-wy-z]/gi
-    );
+    let phoneHasLetters = phone.match(/[a-wy-z]/gi);
     if (phoneHasLetters) {
       this.setState({
-        error: `Invalid Phone number: ${phoneHasLetters} not allowed`
+        error: `Invalid Phone number: ${phoneHasLetters} not allowed`,
       });
       return;
     }
-    phone = phone.replace(
-      /[^x+0-9]/gi,
-      ''
-    );
-    if (
-      name.length === 0 ||
-      username.length === 0
-    ) {
+    phone = phone.replace(/[^x+0-9]/gi, "");
+    if (name.length === 0 || username.length === 0) {
       this.setState({
-        error:
-          'Name or username must not be empty'
+        error: "Name or username must not be empty",
       });
       return;
     }
 
-    const regex = RegExp('\\s');
-    if (
-      regex.test(username) ||
-      regex.test(password)
-    ) {
+    const regex = RegExp("\\s");
+    if (regex.test(username) || regex.test(password)) {
       this.setState({
-        error:
-          'Password or username must not contain any spaces'
+        error: "Password or username must not contain any spaces",
       });
       return;
     }
-    if (
-      password.length > 40 ||
-      username.length > 40 ||
-      name.length > 40
-    ) {
+    if (password.length > 40 || username.length > 40 || name.length > 40) {
       this.setState({
         error:
-          'Passwords, usernames, and names must be no more than 40 characters long'
+          "Passwords, usernames, and names must be no more than 40 characters long",
       });
       return;
     }
 
     if (password !== confirmPass) {
       this.setState({
-        error: 'Passwords did not Match'
+        error: "Passwords did not Match",
       });
       return;
     }
@@ -100,14 +72,14 @@ class RegistrationForm extends Component {
       name,
       username,
       phone: phone.value,
-      password
+      password,
     })
-      .then(user => {
+      .then((user) => {
         this.props.onRegistrationSuccess();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({
-          error: res.error
+          error: res.error,
         });
       });
   };
@@ -115,10 +87,7 @@ class RegistrationForm extends Component {
   renderError() {
     if (this.state.error) {
       return (
-        <div
-          role="alert"
-          className="RegForm__alert"
-        >
+        <div role="alert" className="RegForm__alert">
           <p>{this.state.error}</p>
         </div>
       );
@@ -126,21 +95,12 @@ class RegistrationForm extends Component {
   }
 
   render() {
-    const {
-      password,
-      confirmPass
-    } = this.state;
+    const { password, confirmPass } = this.state;
     return (
-      <form
-        className="RegForm"
-        onSubmit={this.handleSubmit}
-      >
+      <form className="RegForm" onSubmit={this.handleSubmit}>
         {this.renderError()}
 
         <div className="RegForm__label-input">
-          <Label htmlFor="name">
-            What is your full name?
-          </Label>
           <Input
             id="registration-name-input"
             name="name"
@@ -151,9 +111,6 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
-          <Label htmlFor="username">
-            Choose a unique User Name
-          </Label>
           <Input
             id="registration-username-input"
             name="username"
@@ -164,9 +121,6 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
-          <Label htmlFor="phone">
-            What is your phone number?
-          </Label>
           <Input
             id="registration-phone-input"
             name="phone"
@@ -178,9 +132,6 @@ class RegistrationForm extends Component {
         </div>
 
         <div className="RegForm__label-input">
-          <Label htmlFor="password">
-            Password:
-          </Label>
           <Input
             id="registration-password-input"
             name="password"
@@ -188,48 +139,35 @@ class RegistrationForm extends Component {
             placeholder="Choose a password"
             aria-label="Choose a password"
             required
-            onChange={event =>
+            onChange={(event) =>
               this.setState({
-                password:
-                  event.target.value
+                password: event.target.value,
               })
             }
           />
         </div>
 
         <div className="RegForm__label-input confirm">
-          <Label htmlFor="confirmPass">
-            Confirm Password:
-          </Label>
           <Input
             id="registration-password-confirm"
             name="confirmPass"
             type="password"
             placeholder="Confirm password"
             aria-label="Confirm password"
-            onChange={event =>
+            onChange={(event) =>
               this.setState({
-                confirmPass:
-                  event.target.value
+                confirmPass: event.target.value,
               })
             }
           />
           <p className="RegForm__warning">
-            {password === confirmPass
-              ? null
-              : 'passwords must match.'}
+            {password === confirmPass ? null : "passwords must match."}
           </p>
         </div>
 
         <footer className="RegForm__footer">
-          <Button type="submit">
-            Sign up
-          </Button>{' '}
-          Already have an account?{' '}
-          <Link
-            to="/login"
-            className="page-links"
-          >
+          <Button type="submit">Sign up</Button> Already have an account?{" "}
+          <Link to="/login" className="page-links">
             Log in!
           </Link>
         </footer>

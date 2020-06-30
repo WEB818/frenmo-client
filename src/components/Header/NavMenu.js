@@ -3,15 +3,11 @@ import { NavLink, Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSignOutAlt,
-  faChevronDown,
-  faChevronLeft
-} from "@fortawesome/free-solid-svg-icons";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./NavMenu.scss";
 
 const MenuSlide = ({ showMenu }) => (
-  <div id="navSlide" className={showMenu ? "slideIn" : "slideOut"}>
+  <div id="navSlide" className="slideIn">
     <ul className="NavMenu__list">
       <Link to="/feed" className="NavMenu__links">
         <li className="NavMenu__menu-item">Feed</li>
@@ -34,49 +30,25 @@ class NavMenu extends Component {
 
     this.state = {
       error: null,
-      showMenu: true
+      showMenu: true,
     };
   }
 
   static contextType = UserContext;
-
-  handleSlide = () => {
-    this.setState(prevState => ({
-      showMenu: !prevState.showMenu
-    }));
-  };
 
   handleLogoutClick = () => {
     this.context.processLogout();
   };
 
   renderLogoutLink() {
-    const { showMenu } = this.state;
     return (
       <>
-        <div className="Header__link">
-          {!showMenu && (
-            <FontAwesomeIcon
-              icon={faChevronDown}
-              className="menu-icon"
-              onClick={this.handleSlide}
-            />
-          )}
-          {showMenu && (
-            <FontAwesomeIcon
-              icon={faChevronLeft}
-              className="menu-icon"
-              onClick={this.handleSlide}
-            />
-          )}
-          <NavLink to="/feed" className="NavMenu__Header">
-            <h2 className="NavMenu__Header">
-              <span className="logo">f</span>
-              renmo
-            </h2>
-          </NavLink>
-          <MenuSlide showMenu={showMenu} />
-        </div>
+        <NavLink to="/feed" className="NavMenu__Header">
+          <h2 className="NavMenu__Header">
+            <span className="logo">f</span>
+            renmo
+          </h2>
+        </NavLink>
         <div className="Header__logged-in">
           <div className="navigation">
             <a href="/" className="log-button">
@@ -91,7 +63,6 @@ class NavMenu extends Component {
             </a>
           </div>
         </div>
-
         <div className="Header__logged-in-desktop">
           <div>
             <a href="/feed">
@@ -110,7 +81,7 @@ class NavMenu extends Component {
       <>
         <div className="Header__link">
           <NavLink to="/" className="NavMenu__Header">
-            <h2 className="NavMenu__Header" onClick={this.handleSlide}>
+            <h2 className="NavMenu__Header">
               <span className="logo">f</span>
               renmo
             </h2>
@@ -120,8 +91,7 @@ class NavMenu extends Component {
         <div className="Header__not-logged-in">
           <div className="navigation">
             <a href="/login" className="log-button">
-              <FontAwesomeIcon icon={faSignOutAlt} className="log-icon" />
-              <div className="login">Login</div>
+              <div className="login">Register</div>
             </a>
           </div>
         </div>

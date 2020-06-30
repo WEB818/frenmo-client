@@ -2,20 +2,20 @@
   border-radius: 15px 0px;
   padding: 15px;
   width: auto;
-  background-color: #0c0063;
-  color: white;
+  background-color: #2d663e;
+  color: #cae0d1;
   font-weight: bold;
   letter-spacing: 3px;
   font-size: 14px;
   margin: 12px 2px;
   border: none;
-  box-shadow: 5px 5px 5px lightblue;
-  font-family: "Helvetica Neue", sans-serif;
+  box-shadow: 5px 5px 5px #cae0d1;
+  // font-family: "Helvetica Neue", sans-serif;
 }
 
 .Button:active {
-  background-color: lightblue;
-  color: #0c0063;
+  background-color: #cae0d1;
+  color: #2d663e;
 }
 
 .Button:focus {
@@ -23,32 +23,29 @@
 }
 .Label {
   letter-spacing: 2px;
-  font-family: "Helvetica Neue", sans-serif;
-  color: #0c0063;
+  // font-family: "Helvetica Neue", sans-serif;
+  color: #2d663e;
   text-align: center;
 }
 .Input {
   border: none;
   border-radius: 15px 0;
   width: 94%;
-  border-bottom: solid 2px #0c0063;
+  border-bottom: solid 2px #2d663e;
   padding: 15px;
   letter-spacing: 3px;
-  background-color: lightblue;
-  margin-bottom: 4px;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #cae0d1;
+  margin: 5px auto;
 
   &::placeholder {
-    color: #0c0063;
-    font-family: "Helvetica Neue", sans-serif;
+    color: #43995d;
     letter-spacing: 1px;
     text-align: center;
   }
 }
 
 .Input:focus {
-  border: dotted 1px #0c0063;
+  border: dotted 1px #43995d;
   outline: thin dotted;
 }
 
@@ -57,25 +54,24 @@
   border: none;
   border-radius: 15px 0;
   width: 94%;
-  border-bottom: solid 2px #0c0063;
+  border-bottom: solid 2px #2d663e;
   padding: 15px;
   letter-spacing: 3px;
-  background-color: lightblue;
+  background-color: #cae0d1;
   margin-bottom: 10px;
 
   &::placeholder {
-    color: #0c0063;
-    font-family: "Helvetica Neue", sans-serif;
+    color: #43995d;
     letter-spacing: 8px;
     text-align: center;
   }
 }
 .Textarea:focus {
-  border: dotted 1px #0c0063;
+  border: dotted 1px #43995d;
   outline: thin dotted;
 }
 
 select:focus {
-  border: dotted 1px #0c0063;
+  border: dotted 1px #43995d;
   outline: thin dotted;
 }
