@@ -1,22 +1,17 @@
 .RegForm {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  margin: 10vh auto;
   min-height: max-content;
 
   &__alert {
-    text-align: center;
     color: red;
-    margin-left: auto;
-    margin-right: auto;
-    display: relative;
   }
   &__warning {
-    font-size: 0.8rem;
+    font-size: 14px;
     color: red;
-    padding-left: 24px;
+    padding-left: 18px;
   }
 
   &__label-input {
@@ -33,6 +28,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
-  margin-top: 40px;
+  margin: 40px auto 20px;
 }

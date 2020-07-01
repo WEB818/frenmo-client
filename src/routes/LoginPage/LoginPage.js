@@ -1,37 +1,30 @@
-import React, {
-  Component
-} from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
-import './LoginPage.scss';
+import React, { Component } from "react";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import "./LoginPage.scss";
+import { ReactComponent as LeafLogo } from "../../images/leaf-outline.svg";
 
 class LoginPage extends Component {
   constructor(props) {
     super(props);
     if (this.props.location.state) {
       this.state = {
-        regSuccess: this.props.location
-          .state.goodRegistration
+        regSuccess: this.props.location.state.goodRegistration,
       };
     } else {
       this.state = {
-        regSuccess: false
+        regSuccess: false,
       };
     }
   }
   static defaultProps = {
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
 
   handleLoginSuccess = () => {
-    const {
-      location,
-      history
-    } = this.props;
-    const destination =
-      (location.state || {}).from ||
-      '/feed';
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/feed";
     history.push(destination);
   };
 
@@ -40,10 +33,7 @@ class LoginPage extends Component {
       return (
         <div className="LoginPage__regSuccess">
           <h3>Welcome to Frenmo!</h3>
-          <p>
-            Please login with your new
-            credentials!
-          </p>
+          <p>Please login with your new credentials!</p>
         </div>
       );
     }
@@ -52,17 +42,11 @@ class LoginPage extends Component {
   render() {
     return (
       <section className="LoginPage">
-        <div className="f-logo-container">
-          <div className="f-logo">
-            f
-          </div>
+        <div className="leaf-container">
+          <LeafLogo />
           {this.renderRegistrationSuccess()}
         </div>
-        <LoginForm
-          onLoginSuccess={
-            this.handleLoginSuccess
-          }
-        />
+        <LoginForm onLoginSuccess={this.handleLoginSuccess} />
       </section>
     );
   }

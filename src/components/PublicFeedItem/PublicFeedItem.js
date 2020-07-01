@@ -45,11 +45,9 @@ export default class PublicFeedItem extends Component {
 
   render() {
     const {
-      favorId,
       title,
       description,
       expDate,
-      createdByName,
       issuedByName,
       recdByName,
       issuerRedeemed,

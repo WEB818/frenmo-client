@@ -14,7 +14,7 @@
   }
   &__link-selected {
     padding: 10px;
-    background-color: #0c0063;
+    background-color: #a8ffdc;
     border-radius: 15px 0;
   }
 
@@ -24,13 +24,12 @@
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 6px 6px 6px
-      #0c0063;
+    box-shadow: inset 6px 6px 6px #a8ffdc;
     border-radius: 15px 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: lightblue;
+    background-color: #188072;
     border-radius: 6px;
   }
 
@@ -43,10 +42,10 @@
     align-items: center;
     font-size: 12px;
     text-align: center;
-    box-shadow: 5px 5px 5px #0c0063;
+    box-shadow: 5px 5px 5px #188072;
     border-radius: 15px 0;
-    background: lightblue;
-    color: #0c0063;
+    background: #a8ffdc;
+    color: #188072;
     font-weight: bold;
     width: 80px;
     height: 80px;
@@ -62,46 +61,48 @@
   color: white;
 }
 .welcome-message {
-  position: relative;
-  margin-top: 30vh;
-
-  margin-left: 10vw;
-  padding: 60px;
-  width: 90vw;
-  max-width: 500px;
-
-  transform: translate(-50%, -50%);
-  color: white;
-  font-weight: bold;
-  border-radius: 55px 0;
-  background-color: #0c0063;
-  box-shadow: 15px 15px 15px lightblue;
   display: flex;
   flex-direction: column;
-  font-size: 2vh;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin: 20px;
+  & > div {
+    text-align: center;
+    padding: 40px;
+    color: #188072;
+    font-weight: bold;
+    background-color: #a8ffdc;
+    border-radius: 55px 55px 55px 0;
+    box-shadow: 5px 5px 5px #188072;
+    line-height: 1.5;
+    max-width: 450px;
+  }
   &__header {
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid #188072;
     padding: 10px;
   }
 }
-.text {
-  color: lightblue;
+.divider {
+  margin: 10px auto;
+  width: 120px;
+  height: 2px;
+  background-color: #188072;
 }
 .smaller {
-  font-size: 2vh;
+  font-size: 16px;
 }
 .small {
-  font-size: 2.2vh;
+  font-size: 20px;
 }
 .medium {
-  font-size: 3vh;
+  font-size: 22px;
 }
 .big {
-  font-size: 3.2vh;
+  font-size: 26px;
 }
 .bigger {
-  font-size: 3.8vh;
+  font-size: 30px;
   text-transform: uppercase;
 }
 
@@ -180,8 +181,7 @@
       width: 100%;
       padding: 30px;
       margin: 0;
-      font-family: 'Cantarell',
-        sans-serif;
+      font-family: "Cantarell", sans-serif;
       letter-spacing: 2px;
 
       &:hover,

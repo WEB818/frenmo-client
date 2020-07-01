@@ -4,7 +4,7 @@ import LoginPage from "./routes/LoginPage/LoginPage";
 import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import FeedPage from "./routes/FeedPage/FeedPage";
 import NewFrenmoPage from "./routes/NewFrenmoPage/NewFrenmoPage";
-import NavMenu from "./components/Header/NavMenu";
+import NavMenu from "./components/NavMenu/NavMenu";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import FooterMenu from "./components/FooterMenu/FooterMenu";
@@ -15,7 +15,7 @@ import Friends from "./routes/Friends/Friends";
 import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
-
+import TokenService from "./services/token-service";
 import Frenmo from "./components/Frenmo/Frenmo";
 import { PopupFeedback } from "./components/PopupFeedback";
 import NewFrenmoForm from "./components/NewFrenmoForm/NewFrenmoForm";
@@ -97,7 +97,7 @@ class App extends Component {
         {this.state.feedbackMessage ? (
           <PopupFeedback feedbackMessage={this.state.feedbackMessage} />
         ) : null}
-        <NavMenu />
+        {TokenService.hasAuthToken() ? <NavMenu /> : null}
 
         <main className="App__container wrapper">
           {this.renderNavRoutes()}

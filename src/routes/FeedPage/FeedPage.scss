@@ -1,32 +1,26 @@
-.FeedPage__add {
+.FeedPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.FeedPage__Add-button {
   position: absolute;
   bottom: 10%;
   right: 0%;
   margin: 5px;
   overflow: hidden;
-  border-radius: 15px 0;
-}
-
-.FeedPage__Add-button {
-  width: 80px;
-  height: 80px;
-  border-radius: 25px 0;
-  margin: -10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: lightblue;
-
-  &:hover {
-    background-color: #0c0063;
+  border-radius: 15px 15px 15px 0;
+  &-add {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #76ffb9;
   }
 }
 .FeedPage__Add-link {
-  color: #0c0063;
-
-  &:hover {
-    color: white;
-  }
+  color: #188072;
 }
 
 .FeedPage__Buttons {
@@ -34,45 +28,20 @@
   justify-content: center;
 }
 
-.Message_no-frenmos {
-  display: flex;
-  justify-content: center;
-  margin: 10px;
-}
 #feed-btn {
   margin-top: 15vh;
+  &:focus {
+    background-color: #a8ffdc;
+    color: #188072;
+  }
+  &:hover {
+    background-color: #76ffb9;
+    color: #4ac2b9;
+  }
 }
 
-#feed-btn:focus {
-  background-color: lightblue;
-  color: #0c0063;
-}
 @media (min-width: 768px) {
-  .FeedPage__Buttons {
-    margin-left: 38%;
-  }
-
-  .Message_no-frenmos {
-    margin-left: 50%;
-    width: 300px;
-  }
 }
 
-// feed page should be middle 40% of screen
 @media (min-width: 1440px) {
-  .FeedPage__Buttons {
-    margin-left: 30%;
-    width: 40%;
-  }
-  .FeedPage__Add-button {
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: lightblue;
-      
-    &:hover {
-      background-color: #0c0063;
-    }
-  }
 }

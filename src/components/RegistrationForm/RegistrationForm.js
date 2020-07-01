@@ -63,7 +63,7 @@ class RegistrationForm extends Component {
 
     if (password !== confirmPass) {
       this.setState({
-        error: "Passwords did not Match",
+        error: "Passwords did not match",
       });
       return;
     }

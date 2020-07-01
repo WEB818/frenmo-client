@@ -86,12 +86,12 @@ export default class FeedPage extends Component {
     const { friendFrenmos, personalFrenmos, allPublicFrenmos } = this.context;
 
     return (
-      <>
+      <div className="FeedPage">
         <div className="FeedPage__Buttons">{this.renderPublicity()}</div>
         {publicity === "friends" && (
           <Link to="/friends" className="FeedPage__Add-link">
-            <div className="FeedPage__add">
-              <div className="FeedPage__Add-button">
+            <div className="FeedPage__Add-button">
+              <div className="FeedPage__Add-button-add">
                 <FontAwesomeIcon icon={faPlus} />
                 <FontAwesomeIcon icon={faUser} />
               </div>
@@ -101,28 +101,36 @@ export default class FeedPage extends Component {
 
         {publicity === "friends" && !friendFrenmos.favors.length && (
           <div className="welcome-message">
-            No frenmos yet. Connect with your friends and start swapping favors!
+            <div>
+              No frenmos yet. Connect with your friends and start swapping
+              favors!
+            </div>
           </div>
         )}
 
         {publicity === "personal" && !personalFrenmos.favors.length && (
           <div className="welcome-message">
-            Brand new to Frenmo?
-            <br />
-            Create favors and start swapping them with{" "}
-            <span className="text smaller">your friends, </span>
-            <span className="text small">your family, </span>
-            <span className="text medium">your neighbors, </span>
-            <span className="text big">your community, </span>
-            <span className="text bigger">the world.</span>
+            <div>
+              <div className="big">Brand new to Frenmo?</div>
+              <br />
+              <div className="divider"></div>
+              Create favors and start swapping them with{" "}
+              <div className="smaller">your friends, </div>
+              <div className="small">your family, </div>
+              <div className="medium">your neighbors, </div>
+              <div className="big">your community, </div>
+              <div className="bigger">the world.</div>
+            </div>
           </div>
         )}
 
         {publicity === "public" && !allPublicFrenmos.favors.length && (
-          <p className="welcome-message">
-            Welcome to Frenmo! Toggle feed buttons to view activity from the
-            public, from your friends, and for your private favors.
-          </p>
+          <div className="welcome-message">
+            <p>
+              Welcome to Frenmo! Toggle feed buttons to view favors from the
+              public, from your friends, and those that are just for you!
+            </p>
+          </div>
         )}
 
         {favors && (
@@ -154,7 +162,7 @@ export default class FeedPage extends Component {
             ))}
           </div>
         )}
-      </>
+      </div>
     );
   }
 }

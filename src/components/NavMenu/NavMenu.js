@@ -4,6 +4,7 @@ import UserContext from "../../contexts/UserContext";
 import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { ReactComponent as FrenmoLogo } from "../../images/frenmo-logo.svg";
 import "./NavMenu.scss";
 
 const MenuSlide = ({ showMenu }) => (
@@ -42,60 +43,40 @@ class NavMenu extends Component {
 
   renderLogoutLink() {
     return (
-      <>
+      <div className="NavMenu">
         <NavLink to="/feed" className="NavMenu__Header">
-          <h2 className="NavMenu__Header">
-            <span className="logo">f</span>
-            renmo
+          <h2>
+            <FrenmoLogo />
+            <span className="logo">renmo</span>
           </h2>
         </NavLink>
-        <div className="Header__logged-in">
-          <div className="navigation">
-            <a href="/" className="log-button">
-              <FontAwesomeIcon
-                icon={faSignOutAlt}
-                className="log-icon"
-                onClick={this.handleLogoutClick}
-              />
-              <div className="logout" onClick={this.handleLogoutClick}>
-                Logout
-              </div>
-            </a>
-          </div>
+
+        <FontAwesomeIcon
+          icon={faSignOutAlt}
+          className="log-icon"
+          onClick={this.handleLogoutClick}
+        />
+        <div className="logout" onClick={this.handleLogoutClick}>
+          Logout
         </div>
-        <div className="Header__logged-in-desktop">
-          <div>
-            <a href="/feed">
-              <div className="logout desktop" onClick={this.handleLogoutClick}>
-                Logout
-              </div>
-            </a>
-          </div>
-        </div>
-      </>
+      </div>
     );
   }
 
   renderLoginLink() {
     return (
-      <>
-        <div className="Header__link">
-          <NavLink to="/" className="NavMenu__Header">
-            <h2 className="NavMenu__Header">
-              <span className="logo">f</span>
-              renmo
-            </h2>
-          </NavLink>
-        </div>
+      <div className="NavMenu">
+        <NavLink to="/" className="NavMenu__Header">
+          <h2>
+            <FrenmoLogo />
+            <span className="logo">renmo</span>
+          </h2>
+        </NavLink>
 
-        <div className="Header__not-logged-in">
-          <div className="navigation">
-            <a href="/login" className="log-button">
-              <div className="login">Register</div>
-            </a>
-          </div>
-        </div>
-      </>
+        <NavLink to="/login" className="login-link">
+          Login
+        </NavLink>
+      </div>
     );
   }
 

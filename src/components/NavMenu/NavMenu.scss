@@ -1,0 +1,103 @@
+.NavMenu {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+.NavMenu__Header {
+  font-family: "Marck Script", cursive;
+  color: #a8ffdc;
+  display: flex;
+}
+
+.NavMenu__list {
+  display: none;
+}
+
+.logo {
+  font-size: 38px;
+}
+
+.log-icon {
+  color: #a8ffdc;
+}
+
+.logout {
+  display: none;
+}
+
+.login-link {
+  color: #a8ffdc;
+  font-size: 18px;
+}
+.Header {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  background-color: #188072;
+  position: fixed;
+}
+
+@media (min-width: 768px) {
+  // .NavMenu__menu-item {
+  //   padding-left: 1rem;
+  //   padding-right: 1rem;
+  //   width: 100%;
+  //   padding-top: 1.3rem;
+  //   padding-bottom: 1.3rem;
+  //   font-style: italic;
+  // }
+
+  // .NavMenu__list {
+  //   position: absolute;
+  //   padding: 1rem;
+  //   height: 90vh;
+  //   justify-content: space-around;
+  // }
+
+  // .NavMenu__list {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+
+  // .NavMenu__links {
+  //   color: #a8ffdc;
+  //   font-size: 0.9rem;
+  //   letter-spacing: 5px;
+  //   font-weight: 700;
+  //   width: 100%;
+  // }
+}
+@media (min-width: 1024px) {
+  .log-icon {
+    display: none;
+  }
+
+  .logout {
+    display: block;
+    color: #a8ffdc;
+    font-size: 18px;
+  }
+}
+@media (min-width: 1440px) {
+  .NavMenu__links {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+  .logout {
+    display: flex;
+    font-size: 1.4em;
+    color: #a8ffdc;
+    text-decoration: none;
+  }
+  .log-icon {
+    display: none;
+  }
+}
+
+@media (min-width: 1800px) {
+  .NavMenu__menu-item {
+    // padding: 60px;
+  }
+}

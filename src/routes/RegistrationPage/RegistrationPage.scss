@@ -1,5 +1,9 @@
+.RegPage__container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .Auth__header {
-  text-align: center;
-  margin-top: 12vh;
-  color: #2d663e;
+  color: #188072;
 }
