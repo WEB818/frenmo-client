@@ -6,38 +6,38 @@ import { Button, Input } from "../Utils/Utils";
 import "./SearchUser.scss";
 
 class SearchUser extends Component {
-  addFren = addFren => {
+  addFren = (addFren) => {
     const friend_id = {
-      friend_id: addFren.id
+      friend_id: addFren.id,
     };
     fetch(`${config.API_ENDPOINT}/friend`, {
       method: "POST",
       body: JSON.stringify(friend_id),
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`
-      }
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
     });
   };
 
-  handleSearch = e => {
+  handleSearch = (e) => {
     e.preventDefault();
     const { user_search } = e.target;
-    //change here
+
     fetch(`${config.API_ENDPOINT}/user/username/${user_search.value}`, {
       method: "GET",
       headers: {
-        "content-type": "application/json"
-      }
+        "content-type": "application/json",
+      },
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
           alert("User doesn't exists");
         }
         return res.json();
       })
-      .then(fren => this.addFren(fren));
-
+      .then((fren) => this.addFren(fren))
+      .then((user_search.value = ""));
     alert("Your friend request is on its way!");
   };
 

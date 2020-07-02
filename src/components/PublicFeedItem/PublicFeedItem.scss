@@ -103,32 +103,32 @@
 
 @media (min-width: 768px) {
   .PublicFeedItem {
-    margin-left: 40%;
-    width: 60vw;
+    // margin-left: 30%;
+    width: 70vw;
 
-    &__frenmo {
-      width: 50vw;
-    }
+    // &__frenmo {
+    //   width: 50vw;
   }
-  .PublicFeedItem__sub-titles {
-    width: 50vw;
-    justify-content: space-between;
+}
+.PublicFeedItem__sub-titles {
+  //   width: 50vw;
+  //   justify-content: space-between;
 
-    &:hover::after {
-      margin-left: 40%;
-    }
-  }
+  //   &:hover::after {
+  //     margin-left: 40%;
+  //   }
+  // }
 }
 
 // feed page should be middle 40% of screen
 @media (min-width: 1440px) {
-  .PublicFeedItem {
-    margin-left: 35%;
+  // .PublicFeedItem {
+  //   margin-left: 35%;
 
-    &__sub-titles {
-      &:hover::after {
-        margin-left: 35%;
-      }
-    }
-  }
+  //   &__sub-titles {
+  //     &:hover::after {
+  //       margin-left: 35%;
+  //     }
+  //   }
+  // }
 }

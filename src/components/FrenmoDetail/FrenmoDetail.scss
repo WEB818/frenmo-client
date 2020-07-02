@@ -1,57 +1,45 @@
 .FrenmoDetail {
   position: fixed;
-  padding: 30px;
-  overflow-y: scroll;
+  padding: 15px;
   height: 60vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 55px 0;
-  background-color: lightblue;
+  border-radius: 55px;
+  background-color: #4ac2b9;
   width: 280px;
   max-width: 280px;
-  box-shadow: 15px 15px 15px #0c0063;
   display: flex;
   flex-direction: column;
   font-size: 16px;
 
-  &__title {
+  &__title,
+  &__desc {
     display: block;
     text-transform: lowercase;
-    background-color: white;
-    color: #0c0063;
-    border-radius: 25px 0;
+    background-color: whitesmoke;
+    color: #188072;
+    border-radius: 25px;
     padding: 10px;
     letter-spacing: 4px;
+    max-height: fit-content;
+    text-overflow: ellipsis;
   }
 
-  &__date {
-    display: flex;
-    flex-direction: column;
-    color: #0c0063;
-  }
-
-  &__desc {
-    text-align: center;
-    padding: 10px;
-    background-color: white;
-    border-radius: 25px 0;
-    color: #0c0063;
-  }
   &__publicity {
     &:hover::after {
-      content: 'Who sees me';
+      content: "Privacy rating";
     }
   }
 
   &__issuedby {
     &:hover::after {
-      content: 'From a good friend';
+      content: "From a good friend";
     }
   }
   &__issuedto {
     &:hover::after {
-      content: 'To whom frenmo is issued';
+      content: "To whom frenmo is issued";
     }
   }
 }
@@ -62,11 +50,9 @@
   justify-content: space-between;
   align-items: center;
   text-transform: capitalize;
-  padding: 8px;
-  color: #0c0063;
-
+  color: whitesmoke;
   &:hover::after {
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -78,25 +64,22 @@
   }
 }
 .back-icon {
-  margin-bottom: 30px;
-  color: white;
+  color: whitesmoke;
   font-size: 40px;
 }
 .void {
-  font-family: 'Cantarell', sans-serif;
-  color: #0c0063;
+  color: rgb(207, 27, 27);
   font-size: 90px;
   letter-spacing: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)
-    rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 @media (min-width: 768px) {
   .FrenmoDetail {
-    margin-left: 20%;
+    margin-left: 15%;
     min-width: 380px;
   }
 }

@@ -1,84 +1,54 @@
-import React, {
-  Component
-} from 'react';
-import { getFrenmoById } from '../../services/helpers';
-import FrenmoContext from '../../contexts/FrenmoContext';
-import './FrenmoDetail.scss';
-import IssueFrenmo from '../IssueFrenmo/IssueFrenmo';
-import  RedeemFrenmo  from '../RedeemFrenmo/RedeemFrenmo';
-import ConfirmRedeemFrenmo from '../ConfirmRedeemFrenmo/ConfirmRedeemFrenmo';
-import { Input } from '../Utils/Utils';
-import { formatRelative } from 'date-fns';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Component } from "react";
+import FrenmoContext from "../../contexts/FrenmoContext";
+import "./FrenmoDetail.scss";
+import IssueFrenmo from "../IssueFrenmo/IssueFrenmo";
+import RedeemFrenmo from "../RedeemFrenmo/RedeemFrenmo";
+import ConfirmRedeemFrenmo from "../ConfirmRedeemFrenmo/ConfirmRedeemFrenmo";
+import { Input } from "../Utils/Utils";
+import { formatRelative } from "date-fns";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChevronDown,
-  faChevronUp,
   faArrowLeft,
-  faArrowRight,
   faGift,
-  faTicketAlt,
   faStopwatch,
   faKey,
-  faUser,
   faGlobeAmericas,
-  faEnvelope
-} from '@fortawesome/free-solid-svg-icons';
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
 class FrenmoDetail extends Component {
   static defaultProps = {
     match: {
-      params: {}
-    }
+      params: {},
+    },
   };
 
   static contextType = FrenmoContext;
 
   redirectOnRedemption = () => {
     const { history } = this.props;
-    const {
-      categoryId
-    } = this.props.match.params;
-    history.push(
-      `/frenmos/category/${categoryId}`
-    );
+    const { categoryId } = this.props.match.params;
+    history.push(`/frenmos/category/${categoryId}`);
   };
   renderRedeem = () => {
     return (
       <RedeemFrenmo
-        favor_id={
-          this.props.location.state
-            .favor_id
-        }
-        outstanding_id={
-          this.props.location.state
-            .outstanding_id
-        }
-        onRedemption={
-          this.redirectOnRedemption
-        }
+        favor_id={this.props.location.state.favor_id}
+        outstanding_id={this.props.location.state.outstanding_id}
+        onRedemption={this.redirectOnRedemption}
       ></RedeemFrenmo>
     );
   };
-  //wb, remove destructure of receiver. occasionally threw an error
-  //issuer can issue more
-  renderIssue = (
-    receiver,
-    receiver_id
-  ) => {
+
+  renderIssue = (receiver, receiver_id) => {
     //render form
     return (
       <>
         <IssueFrenmo
           receiver={receiver}
           receiver_id={receiver_id}
-          favor_id={
-            this.props.location.state
-              .favor_id
-          }
-          outstanding_id={
-            this.props.location.state
-              .outstanding_id
-          }
+          favor_id={this.props.location.state.favor_id}
+          outstanding_id={this.props.location.state.outstanding_id}
         ></IssueFrenmo>
       </>
     );
@@ -89,14 +59,8 @@ class FrenmoDetail extends Component {
   renderConfirmRedeem = () => {
     return (
       <ConfirmRedeemFrenmo
-        favor_id={
-          this.props.location.state
-            .favor_id
-        }
-        outstanding_id={
-          this.props.location.state
-            .outstanding_id
-        }
+        favor_id={this.props.location.state.favor_id}
+        outstanding_id={this.props.location.state.outstanding_id}
       ></ConfirmRedeemFrenmo>
     );
   };
@@ -111,21 +75,15 @@ class FrenmoDetail extends Component {
     );
   };
 
-  renderEditButton = () => {};
-
   renderPending = () => {
-    if (
-      this.props.location.state.pending
-    ) {
+    if (this.props.location.state.pending) {
       return <p>Pending Redeem</p>;
     }
   };
   renderRedeemed = () => {
     if (
-      this.props.location.state
-        .receiver_redeemed &&
-      this.props.location.state
-        .issuer_redeemed
+      this.props.location.state.receiver_redeemed &&
+      this.props.location.state.issuer_redeemed
     ) {
       return <p>Already Redeemed</p>;
     }
@@ -133,9 +91,7 @@ class FrenmoDetail extends Component {
 
   //Expiration flag -- renders for expired frenmos
   renderExpirationFlag = () => {
-    return (
-      <h3 className="void">VOID</h3>
-    );
+    return <h3 className="void">VOID</h3>;
   };
 
   handleGoBack = () => {
@@ -149,9 +105,7 @@ class FrenmoDetail extends Component {
     var focusableEls = this.dialogEl.querySelectorAll(
       'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]'
     );
-    this.focusableEls = Array.prototype.slice.call(
-      focusableEls
-    );
+    this.focusableEls = Array.prototype.slice.call(focusableEls);
   }
 
   render() {
@@ -167,7 +121,7 @@ class FrenmoDetail extends Component {
       receiver_redeemed,
       issued,
       expired,
-      received
+      received,
     } = this.props.location.state;
 
     return (
@@ -198,26 +152,14 @@ class FrenmoDetail extends Component {
             aria-label={expiration_date}
             tabIndex="0"
           >
-            <FontAwesomeIcon
-              icon={faStopwatch}
-            />
+            <FontAwesomeIcon icon={faStopwatch} />
             <div className="FrenmoDetail__date display">
-              {formatRelative(
-                new Date(
-                  expiration_date
-                ),
-                Date.now(),
-                0
-              )}
+              {formatRelative(new Date(expiration_date), Date.now(), 0)}
             </div>
           </h3>
         )}
 
-        <p
-          className="FrenmoDetail__desc"
-          aria-label={description}
-          tabIndex="0"
-        >
+        <p className="FrenmoDetail__desc" aria-label={description} tabIndex="0">
           {description}
         </p>
 
@@ -227,14 +169,10 @@ class FrenmoDetail extends Component {
             aria-label={`This frenmo is ${publicity}`}
             tabIndex="0"
           >
-            {publicity === 'public' ? (
-              <FontAwesomeIcon
-                icon={faGlobeAmericas}
-              />
+            {publicity === "public" ? (
+              <FontAwesomeIcon icon={faGlobeAmericas} />
             ) : (
-              <FontAwesomeIcon
-                icon={faKey}
-              />
+              <FontAwesomeIcon icon={faKey} />
             )}
             {publicity}
           </p>
@@ -246,9 +184,7 @@ class FrenmoDetail extends Component {
             aria-label={`Frenmo sent by ${issuer_name}`}
             tabIndex="0"
           >
-            <FontAwesomeIcon
-              icon={faGift}
-            />
+            <FontAwesomeIcon icon={faGift} />
             {issuer_name}
           </p>
         )}
@@ -259,27 +195,18 @@ class FrenmoDetail extends Component {
             aria-label={`Frenmo sent to ${receiver_name}`}
             tabIndex="0"
           >
-            <FontAwesomeIcon
-              icon={faEnvelope}
-            />
+            <FontAwesomeIcon icon={faEnvelope} />
             {receiver_name}
           </p>
         )}
 
         {issued && !expired
-          ? this.renderIssue(
-              receiver_username,
-              receiver_id
-            )
+          ? this.renderIssue(receiver_username, receiver_id)
           : null}
-        {received &&
-        !expired &&
-        !receiver_redeemed
+        {received && !expired && !receiver_redeemed
           ? this.renderRedeem()
           : null}
-        {expired
-          ? this.renderExpirationFlag()
-          : null}
+        {expired ? this.renderExpirationFlag() : null}
         {this.renderPending()}
         {this.renderRedeemed()}
       </div>

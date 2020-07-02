@@ -1,36 +1,24 @@
-import React, {
-  Component
-} from 'react';
-import { NavLink } from 'react-router-dom';
-import FrenmoContext from '../../contexts/FrenmoContext';
-import FrenmoApiService from '../../services/frenmo-api-service';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import {
-  faSignOutAlt,
-  faChevronLeft,
-  faChevronRight
-} from '@fortawesome/free-solid-svg-icons';
-
-import './FrenmoDashboard.scss';
-import FriendBubbles from '../../components/FriendBubbles/FriendBubbles';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import FrenmoContext from "../../contexts/FrenmoContext";
+import "./FrenmoDashboard.scss";
+import SideNavMenu from "../../components/SideNavMenu/SideNavMenu";
 
 class FrenmoDashboard extends Component {
   static defaultProps = {
     match: {
-      params: {}
+      params: {},
     },
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
 
   static contextType = FrenmoContext;
   async componentDidMount() {
     await this.context.addFrenmo();
     this.setState({
-      favors: this.context
-        .allPublicFrenmos.favors
+      favors: this.context.allPublicFrenmos.favors,
     });
   }
 
@@ -39,58 +27,48 @@ class FrenmoDashboard extends Component {
       frenmoCategories,
       friendFrenmos,
       personalFrenmos,
-      publicFrenmos
+      publicFrenmos,
     } = this.context;
 
-    let categories = frenmoCategories.map(
-      (category, idx) => (
-        <NavLink
-          key={idx}
-          to={`/frenmos/category/${category.id}`}
-          className="Dashboard__link"
-          activeClassName="Dashboard__link-selected"
-        >
-          <div className="Dashboard__category">
-            <div
-              className={category.icon}
-            />
-            <div className="Dashboard__label">
-              {category.category}
-            </div>
-          </div>
-        </NavLink>
-      )
-    );
+    let categories = frenmoCategories.map((category, idx) => (
+      <NavLink
+        key={idx}
+        to={`/frenmos/category/${category.id}`}
+        className="Dashboard__cat-link"
+        activeClassName="Dashboard__cat-link-selected"
+      >
+        <div className="Dashboard__cat-category">
+          <div className={category.icon} />
+          <div className="Dashboard__label">{category.category}</div>
+        </div>
+      </NavLink>
+    ));
 
     return (
       <>
+        <div className="Dashboard__cat">{categories}</div>
         <div className="Dashboard">
-          {categories}
+          <SideNavMenu />
+          <div className="Dashboard__main">
+            {!friendFrenmos.favors.length &&
+              !personalFrenmos.favors.length &&
+              !publicFrenmos.favors.length && (
+                <div className="FrenmoDetail welcome">
+                  <div>
+                    <h3>Welcome to Frenmo!</h3>
+                    <div className="divider"></div>
+                    <p className="Dashboard__text">
+                      Here, you can access all your Frenmos by their category.
+                      <br />
+                      <br />
+                      To get started, create a Frenmo and start swapping favors
+                      with your friends, your neighbors, your community.
+                    </p>
+                  </div>
+                </div>
+              )}
+          </div>
         </div>
-        {!friendFrenmos.favors.length &&
-          !personalFrenmos.favors
-            .length &&
-          !publicFrenmos.favors
-            .length && (
-            <div className="welcome-message">
-              <h3 className="welcome-message__header">
-                Welcome to Frenmo!
-              </h3>
-              <h4 className="welcome-message__sub-header">
-                Here, you can access all
-                your Frenmos by their
-                category.
-              </h4>
-              <p className="welcome-message__sub-header">
-                To get started, create a
-                Frenmo and start
-                swapping favors with
-                your friends, your
-                neighbors, your
-                community.
-              </p>
-            </div>
-          )}
       </>
     );
   }

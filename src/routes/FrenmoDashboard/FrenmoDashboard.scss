@@ -1,6 +1,21 @@
 .Dashboard {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+.Dashboard__cat {
+  display: flex;
+  flex-direction: row;
   width: 100vw;
   overflow: scroll;
   justify-content: flex-start;
@@ -8,14 +23,15 @@
   margin: 10px;
   padding: 10px;
 
-  &__link {
+  &-link {
     margin-top: 10vh;
     padding: 0;
   }
-  &__link-selected {
+  &-link-selected {
     padding: 10px;
-    background-color: #a8ffdc;
-    border-radius: 15px 0;
+    background-color: #188072;
+    border-radius: 10px;
+    z-index: -2;
   }
 
   &::-webkit-scrollbar {
@@ -24,16 +40,17 @@
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: inset 6px 6px 6px #a8ffdc;
-    border-radius: 15px 0;
+    box-shadow: inset 6px 6px 6px #188072;
+    border-radius: 15px;
+    margin: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #188072;
+    background-color: #a8ffdc;
     border-radius: 6px;
   }
 
-  &__category {
+  &-category {
     padding: 10px;
     margin: 5px;
     display: flex;
@@ -43,13 +60,14 @@
     font-size: 12px;
     text-align: center;
     box-shadow: 5px 5px 5px #188072;
-    border-radius: 15px 0;
+    border-radius: 15px;
     background: #a8ffdc;
     color: #188072;
     font-weight: bold;
     width: 80px;
     height: 80px;
     position: relative;
+    z-index: -1;
   }
 
   &__link:visited {
@@ -58,15 +76,20 @@
 }
 .fas {
   font-size: 30px;
-  color: white;
+  color: #4ac2b9;
+}
+.welcome {
+  color: whitesmoke;
+  text-align: center;
 }
 .welcome-message {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 60vh;
   margin: 20px;
+
   & > div {
     text-align: center;
     padding: 40px;
@@ -76,7 +99,7 @@
     border-radius: 55px 55px 55px 0;
     box-shadow: 5px 5px 5px #188072;
     line-height: 1.5;
-    max-width: 450px;
+    max-width: 300px;
   }
   &__header {
     border-bottom: 1px solid #188072;
@@ -105,20 +128,20 @@
   font-size: 30px;
   text-transform: uppercase;
 }
-
 @media (min-width: 768px) {
-  .Dashboard {
-    width: 58vw;
+  .Dashboard__cat {
+    margin-left: 30vw;
   }
-  .welcome-message {
-    margin-left: 20vw;
-    width: 60vw;
-    max-width: 1000px;
+  .Dashboard {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    &__main {
+      margin-left: 30vw;
+    }
   }
 }
 @media (min-width: 1024px) {
-  .welcome-message {
-  }
   .Dashboard {
     padding-top: 10vh;
     &__link {
@@ -208,18 +231,13 @@
   }
 }
 
-.welcome-message {
-  left: 40%;
-}
 @media (min-width: 1800px) {
   .Dashboard {
     margin-left: 20%;
     width: 20%;
   }
   .welcome-message {
-    padding: 100px;
-    width: 500px;
-    font-size: 28px;
+    height: 60vh;
   }
   .smaller {
     font-size: 28px;

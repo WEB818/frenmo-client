@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import FrenmoDetail from "../FrenmoDetail/FrenmoDetail";
-
+import { ReactComponent as Leaf } from "../../images/leaf-filled.svg";
 import "./Frenmo.scss";
 
 class Frenmo extends Component {
   static defaultProps = {
     match: {
-      params: {}
-    }
+      params: {},
+    },
   };
 
   render() {
@@ -40,7 +39,7 @@ class Frenmo extends Component {
       expired,
       received,
       favor_id,
-      pending
+      pending,
     } = this.props;
 
     return (
@@ -77,11 +76,12 @@ class Frenmo extends Component {
             redeemed: redeemed,
             expired: expired,
             received: received,
-            pending: pending
-          }
+            pending: pending,
+          },
         }}
       >
         <li className="Frenmo">
+          <Leaf />
           <h3>{title}</h3>
         </li>
       </NavLink>

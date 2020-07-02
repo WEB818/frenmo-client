@@ -1,17 +1,16 @@
 .SearchUser {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 40px;
+  height: 30vh;
 }
 @media (min-width: 768px) {
   .SearchUser {
-    margin-left: 40%;
-    width: 58%;
-  }
-}
-@media (min-width: 1024px) {
-  .SearchUser {
-    margin-left: 50%;
-    width: 30%;
+    margin-left: 30vw;
+    & > input {
+      max-width: 300px;
+    }
   }
 }
