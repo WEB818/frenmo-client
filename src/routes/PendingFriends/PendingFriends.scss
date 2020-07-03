@@ -1,33 +1,12 @@
-.pending-friend-user {
-  color: #0c0063;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 40px;
+.pending-friend-container {
+  padding: 10px;
+}
 
-  &::before {
-    content: "f";
-    font-family: "Cantarell", sans-serif;
-    text-transform: lowercase;
-    height: 30px;
-    width: 30px;
-    background-color: #0c0063;
-    color: white;
-    text-align: center;
-    border-radius: 8px 0;
-    margin-right: 20px;
-  }
-  &:hover::before {
-    content: "f";
-    font-family: "Cantarell", sans-serif;
-    text-transform: lowercase;
-    height: 30px;
-    width: 30px;
-    background-color: white;
-    color: #0c0063;
-    text-align: center;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
+.pending-friend-user {
+  color: #188072;
+  display: flex;
+  justify-content: center;
+
   .pending-btn {
     display: flex;
     justify-content: space-between;
@@ -35,9 +14,10 @@
 }
 
 @media (min-width: 768px) {
-  .pending-friend-user,
-  .pending-btn {
-    margin-left: 40%;
-    width: 58%;
+  .pending-friend-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 30vw;
   }
 }

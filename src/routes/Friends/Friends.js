@@ -66,22 +66,21 @@ class Friends extends Component {
     return (
       <div>
         <SideNavMenu />
+
         <div className="btn-container friend">
           <Link to="/pending">
-            <Button className="friends-buttons">Pending requests</Button>
+            <Button>Pending requests</Button>
           </Link>
-          <Button
-            onClick={() => this.handleExpandSearch()}
-            className="friends-buttons"
-          >
-            Send request
+          <Button onClick={() => this.handleExpandSearch()}>
+            {!expanded ? <div>Send request</div> : <div>Back to List</div>}
           </Button>
         </div>
+
         {expanded && <SearchUser />}
-        {!friends.length ? null : (
-          <h3 className="NewFrenmoPage__header friend">
-            spend frenmos on friends
-          </h3>
+        {!expanded && (
+          <div>
+            {!friends.length ? null : <h3 className="header">Friend List</h3>}
+          </div>
         )}
 
         {!expanded && (
@@ -92,16 +91,18 @@ class Friends extends Component {
                 favors!
               </p>
             ) : (
-              <div className="FriendsList">
-                {friends.map((fren, idx) => (
-                  <FriendsList
-                    key={idx}
-                    friends={friends}
-                    friend={fren}
-                    sortedFriends={this.onSort}
-                    update={this.updateFrensAfterDelete}
-                  />
-                ))}
+              <div className="Friends__container">
+                <div className="FriendsList">
+                  {friends.map((fren, idx) => (
+                    <FriendsList
+                      key={idx}
+                      friends={friends}
+                      friend={fren}
+                      sortedFriends={this.onSort}
+                      update={this.updateFrensAfterDelete}
+                    />
+                  ))}
+                </div>
               </div>
             )}
           </div>

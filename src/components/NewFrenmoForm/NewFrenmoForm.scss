@@ -1,13 +1,11 @@
 .NewFrenmoForm {
+  margin: 12vh 10px 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  margin-top: 12vh;
 
   &__Buttons {
     display: flex;
-    flex-direction: row;
     justify-content: center;
   }
 
@@ -15,33 +13,21 @@
     color: red;
   }
 
-  &__limitToolTip {
-    color: white;
-    z-index: 2;
-    background-color: #0c0063;
-    position: relative;
-    bottom: 120px;
-    border-radius: 15px 0px;
-    margin-bottom: -100px;
-    box-shadow: 5px 5px 5px lightblue;
-    min-height: 80px;
-    font-size: 1rem;
-    padding: 12px;
-    width: 60vw;
-    height: max-content;
-    max-width: 300px;
+  &__toolTip {
+    color: #188072;
+    font-size: 22px;
   }
 
-  &__send > *,
-  &__ask > * {
-    margin: 12px;
-  }
-  &__ask > div.NewFrenmo__tipBox,
-  &__send > div.NewFrenmo__tipBox {
-    margin: 0;
-  }
-  &__tipBox {
-    height: 0;
+  &__limitToolTip {
+    color: whitesmoke;
+    z-index: 20;
+    background-color: #188072;
+    position: absolute;
+    border-radius: 15px;
+    min-height: 80px;
+    text-align: center;
+    padding: 6px;
+    width: 260px;
   }
 }
 
@@ -51,26 +37,19 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: justify;
-  height: max-content;
-  width: 300px;
-  margin: 20px auto 10px;
-  padding-bottom: 100px;
+  height: 70vh;
+  max-width: 300px;
 }
-.NewFrenmoPage__header {
-  padding: 20px;
-  font-family: "Cantarell", sans-serif;
-  color: #0c0063;
-}
-.NewFrenmoForm__input-container {
+
+.NewFrenmo__input-container {
   display: flex;
+  align-items: center;
 }
 #NewFrenmo__category,
 #NewFrenmo__publicity {
   padding: 15px;
-  border-radius: 15px 0;
-  background-color: lightblue;
-  color: #0c0063;
-  font-family: "Helvetica Neue", sans-serif;
+  border-radius: 15px;
+  color: #188072;
   font-weight: bold;
 }
 
@@ -78,60 +57,32 @@
 #NewFrenmo__receiver,
 #NewFrenmo__user {
   width: 100%;
-  &::placeholder {
-    letter-spacing: 1px;
-    font-size: 12px;
-    font-family: "Helvetica Neue", sans-serif;
-    text-align: left;
-  }
 }
 #NewFrenmo__expiration-date {
   padding: 15px;
-  border-radius: 15px 0;
-  background-color: lightblue;
-  color: #0c0063;
+  border-radius: 15px;
+  color: #188072;
   &:focus {
-    border: dotted 1px #0c0063;
+    border: dotted 1px #188072;
     outline: thin dotted;
   }
 }
 
-.tip {
-  color: #0c0063;
-}
 #give-favor,
 #ask-favor {
   &:active {
-    background-color: lightblue;
+    background-color: #4ac2b9;
   }
   &:focus {
-    background-color: lightblue;
-    padding: 20px;
-    color: #0c0063;
+    background-color: #4ac2b9;
+    color: #76ffb9;
   }
 }
-
+.form-button {
+  // width: 300px;
+}
 @media (min-width: 768px) {
   .NewFrenmoForm {
-    display: flex;
-    justify-content: center;
-    margin-left: 40%;
-  }
-  .NewFrenmoPage__header {
-    margin-left: 40%;
-    padding: 20px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .NewFrenmoForm {
-    display: flex;
-    justify-content: center;
-    margin-left: 0;
-    overflow: hidden;
-  }
-  .NewFrenmoPage__header {
-    margin-left: 0;
-    padding: 20px;
+    margin-left: 30vw;
   }
 }

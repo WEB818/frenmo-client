@@ -31,17 +31,19 @@ class FrenmoDashboard extends Component {
     } = this.context;
 
     let categories = frenmoCategories.map((category, idx) => (
-      <NavLink
-        key={idx}
-        to={`/frenmos/category/${category.id}`}
-        className="Dashboard__cat-link"
-        activeClassName="Dashboard__cat-link-selected"
-      >
-        <div className="Dashboard__cat-category">
-          <div className={category.icon} />
-          <div className="Dashboard__label">{category.category}</div>
-        </div>
-      </NavLink>
+      <div className="Dashboard">
+        <NavLink
+          key={idx}
+          to={`/frenmos/category/${category.id}`}
+          className="Dashboard__cat-link"
+          activeClassName="Dashboard__cat-link-selected"
+        >
+          <div className="Dashboard__cat-category">
+            <div className={category.icon} />
+            <div className="Dashboard__label">{category.category}</div>
+          </div>
+        </NavLink>
+      </div>
     ));
 
     return (

@@ -20,3 +20,15 @@
 .leaf:hover {
   fill: #76ffb9;
 }
+
+@media (min-width: 1440px) {
+  .Frenmo__Nav-link {
+    overflow: hidden;
+  }
+  .Frenmo {
+    margin-left: 50vw;
+    width: 50vw;
+    padding: 20px 0 0 0;
+    overflow: hidden;
+  }
+}

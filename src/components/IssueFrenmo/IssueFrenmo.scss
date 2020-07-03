@@ -1,35 +1,16 @@
-.NewFrenmo__receiver {
-  margin-top: 10px;
-  background-color: #fdfbef;
-
-  &:focus {
-    outline: thin dotted;
-  }
-}
-
-.NewFrenmo__issue-button {
+.NewFrenmo__input-container {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  justify-content: space-around;
 }
 
 .issue-search {
   margin: 2px;
-  background-color: #fdfbef;
-  border-radius: 6px 0;
+  background-color: whitesmoke;
+  border-radius: 6px;
   padding: 2px;
 }
 
 .btn-container {
   display: flex;
   justify-content: center;
-}
-
-.issue-button {
-  width: 100%;
-  border-radius: 25px 0;
-  border-bottom: 2px solid #fdfbef;
-  color: #d7f8ff;
-  box-shadow: none;
-  font-weight: bold;
 }

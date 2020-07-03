@@ -22,7 +22,8 @@
     flex-direction: column;
 
     &__links {
-      color: #a8ffdc;
+      color: whitesmoke;
+      font-weight: bolder;
       padding: 30px 0;
       display: flex;
       align-items: center;
@@ -30,5 +31,20 @@
     &__item {
       padding: 0 10px;
     }
+  }
+}
+@media (min-width: 1024px) {
+  .SideNav {
+    height: 100vh;
+    top: 0;
+  }
+  .SideMenu {
+    height: 100vh;
+    margin-top: 15vh;
+  }
+}
+@media (min-width: 1440px) {
+  .SideNav {
+    width: 25vw;
   }
 }

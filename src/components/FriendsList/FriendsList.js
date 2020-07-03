@@ -40,26 +40,28 @@ export default class FriendsList extends Component {
         <div>
           <ul className="friends-list">
             <li className="frens" key={friend.id}>
-              <p>{friend.username}</p>
-              <Button
-                type="submit"
-                aria-label={`Send ${friend.username} a frenmo`}
-                onClick={() => this.frenmo(friend.id)}
-                className="friendship-buttons"
-              >
-                <FontAwesomeIcon icon={faGift} className="friendship-icons" />
-              </Button>
-              <Button
-                type="submit"
-                aria-label="delete friend"
-                onClick={() => this.unfriendById(friend.id)}
-                className="friendship-buttons"
-              >
-                <FontAwesomeIcon
-                  icon={faUserInjured}
-                  className="friendship-icons"
-                />
-              </Button>
+              {friend.username}
+              <div>
+                <Button
+                  type="submit"
+                  aria-label={`Send ${friend.username} a frenmo`}
+                  onClick={() => this.frenmo(friend.id)}
+                  className="friendship-buttons"
+                >
+                  <FontAwesomeIcon icon={faGift} className="friendship-icons" />
+                </Button>
+                <Button
+                  type="submit"
+                  aria-label="delete friend"
+                  onClick={() => this.unfriendById(friend.id)}
+                  className="friendship-buttons"
+                >
+                  <FontAwesomeIcon
+                    icon={faUserInjured}
+                    className="friendship-icons"
+                  />
+                </Button>
+              </div>
             </li>
           </ul>
         </div>

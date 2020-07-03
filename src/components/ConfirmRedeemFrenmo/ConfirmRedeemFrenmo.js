@@ -1,7 +1,8 @@
-import * as React from 'react';
-import FrenmoApiService from '../../services/frenmo-api-service';
+import * as React from "react";
+import FrenmoApiService from "../../services/frenmo-api-service";
+import { Button } from "../../components/Utils/Utils";
 export default class ConfirmRedeemFrenmo extends React.Component {
-  handleRedeemFrenmo = event => {
+  handleRedeemFrenmo = (event) => {
     event.preventDefault();
     FrenmoApiService.redeemFrenmo(
       this.props.favor_id,
@@ -14,14 +15,10 @@ export default class ConfirmRedeemFrenmo extends React.Component {
       <>
         <form
           className="ConfirmRedeemFrenmo"
-          onSubmit={
-            this.handleRedeemFrenmo
-          }
+          onSubmit={this.handleRedeemFrenmo}
         >
           <div>
-            <button type="submit">
-              Confirmed Redeemed Frenmo
-            </button>
+            <Button type="submit">Confirm Redeemed Frenmo</Button>
           </div>
         </form>
       </>

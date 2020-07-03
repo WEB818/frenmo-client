@@ -1,20 +1,10 @@
-.FriendsList {
-  background-color: #a8ffdc;
-  height: 100vh;
-  margin: 0;
+.Friends__container {
+  display: flex;
+  justify-content: center;
 }
 .friend {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 20px;
   margin-top: 12vh;
 }
-
-.friends-buttons {
-  padding: 10px;
-}
-
 .add-friend {
   position: fixed;
   top: 50%;
@@ -28,10 +18,13 @@
   font-weight: bold;
   border-radius: 55px 55px 55px 0;
   background-color: #a8ffdc;
-  box-shadow: 5px 5px 5px#188072;
+  box-shadow: 5px 5px 5px #188072;
   text-align: center;
 }
-
+.header {
+  color: #188072;
+  text-align: center;
+}
 @media (min-width: 768px) {
   .friend,
   .FriendsList {
@@ -39,5 +32,8 @@
   }
   .add-friend {
     margin-left: 15%;
+  }
+  .header {
+    margin-left: 30vw;
   }
 }

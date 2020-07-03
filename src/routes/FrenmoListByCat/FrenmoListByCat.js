@@ -125,23 +125,25 @@ class FrenmoListByCat extends Component {
 
   renderTypes() {
     return (
-      <form className="FrenmoListByCat">
-        <label className="FrenmoListByCat__label" htmlFor="FrenmoCat">
-          Select a Type
-        </label>
-        <select
-          name="options"
-          id="FrenmoCat"
-          onChange={(e) => this.setState({ type: e.target.value })}
-        >
-          <option value="all">All</option>
-          <option value="received">Received</option>
-          <option value="issued">Issued</option>
-          <option value="redeemed">Redeemed</option>
-          <option value="pending">Pending</option>
-          <option value="expired">Expired</option>
-        </select>
-      </form>
+      <div className="Cat-container">
+        <form className="FrenmoListByCat">
+          <label className="FrenmoListByCat__label" htmlFor="FrenmoCat">
+            Select a Type
+          </label>
+          <select
+            name="options"
+            id="FrenmoCat"
+            onChange={(e) => this.setState({ type: e.target.value })}
+          >
+            <option value="all">All</option>
+            <option value="received">Received</option>
+            <option value="issued">Issued</option>
+            <option value="redeemed">Redeemed</option>
+            <option value="pending">Pending</option>
+            <option value="expired">Expired</option>
+          </select>
+        </form>
+      </div>
     );
   }
 

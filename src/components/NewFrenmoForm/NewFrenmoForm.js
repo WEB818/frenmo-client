@@ -1,33 +1,23 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from "react";
 
-import FrenmoContext from '../../contexts/FrenmoContext';
-import FrenmoApiService from '../../services/frenmo-api-service';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import {
-  Button,
-  Label,
-  Input,
-  Textarea
-} from '../Utils/Utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import FrenmoContext from "../../contexts/FrenmoContext";
+import FrenmoApiService from "../../services/frenmo-api-service";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Button, Label, Input, Textarea } from "../Utils/Utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
-import './NewFrenmoForm.scss';
-import {
-  useHistory,
-  Redirect
-} from 'react-router-dom';
+import "./NewFrenmoForm.scss";
+import { Redirect } from "react-router-dom";
 
 class NewFrenmoForm extends Component {
   static defaultProps = {
     match: { params: {} },
     history: {
-      push: () => {}
+      push: () => {},
     },
-    onRedirect: () => {}
+    onRedirect: () => {},
   };
 
   static contextType = FrenmoContext;
@@ -39,81 +29,56 @@ class NewFrenmoForm extends Component {
     publicity: null,
     receiver_id: null,
     users_id: null,
-    receiver: '',
-    user: '',
+    receiver: "",
+    user: "",
     people: [],
     submitted: false,
     error: null,
     limitToolTip: false,
-    limitToolTipCounter: 0
+    limitToolTipCounter: 0,
   };
 
-  handleChange = date => {
+  handleChange = (date) => {
     this.setState({
-      expDate: date
+      expDate: date,
     });
   };
   handleGetInfo = () => {
     this.setState({ getInfo: true });
   };
 
-  handleChangePerson = async event => {
+  handleChangePerson = async (event) => {
     //change person id and handle
     let { receiver, user } = this.state;
-    const terms = this.state.give
-      ? receiver
-      : user;
+    const terms = this.state.give ? receiver : user;
 
-    const setid = this.state.give
-      ? 'receiver'
-      : 'users';
-    let possibleUsers = await FrenmoApiService.searchUser(
-      terms
-    );
+    const setid = this.state.give ? "receiver" : "users";
+    let possibleUsers = await FrenmoApiService.searchUser(terms);
     await this.setState({
       ...this.state,
-      [`${
-        setid === 'users'
-          ? 'user'
-          : setid
-      }_id`]:
-        possibleUsers.length > 0
-          ? possibleUsers[0].id
-          : null,
+      [`${setid === "users" ? "user" : setid}_id`]:
+        possibleUsers.length > 0 ? possibleUsers[0].id : null,
 
-      people: possibleUsers
+      people: possibleUsers,
     });
   };
 
-  renderSelect = () => {};
-
-  handleSelectPerson = async (
-    id,
-    person
-  ) => {
-    const setid = this.state.give
-      ? 'receiver'
-      : 'user';
+  handleSelectPerson = async (id, person) => {
+    const setid = this.state.give ? "receiver" : "user";
     await this.setState({
       ...this.state,
-      [`${
-        setid === 'user'
-          ? setid + 's'
-          : setid
-      }_id`]: id,
-      [setid]: person
+      [`${setid === "user" ? setid + "s" : setid}_id`]: id,
+      [setid]: person,
     });
   };
 
-  handleIssue = fields => {
+  handleIssue = (fields) => {
     FrenmoApiService.issueFrenmo(fields)
-      .then(() => {
-
-      })
+      .then(() => {})
       .catch();
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     let {
@@ -122,20 +87,14 @@ class NewFrenmoForm extends Component {
       category,
       expiration_date,
       publicity,
-      receiver,
-      user,
-      limit
+      limit,
     } = event.target;
 
     title = title.value.trim();
     description = description.value.trim();
-    if (
-      title.length === 0 ||
-      description.length === 0
-    ) {
+    if (title.length === 0 || description.length === 0) {
       this.setState({
-        error:
-          'title or description must not be empty'
+        error: "title or description must not be empty",
       });
       return;
     }
@@ -148,34 +107,26 @@ class NewFrenmoForm extends Component {
       publicity.value,
       limit.value
     )
-      .then(postRes => {
-        let {
-          receiver_id,
-          users_id,
-          favor_id
-        } = postRes;
+      .then((postRes) => {
+        let { users_id, favor_id } = postRes;
         if (this.state.give) {
           this.handleIssue({
-            receiver_id: this.state
-              .receiver_id,
+            receiver_id: this.state.receiver_id,
             favor_id,
-            users_id
+            users_id,
           });
         } else {
           this.handleIssue({
             receiver_id: users_id,
             favor_id,
-            users_id: this.state
-              .users_id
+            users_id: this.state.users_id,
           });
         }
         this.setState({
           postRes,
-          submitted: true
+          submitted: true,
         });
-        this.props.history.push(
-          '/feed'
-        );
+        this.props.history.push("/feed");
       })
       .then(this.context.addFrenmo)
       .catch(this.context.setError);
@@ -184,33 +135,26 @@ class NewFrenmoForm extends Component {
   renderForm = () => {
     let personSelection = (
       <div>
-        {this.state.people.map(
-          (person, i) => {
-            return (
-              <Button
-                key={i}
-                type="button"
-                value={person.username}
-                onClick={event => {
-                  this.handleSelectPerson(
-                    person.id,
-                    person.username
-                  );
-                }}
-              >
-                {person.username}
-              </Button>
-            );
-          }
-        )}
+        {this.state.people.map((person, i) => {
+          return (
+            <Button
+              key={i}
+              type="button"
+              value={person.username}
+              onClick={(event) => {
+                this.handleSelectPerson(person.id, person.username);
+              }}
+            >
+              {person.username}
+            </Button>
+          );
+        })}
       </div>
     );
     let sendPortion = (
       <>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__receiver">
-            Give To:
-          </Label>
+          <Label htmlFor="NewFrenmo__receiver">Give To:</Label>
           <div>{personSelection}</div>
           <Input
             type="text"
@@ -218,18 +162,16 @@ class NewFrenmoForm extends Component {
             id="NewFrenmo__receiver"
             aria-label="Add receiver for frenmo"
             value={this.state.receiver}
-            onChange={async event => {
+            onChange={async (event) => {
               await this.handleSelectPerson(
                 this.state.receiver_id,
                 event.target.value
               );
-              await this.handleChangePerson(
-                event
-              );
+              await this.handleChangePerson(event);
             }}
           />
         </div>
-        <Button type="submit">
+        <Button type="submit" className="form-button">
           Send Frenmo
         </Button>
       </>
@@ -237,9 +179,7 @@ class NewFrenmoForm extends Component {
     let askPortion = (
       <>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__user">
-            Request From:
-          </Label>
+          <Label htmlFor="NewFrenmo__user">Request From:</Label>
           <div>{personSelection}</div>
           <Input
             type="text"
@@ -247,19 +187,17 @@ class NewFrenmoForm extends Component {
             id="NewFrenmo__user"
             aria-label="Add user for frenmo"
             value={this.state.user}
-            onChange={async event => {
+            onChange={async (event) => {
               event.persist();
               await this.handleSelectPerson(
                 this.state.users_id,
                 event.target.value
               );
-              await this.handleChangePerson(
-                event
-              );
+              await this.handleChangePerson(event);
             }}
           />
         </div>
-        <Button type="submit">
+        <Button type="submit" className="form-button">
           Request Frenmo
         </Button>
       </>
@@ -267,10 +205,10 @@ class NewFrenmoForm extends Component {
     let formtype;
     let giverOrReceiver;
     if (this.state.give) {
-      formtype = 'send';
+      formtype = "send";
       giverOrReceiver = sendPortion;
     } else if (this.state.ask) {
-      formtype = 'ask';
+      formtype = "ask";
       giverOrReceiver = askPortion;
     }
     let generalForm = (
@@ -304,85 +242,35 @@ class NewFrenmoForm extends Component {
           aria-label="Select category for frenmo"
           required
         >
-          <option value="13">
-            --Please choose a category--
-          </option>
-          <option value="1">
-            Advice
-          </option>
-          <option value="2">
-            Career
-          </option>
-          <option value="3">
-            Community
-          </option>
-          <option value="4">
-            Creative
-          </option>
-          <option value="5">
-            Education
-          </option>
-          <option value="6">
-            Emergency
-          </option>
-          <option value="7">
-            Family
-          </option>
-          <option value="8">
-            Food
-          </option>
-          <option value="9">
-            Gaming
-          </option>
-          <option value="10">
-            Health
-          </option>
+          <option value="13">--Please choose a category--</option>
+          <option value="1">Advice</option>
+          <option value="2">Career</option>
+          <option value="3">Community</option>
+          <option value="4">Creative</option>
+          <option value="5">Education</option>
+          <option value="6">Emergency</option>
+          <option value="7">Family</option>
+          <option value="8">Food</option>
+          <option value="9">Gaming</option>
+          <option value="10">Health</option>
           <option value="11">IT</option>
-          <option value="12">
-            Kids
-          </option>
-          <option value="13">
-            Miscellaneous
-          </option>
-          <option value="14">
-            Needs fixing
-          </option>
-          <option value="15">
-            Pets
-          </option>
-          <option value="16">
-            Plants
-          </option>
-          <option value="17">
-            Relationship
-          </option>
-          <option value="18">
-            Religion & Spirituality
-          </option>
-          <option value="19">
-            Ridesharing
-          </option>
-          <option value="20">
-            Sports
-          </option>
-          <option value="21">
-            Travel
-          </option>
-          <option value="22">
-            Volunteers Needed
-          </option>
-          <option value="23">
-            Wedding
-          </option>
+          <option value="12">Kids</option>
+          <option value="13">Miscellaneous</option>
+          <option value="14">Needs fixing</option>
+          <option value="15">Pets</option>
+          <option value="16">Plants</option>
+          <option value="17">Relationship</option>
+          <option value="18">Religion & Spirituality</option>
+          <option value="19">Ridesharing</option>
+          <option value="20">Sports</option>
+          <option value="21">Travel</option>
+          <option value="22">Volunteers Needed</option>
+          <option value="23">Wedding</option>
         </select>
         <div className="NewFrenmo__input-container">
-          <Label htmlFor="NewFrenmo__expiration-date">
-            Valid until:
-          </Label>
+          <Label htmlFor="NewFrenmo__expiration-date">Valid until:</Label>
           <DatePicker
-            selected={
-              this.state.expDate
-            }
+            selected={this.state.expDate}
             onChange={this.handleChange}
             id="NewFrenmo__expiration-date"
             name="expiration_date"
@@ -393,91 +281,21 @@ class NewFrenmoForm extends Component {
           id="NewFrenmo__publicity"
           name="publicity"
           aria-label="Select privacy setting for frenmo"
-          onChange={event => {
+          onChange={(event) => {
             this.setState({
-              publicity:
-                event.target.value
+              publicity: event.target.value,
             });
           }}
           required
         >
-          <option value="dm">
-            Direct Message
-          </option>
-          <option value="friend">
-            Friends Only
-          </option>
-          <option value="public">
-            Public
-          </option>
+          <option value="dm">Direct Message</option>
+          <option value="friend">Friends Only</option>
+          <option value="public">Public</option>
         </select>
-        <div className="NewFrenmo__tipBox">
-          {this.renderLimitTip()}
-        </div>
+        <div className="NewFrenmo__tipBox">{this.renderLimitTip()}</div>
         <div className="NewFrenmo__input-container">
-          <Label
-            htmlFor="NewFrenmo__limit"
-            className="limit-label"
-          >
-            Set Limit:{' '}
-            <FontAwesomeIcon
-              icon={faInfoCircle}
-              className="NewFrenmo__toolTip"
-              onClick={async () => {
-                await this.setState({
-                  limitToolTip: !this
-                    .state.limitToolTip
-                });
-                if (
-                  this.state
-                    .limitToolTip
-                ) {
-                  if (
-                    this.state
-                      .limitToolTipCounter >
-                    1
-                  ) {
-                    this.setState({
-                      limitToolTipCounter: 7
-                    });
-                  } else {
-                    this.setState({
-                      limitToolTipCounter: 7
-                    });
-                    const limitTimer = setInterval(
-                      () => {
-                        if (
-                          this.state
-                            .limitToolTipCounter <
-                          1
-                        ) {
-                          this.setState(
-                            {
-                              limitToolTip: false
-                            }
-                          );
-                          clearInterval(
-                            limitTimer
-                          );
-                          return;
-                        }
-
-                        this.setState({
-                          limitToolTipCounter: --this
-                            .state
-                            .limitToolTipCounter
-                        });
-                      },
-                      1000
-                    );
-                  }
-                } else {
-                  this.setState({
-                    limitToolTipCounter: 0
-                  });
-                }
-              }}
-            />
+          <Label htmlFor="NewFrenmo__limit" className="limit-label">
+            Set Limit:
           </Label>
           <Input
             type="number"
@@ -485,7 +303,12 @@ class NewFrenmoForm extends Component {
             id="NewFrenmo__limit"
             min="1"
             aria-label="Add limit for frenmo"
-            placeholder="Number of uses for this favor"
+            placeholder="# of uses for frenmo"
+          />
+          <FontAwesomeIcon
+            icon={faInfoCircle}
+            className="NewFrenmoForm__toolTip"
+            onClick={() => this.setTipTimer()}
           />
         </div>
         {giverOrReceiver}
@@ -514,17 +337,44 @@ class NewFrenmoForm extends Component {
     if (this.state.limitToolTip) {
       return (
         <div className="NewFrenmoForm__limitToolTip">
-          <p>
-            2 Billion by default. Set
-            the amount you want to
-            issue/ask for. Keeps you
-            from going nuts.
-          </p>
+          <p>Set the amount you want to issue/ask for.</p>
         </div>
       );
     }
   };
+  setTipTimer = async () => {
+    await this.setState({
+      limitToolTip: !this.state.limitToolTip,
+    });
+    if (this.state.limitToolTip) {
+      if (this.state.limitToolTipCounter > 1) {
+        this.setState({
+          limitToolTipCounter: 7,
+        });
+      } else {
+        this.setState({
+          limitToolTipCounter: 7,
+        });
+        const limitTimer = setInterval(() => {
+          if (this.state.limitToolTipCounter < 1) {
+            this.setState({
+              limitToolTip: false,
+            });
+            clearInterval(limitTimer);
+            return;
+          }
 
+          this.setState({
+            limitToolTipCounter: --this.state.limitToolTipCounter,
+          });
+        }, 1000);
+      }
+    } else {
+      this.setState({
+        limitToolTipCounter: 0,
+      });
+    }
+  };
   render() {
     return (
       <div className="NewFrenmoForm">
@@ -537,7 +387,7 @@ class NewFrenmoForm extends Component {
               this.setState({
                 ...this.state,
                 give: true,
-                ask: false
+                ask: false,
               })
             }
           >
@@ -550,7 +400,7 @@ class NewFrenmoForm extends Component {
               this.setState({
                 ...this.state,
                 give: false,
-                ask: true
+                ask: true,
               })
             }
           >

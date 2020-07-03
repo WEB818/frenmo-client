@@ -26,6 +26,9 @@
   &-link {
     margin-top: 10vh;
     padding: 0;
+    &:visited {
+      text-decoration: none;
+    }
   }
   &-link-selected {
     padding: 10px;
@@ -68,10 +71,6 @@
     height: 80px;
     position: relative;
     z-index: -1;
-  }
-
-  &__link:visited {
-    text-decoration: none;
   }
 }
 .fas {
@@ -141,118 +140,74 @@
     }
   }
 }
-@media (min-width: 1024px) {
-  .Dashboard {
-    padding-top: 10vh;
-    &__link {
-      padding-top: 30px;
-      margin-top: 0;
-    }
-    &::-webkit-scrollbar {
-      height: 12px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: #0c0063;
-    }
-  }
-}
 
 @media (min-width: 1440px) {
   .Dashboard {
+    width: 100%;
+
+    & > a {
+      background-color: #a8ffdc;
+      z-index: 1;
+    }
+  }
+  .Dashboard__cat {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 25%;
-    margin: 0;
-    margin-left: 28%;
-    background: lightblue;
+    margin: 0 25vw 0;
+    padding: 0;
+    background: #a8ffdc;
+    z-index: 30;
     position: fixed;
 
     &::-webkit-scrollbar {
-      width: 12px;
+      width: 8px;
       height: 0px;
     }
     &::-webkit-scrollbar-track {
       border-radius: 0px;
+      margin: 0;
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 0px;
-      border: 1px solid #0c0063;
-      background-color: lightblue;
+      background-color: #188072;
     }
-    &__link {
+    &-link {
       width: 100%;
-      background: lightblue;
-      color: #0c0063;
+      margin: 0;
+      padding: 0;
     }
-    &__link-selected {
-      padding: 0px;
-      border-radius: 0;
-      background-color: #0c0063;
+    &-link-selected > div {
+      padding: 0;
+      margin: 0;
+      border-radius: 0px;
+      background-color: #4ac2b9;
+      color: whitesmoke;
     }
-    &__category {
+    &-category {
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
+      align-items: flex-start;
       font-size: 14px;
       border-radius: 0;
-      background: lightblue;
-      box-shadow: 0px 0px 0px lightblue;
-      color: #0c0063;
+      box-shadow: 0px 0px 0px #a8ffdc;
+      background-color: #a8ffdc;
       width: 100%;
-      padding: 30px;
-      margin: 0;
-      font-family: "Cantarell", sans-serif;
       letter-spacing: 2px;
-
-      &:hover,
-      &:active {
-        background-color: #0c0063;
-        color: white;
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-      }
+      margin: 0;
+      padding: 0;
+    }
+    &-link > div {
       &:hover {
-        padding-top: 60px;
-        padding-right: 160px;
+        background-color: whitesmoke;
+        color: #4ac2b9;
       }
     }
+    .Dashboard__label {
+      margin: 0 50px;
+    }
   }
-
-  .Dashboard__link-selected {
-    border-radius: 0;
-  }
-
   .fas {
     display: none;
-  }
-}
-
-@media (min-width: 1800px) {
-  .Dashboard {
-    margin-left: 20%;
-    width: 20%;
-  }
-  .welcome-message {
-    height: 60vh;
-  }
-  .smaller {
-    font-size: 28px;
-  }
-  .small {
-    font-size: 30px;
-  }
-  .medium {
-    font-size: 32px;
-  }
-  .big {
-    font-size: 34px;
-  }
-  .bigger {
-    font-size: 36px;
-    text-transform: uppercase;
   }
 }

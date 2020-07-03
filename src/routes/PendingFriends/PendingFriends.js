@@ -5,7 +5,7 @@ import "./PendingFriends.scss";
 export class PendingFriends extends Component {
   static defaultProps;
 
-  addById = id => {
+  addById = (id) => {
     this.props.update(id);
   };
 
@@ -13,7 +13,7 @@ export class PendingFriends extends Component {
     const { pending } = this.props;
 
     return (
-      <div>
+      <div className="pending-friend-container">
         <div id={pending.id} className="pending-friend-user">
           {pending.username} wants to be friends!
         </div>

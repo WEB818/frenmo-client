@@ -12,7 +12,7 @@
 .SearchBar__button {
   padding: 10px;
   border: none;
-  background-color: lightblue;
+  background-color: whitesmoke;
 }
 
 @media (min-width: 768px) {
