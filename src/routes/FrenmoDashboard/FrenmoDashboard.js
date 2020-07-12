@@ -57,7 +57,7 @@ class FrenmoDashboard extends Component {
               !publicFrenmos.favors.length && (
                 <div className="FrenmoDetail welcome">
                   <div>
-                    <h3>Welcome to Frenmo!</h3>
+                    <h3 className="title">Welcome to Frenmo!</h3>
                     <div className="divider"></div>
                     <p className="Dashboard__text">
                       Here, you can access all your Frenmos by their category.
