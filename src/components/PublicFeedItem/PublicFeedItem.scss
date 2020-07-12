@@ -52,7 +52,7 @@
       padding: 6px;
       position: absolute;
       left: 80px;
-      background-color: rgba(203, 253, 246, 1);
+      background-color: #a8ffdc6b;
       color: #188072;
     }
   }
@@ -108,8 +108,10 @@
     margin-top: 10px;
 
     &__sub-titles {
+      width: 70%;
+      margin: 0 auto;
       &:hover::after {
-        left: 40vw;
+        left: 50vw;
       }
     }
     &__frenmo {
@@ -125,8 +127,9 @@
     margin-top: 10px;
 
     &__sub-titles {
+      width: 60%;
       &:hover::after {
-        left: 35vw;
+        left: 45vw;
       }
     }
 
@@ -141,6 +144,11 @@
     display: flex;
     width: 40vw;
     margin-top: 10px;
+    &__sub-titles {
+      &:hover::after {
+        left: 40vw;
+      }
+    }
     &__frenmo {
       width: 35vw;
     }

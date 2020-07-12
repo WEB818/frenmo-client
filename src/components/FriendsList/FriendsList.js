@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { Button } from "../../components/Utils/Utils";
 import MyFriendsContext from "../../contexts/MyFriendsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,9 +32,7 @@ export default class FriendsList extends Component {
   };
 
   render() {
-    const { friendsList } = this.state;
-    const { sortType } = this.props;
-    const { friends, friend } = this.props;
+    const { friend } = this.props;
     return (
       <>
         <div>
@@ -42,14 +40,19 @@ export default class FriendsList extends Component {
             <li className="frens" key={friend.id}>
               {friend.username}
               <div>
-                <Button
-                  type="submit"
-                  aria-label={`Send ${friend.username} a frenmo`}
-                  onClick={() => this.frenmo(friend.id)}
-                  className="friendship-buttons"
-                >
-                  <FontAwesomeIcon icon={faGift} className="friendship-icons" />
-                </Button>
+                <Link to="/send">
+                  <Button
+                    type="submit"
+                    aria-label={`Send ${friend.username} a frenmo`}
+                    onClick={() => this.frenmo(friend.id)}
+                    className="friendship-buttons"
+                  >
+                    <FontAwesomeIcon
+                      icon={faGift}
+                      className="friendship-icons"
+                    />
+                  </Button>
+                </Link>
                 <Button
                   type="submit"
                   aria-label="delete friend"

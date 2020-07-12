@@ -9,60 +9,40 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  &__logo-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  &__title-logo {
+    margin-top: 10vh;
   }
   &__title {
     color: #188072;
-
-    &-logo {
-      height: 140px;
-    }
   }
   &__subtitle {
-    color: #07b387;
+    color: darkslategray;
+    text-align: center;
   }
-  &__container {
-    color: #188072;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-  }
+
   &__explanation {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
+    width: 50%;
   }
   &__sub {
-    margin: 20px;
+    width: 70%;
     text-align: center;
     color: #188072;
     font-size: 18px;
+    padding: 20px 0;
   }
-  &__btn-container {
-    padding: 20px;
-  }
+
   &__footer {
     color: #188072;
+    width: 80%;
     text-align: center;
-  }
-  .top {
-    position: absolute;
-    top: 15%;
-  }
-  .bottom {
-    position: absolute;
-    top: 30%;
+    margin: 2vh auto;
   }
 }
 
@@ -86,9 +66,12 @@
 @media (min-width: 1440px) {
   .Splash {
     width: 60vw;
-    overflow: hidden;
-    &__sub {
-      width: 40vw;
+
+    &__explanation {
+      width: 30%;
+    }
+    &__footer {
+      width: 100%;
     }
   }
   .splash-image {

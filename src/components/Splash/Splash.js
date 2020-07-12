@@ -16,31 +16,26 @@ class Splash extends Component {
             <SplashAnimation />
           </div>
           <div className="Splash">
-            <div className="Splash__logo-container">
-              <h2 className="Splash__title top">How</h2>
+            <Title className="Splash__title-logo" />
+            <h2 className="Splash__title">How it Works</h2>
 
-              <Title className="Splash__title-logo" />
+            <div className="Splash__explanation">
+              <Leaf />
+              <h4 className="Splash__subtitle">
+                Send Frenmos and make friends.
+              </h4>
+            </div>
+            <div className="Splash__explanation">
+              <Leaf />
+              <h4 className="Splash__subtitle">
+                Make Frenmos and send to friends.
+              </h4>
+            </div>
+            <div className="Splash__sub">
+              Frenmo is a trade marketplace. Swap favors with your friends, your
+              family, your neighbors, your community, your world.
+            </div>
 
-              <h2 className="Splash__title">Works</h2>
-            </div>
-            <div className="Splash__container">
-              <div className="Splash__explanation">
-                <Leaf />
-                <h3 className="Splash__subtitle">
-                  Send Frenmos and make friends.
-                </h3>
-              </div>
-              <div className="Splash__explanation">
-                <Leaf />
-                <h3 className="Splash__subtitle">
-                  Make Frenmos and send to friends.
-                </h3>
-              </div>
-              <div className="Splash__sub">
-                Frenmo is a trade marketplace. Swap favors with your friends,
-                your family, your neighbors, your community, your world.
-              </div>
-            </div>
             <div className="Splash__btn-container">
               <Link to="/register">
                 <Button>Register</Button>
@@ -51,7 +46,7 @@ class Splash extends Component {
             </div>
             <div>
               <footer className="Splash__footer">
-                Because the world could use more good deeds.
+                Plant your roots. Grow community.
               </footer>
             </div>
           </div>

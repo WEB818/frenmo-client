@@ -140,6 +140,11 @@
 }
 
 @media (min-width: 1024px) {
+  .Dashboard {
+    &__main {
+      margin-left: 20vw;
+    }
+  }
   .Dashboard__cat {
     margin: 0 5vw 0 25vw;
   }

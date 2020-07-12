@@ -12,7 +12,8 @@
 }
 .FrenmoLogo,
 .LoginLogo {
-  width: 140px;
+  height: 80px;
+  margin: 5px -50px 0;
 }
 .NavMenu__list {
   display: none;
@@ -50,7 +51,7 @@
   }
   .FrenmoLogo,
   .LoginLogo {
-    width: 160px;
+    height: 100px;
   }
   .log-icon {
     display: none;
@@ -71,5 +72,9 @@
   .logout {
     display: flex;
     font-size: 1.4em;
+  }
+  .FrenmoLogo,
+  .LoginLogo {
+    margin: 10px -30px 0;
   }
 }

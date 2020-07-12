@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import PrivateRoute from "./components/Utils/PrivateRoute";
+import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
+import NavMenu from "./components/NavMenu/NavMenu";
+import FooterMenu from "./components/FooterMenu/FooterMenu";
 import LoginPage from "./routes/LoginPage/LoginPage";
 import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import FeedPage from "./routes/FeedPage/FeedPage";
 import NewFrenmoPage from "./routes/NewFrenmoPage/NewFrenmoPage";
-import NavMenu from "./components/NavMenu/NavMenu";
-import PrivateRoute from "./components/Utils/PrivateRoute";
-import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
-import FooterMenu from "./components/FooterMenu/FooterMenu";
-import FrenmoContext from "./contexts/FrenmoContext";
 import FrenmoListByCat from "./routes/FrenmoListByCat/FrenmoListByCat";
-import EditFrenmoPage from "./routes/EditFrenmoPage/EditFrenmoPage";
 import Friends from "./routes/Friends/Friends";
 import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
-import TokenService from "./services/token-service";
-
 import { PopupFeedback } from "./components/PopupFeedback";
+import TokenService from "./services/token-service";
+import FrenmoContext from "./contexts/FrenmoContext";
 
 import "./App.scss";
 import Splash from "./components/Splash/Splash";
@@ -53,11 +51,6 @@ class App extends Component {
           <PrivateRoute
             path={"/frenmos/category/:categoryId"}
             component={FrenmoListByCat}
-          />
-          <PrivateRoute
-            exact
-            path={"/frenmos/:outstandingId/edit"}
-            component={EditFrenmoPage}
           />
         </Switch>
       </>
@@ -97,7 +90,7 @@ class App extends Component {
         {this.state.feedbackMessage ? (
           <PopupFeedback feedbackMessage={this.state.feedbackMessage} />
         ) : null}
-        <NavMenu />
+        {TokenService.hasAuthToken() ? <NavMenu /> : null}
 
         <main className="App__container wrapper">
           {this.renderNavRoutes()}

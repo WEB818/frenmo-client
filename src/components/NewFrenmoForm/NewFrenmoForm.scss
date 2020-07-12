@@ -97,26 +97,25 @@
 }
 @media (min-width: 768px) {
   .NewFrenmoForm {
-    margin-left: 30vw;
+    margin: 0 auto;
+
     &__Buttons {
-      margin: 0;
+      margin: 0 auto;
       padding: 0;
-      width: 60%;
+      width: 70%;
     }
   }
 }
 @media (min-width: 1024px) {
   .NewFrenmoForm {
-    margin-left: 20vw;
-    height: 90vh;
+    margin: 20vh auto;
+    height: 100vh;
+
     &__Buttons {
-      top: 5%;
-      width: 50%;
+      top: 0%;
+      width: 30%;
+      height: 20%;
+      z-index: 100;
     }
-  }
-}
-@media (min-width: 1440px) {
-  .NewFrenmoForm {
-    height: 80vh;
   }
 }

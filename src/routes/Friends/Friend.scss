@@ -2,31 +2,32 @@
   display: flex;
   justify-content: center;
 }
-.friend {
+.btn-container.friend {
   margin-top: 12vh;
 }
 .add-friend {
+  text-align: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
-  max-width: 280px;
+  max-width: 300px;
   font-size: 16px;
   padding: 60px;
   color: #188072;
   font-weight: bold;
-  border-radius: 55px 55px 55px 0;
-  background-color: #a8ffdc;
-  box-shadow: 5px 5px 5px #188072;
-  text-align: center;
+  border-radius: 15px;
+  background-color: #a8ffdcb0;
+  border: 1px solid #188072;
+  line-height: 1.5;
 }
 .header {
   color: #188072;
   text-align: center;
 }
 @media (min-width: 768px) {
-  .friend,
+  .btn-container.friend,
   .FriendsList {
     margin-left: 30vw;
   }
@@ -35,5 +36,18 @@
   }
   .header {
     margin-left: 30vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .btn-container.friend,
+  .FriendsList {
+    margin-left: 20vw;
+  }
+  .add-friend {
+    margin-left: 10%;
+  }
+  .header {
+    margin-left: 20vw;
   }
 }

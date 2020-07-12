@@ -27,13 +27,8 @@ export default class PublicFeedItem extends Component {
   };
 
   handleRedemption = (outstanding_id) => {
-    let {
-      favorId,
-      outstandingId,
-      receiverRedeemed,
-      issuerRedeemed,
-    } = this.props;
-    const { user } = this.context;
+    let { favorId } = this.props;
+
     this.props.onRedirect(favorId);
   };
 
@@ -55,9 +50,8 @@ export default class PublicFeedItem extends Component {
     } = this.props;
 
     const { expanded } = this.state;
-
-    return (
-      <div className="PublicFeedItem">
+    let FeedItem = (
+      <>
         <div
           className="PublicFeedItem__title"
           onClick={this.handleExpandedToggle}
@@ -136,7 +130,8 @@ export default class PublicFeedItem extends Component {
             )}
           </div>
         )}
-      </div>
+      </>
     );
+    return <div className="PublicFeedItem">{FeedItem}</div>;
   }
 }

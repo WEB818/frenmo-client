@@ -4,7 +4,7 @@ import UserContext from "../../contexts/UserContext";
 import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as FrenmoLogo } from "../../images/frenmo.svg";
+import { ReactComponent as FrenmoLogo } from "../../images/lightlogo.svg";
 import { ReactComponent as LoginLogo } from "../../images/loginlogo.svg";
 import "./NavMenu.scss";
 

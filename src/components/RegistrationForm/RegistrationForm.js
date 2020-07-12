@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Input, Label } from "../Utils/Utils";
+import { Input } from "../Utils/Utils";
 import AuthApiService from "../../services/auth-api-service";
 import { Button } from "../Utils/Utils";
 import "./RegistrationForm.scss";

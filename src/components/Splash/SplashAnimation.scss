@@ -12,48 +12,72 @@
 #twelve,
 #thirteen {
   animation: grow 2s ease-in forwards;
+  -moz-animation: grow 2s ease-in forwards;
+  -o-animation: grow 2s ease-in forwards;
   transform-origin: center;
   transform-box: fill-box;
   opacity: 0;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 #two {
-  animation-delay: 2.25s;
+  animation-delay: 1.25s;
 }
 #three {
-  animation-delay: 2.5s;
+  animation-delay: 1.5s;
 }
 #four {
-  animation-delay: 2.75s;
+  animation-delay: 1.75s;
 }
 #five {
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 #six {
-  animation-delay: 3.25s;
+  animation-delay: 2.25s;
 }
 #seven {
-  animation-delay: 3.5s;
+  animation-delay: 2.5s;
 }
 #eight {
-  animation-delay: 3.75s;
+  animation-delay: 2.75s;
 }
 #nine {
-  animation-delay: 4s;
+  animation-delay: 3s;
 }
 #ten {
-  animation-delay: 4.25s;
+  animation-delay: 3.25s;
 }
 #eleven {
-  animation-delay: 4.5s;
+  animation-delay: 3.5s;
 }
 #twelve {
-  animation-delay: 4.75s;
+  animation-delay: 3.75s;
 }
 #thirteen {
-  animation-delay: 5s;
+  animation-delay: 4s;
 }
 @keyframes grow {
+  0% {
+    opacity: 1;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(-0.5turn);
+  }
+}
+
+@-moz-keyframes grow {
+  0% {
+    opacity: 1;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(-0.5turn);
+  }
+}
+
+@-o-keyframes grow {
   0% {
     opacity: 1;
     transform: rotateY(90deg);
