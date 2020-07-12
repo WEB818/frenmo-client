@@ -1,6 +1,5 @@
 .FeedPage {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   height: 100vh;
 
@@ -9,14 +8,16 @@
     flex-direction: column;
     align-items: center;
   }
-
+  &__header {
+    display: none;
+  }
   &__Add-button {
     position: absolute;
     bottom: 10%;
     right: 0%;
     margin: 5px;
     overflow: hidden;
-    border-radius: 15px 15px 15px 0;
+    border-radius: 15px;
 
     &-add {
       width: 60px;
@@ -24,21 +25,58 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #76ffb9;
+      background-color: #76ffb8b7;
     }
   }
   &__Add-link {
     color: #188072;
   }
+  &__modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+
+    &-content {
+      background-color: whitesmoke;
+      position: fixed;
+      padding: 15px;
+      height: max-content;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 5px;
+      width: 280px;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+    }
+  }
+  &__icon {
+    color: #07b387;
+    font-size: 22px;
+  }
+  &__icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > p {
+      font-size: 14px;
+    }
+  }
 }
 .buttons-container {
   display: flex;
   justify-content: center;
-  margin-top: 15vh;
+  margin-top: 18vh;
 }
 .buttons {
   &:focus {
-    background-color: #a8ffdc;
+    background-color: yellow;
     color: #188072;
   }
   &:hover {
@@ -47,13 +85,28 @@
   }
 }
 
+.q-mark {
+  position: absolute;
+  top: 12vh;
+  left: 5vh;
+  color: #a8ffdc;
+  background-color: #188072;
+  border-radius: 50%;
+  padding: 0px;
+  font-size: 22px;
+}
+
+.popular-container {
+  display: none;
+}
 @media (min-width: 768px) {
   .FeedPage {
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
+
     &__main {
       margin-left: 30vw;
+      width: 70vw;
     }
     &__Add-button {
       bottom: 5%;
@@ -61,10 +114,68 @@
       margin: 5px;
     }
   }
+  .q-mark {
+    top: 19vh;
+    left: 90vw;
+  }
 }
-.buttons-container {
-  width: 70vw;
+@media (min-width: 1024px) {
+  .q-mark {
+    top: 15vh;
+    left: 70vw;
+  }
+  .FeedPage {
+    justify-content: flex-start;
+    &__main {
+      margin-left: 25vw;
+      width: 60vw;
+    }
+    &__header {
+      display: flex;
+      color: rgb(95, 95, 95);
+    }
+    &__Add-button {
+      top: 20%;
+      right: 25%;
+      border-radius: 5px;
+    }
+  }
+  .buttons-container {
+    margin-top: 10vh;
+  }
+  .popular-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+    width: 15vw;
+    margin: 20vh auto 0;
+  }
 }
 
 @media (min-width: 1440px) {
+  .q-mark {
+    top: 15vh;
+    left: 60vw;
+  }
+  .FeedPage {
+    &__main {
+      margin-left: 25vw;
+      width: 50vw;
+    }
+
+    &__Add-button {
+      top: 20%;
+      right: 30%;
+    }
+  }
+
+  .popular-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+    width: 20vw;
+    margin: 15vh auto 0;
+  }
 }

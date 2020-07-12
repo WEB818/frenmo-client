@@ -4,6 +4,7 @@ import FrenmoContext from "../../contexts/FrenmoContext";
 import FrenmoApiService from "../../services/frenmo-api-service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import FeedButton from "../../components/FeedButton/FeedButton";
 import { Button, Label, Input, Textarea } from "../Utils/Utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
@@ -36,6 +37,15 @@ class NewFrenmoForm extends Component {
     error: null,
     limitToolTip: false,
     limitToolTipCounter: 0,
+    activeIndex: 0,
+  };
+
+  handleSetActive = (index, give, ask) => {
+    this.setState({
+      activeIndex: index,
+      give: give,
+      ask: ask,
+    });
   };
 
   handleChange = (date) => {
@@ -134,28 +144,28 @@ class NewFrenmoForm extends Component {
 
   renderForm = () => {
     let personSelection = (
-      <div>
+      <div className="user-selection">
         {this.state.people.map((person, i) => {
           return (
-            <Button
+            <div
               key={i}
-              type="button"
+              className="username"
               value={person.username}
               onClick={(event) => {
                 this.handleSelectPerson(person.id, person.username);
               }}
             >
               {person.username}
-            </Button>
+            </div>
           );
         })}
       </div>
     );
     let sendPortion = (
       <>
+        <div className="user-selection">{personSelection}</div>
         <div className="NewFrenmo__input-container">
           <Label htmlFor="NewFrenmo__receiver">Give To:</Label>
-          <div>{personSelection}</div>
           <Input
             type="text"
             name="receiver"
@@ -178,9 +188,9 @@ class NewFrenmoForm extends Component {
     );
     let askPortion = (
       <>
+        <div>{personSelection}</div>
         <div className="NewFrenmo__input-container">
           <Label htmlFor="NewFrenmo__user">Request From:</Label>
-          <div>{personSelection}</div>
           <Input
             type="text"
             name="user"
@@ -379,33 +389,25 @@ class NewFrenmoForm extends Component {
     return (
       <div className="NewFrenmoForm">
         {this.renderRedirect()}
+
         <div className="NewFrenmoForm__Buttons">
-          <Button
+          <FeedButton
+            index={0}
+            name="Give Frenmo"
+            isActive={this.state.activeIndex === 0}
             type="button"
             id="give-favor"
-            onClick={() =>
-              this.setState({
-                ...this.state,
-                give: true,
-                ask: false,
-              })
-            }
-          >
-            Give a favor
-          </Button>
-          <Button
+            onClick={(index) => this.handleSetActive(index, true, false)}
+          />
+
+          <FeedButton
+            index={1}
+            name="Request Frenmo"
+            isActive={this.state.activeIndex === 1}
             type="button"
             id="ask-favor"
-            onClick={() =>
-              this.setState({
-                ...this.state,
-                give: false,
-                ask: true,
-              })
-            }
-          >
-            Ask a favor
-          </Button>
+            onClick={(index) => this.handleSetActive(index, false, true)}
+          />
         </div>
         {this.renderForm()}
       </div>

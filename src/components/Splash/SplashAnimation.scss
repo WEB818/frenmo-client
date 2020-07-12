@@ -1,0 +1,65 @@
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven,
+#eight,
+#nine,
+#ten,
+#eleven,
+#twelve,
+#thirteen {
+  animation: grow 2s ease-in forwards;
+  transform-origin: center;
+  transform-box: fill-box;
+  opacity: 0;
+  animation-delay: 2s;
+}
+#two {
+  animation-delay: 2.25s;
+}
+#three {
+  animation-delay: 2.5s;
+}
+#four {
+  animation-delay: 2.75s;
+}
+#five {
+  animation-delay: 3s;
+}
+#six {
+  animation-delay: 3.25s;
+}
+#seven {
+  animation-delay: 3.5s;
+}
+#eight {
+  animation-delay: 3.75s;
+}
+#nine {
+  animation-delay: 4s;
+}
+#ten {
+  animation-delay: 4.25s;
+}
+#eleven {
+  animation-delay: 4.5s;
+}
+#twelve {
+  animation-delay: 4.75s;
+}
+#thirteen {
+  animation-delay: 5s;
+}
+@keyframes grow {
+  0% {
+    opacity: 1;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(-0.5turn);
+  }
+}

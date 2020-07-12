@@ -24,7 +24,6 @@ class NewFrenmoPage extends Component {
     return (
       <>
         <SideNavMenu />
-        {/* <h2 className="NewFrenmoPage__header">Create a frenmo</h2> */}
 
         <div>
           <NewFrenmoForm

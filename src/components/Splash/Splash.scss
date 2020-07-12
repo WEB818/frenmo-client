@@ -12,26 +12,17 @@
     height: 100vh;
     overflow: hidden;
   }
-
-  &__hero {
-    padding-top: 2vh;
-    margin-top: 0;
-    font-size: 3vh;
-    line-height: 2;
-    &::before {
-      text-transform: lowercase;
-      padding: 20px;
-      background-color: #188072;
-      color: #a8ffdc;
-      text-align: center;
-      border-radius: 12px 0;
-      margin: 20px;
-    }
+  &__logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   &__title {
     color: #188072;
-    &-frenmo {
-      font-family: "Cantarell";
+
+    &-logo {
+      height: 140px;
     }
   }
   &__subtitle {
@@ -47,8 +38,10 @@
   }
   &__explanation {
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    margin: 10px;
+    width: 80%;
   }
   &__sub {
     margin: 20px;
@@ -62,6 +55,14 @@
   &__footer {
     color: #188072;
     text-align: center;
+  }
+  .top {
+    position: absolute;
+    top: 15%;
+  }
+  .bottom {
+    position: absolute;
+    top: 30%;
   }
 }
 

@@ -16,9 +16,9 @@ import PendingFren from "./components/PendingFren/PendingFren";
 import FrenmoDashboard from "./routes/FrenmoDashboard/FrenmoDashboard";
 import FrenmoDetail from "./components/FrenmoDetail/FrenmoDetail";
 import TokenService from "./services/token-service";
-import Frenmo from "./components/Frenmo/Frenmo";
+
 import { PopupFeedback } from "./components/PopupFeedback";
-import NewFrenmoForm from "./components/NewFrenmoForm/NewFrenmoForm";
+
 import "./App.scss";
 import Splash from "./components/Splash/Splash";
 
@@ -34,7 +34,7 @@ class App extends Component {
   renderNavRoutes() {
     return <PrivateRoute path={`/frenmos`} component={FrenmoDashboard} />;
   }
-  //add bubbles
+
   renderMainRoutes() {
     return (
       <>
@@ -97,7 +97,7 @@ class App extends Component {
         {this.state.feedbackMessage ? (
           <PopupFeedback feedbackMessage={this.state.feedbackMessage} />
         ) : null}
-        {TokenService.hasAuthToken() ? <NavMenu /> : null}
+        <NavMenu />
 
         <main className="App__container wrapper">
           {this.renderNavRoutes()}

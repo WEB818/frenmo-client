@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./FooterMenu.scss";
 import TokenService from "../../services/token-service";
 
@@ -8,32 +8,35 @@ export class FooterMenu extends Component {
     return (
       <div className="Footer">
         <div className="Footer__icon">
-          <Link to="/feed">
+          <NavLink to="/feed" activeClassName="Footer__link-selected">
             <i id="icon" className="fa fa-envelope-open"></i>
-          </Link>
+          </NavLink>
           <div className="Footer-links">Feed</div>
         </div>
 
         <div className="Footer__icon">
-          <Link to="/frenmos/category/1">
+          <NavLink
+            to="/frenmos/category/1"
+            activeClassName="Footer__link-selected"
+          >
             <i id="icon" className="fas fa-hand-holding-heart"></i>
-          </Link>
+          </NavLink>
           <div className="Footer-links">My Frenmos</div>
         </div>
 
         <div className="Footer__icon">
-          <Link to="/friends">
+          <NavLink to="/friends" activeClassName="Footer__link-selected">
             <i id="icon" className="fa fa-users"></i>
-          </Link>
+          </NavLink>
           <div className="Footer-links">Friends</div>
         </div>
 
         <div className="Footer__icon">
-          <Link to="/send">
+          <NavLink to="/send" activeClassName="Footer__link-selected">
             <i id="icon" className="fa fa-plus">
               <span className="f">f</span>
             </i>
-          </Link>
+          </NavLink>
           <div className="Footer-links">Create</div>
         </div>
       </div>

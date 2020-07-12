@@ -8,7 +8,7 @@ import { Input } from "../Utils/Utils";
 import { formatRelative } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowLeft,
+  faTimes,
   faGift,
   faStopwatch,
   faKey,
@@ -125,90 +125,96 @@ class FrenmoDetail extends Component {
     } = this.props.location.state;
 
     return (
-      <div
-        className="FrenmoDetail dialog__window"
-        role="dialog"
-        aria-labelledby="dialog-title"
-        aria-describedby="dialog-description"
-      >
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          onClick={this.handleGoBack}
-          className="back-icon"
-        />
-
-        <h2
-          id="dialog-title"
-          className="FrenmoDetail__title"
-          aria-label={title}
-          tabIndex="0"
+      <div className="Modal">
+        <div
+          className="FrenmoDetail dialog__window"
+          role="dialog"
+          aria-labelledby="dialog-title"
+          aria-describedby="dialog-description"
         >
-          {title}
-        </h2>
+          <FontAwesomeIcon
+            icon={faTimes}
+            onClick={this.handleGoBack}
+            className="back-icon"
+          />
 
-        {expiration_date && (
-          <h3
-            className="FrenmoDetail__date display"
-            aria-label={expiration_date}
+          <h2
+            id="dialog-title"
+            className="FrenmoDetail__title"
+            aria-label={title}
             tabIndex="0"
           >
-            <FontAwesomeIcon icon={faStopwatch} />
-            <div className="FrenmoDetail__date display">
-              {formatRelative(new Date(expiration_date), Date.now(), 0)}
-            </div>
-          </h3>
-        )}
+            {title}
+          </h2>
 
-        <p className="FrenmoDetail__desc" aria-label={description} tabIndex="0">
-          {description}
-        </p>
+          {expiration_date && (
+            <h3
+              className="FrenmoDetail__date display"
+              aria-label={expiration_date}
+              tabIndex="0"
+            >
+              <FontAwesomeIcon icon={faStopwatch} />
+              <div className="FrenmoDetail__date display">
+                {formatRelative(new Date(expiration_date), Date.now(), 0)}
+              </div>
+            </h3>
+          )}
 
-        {publicity && (
           <p
-            className="FrenmoDetail__publicity display"
-            aria-label={`This frenmo is ${publicity}`}
+            className="FrenmoDetail__desc"
+            aria-label={description}
             tabIndex="0"
           >
-            {publicity === "public" ? (
-              <FontAwesomeIcon icon={faGlobeAmericas} />
-            ) : (
-              <FontAwesomeIcon icon={faKey} />
-            )}
-            {publicity}
+            {description}
           </p>
-        )}
 
-        {issuer_name && (
-          <p
-            className="FrenmoDetail__issuedby display"
-            aria-label={`Frenmo sent by ${issuer_name}`}
-            tabIndex="0"
-          >
-            <FontAwesomeIcon icon={faGift} />
-            {issuer_name}
-          </p>
-        )}
+          {publicity && (
+            <p
+              className="FrenmoDetail__publicity display"
+              aria-label={`This frenmo is ${publicity}`}
+              tabIndex="0"
+            >
+              {publicity === "public" ? (
+                <FontAwesomeIcon icon={faGlobeAmericas} />
+              ) : (
+                <FontAwesomeIcon icon={faKey} />
+              )}
+              {publicity}
+            </p>
+          )}
 
-        {receiver_name && (
-          <p
-            className="FrenmoDetail__issuedto display"
-            aria-label={`Frenmo sent to ${receiver_name}`}
-            tabIndex="0"
-          >
-            <FontAwesomeIcon icon={faEnvelope} />
-            {receiver_name}
-          </p>
-        )}
+          {issuer_name && (
+            <p
+              className="FrenmoDetail__issuedby display"
+              aria-label={`Frenmo sent by ${issuer_name}`}
+              tabIndex="0"
+            >
+              <FontAwesomeIcon icon={faGift} />
+              {issuer_name}
+            </p>
+          )}
 
-        {issued && !expired
-          ? this.renderIssue(receiver_username, receiver_id)
-          : null}
-        {received && !expired && !receiver_redeemed
-          ? this.renderRedeem()
-          : null}
-        {expired ? this.renderExpirationFlag() : null}
-        {this.renderPending()}
-        {this.renderRedeemed()}
+          {receiver_name && (
+            <p
+              className="FrenmoDetail__issuedto display"
+              aria-label={`Frenmo sent to ${receiver_name}`}
+              tabIndex="0"
+            >
+              <FontAwesomeIcon icon={faEnvelope} />
+              {receiver_name}
+            </p>
+          )}
+
+          {issued && !expired
+            ? this.renderIssue(receiver_username, receiver_id)
+            : null}
+          {received && !expired && !receiver_redeemed
+            ? this.renderRedeem()
+            : null}
+          {expired ? this.renderExpirationFlag() : null}
+          {this.renderPending()}
+          {this.renderRedeemed()}
+        </div>
       </div>
     );
   }

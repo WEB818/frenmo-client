@@ -4,7 +4,7 @@ import UserContext from "../../contexts/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
-  faChevronUp,
+  faTimes,
   faArrowRight,
   faGift,
   faComment,
@@ -56,7 +56,6 @@ export default class PublicFeedItem extends Component {
 
     const { expanded } = this.state;
 
-    //add the frenmo logo for available frenmos?
     return (
       <div className="PublicFeedItem">
         <div
@@ -80,15 +79,12 @@ export default class PublicFeedItem extends Component {
           </div>
           {!expanded && (
             <FontAwesomeIcon
-              className="PublicFeedItem__down"
+              className="PublicFeedItem__icon"
               icon={faChevronDown}
             />
           )}
           {expanded && (
-            <FontAwesomeIcon
-              className="PublicFeedItem__up"
-              icon={faChevronUp}
-            />
+            <FontAwesomeIcon className="PublicFeedItem__icon" icon={faTimes} />
           )}
         </div>
 
@@ -96,27 +92,41 @@ export default class PublicFeedItem extends Component {
           <div onClick={() => this.handleExpandedToggle()}>
             {recdByName && (
               <div className="PublicFeedItem__sub-titles receiver">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="PublicFeedItem__icon"
+                />
                 <p>{recdByName}</p>
               </div>
             )}
 
-            <div className="PublicFeedItem__sub-titles description">
-              <FontAwesomeIcon icon={faComment} />
-              {description}
-            </div>
+            {description && (
+              <div className="PublicFeedItem__sub-titles description">
+                <FontAwesomeIcon
+                  icon={faComment}
+                  className="PublicFeedItem__icon"
+                />
+                <p className="feed-desc">{description}</p>
+              </div>
+            )}
 
             {issuedByName && (
               <div className="PublicFeedItem__sub-titles issuer">
-                <FontAwesomeIcon icon={faGift} />
-                {issuedByName}
+                <FontAwesomeIcon
+                  icon={faGift}
+                  className="PublicFeedItem__icon"
+                />
+                <p>{issuedByName}</p>
               </div>
             )}
 
             {expDate && (
               <div className="PublicFeedItem__sub-titles expdate">
-                <FontAwesomeIcon icon={faStopwatch} />
-                {formatRelative(new Date(expDate), new Date(), 0)}
+                <FontAwesomeIcon
+                  icon={faStopwatch}
+                  className="PublicFeedItem__icon"
+                />
+                <p>{formatRelative(new Date(expDate), new Date(), 0)}</p>
               </div>
             )}
             {receiverRedeemed && (

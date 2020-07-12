@@ -1,12 +1,21 @@
 .NewFrenmoForm {
-  margin: 12vh 10px 0;
+  margin: 20vh 15px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 
   &__Buttons {
+    position: fixed;
+    top: 10%;
+    width: 100%;
+    height: 12%;
+    background-color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 0 auto;
   }
 
   &__error {
@@ -37,8 +46,9 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: justify;
-  height: 70vh;
+  height: 100vh;
   max-width: 300px;
+  margin-bottom: 10vh;
 }
 
 .NewFrenmo__input-container {
@@ -48,7 +58,6 @@
 #NewFrenmo__category,
 #NewFrenmo__publicity {
   padding: 15px;
-  border-radius: 15px;
   color: #188072;
   font-weight: bold;
 }
@@ -60,7 +69,6 @@
 }
 #NewFrenmo__expiration-date {
   padding: 15px;
-  border-radius: 15px;
   color: #188072;
   &:focus {
     border: dotted 1px #188072;
@@ -78,11 +86,37 @@
     color: #76ffb9;
   }
 }
-.form-button {
-  // width: 300px;
+.user-selection {
+  display: flex;
+  flex-wrap: wrap;
+}
+.username {
+  background-color: #a8ffdc54;
+  color: darkslategray;
+  margin: 4px 10px;
 }
 @media (min-width: 768px) {
   .NewFrenmoForm {
     margin-left: 30vw;
+    &__Buttons {
+      margin: 0;
+      padding: 0;
+      width: 60%;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .NewFrenmoForm {
+    margin-left: 20vw;
+    height: 90vh;
+    &__Buttons {
+      top: 5%;
+      width: 50%;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .NewFrenmoForm {
+    height: 80vh;
   }
 }

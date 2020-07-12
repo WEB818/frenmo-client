@@ -1,38 +1,28 @@
-//light green #A8FFDC
-//med-light green #4AC2B9
-//med green #07B387
-//bright green #76FFB9
-//dark green  #188072
-
 .Button {
   border-radius: 5px;
   padding: 10px;
-  background-color: #188072;
-  color: #a8ffdc;
+  background-color: #a8ffdc54;
+  color: darkslategray;
   font-weight: bold;
   letter-spacing: 3px;
-  font-size: 16px;
+  font-size: 14px;
   margin: 12px 2px;
-  border: none;
-  box-shadow: 2px 2px 2px #a8ffdc;
+  border: 1px solid #188072;
 }
 
 .Button:active {
   background-color: #4ac2b9;
-  color: #76ffb9;
+  color: darkslategray;
 }
 
 .Button:focus {
   outline: thin dotted #76ffb9;
 }
 .Label {
-  letter-spacing: 2px;
-  color: #188072;
-  text-align: center;
+  color: darkslategray;
 }
 .Input {
   border: none;
-  border-radius: 5px;
   width: 94%;
   border-bottom: solid 2px #188072;
   padding: 15px;
@@ -41,33 +31,30 @@
   &:focus {
     border: dotted 1px #188072;
     outline: thin dotted;
-    background-color: #a8ffdc;
-    color: #188072;
+    color: darkslategray;
   }
   &::placeholder {
-    color: #188072;
+    color: darkslategray;
     letter-spacing: 1px;
   }
 }
 .Label {
-  color: whitesmoke;
+  color: darkslategray;
   font-weight: bolder;
 }
 .Textarea {
   border: none;
-  border-radius: 5px;
-  width: 94%;
   border-bottom: solid 2px #188072;
   padding: 15px;
   margin-bottom: 10px;
   &:focus {
     border: dotted 1px #188072;
     outline: thin dotted;
-    background-color: #a8ffdc;
-    color: #188072;
+    color: darkslategray;
   }
   &::placeholder {
-    color: #188072;
+    font-family: "Montserrat", sans-serif;
+    color: darkslategray;
     letter-spacing: 8px;
     text-align: center;
   }

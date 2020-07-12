@@ -10,7 +10,7 @@ const UserContext = React.createContext({
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
-  processLogout: () => {}
+  processLogout: () => {},
 });
 
 export default UserContext;
@@ -26,7 +26,7 @@ export class UserProvider extends Component {
       state.user = {
         id: jwtPayload.user_id,
         name: jwtPayload.name,
-        username: jwtPayload.sub
+        username: jwtPayload.sub,
       };
 
     this.state = state;
@@ -47,7 +47,7 @@ export class UserProvider extends Component {
     TokenService.clearCallbackBeforeExpiry();
   }
 
-  setError = error => {
+  setError = (error) => {
     console.error(error);
     this.setState({ error });
   };
@@ -56,17 +56,17 @@ export class UserProvider extends Component {
     this.setState({ error: null });
   };
 
-  setUser = user => {
+  setUser = (user) => {
     this.setState({ user });
   };
 
-  processLogin = authToken => {
+  processLogin = (authToken) => {
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
       id: jwtPayload.user_id,
       name: jwtPayload.name,
-      username: jwtPayload.sub
+      username: jwtPayload.sub,
     });
     IdleService.regiserIdleTimerResets();
     TokenService.queueCallbackBeforeExpiry(() => {
@@ -90,13 +90,13 @@ export class UserProvider extends Component {
 
   fetchRefreshToken = () => {
     AuthApiService.refreshToken()
-      .then(res => {
+      .then((res) => {
         TokenService.saveAuthToken(res.authToken);
         TokenService.queueCallbackBeforeExpiry(() => {
           this.fetchRefreshToken();
         });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setError(err);
       });
   };
@@ -109,7 +109,7 @@ export class UserProvider extends Component {
       clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
-      processLogout: this.processLogout
+      processLogout: this.processLogout,
     };
     return (
       <UserContext.Provider value={value}>

@@ -81,7 +81,7 @@ class Frenmo extends Component {
         }}
       >
         <li className="Frenmo">
-          <Leaf />
+          <Leaf className="leaf" />
           <h3>{title}</h3>
         </li>
       </NavLink>

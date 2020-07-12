@@ -1,0 +1,53 @@
+.PopularFrenmo {
+  padding: 0;
+  position: relative;
+  &__image {
+    height: 100px;
+    width: 100px;
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-title {
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: right;
+      height: 100px;
+      width: 100px;
+      background-color: #a8ffdcad;
+      color: #188072;
+    }
+  }
+}
+.image-0,
+.image-1,
+.image-2,
+.image-3,
+.image-4,
+.image-5 {
+  z-index: 10;
+  transition: all 1s ease-in-out;
+  &:hover {
+    transform: scale(1.5) translate(-60%, -30%);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .PopularFrenmo {
+    &__image {
+      height: 200px;
+      width: 200px;
+
+      &-title {
+        height: 200px;
+        width: 200px;
+      }
+    }
+  }
+}

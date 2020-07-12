@@ -1,0 +1,17 @@
+.FeedButton__active {
+  margin: 0;
+  background-color: #07b387;
+  color: whitesmoke;
+  box-shadow: 0 0 0 #a8ffdc;
+  border-radius: 5px 0 0;
+}
+
+.FeedButton__inactive {
+  margin: 0;
+  border: 1px solid #188072;
+  border-bottom: none;
+  border-right: none;
+  border-radius: 5px 0;
+  box-shadow: 0 0 0 #a8ffdc;
+  background-color: transparent;
+}

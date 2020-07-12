@@ -3,30 +3,7 @@
   display: flex;
   justify-content: center;
 }
-// .f-logo {
-//   font-family: "Cantarell", sans-serif;
-//   font-size: 100px;
-//   height: 90px;
-//   width: 90px;
-//   background-color: #cae0d1;
-//   border: 1px solid #79b38a;
-//   border-bottom: none;
-//   border-right: none;
-//   border-radius: 35px 0;
-//   margin: 15vh auto 60px;
-//   color: #2d663e;
-//   // overflow: hidden;
-//   @media (max-height: 500px) {
-//     display: none;
-//   }
 
-//   &::before {
-//     content: "f";
-//     position: absolute;
-//     z-index: -1;
-//     color: #cae0d1;
-//   }
-// }
 .LoginPage {
   @media (max-height: 500px) {
     margin-top: 12vh;
@@ -36,7 +13,6 @@
   &__regSuccess {
     width: max-content;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 }

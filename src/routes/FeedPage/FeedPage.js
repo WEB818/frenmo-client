@@ -1,23 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import FrenmoContext from "../../contexts/FrenmoContext";
-import { Button } from "../../components/Utils/Utils";
 import SideNavMenu from "../../components/SideNavMenu/SideNavMenu";
 import PublicFeedItem from "../../components/PublicFeedItem/PublicFeedItem";
+import FeedButton from "../../components/FeedButton/FeedButton";
 import "./FeedPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faUser,
+  faQuestionCircle,
+  faArrowRight,
+  faComment,
+  faGift,
+  faTimes,
+  faStopwatch,
+} from "@fortawesome/free-solid-svg-icons";
+import PopularFrenmos from "../../components/PopularFrenmos/PopularFrenmos";
 export default class FeedPage extends Component {
   static contextType = FrenmoContext;
 
   constructor(props) {
     super(props);
-    const state = {
+    this.state = {
       favors: [],
-      which: 2,
       publicity: "",
+      activeIndex: 0,
+      expanded: false,
     };
-    this.state = state;
   }
 
   async componentDidMount() {
@@ -33,49 +43,111 @@ export default class FeedPage extends Component {
     const { history } = this.props;
     history.push(`/frenmos/${favorId}`);
   };
+  handleSetActive = (index, pub, favors) => {
+    this.setState({
+      activeIndex: index,
+      publicity: pub,
+      favors: favors,
+    });
+  };
+  handleExpandedToggle = () => {
+    this.setState((prevState) => ({
+      expanded: !prevState.expanded,
+    }));
+  };
 
+  renderHelp() {
+    const { expanded } = this.state;
+    return (
+      <>
+        {expanded && (
+          <div className="FeedPage__modal">
+            <div className="FeedPage__modal-content">
+              <div className="FeedPage__icon-container">
+                <h3 className="PublicFeedItem__frenmo">Icon Legend</h3>
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  onClick={this.handleExpandedToggle}
+                  className="FeedPage__icon receiver"
+                />
+              </div>
+              <div className="FeedPage__icon-container">
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="FeedPage__icon receiver"
+                />
+                <p>Frenmo was issued to</p>
+              </div>
+              <div className="FeedPage__icon-container">
+                <FontAwesomeIcon
+                  icon={faComment}
+                  className="FeedPage__icon description"
+                />
+                <p>Description of Frenmo</p>
+              </div>
+              <div className="FeedPage__icon-container">
+                <FontAwesomeIcon
+                  icon={faGift}
+                  className="FeedPage__icon issuer"
+                />
+                <p>Frenmo was issued by</p>
+              </div>
+              <div className="FeedPage__icon-container">
+                <FontAwesomeIcon
+                  icon={faStopwatch}
+                  className="FeedPage__icon expdate"
+                />
+                <p>Redeemable until this date</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
+
+  handleSetActive = (index, pub, favors) => {
+    this.setState({
+      activeIndex: index,
+      publicity: pub,
+      favors: favors,
+    });
+  };
   renderPublicity() {
     const { allPublicFrenmos, personalFrenmos, friendFrenmos } = this.context;
 
     return (
       <div className="buttons-container">
-        <Button
-          className="buttons"
-          onClick={() =>
-            this.setState({
-              favors: allPublicFrenmos.favors,
-              publicity: "public",
-              which: 1,
-            })
+        <FeedButton
+          index={0}
+          name="Public"
+          isActive={this.state.activeIndex === 0}
+          onClick={(index) =>
+            this.handleSetActive(index, "public", allPublicFrenmos.favors)
           }
         >
           Public
-        </Button>
-        <Button
-          className="buttons"
-          onClick={() =>
-            this.setState({
-              favors: friendFrenmos.favors,
-              publicity: "friends",
-              which: 2,
-            })
+        </FeedButton>
+        <FeedButton
+          index={1}
+          name="Friends"
+          isActive={this.state.activeIndex === 1}
+          onClick={(index) =>
+            this.handleSetActive(index, "friends", friendFrenmos.favors)
           }
         >
           Friends
-        </Button>
-        <Button
-          className="buttons"
-          onClick={() =>
-            this.setState({
-              favors: personalFrenmos.favors,
-              publicity: "personal",
-
-              which: 3,
-            })
+        </FeedButton>
+        <FeedButton
+          index={2}
+          name="Private"
+          isActive={this.state.activeIndex === 2}
+          onClick={(index) =>
+            this.handleSetActive(index, "personal", personalFrenmos.favors)
           }
         >
           Private
-        </Button>
+        </FeedButton>
       </div>
     );
   }
@@ -89,8 +161,20 @@ export default class FeedPage extends Component {
         <div>
           <SideNavMenu />
         </div>
+
         <div className="FeedPage__main">
-          <div>{this.renderPublicity()}</div>
+          <FontAwesomeIcon
+            className="q-mark"
+            icon={faQuestionCircle}
+            onClick={this.handleExpandedToggle}
+          />
+          <div>{this.renderHelp()}</div>
+          <div>
+            <h3 className="FeedPage__header">
+              Making the world a better place one Frenmo at a time.
+            </h3>
+            {this.renderPublicity()}
+          </div>
 
           {publicity === "friends" && (
             <Link to="/friends" className="FeedPage__Add-link">
@@ -165,6 +249,12 @@ export default class FeedPage extends Component {
               ))}
             </div>
           )}
+        </div>
+        <div className="popular-container">
+          <h4 className="FeedPage__header">Popular Frenmos</h4>
+          <div>
+            <PopularFrenmos />
+          </div>
         </div>
       </div>
     );

@@ -1,22 +1,28 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Splash.scss";
-import { Button } from "../Utils/Utils";
-import SplashLogo from "../../images/SplashLogo.png";
-import { ReactComponent as Leaf } from "../../images/leaf-filled.svg";
 
+import { Button } from "../Utils/Utils";
+import { ReactComponent as SplashAnimation } from "../../images/splash-animation.svg";
+import { ReactComponent as Title } from "../../images/loginlogo.svg";
+import { ReactComponent as Leaf } from "../../images/leaf-filled.svg";
+import "./Splash.scss";
+import "./SplashAnimation.scss";
 class Splash extends Component {
   render() {
     return (
       <>
         <div className="Splash__wrap">
           <div className="splash-image">
-            <img src={SplashLogo} alt="frenmo demo" />
+            <SplashAnimation />
           </div>
           <div className="Splash">
-            <h2 className="Splash__title">
-              How <div className="Splash__title-frenmo">frenmo</div> works
-            </h2>
+            <div className="Splash__logo-container">
+              <h2 className="Splash__title top">How</h2>
+
+              <Title className="Splash__title-logo" />
+
+              <h2 className="Splash__title">Works</h2>
+            </div>
             <div className="Splash__container">
               <div className="Splash__explanation">
                 <Leaf />
@@ -37,7 +43,7 @@ class Splash extends Component {
             </div>
             <div className="Splash__btn-container">
               <Link to="/register">
-                <Button>Register!</Button>
+                <Button>Register</Button>
               </Link>
               <Link to="/login">
                 <Button>Login</Button>

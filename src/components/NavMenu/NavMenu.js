@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as FrenmoLogo } from "../../images/frenmo-logo.svg";
+import { ReactComponent as FrenmoLogo } from "../../images/frenmo.svg";
+import { ReactComponent as LoginLogo } from "../../images/loginlogo.svg";
 import "./NavMenu.scss";
 
 class NavMenu extends Component {
@@ -28,10 +29,7 @@ class NavMenu extends Component {
       <div className="NavMenu">
         <div className="NavMenu-cropped">
           <NavLink to="/feed" className="NavMenu__Header">
-            <h2>
-              <FrenmoLogo />
-              <span className="logo">renmo</span>
-            </h2>
+            <FrenmoLogo className="FrenmoLogo" />
           </NavLink>
         </div>
         <FontAwesomeIcon
@@ -50,10 +48,7 @@ class NavMenu extends Component {
     return (
       <div className="NavMenu">
         <NavLink to="/" className="NavMenu__Header">
-          <h2>
-            <FrenmoLogo />
-            <span className="logo">renmo</span>
-          </h2>
+          <LoginLogo className="LoginLogo" />
         </NavLink>
 
         <NavLink to="/login" className="login-link">
