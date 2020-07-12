@@ -90,6 +90,7 @@ class App extends Component {
         {this.state.feedbackMessage ? (
           <PopupFeedback feedbackMessage={this.state.feedbackMessage} />
         ) : null}
+
         {TokenService.hasAuthToken() ? <NavMenu /> : null}
 
         <main className="App__container wrapper">

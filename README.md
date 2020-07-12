@@ -6,7 +6,7 @@
 
 ## Demo Credentials
 
-Username: guest<br/>
+Username: WEB818<br/>
 Password: Password1!
 
 ## Summary
@@ -49,6 +49,6 @@ Testing: _Mocha | Chai_
 
 ## See it live!
 
-[Frenmo Live App](https://frenmo.now.sh/ "Demo - see credentials above")
+[Frenmo Live App](https://frenmo-client.vercel.app/ "Demo - see credentials above")
 
 [Frenmo Server (GitHub)](https://github.com/WEB818/frenmo-server "server link")
