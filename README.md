@@ -1,19 +1,23 @@
 # Frenmo App (Client)
 
-## Team: Jack Pupel, Wendy Bartos, Angel Alicea, Javier Zapien, Dana Zinatbakhsh
+#### Team: Jack Pupel, Wendy Bartos, Angel Alicea, Javier Zapien, Dana Zinatbakhsh
 
-## Link: https://frenmo-client.vercel.app/
+#### Link: https://frenmo-client.vercel.app/
 
-## Demo Credentials
+#### Demo Credentials
 
 Username: WEB818<br/>
 Password: Password1!
+
+---
 
 ## Summary
 
 Imagine Venmo, now imagine that but with favors instead of real money.
 
 Frenmo is a site where users can send or request favors from their community and their friends.
+
+---
 
 ## Homepage
 
@@ -39,6 +43,8 @@ Frenmo is a site where users can send or request favors from their community and
 ![Send Frenmo](README/mob-tab-send.png)
 ![Send Frenmo](README/comp-send.png)
 
+---
+
 ## Technologies Used
 
 Front-End: _ReactJS | CSS_
@@ -47,7 +53,9 @@ Back-End: _NodeJS | KnexJS | ExpressJS | PostgreSQL_
 
 Testing: _Mocha | Chai_
 
-## See it live!
+---
+
+## See More
 
 [Frenmo Live App](https://frenmo-client.vercel.app/ "Demo - see credentials above")
 
