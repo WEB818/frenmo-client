@@ -2,7 +2,7 @@
 
 ## Team: Jack Pupel, Wendy Bartos, Angel Alicea, Javier Zapien, Dana Zinatbakhsh
 
-## Link: https://frenmo.now.sh/login
+## Link: https://frenmo-client.vercel.app/
 
 ## Demo Credentials
 
@@ -17,27 +17,27 @@ Frenmo is a site where users can send or request favors from their community and
 
 ## Homepage
 
-![Landing Page](comp-home.png)
+![Landing Page](README/comp-home.png)
 
 ## Feed Page
 
-![Feed Page](mob-tab-feed.png)
-![Feed Page](comp-feed.png)
+![Feed Page](README/mob-tab-feed.png)
+![Feed Page](README/comp-feed.png)
 
 ## My Frenmos
 
-![My Frenmos](mob-tab-cat.png)
-![My Frenmos](comp-cat.png)
+![My Frenmos](README/mob-tab-cat.png)
+![My Frenmos](README/comp-cat.png)
 
 ## My Friends
 
-![My Friends](mob-tab-friend.png)
-![My Friends](comp-friend.png)
+![My Friends](README/mob-tab-friend.png)
+![My Friends](README/comp-friend.png)
 
 ## Send Frenmo
 
-![Send Frenmo](mob-tab-send.png)
-![Send Frenmo](comp-send.png)
+![Send Frenmo](README/mob-tab-send.png)
+![Send Frenmo](README/comp-send.png)
 
 ## Technologies Used
 
