@@ -15,29 +15,29 @@ Imagine Venmo, now imagine that but with favors instead of real money.
 
 Frenmo is a site where users can send or request favors from their community and their friends.
 
-## Login Page
+## Homepage
 
-![frenmoLogin]()
+![Landing Page](comp-home.png)
 
-## Register Page
+## Feed Page
 
-![frenmoSignup]()
-
-## User Home (Desktop View)
-
-![frenmoDT]()
-
-## User Home (Mobile View)
-
-![mblFrenmoView]()
+![Feed Page](mob-tab-feed.png)
+![Feed Page](comp-feed.png)
 
 ## My Frenmos
 
-![frenmoMyFs]()
+![My Frenmos](mob-tab-cat.png)
+![My Frenmos](comp-cat.png)
 
-## Create Frenmo
+## My Friends
 
-![createFrenmo]()
+![My Friends](mob-tab-friend.png)
+![My Friends](comp-friend.png)
+
+## Send Frenmo
+
+![Send Frenmo](mob-tab-send.png)
+![Send Frenmo](comp-send.png)
 
 ## Technologies Used
 
